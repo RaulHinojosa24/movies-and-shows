@@ -1,7 +1,25 @@
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+
+import RootLayout from './components/RootLayout'
+import LoginPage, { action as loginAction } from './pages/Login'
+
 function App () {
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <RootLayout />,
+      children: [
+        {
+          path: 'login',
+          element: <LoginPage />,
+          action: loginAction
+        }
+      ]
+    }
+  ])
   return (
     <>
-      <h1>Movies & Shows</h1>
+      <RouterProvider router={router}>Movies & Shows</RouterProvider>
     </>
   )
 }
