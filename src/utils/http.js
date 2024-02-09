@@ -8,6 +8,9 @@ const GET_OPTIONS = {
   }
 }
 
+const language = 'es-ES'
+const region = 'ES'
+
 const POST_OPTIONS = {
   method: 'POST',
   headers: {
@@ -29,4 +32,16 @@ export function createSessionID (requestToken) {
   })
 
   return fetch('https://api.themoviedb.org/3/authentication/session/new', options)
+}
+
+export function getNowPlayingMovies () {
+  const today = new Date()
+  const lastMonth = new Date()
+  lastMonth.setDate(lastMonth.getDate() - 21)
+
+  const todayDate = today.toISOString().split('T')[0]
+  const lastMonthDate = lastMonth.toISOString().split('T')[0]
+  console.log(todayDate, lastMonthDate)
+
+  return fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=${language}&page=1&sort_by=popularity.desc&with_release_type=2|3&release_date.gte=${lastMonthDate}&release_date.lte=${todayDate}&region=${region}`, GET_OPTIONS)
 }
