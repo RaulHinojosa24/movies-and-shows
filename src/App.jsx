@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import RootLayout from './components/RootLayout'
-import LoginPage, { action as loginAction } from './pages/Login'
+import LoginPage, { loader as loginLoader, action as loginAction } from './pages/Login'
 
 function App () {
   const router = createBrowserRouter([
@@ -12,7 +12,8 @@ function App () {
         {
           path: 'login',
           element: <LoginPage />,
-          action: loginAction
+          action: loginAction,
+          loader: loginLoader
         }
       ]
     }
