@@ -8,3 +8,7 @@
     @apply bg-neutral-950;
   }
 }
+
+swiper-slide {
+  width: auto;
+}
