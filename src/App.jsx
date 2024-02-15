@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import RootLayout, { loader as rootLoader } from './components/RootLayout'
 import LoginPage, { loader as loginLoader, action as loginAction } from './pages/Login'
 import HomePage, { loader as homeLoader } from './pages/Home'
+import MovieDetailsPage, { loader as movieDetailsLoader } from './pages/MovieDetails'
 
 export default function App () {
   const router = createBrowserRouter([
@@ -22,6 +23,12 @@ export default function App () {
           element: <LoginPage />,
           action: loginAction,
           loader: loginLoader
+        },
+        {
+          path: 'movies/:id',
+          id: 'movie-details',
+          element: <MovieDetailsPage />,
+          loader: movieDetailsLoader
         }
       ]
     }
