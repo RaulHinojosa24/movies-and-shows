@@ -7,8 +7,28 @@
     color: white;
     @apply bg-neutral-950;
   }
+
+  body, header .content {
+    @apply max-w-screen-2xl;
+    @apply mx-auto;
+    @apply px-4
+  }
 }
 
 swiper-slide {
   width: auto;
 }
+
+swiper-container {
+  height: 100%;
+}
+
+.swiper-slide-next, .swiper-slide-prev {
+  filter: brightness(20%);
+  transition: filter 0.2s ease-out;
+}
+
+swiper-container::part(button-prev), swiper-container::part(button-next) {
+  @apply text-yellow-400;
+}
+

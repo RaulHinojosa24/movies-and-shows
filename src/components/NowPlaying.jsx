@@ -1,21 +1,27 @@
 import { useLoaderData } from 'react-router-dom'
-import PosterCard from './UI/PosterCard'
+import NowPlayingCard from './UI/NowPlayingCard'
 
 export default function NowPlaying () {
   const data = useLoaderData()
 
   return (
-    <section>
-      <h2>Now playing on cinemas</h2>
+    <section className='h-96'>
       <swiper-container
         slides-per-view='auto'
         space-between={30}
-        mousewheel
+        navigation
+        loop
+        centered-slides
+        autoplay-delay={5000}
+        autoplay-pause-on-mouse-enter
+        keyboard-enabled
+        no-swiping
+        no-swiping-class='no-swiping'
       >
         {data.results.map(movie => {
           return (
             <swiper-slide key={movie.id}>
-              <PosterCard movie={movie} />
+              <NowPlayingCard movie={movie} />
             </swiper-slide>
           )
         })}
