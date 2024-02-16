@@ -4,14 +4,13 @@
 
 @layer base {
   html {
-    color: white;
+    @apply text-neutral-50;
     @apply bg-neutral-950;
   }
 
   body, header .content {
     @apply max-w-screen-2xl;
     @apply mx-auto;
-    @apply px-4
   }
 }
 
