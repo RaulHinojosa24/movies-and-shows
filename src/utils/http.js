@@ -21,7 +21,7 @@ const POST_OPTIONS = {
 }
 
 export function getAPIConfiguration () {
-  return fetch('https://api.themoviedb.org/3/configuration', GET_OPTIONS)
+  return fetch('https://api.themoviedb.org/3/configuration?append_to_response=countries,jobs,languages', GET_OPTIONS)
 }
 
 export function getRequestToken () {

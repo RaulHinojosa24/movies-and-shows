@@ -1,9 +1,9 @@
 export default function Section ({ title, children, className = '' }) {
   return (
-    <section className={`${className}`}>
+    <section>
       {title &&
-        <h2 className='text-2xl text-yellow-400 font-bold'>{title}</h2>}
-      {children}
+        <h2 className='text-2xl text-yellow-400 font-bold mb-2'>{title}</h2>}
+      <div className={`${className}`}>{children}</div>
     </section>
   )
 }

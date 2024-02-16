@@ -1,7 +1,7 @@
 import { useRouteLoaderData } from 'react-router-dom'
-import useWindowDimensions from '../hooks/useWindowDimensions'
-import { calculateImageSize, formatRuntime } from '../utils/utility'
-import Section from './UI/Section'
+import useWindowDimensions from '../../hooks/useWindowDimensions'
+import { calculateImageSize, formatDate, formatRuntime } from '../../utils/utility'
+import Section from '../UI/Section'
 import MovieVoteCard from './MovieVoteCard'
 
 export default function MovieHeader () {
@@ -33,9 +33,12 @@ export default function MovieHeader () {
 
   const prettyRuntime = formatRuntime(runtime)
 
-  const countryReleaseDates = releaseDates.results.find(el => el.iso_3166_1 === 'ES').release_dates
-  console.log(countryReleaseDates)
-  console.log(genres)
+  const countryReleaseDates = releaseDates.results.find(el => el.iso_3166_1 === 'ES')?.release_dates
+  const { certification, release_date: officialReleaseDate } = countryReleaseDates
+    ? countryReleaseDates.find(el => [2, 3].includes(el.type))
+    : { certification: '', release_date: releaseDate }
+  const prettyDate = formatDate(new Date(officialReleaseDate))
+
   return (
     <>
       <header
@@ -55,12 +58,18 @@ export default function MovieHeader () {
               {prettyRuntime}
             </span>
           </div>
-          <p>{releaseDate}</p>
-          <ul className='flex flex-wrap gap-2'>
-            {genres.map(({ id, name }) => (
-              <li key={id}>{name}</li>
-            ))}
-          </ul>
+          <p className='flex gap-2'>
+            {certification && certification !== '' &&
+              <><span className='border-[1px] px-1'>{certification}</span>&bull;</>}
+
+            <span>{prettyDate}</span>
+            &bull;
+            <ul className='flex flex-wrap gap-2'>
+              {genres.map(({ id, name }, i) => (
+                <li key={id}>{name}{i < genres.length - 1 && ','}</li>
+              ))}
+            </ul>
+          </p>
           {tagline && <p className='italic text-neutral-300'>{tagline}</p>}
           <MovieVoteCard avarage={voteAvarage} count={voteCount} />
         </Section>

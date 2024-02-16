@@ -1,8 +1,8 @@
-import { formatNumberLetters, generateVoteColor, roundDecimals } from '../utils/utility'
+import { formatNumberSymbols, generateVoteColor, roundDecimals } from '../../utils/utility'
 
 export default function MovieVoteCard ({ avarage, count }) {
   const prettyAvarage = roundDecimals(avarage, 1)
-  const prettyCount = formatNumberLetters(count, 1)
+  const prettyCount = formatNumberSymbols(count, 1)
   const avarageColor = generateVoteColor(avarage / 10)
 
   return (

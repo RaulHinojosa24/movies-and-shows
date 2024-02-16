@@ -1,5 +1,5 @@
 import { useLoaderData } from 'react-router-dom'
-import NowPlayingCard from './UI/NowPlayingCard'
+import NowPlayingCard from './NowPlayingCard'
 
 export default function NowPlaying () {
   const data = useLoaderData()

@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 import { useLoaderData } from 'react-router-dom'
 import { getMovieDetails } from '../utils/http'
-import MovieHeader from '../components/MovieHeader'
-import MovieMain from '../components/MovieMain'
+import MovieHeader from '../components/MovieDetails/MovieHeader'
+import MovieMain from '../components/MovieDetails/MovieMain'
 
 export default function MovieDetailsPage () {
   const data = useLoaderData()
@@ -15,7 +15,6 @@ export default function MovieDetailsPage () {
     images,
     imdb_id: imdbID,
     lists,
-    overview,
     popularity,
     production_companies: productionCompanies,
     production_countries: productionCountries,
@@ -26,7 +25,6 @@ export default function MovieDetailsPage () {
     videos,
     'watch/providers': watchProviders
   } = data
-  console.log(data)
 
   return (
     <section>

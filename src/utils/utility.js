@@ -24,7 +24,7 @@ export function formatNumber (number) {
   return number.toLocaleString()
 }
 
-export function formatNumberLetters (number, digits) {
+export function formatNumberSymbols (number, digits) {
   const lookup = [
     { value: 1, symbol: '' },
     { value: 1e3, symbol: 'k' },
@@ -54,4 +54,16 @@ export function roundDecimals (number, decimals = 0) {
 export function generateVoteColor (value) {
   const hue = ((1 - 1 + value) * 120).toString(10)
   return ['hsl(', hue, ',100%,50%)'].join('')
+}
+
+export function getPersonGender (type) {
+  return ['Not set / not specified', 'Female', 'Male', 'Non-binary'][type]
+}
+
+export function getReleaseType (type) {
+  return ['Not set / not specified', 'Premiere', 'Theatrical (limited)', 'Theatrical', 'Digital', 'Physical', 'TV'][type]
+}
+
+export function formatDate (date) {
+  return date.toLocaleDateString('es-ES')
 }

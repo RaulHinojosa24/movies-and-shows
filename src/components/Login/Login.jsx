@@ -1,5 +1,5 @@
 import { Form } from 'react-router-dom'
-import Card from './UI/Card'
+import Card from '../UI/Card'
 
 export default function Login () {
   return (
