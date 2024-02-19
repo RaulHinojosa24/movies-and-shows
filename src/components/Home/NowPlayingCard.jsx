@@ -22,7 +22,7 @@ export default function PosterCard ({ movie }) {
 
   return (
     <Link to={'/movies/' + id}>
-      <article className='group aspect-[21/9] overflow-hidden grid place-content-center h-full relative hover:cursor-pointer'>
+      <article className='group aspect-[21/9] overflow-hidden grid place-content-center h-48 relative hover:cursor-pointer'>
         <main>
           {backdropPath &&
             <img loading='lazy' src={baseURL + backdropSize + backdropPath} alt='' />}
@@ -31,9 +31,9 @@ export default function PosterCard ({ movie }) {
           {!backdropPath && !posterPath &&
             <p className='text-center italic'>No poster available for "{title}"</p>}
         </main>
-        <footer className='group absolute w-full h-auto bottom-0 p-4 bg-gradient-to-t from-black/100 flex flex-col justify-end gap-2 group-hover:h-full'>
+        <footer className='absolute w-full h-auto bottom-0 p-4 bg-gradient-to-t from-black/100 flex flex-col justify-end gap-2 group-hover:h-full'>
           <h3 className='no-swiping text-2xl font-semibold w-fit'>{title}</h3>
-          <p className='no-swiping w-3/4 text-neutral-300 line-clamp-2 group-hover:line-clamp-none'>{overview}</p>
+          <p className='no-swiping w-3/4 text-neutral-300 line-clamp-2'>{overview}</p>
         </footer>
       </article>
     </Link>

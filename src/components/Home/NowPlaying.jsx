@@ -5,7 +5,7 @@ export default function NowPlaying () {
   const data = useLoaderData()
 
   return (
-    <section className='h-96'>
+    <section>
       <swiper-container
         slides-per-view='auto'
         space-between={30}
@@ -15,7 +15,6 @@ export default function NowPlaying () {
         autoplay-delay={5000}
         autoplay-pause-on-mouse-enter
         keyboard-enabled
-        no-swiping
         no-swiping-class='no-swiping'
       >
         {data.results.map(movie => {

@@ -2,10 +2,12 @@ import { useRouteLoaderData } from 'react-router-dom'
 import Section from '../UI/Section'
 import SubSection from '../UI/SubSection'
 import { formatCurrency } from '../../utils/utility'
+import MovieCast from './MovieCast'
 
 export default function MovieMain () {
   const {
     budget,
+    credits,
     keywords,
     original_language: originalLanguage,
     original_title: originalTitle,
@@ -13,6 +15,16 @@ export default function MovieMain () {
     revenue,
     status
   } = useRouteLoaderData('movie-details')
+
+  console.log(credits.cast)
+
+  const simpleCast = credits.cast.map(person => ({
+    id: person.id,
+    name: person.name,
+    originalName: person.original_name,
+    picturePath: person.profile_path,
+    character: person.character
+  }))
 
   const { languages } = useRouteLoaderData('root')
 
@@ -43,6 +55,7 @@ export default function MovieMain () {
           {overview}
         </Section>
         <hr />
+        <MovieCast cast={simpleCast} />
       </div>
     </main>
   )

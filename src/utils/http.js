@@ -51,5 +51,5 @@ export function getNowPlayingMovies () {
 }
 
 export function getMovieDetails (id) {
-  return fetch(`https://api.themoviedb.org/3/movie/${id}?language=${language}&include_image_language=null&append_to_response=images,videos,keywords,lists,recommendations,reviews,watch/providers,release_dates,external_ids`, GET_OPTIONS)
+  return fetch(`https://api.themoviedb.org/3/movie/${id}?language=${language}&include_image_language=null&append_to_response=images,videos,keywords,lists,recommendations,reviews,watch/providers,release_dates,external_ids,credits`, GET_OPTIONS)
 }

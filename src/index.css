@@ -8,6 +8,10 @@
     @apply bg-neutral-950;
   }
 
+  body {
+    @apply mb-8
+  }
+
   body, header .content {
     @apply max-w-screen-2xl;
     @apply mx-auto;
@@ -16,24 +20,17 @@
   hr {
     @apply border-yellow-400;
     @apply opacity-25;
-    @apply my-4;
+    @apply my-8;
   }
+}
+
+swiper-container {
+  --swiper-theme-color: rgb(250, 204, 21);
+  --swiper-scrollbar-bg-color: rgba(250, 204, 21, 0.2);
+  --swiper-scrollbar-drag-bg-color: var(--swiper-theme-color);
 }
 
 swiper-slide {
   width: auto;
+  height: auto;
 }
-
-swiper-container {
-  height: 100%;
-}
-
-.swiper-slide-next, .swiper-slide-prev {
-  filter: brightness(20%);
-  transition: filter 0.2s ease-out;
-}
-
-swiper-container::part(button-prev), swiper-container::part(button-next) {
-  @apply text-yellow-400;
-}
-

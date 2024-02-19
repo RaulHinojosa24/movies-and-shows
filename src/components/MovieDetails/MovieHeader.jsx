@@ -28,8 +28,8 @@ export default function MovieHeader () {
 
   const { width } = useWindowDimensions()
 
-  const backdropSize = calculateImageSize(backdropSizes, width, 1)
-  const posterSize = calculateImageSize(posterSizes, width, width < 512 ? 1 : 1 / 4)
+  const backdropSize = calculateImageSize(backdropSizes.filter(s => s.includes('w')), width, 1)
+  const posterSize = calculateImageSize(posterSizes.filter(s => s.includes('w')), width, width < 512 ? 1 : 1 / 4)
 
   const prettyRuntime = formatRuntime(runtime)
 
@@ -58,7 +58,7 @@ export default function MovieHeader () {
               {prettyRuntime}
             </span>
           </div>
-          <p className='flex gap-2'>
+          <div className='flex gap-2'>
             {certification && certification !== '' &&
               <><span className='border-[1px] px-1'>{certification}</span>&bull;</>}
 
@@ -69,7 +69,7 @@ export default function MovieHeader () {
                 <li key={id}>{name}{i < genres.length - 1 && ','}</li>
               ))}
             </ul>
-          </p>
+          </div>
           {tagline && <p className='italic text-neutral-300'>{tagline}</p>}
           <MovieVoteCard avarage={voteAvarage} count={voteCount} />
         </Section>
