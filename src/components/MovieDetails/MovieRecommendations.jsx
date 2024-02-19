@@ -1,10 +1,11 @@
-import { useRouteLoaderData } from 'react-router-dom'
-import { calculateImageSize } from '../../utils/utility'
-import useWindowDimensions from '../../hooks/useWindowDimensions'
+import { Link, useRouteLoaderData } from 'react-router-dom'
 import Section from '../UI/Section'
+import useWindowDimensions from '../../hooks/useWindowDimensions'
+import { calculateImageSize } from '../../utils/utility'
+import MovieVoteCard from './MovieVoteCard'
 import { useEffect, useRef } from 'react'
 
-export default function MovieCast ({ cast }) {
+export default function MovieRecommendations ({ recommendations }) {
   const sliderRef = useRef()
 
   useEffect(() => {
@@ -17,6 +18,7 @@ export default function MovieCast ({ cast }) {
         hide: true
       },
       noSwipingClass: 'no-swiping',
+
       injectStyles: [`
         @tailwind utilities;
 
@@ -46,44 +48,47 @@ export default function MovieCast ({ cast }) {
   const {
     images: {
       secure_base_url: baseURL,
-      profile_sizes: profileSizes
+      backdrop_sizes: backdropSizes
     }
   } = useRouteLoaderData('root')
 
   const { width } = useWindowDimensions()
 
-  const pictureSize = calculateImageSize(profileSizes.filter(s => s.includes('w')), width, 1 / 10)
-
-  const shortCast = cast
-    .filter((_, id) => id < 9)
+  const backdropSize = calculateImageSize(backdropSizes.filter(s => s.includes('w')), width, 1 / 6)
 
   return (
-    <Section title='Reparto principal'>
+    <Section title='Recomendaciones'>
       <swiper-container
         ref={sliderRef}
         init={false}
       >
-        {shortCast.map(({
+        {recommendations.map(({
           id,
-          name,
-          originalName,
-          picturePath,
-          character
+          title,
+          backdropPath,
+          mediaType,
+          releaseDate,
+          voteAverage,
+          voteCount
         }) => {
           return (
             <swiper-slide key={id}>
-              <div className='h-full rounded overflow-hidden border-[1px] border-neutral-700 border-opacity-50 shadow-md shadow-neutral-800'>
-                <img loading='lazy' src={baseURL + pictureSize + picturePath} alt={`Picture of ${name}`} className='w-32 aspect-[2/3]' />
-                <div className='p-2 w-32 h-full'>
-                  <p className='no-swiping font-semibold w-fit'>{name}</p>
-                  <p className='no-swiping w-fit'>{character}</p>
+              <Link to={`/movies/${id}`}>
+                <div className='rounded overflow-hidden w-80 h-full border-[1px] border-neutral-700 border-opacity-50
+                shadow-md shadow-neutral-800'
+                >
+                  <img loading='lazy' src={baseURL + backdropSize + backdropPath} alt={`Picture from the film ${title}`} className='w-full' />
+                  <div className='py-2 flex justify-between pl-4'>
+                    <p className='no-swiping font-semibold'>{title}</p>
+                    <MovieVoteCard avarage={voteAverage} count={voteCount} small />
+                  </div>
                 </div>
-              </div>
+              </Link>
             </swiper-slide>
           )
         })}
         <swiper-slide>
-          <div className='w-32 h-full grid place-items-center'>
+          <div className='rounded overflow-hidden aspect-video w-80 h-full grid place-items-center'>
             Ver más ➡
           </div>
         </swiper-slide>

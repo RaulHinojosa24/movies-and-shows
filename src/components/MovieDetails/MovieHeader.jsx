@@ -1,3 +1,4 @@
+/* eslint-disable no-octal-escape */
 import { useRouteLoaderData } from 'react-router-dom'
 import useWindowDimensions from '../../hooks/useWindowDimensions'
 import { calculateImageSize, formatDate, formatRuntime } from '../../utils/utility'
@@ -33,10 +34,21 @@ export default function MovieHeader () {
 
   const prettyRuntime = formatRuntime(runtime)
 
-  const countryReleaseDates = releaseDates.results.find(el => el.iso_3166_1 === 'ES')?.release_dates
+  // const countryReleaseDates = releaseDates.results.find(el => el.iso_3166_1 === 'ES')?.release_dates
+  // const { certification, release_date: officialReleaseDate } = countryReleaseDates
+  //   ? countryReleaseDates.find(el => [2, 3].includes(el.type))
+  //   : { certification: '', release_date: releaseDate }
+  // const prettyDate = formatDate(new Date(officialReleaseDate))
+
+  // let certification = ''
+  // let officialReleaseDate = releaseDate
+  const countryReleaseDates = releaseDates.results.find(el => el.iso_3166_1 === 'ES')?.release_dates || []
+  const theatricalRelease = countryReleaseDates.find(el => [2, 3].includes(el.type))
+
   const { certification, release_date: officialReleaseDate } = countryReleaseDates
-    ? countryReleaseDates.find(el => [2, 3].includes(el.type))
+    ? (theatricalRelease || countryReleaseDates[0])
     : { certification: '', release_date: releaseDate }
+
   const prettyDate = formatDate(new Date(officialReleaseDate))
 
   return (
@@ -46,27 +58,24 @@ export default function MovieHeader () {
         className='bg-cover bg-no-repeat flex items-end gap-8 p-8'
       >
         <Section className='mt-12 shadow-xl shadow-black rounded overflow-hidden'>
-          <img
-            src={baseURL + posterSize + posterPath} alt={title}
-            className='w-48'
-          />
+          <img loading='lazy' src={baseURL + posterSize + posterPath} alt={title} className='w-48' />
         </Section>
         <Section className='flex flex-col gap-2'>
           <div className='flex items-end gap-3'>
-            <h1 className='text-4xl font-semibold'>{title}</h1>
-            <span className='text-neutral-300'>
+            <h1 className='text-4xl font-semibold'>{title}
+
+            </h1>
+          </div>
+          <div className='flex [&>*+*]:before:content-["\2022"] [&>*+*]:before:mx-2'>
+            {certification !== '' &&
+              <span className='border-[1px] px-1'>{certification}</span>}
+            <span className='text-base font-normal break-keep'>
               {prettyRuntime}
             </span>
-          </div>
-          <div className='flex gap-2'>
-            {certification && certification !== '' &&
-              <><span className='border-[1px] px-1'>{certification}</span>&bull;</>}
-
             <span>{prettyDate}</span>
-            &bull;
-            <ul className='flex flex-wrap gap-2'>
+            <ul className='flex flex-wrap'>
               {genres.map(({ id, name }, i) => (
-                <li key={id}>{name}{i < genres.length - 1 && ','}</li>
+                <li key={id} className='mr-1'>{name}{i < genres.length - 1 && ','}</li>
               ))}
             </ul>
           </div>

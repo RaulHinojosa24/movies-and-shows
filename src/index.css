@@ -16,21 +16,21 @@
     @apply max-w-screen-2xl;
     @apply mx-auto;
   }
-
-  hr {
-    @apply border-yellow-400;
-    @apply opacity-25;
-    @apply my-8;
-  }
 }
 
-swiper-container {
+hr {
+  @apply border-yellow-400;
+  @apply opacity-25;
+  @apply my-8;
+}
+
+swiper-container::part(container) {
   --swiper-theme-color: rgb(250, 204, 21);
   --swiper-scrollbar-bg-color: rgba(250, 204, 21, 0.2);
   --swiper-scrollbar-drag-bg-color: var(--swiper-theme-color);
 }
 
 swiper-slide {
-  width: auto;
-  height: auto;
+  @apply w-auto;
+  @apply h-auto;
 }

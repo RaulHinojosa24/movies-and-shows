@@ -3,6 +3,7 @@ import Section from '../UI/Section'
 import SubSection from '../UI/SubSection'
 import { formatCurrency } from '../../utils/utility'
 import MovieCast from './MovieCast'
+import MovieRecommendations from './MovieRecommendations'
 
 export default function MovieMain () {
   const {
@@ -12,18 +13,28 @@ export default function MovieMain () {
     original_language: originalLanguage,
     original_title: originalTitle,
     overview,
+    recommendations,
     revenue,
     status
   } = useRouteLoaderData('movie-details')
 
-  console.log(credits.cast)
-
-  const simpleCast = credits.cast.map(person => ({
+  const cleanCast = credits.cast.map(person => ({
     id: person.id,
     name: person.name,
     originalName: person.original_name,
     picturePath: person.profile_path,
     character: person.character
+  }))
+
+  const cleanRecommendations = recommendations.results.map(movie => ({
+    id: movie.id,
+    title: movie.title,
+    posterPath: movie.poster_path,
+    backdropPath: movie.backdrop_path,
+    mediaType: movie.media_type,
+    releaseDate: movie.release_date,
+    voteAverage: movie.vote_average,
+    voteCount: movie.vote_count
   }))
 
   const { languages } = useRouteLoaderData('root')
@@ -55,7 +66,9 @@ export default function MovieMain () {
           {overview}
         </Section>
         <hr />
-        <MovieCast cast={simpleCast} />
+        <MovieCast cast={cleanCast} />
+        <hr />
+        <MovieRecommendations recommendations={cleanRecommendations} />
       </div>
     </main>
   )

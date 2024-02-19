@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-vars */
-import { useLoaderData } from 'react-router-dom'
+import { useLoaderData, useLocation } from 'react-router-dom'
 import { getMovieDetails } from '../utils/http'
 import MovieHeader from '../components/MovieDetails/MovieHeader'
 import MovieMain from '../components/MovieDetails/MovieMain'
+import { useEffect } from 'react'
 
 export default function MovieDetailsPage () {
   const data = useLoaderData()
@@ -18,13 +19,14 @@ export default function MovieDetailsPage () {
     popularity,
     production_companies: productionCompanies,
     production_countries: productionCountries,
-    recommendations,
     reviews,
     spoken_languages: spokenLanguages,
     video,
     videos,
     'watch/providers': watchProviders
   } = data
+
+  useEffect(() => window.scrollTo(0, 0), [])
 
   return (
     <section>

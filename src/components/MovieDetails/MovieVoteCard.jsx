@@ -1,18 +1,18 @@
 import { formatNumberSymbols, generateVoteColor, roundDecimals } from '../../utils/utility'
 
-export default function MovieVoteCard ({ avarage, count }) {
+export default function MovieVoteCard ({ avarage, count, small }) {
   const prettyAvarage = roundDecimals(avarage, 1)
   const prettyCount = formatNumberSymbols(count, 1)
   const avarageColor = generateVoteColor(avarage / 10)
 
   return (
-    <div className='bg-neutral-950 rounded w-fit py-1 px-4 flex flex-col items-center font-semibold'>
+    <div className='bg-neutral-950 rounded w-fit h-fit py-1 px-4 flex flex-col items-center font-semibold'>
       <div className='flex items-end gap-1'>
-        <span style={{ color: avarageColor }} className='font-bold text-xl'>{prettyAvarage}</span>
+        <span style={{ color: avarageColor }} className={`font-bold ${!small ? 'text-xl' : ''}`}>{prettyAvarage}</span>
         /
         <span>10</span>
       </div>
-      <p>{prettyCount} votos</p>
+      {!small && <p>{prettyCount} votos</p>}
     </div>
   )
 }
