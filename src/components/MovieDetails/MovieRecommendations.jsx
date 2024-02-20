@@ -19,7 +19,6 @@ export default function MovieRecommendations ({ recommendations }) {
         hide: true
       },
       noSwipingClass: 'no-swiping',
-
       injectStyles: [`
         @tailwind utilities;
 
@@ -39,7 +38,10 @@ export default function MovieRecommendations ({ recommendations }) {
           pointer-events: none;
           z-index: 10;
         }
-        `]
+        `],
+      on: {
+        click: (swiper) => console.log(swiper)
+      }
     }
 
     Object.assign(swiperContainer, params)
@@ -72,17 +74,16 @@ export default function MovieRecommendations ({ recommendations }) {
           voteAverage,
           voteCount
         }) => {
+          const releaseYear = new Date(releaseDate).getFullYear()
           return (
-            <swiper-slide key={id}>
+            <swiper-slide key={id} lazy='true'>
               <Link to={`/movies/${id}`}>
-                <div className='rounded overflow-hidden w-80 h-full border-[1px] border-neutral-700 border-opacity-50
-                shadow-md shadow-neutral-800'
-                >
+                <div className='rounded overflow-hidden w-80 h-full custom-shadow'>
                   <div className='aspect-video w-full grid place-items-center'>
                     <img loading='lazy' src={baseURL + backdropSize + backdropPath} alt={`Picture from the film ${title}`} className='w-full' />
                   </div>
                   <div className='py-2 flex justify-between px-2'>
-                    <p className='no-swiping font-semibold'>{title}</p>
+                    <p className='no-swiping font-semibold'>{title} ({releaseYear})</p>
                     <MovieVoteCard avarage={voteAverage} count={voteCount} small />
                   </div>
                 </div>

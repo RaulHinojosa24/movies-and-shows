@@ -10,8 +10,6 @@ export default function MovieDetailsPage () {
   const {
     adult,
     belongs_to_collection: belongsToCollection,
-    external_ids: externalIDs,
-    homepage,
     id,
     images,
     imdb_id: imdbID,

@@ -4,19 +4,25 @@ import SubSection from '../UI/SubSection'
 import { formatCurrency } from '../../utils/utility'
 import MovieCast from './MovieCast'
 import MovieRecommendations from './MovieRecommendations'
+import MovieSocialLinks from './MovieSocialLinks'
 
 export default function MovieMain () {
   const {
     budget,
     credits,
+    external_ids: externalIDs,
+    homepage: homepageLink,
     keywords,
     original_language: originalLanguage,
     original_title: originalTitle,
     overview,
     recommendations,
     revenue,
-    status
+    status,
+    title
   } = useRouteLoaderData('movie-details')
+
+  console.log(externalIDs)
 
   const cleanCast = credits.cast.map(person => ({
     id: person.id,
@@ -42,8 +48,8 @@ export default function MovieMain () {
   const { english_name: originalLanguageEnglishName, name: originalLanguageName } = languages.find(el => el.iso_639_1 === originalLanguage)
 
   return (
-    <main className='w-11/12 m-auto grid grid-cols-5 gap-4'>
-      <Section title='Detalles' className='flex flex-col gap-2'>
+    <main className='mx-8 flex gap-8'>
+      <Section title='Detalles' className='flex flex-col gap-2 w-48'>
         <SubSection title='Estado'>{status}</SubSection>
         <SubSection title='Presupuesto'>{formatCurrency(budget)}</SubSection>
         <SubSection title='Ingresos'>{formatCurrency(revenue)}</SubSection>
@@ -61,7 +67,7 @@ export default function MovieMain () {
           </ul>
         </SubSection>
       </Section>
-      <div className='col-span-4'>
+      <div className='min-w-0'>
         <Section title='Sinopsis'>
           {overview}
         </Section>
@@ -70,6 +76,7 @@ export default function MovieMain () {
         <hr />
         <MovieRecommendations recommendations={cleanRecommendations} />
       </div>
+      <MovieSocialLinks externalIDs={externalIDs} homepageLink={homepageLink} title={title} />
     </main>
   )
 }

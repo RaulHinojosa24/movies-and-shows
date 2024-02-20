@@ -71,8 +71,8 @@ export default function MovieCast ({ cast }) {
           character
         }) => {
           return (
-            <swiper-slide key={id}>
-              <div className='h-full w-36 rounded overflow-hidden border-[1px] border-neutral-700 border-opacity-50 shadow-md shadow-neutral-800'>
+            <swiper-slide key={id} lazy='true'>
+              <div className='h-full w-36 rounded overflow-hidden custom-shadow'>
                 <div className='aspect-[4/5] overflow-hidden'>
                   <img loading='lazy' src={baseURL + pictureSize + picturePath} alt={`Picture of ${name}`} />
                 </div>
