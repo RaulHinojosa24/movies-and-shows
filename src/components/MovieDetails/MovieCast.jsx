@@ -72,9 +72,11 @@ export default function MovieCast ({ cast }) {
         }) => {
           return (
             <swiper-slide key={id}>
-              <div className='h-full rounded overflow-hidden border-[1px] border-neutral-700 border-opacity-50 shadow-md shadow-neutral-800'>
-                <img loading='lazy' src={baseURL + pictureSize + picturePath} alt={`Picture of ${name}`} className='w-32 aspect-[2/3]' />
-                <div className='p-2 w-32 h-full'>
+              <div className='h-full w-36 rounded overflow-hidden border-[1px] border-neutral-700 border-opacity-50 shadow-md shadow-neutral-800'>
+                <div className='aspect-[4/5] overflow-hidden'>
+                  <img loading='lazy' src={baseURL + pictureSize + picturePath} alt={`Picture of ${name}`} />
+                </div>
+                <div className='p-2 h-full'>
                   <p className='no-swiping font-semibold w-fit'>{name}</p>
                   <p className='no-swiping w-fit'>{character}</p>
                 </div>

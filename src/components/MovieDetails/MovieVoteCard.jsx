@@ -6,7 +6,7 @@ export default function MovieVoteCard ({ avarage, count, small }) {
   const avarageColor = generateVoteColor(avarage / 10)
 
   return (
-    <div className='bg-neutral-950 rounded w-fit h-fit py-1 px-4 flex flex-col items-center font-semibold'>
+    <div className='bg-neutral-950 rounded w-fit h-fit py-1 px-4 flex flex-col items-center font-semibold border-[1px] border-neutral-900 shadow-sm shadow-neutral-800'>
       <div className='flex items-end gap-1'>
         <span style={{ color: avarageColor }} className={`font-bold ${!small ? 'text-xl' : ''}`}>{prettyAvarage}</span>
         /

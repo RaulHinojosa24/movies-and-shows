@@ -34,15 +34,8 @@ export default function MovieHeader () {
 
   const prettyRuntime = formatRuntime(runtime)
 
-  // const countryReleaseDates = releaseDates.results.find(el => el.iso_3166_1 === 'ES')?.release_dates
-  // const { certification, release_date: officialReleaseDate } = countryReleaseDates
-  //   ? countryReleaseDates.find(el => [2, 3].includes(el.type))
-  //   : { certification: '', release_date: releaseDate }
-  // const prettyDate = formatDate(new Date(officialReleaseDate))
-
-  // let certification = ''
-  // let officialReleaseDate = releaseDate
   const countryReleaseDates = releaseDates.results.find(el => el.iso_3166_1 === 'ES')?.release_dates || []
+  console.log(countryReleaseDates)
   const theatricalRelease = countryReleaseDates.find(el => [2, 3].includes(el.type))
 
   const { certification, release_date: officialReleaseDate } = countryReleaseDates
@@ -55,7 +48,7 @@ export default function MovieHeader () {
     <>
       <header
         style={{ backgroundImage: `linear-gradient(to bottom, rgba(200,200,200,0.15), 40%, rgb(10,10,10)),url(${baseURL + backdropSize + backdropPath})` }}
-        className='bg-cover bg-no-repeat flex items-end gap-8 p-8'
+        className={`bg-neutral-800 bg-cover bg-no-repeat bg-[linear-gradient(to_bottom,_rgba(200,200,200,0.15),_40%,_rgb(10,10,10)),_url(${baseURL + backdropSize + backdropPath})] flex items-end gap-8 p-8`}
       >
         <Section className='mt-12 shadow-xl shadow-black rounded overflow-hidden'>
           <img loading='lazy' src={baseURL + posterSize + posterPath} alt={title} className='w-48' />

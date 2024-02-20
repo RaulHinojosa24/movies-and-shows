@@ -1,12 +1,14 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLoaderData } from 'react-router-dom'
 import MainNavigation from './MainNavigation'
 import { getAPIConfiguration } from '../utils/http'
 
 export default function RootLayout () {
+  const config = useLoaderData()
+  console.log(config)
   return (
     <>
       <MainNavigation />
-      <main className='pt-12'>
+      <main className='pt-12 w-full'>
         <Outlet />
       </main>
     </>

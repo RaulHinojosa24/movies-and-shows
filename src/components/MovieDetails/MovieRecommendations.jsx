@@ -15,6 +15,7 @@ export default function MovieRecommendations ({ recommendations }) {
       slidesPerView: 'auto',
       spaceBetween: 15,
       scrollbar: {
+        draggable: true,
         hide: true
       },
       noSwipingClass: 'no-swiping',
@@ -77,8 +78,10 @@ export default function MovieRecommendations ({ recommendations }) {
                 <div className='rounded overflow-hidden w-80 h-full border-[1px] border-neutral-700 border-opacity-50
                 shadow-md shadow-neutral-800'
                 >
-                  <img loading='lazy' src={baseURL + backdropSize + backdropPath} alt={`Picture from the film ${title}`} className='w-full' />
-                  <div className='py-2 flex justify-between pl-4'>
+                  <div className='aspect-video w-full grid place-items-center'>
+                    <img loading='lazy' src={baseURL + backdropSize + backdropPath} alt={`Picture from the film ${title}`} className='w-full' />
+                  </div>
+                  <div className='py-2 flex justify-between px-2'>
                     <p className='no-swiping font-semibold'>{title}</p>
                     <MovieVoteCard avarage={voteAverage} count={voteCount} small />
                   </div>
@@ -87,11 +90,11 @@ export default function MovieRecommendations ({ recommendations }) {
             </swiper-slide>
           )
         })}
-        <swiper-slide>
+        {/* <swiper-slide>
           <div className='rounded overflow-hidden aspect-video w-80 h-full grid place-items-center'>
             Ver más ➡
           </div>
-        </swiper-slide>
+        </swiper-slide> */}
       </swiper-container>
     </Section>
   )
