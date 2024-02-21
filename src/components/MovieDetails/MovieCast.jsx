@@ -1,4 +1,4 @@
-import { useRouteLoaderData } from 'react-router-dom'
+import { Link, useRouteLoaderData } from 'react-router-dom'
 import { calculateImageSize } from '../../utils/utility'
 import useWindowDimensions from '../../hooks/useWindowDimensions'
 import Section from '../UI/Section'
@@ -86,10 +86,11 @@ export default function MovieCast ({ cast }) {
         })}
         <swiper-slide>
           <div className='w-32 h-full grid place-items-center'>
-            Ver más ➡
+            <Link to='cast'>Ver más ➡</Link>
           </div>
         </swiper-slide>
       </swiper-container>
+      <Link to='cast'>Ver reparto y equipo completo ➡</Link>
     </Section>
   )
 }

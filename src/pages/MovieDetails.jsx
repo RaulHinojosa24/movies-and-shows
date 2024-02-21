@@ -1,41 +1,82 @@
-/* eslint-disable no-unused-vars */
-import { useLoaderData, useLocation } from 'react-router-dom'
-import { getMovieDetails } from '../utils/http'
-import MovieHeader from '../components/MovieDetails/MovieHeader'
-import MovieMain from '../components/MovieDetails/MovieMain'
-import { useEffect } from 'react'
+import { useRouteLoaderData } from 'react-router-dom'
+import Section from '../components/UI/Section'
+import SubSection from '../components/UI/SubSection'
+import { formatCurrency } from '../utils/utility'
+import MovieCast from '../components/MovieDetails/MovieCast'
+import MovieRecommendations from '../components/MovieDetails/MovieRecommendations'
+import MovieSocialLinks from '../components/MovieDetails/MovieSocialLinks'
 
 export default function MovieDetailsPage () {
-  const data = useLoaderData()
   const {
-    adult,
-    belongs_to_collection: belongsToCollection,
-    id,
-    images,
-    imdb_id: imdbID,
-    lists,
-    popularity,
-    production_companies: productionCompanies,
-    production_countries: productionCountries,
-    reviews,
-    spoken_languages: spokenLanguages,
-    video,
-    videos,
-    'watch/providers': watchProviders
-  } = data
+    budget,
+    credits,
+    external_ids: externalIDs,
+    homepage: homepageLink,
+    keywords,
+    original_language: originalLanguage,
+    original_title: originalTitle,
+    overview,
+    recommendations,
+    revenue,
+    status,
+    title
+  } = useRouteLoaderData('movie-details')
 
-  useEffect(() => window.scrollTo(0, 0), [])
+  console.log(externalIDs)
+
+  const cleanCast = credits.cast.map(person => ({
+    id: person.id,
+    name: person.name,
+    originalName: person.original_name,
+    picturePath: person.profile_path,
+    character: person.character
+  }))
+
+  const cleanRecommendations = recommendations.results.map(movie => ({
+    id: movie.id,
+    title: movie.title,
+    posterPath: movie.poster_path,
+    backdropPath: movie.backdrop_path,
+    mediaType: movie.media_type,
+    releaseDate: movie.release_date,
+    voteAverage: movie.vote_average,
+    voteCount: movie.vote_count
+  }))
+
+  const { languages } = useRouteLoaderData('root')
+
+  const { english_name: originalLanguageEnglishName, name: originalLanguageName } = languages.find(el => el.iso_639_1 === originalLanguage)
 
   return (
-    <section>
-      <MovieHeader />
-      <MovieMain />
-    </section>
+    <main className='mx-app-space flex gap-8'>
+      <Section title='Detalles' className='flex flex-col gap-2 w-48'>
+        <SubSection title='Estado'>{status}</SubSection>
+        <SubSection title='Presupuesto'>{formatCurrency(budget)}</SubSection>
+        <SubSection title='Ingresos'>{formatCurrency(revenue)}</SubSection>
+        <SubSection title='Idioma original'>
+          {originalLanguageName !== '' && originalLanguageEnglishName !== originalLanguageName
+            ? `${originalLanguageName} (${originalLanguageEnglishName})`
+            : originalLanguageEnglishName}
+        </SubSection>
+        <SubSection title='Título original'>{originalTitle}</SubSection>
+        <SubSection title='Palabras clave'>
+          <ul className='flex gap-2 flex-wrap'>
+            {keywords.keywords.map(({ id, name }) => (
+              <li key={id}>{name}</li>
+            ))}
+          </ul>
+        </SubSection>
+      </Section>
+      <div className='min-w-0'>
+        <Section title='Sinopsis'>
+          {overview}
+        </Section>
+        <hr />
+        <MovieCast cast={cleanCast} />
+        <hr />
+        <MovieRecommendations recommendations={cleanRecommendations} />
+      </div>
+      <MovieSocialLinks externalIDs={externalIDs} homepageLink={homepageLink} title={title} />
+    </main>
   )
-}
-
-export function loader ({ request, params }) {
-  const { id } = params
-
-  return getMovieDetails(id)
 }

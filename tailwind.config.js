@@ -5,7 +5,14 @@ export default {
     './src/**/*.{js,ts,jsx,tsx}'
   ],
   theme: {
-    extend: {}
+    extend: {
+      margin: {
+        'app-space': '2rem'
+      },
+      padding: {
+        'app-space': '2rem'
+      }
+    }
   },
   plugins: []
 }

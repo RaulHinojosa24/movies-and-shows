@@ -38,7 +38,7 @@ export default function MovieHeader () {
   console.log(countryReleaseDates)
   const theatricalRelease = countryReleaseDates.find(el => [2, 3].includes(el.type))
 
-  const { certification, release_date: officialReleaseDate } = countryReleaseDates
+  const { certification, release_date: officialReleaseDate } = countryReleaseDates.length
     ? (theatricalRelease || countryReleaseDates[0])
     : { certification: '', release_date: releaseDate }
 

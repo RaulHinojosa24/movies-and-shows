@@ -4,6 +4,7 @@ import useWindowDimensions from '../../hooks/useWindowDimensions'
 import { calculateImageSize } from '../../utils/utility'
 import MovieVoteCard from './MovieVoteCard'
 import { useEffect, useRef } from 'react'
+import DefaultLandscapeImage from '../../assets/default-landscape.png'
 
 export default function MovieRecommendations ({ recommendations }) {
   const sliderRef = useRef()
@@ -80,7 +81,10 @@ export default function MovieRecommendations ({ recommendations }) {
               <Link to={`/movies/${id}`}>
                 <div className='rounded overflow-hidden w-80 h-full custom-shadow'>
                   <div className='aspect-video w-full grid place-items-center'>
-                    <img loading='lazy' src={baseURL + backdropSize + backdropPath} alt={`Picture from the film ${title}`} className='w-full' />
+                    {backdropPath &&
+                      <img loading='lazy' src={baseURL + backdropSize + backdropPath} alt={`Picture from the film ${title}`} className='w-full' />}
+                    {!backdropPath &&
+                      <img loading='lazy' src={DefaultLandscapeImage} alt={`Picture from the film ${title}`} className='w-full' />}
                   </div>
                   <div className='py-2 flex justify-between px-2'>
                     <p className='no-swiping font-semibold'>{title} ({releaseYear})</p>
