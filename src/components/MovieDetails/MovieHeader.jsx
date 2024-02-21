@@ -35,7 +35,6 @@ export default function MovieHeader () {
   const prettyRuntime = formatRuntime(runtime)
 
   const countryReleaseDates = releaseDates.results.find(el => el.iso_3166_1 === 'ES')?.release_dates || []
-  console.log(countryReleaseDates)
   const theatricalRelease = countryReleaseDates.find(el => [2, 3].includes(el.type))
 
   const { certification, release_date: officialReleaseDate } = countryReleaseDates.length

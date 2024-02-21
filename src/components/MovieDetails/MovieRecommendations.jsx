@@ -39,10 +39,7 @@ export default function MovieRecommendations ({ recommendations }) {
           pointer-events: none;
           z-index: 10;
         }
-        `],
-      on: {
-        click: (swiper) => console.log(swiper)
-      }
+        `]
     }
 
     Object.assign(swiperContainer, params)

@@ -22,8 +22,6 @@ export default function MovieDetailsPage () {
     title
   } = useRouteLoaderData('movie-details')
 
-  console.log(externalIDs)
-
   const cleanCast = credits.cast.map(person => ({
     id: person.id,
     name: person.name,

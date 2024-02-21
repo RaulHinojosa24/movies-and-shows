@@ -3,8 +3,6 @@ import MainNavigation from './MainNavigation'
 import { getAPIConfiguration } from '../utils/http'
 
 export default function RootLayout () {
-  const config = useLoaderData()
-  console.log(config)
   return (
     <>
       <MainNavigation />

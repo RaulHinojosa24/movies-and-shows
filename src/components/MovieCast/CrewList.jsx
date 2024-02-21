@@ -11,44 +11,72 @@ export default function CrewList ({ crew }) {
     }
   } = useRouteLoaderData('root')
 
-  const prettyCrew = []
+  const depsWithMembers = []
 
   for (const member of crew) {
     const { department } = member
-    const currDep = prettyCrew.find(dep => dep.name === department)
+    const currDep = depsWithMembers.find(el => el.department === department)
 
     if (currDep) {
       currDep.members.push(member)
     } else {
-      prettyCrew.push({
-        name: department,
+      depsWithMembers.push({
+        department,
         members: [member]
       })
     }
   }
-  prettyCrew
-    .sort((a, b) => a.name.localeCompare(b.name))
+
+  depsWithMembers
+    .sort((a, b) => a.department.localeCompare(b.department))
+
+  const prettyCrew = depsWithMembers
+    .map(({ department, members }) => {
+      const cleanMembers = []
+
+      for (const member of members) {
+        const inClean = cleanMembers.find(el => el.id === member.id)
+
+        if (inClean) {
+          inClean.job.push(member.job)
+        } else {
+          cleanMembers.push({
+            ...member,
+            job: [member.job]
+          })
+        }
+      }
+
+      return {
+        department,
+        members: cleanMembers
+          .map(member => ({
+            ...member,
+            job: member.job.sort()
+          }))
+          .sort((a, b) => (
+            a.job[0].localeCompare(b.job[0]) ||
+            a.name.localeCompare(b.name)
+          ))
+      }
+    })
 
   return (
     <Section title='Equipo'>
-      <ol>
-        {prettyCrew.map(({ name, members }) => {
-          const sortedMembers = [...members]
-            .sort((a, b) => (
-              a.job.localeCompare(b.job) ||
-              a.name.localeCompare(b.name)
-            ))
+      <ol className='flex flex-col gap-4'>
+        {prettyCrew.map(({ department, members }) => {
           return (
-            <li key={name}>
-              <SubSection title={name}>
+            <li key={department}>
+              <SubSection title={department} className='gap-2'>
                 <ul className='flex flex-col gap-3'>
-                  {sortedMembers
+                  {members
                     .map(el => {
                       const imagePath = el.profile_path && baseURL + profileSizes[1] + el.profile_path
+                      const jobs = el.job.join(', ')
 
                       return (
                         <li key={el.id + el.job}>
-                          <CastItem image={imagePath} primary={el.name} secondary={el.job} />
+                          <CastItem image={imagePath} primary={el.name} secondary={jobs} />
                         </li>
                       )
                     })}
