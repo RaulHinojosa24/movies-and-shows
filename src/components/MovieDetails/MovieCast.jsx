@@ -4,6 +4,8 @@ import useWindowDimensions from '../../hooks/useWindowDimensions'
 import Section from '../UI/Section'
 import { useEffect, useRef } from 'react'
 
+import DefaultProfileImage from '../../assets/default-user.png'
+
 export default function MovieCast ({ cast }) {
   const sliderRef = useRef()
 
@@ -74,7 +76,10 @@ export default function MovieCast ({ cast }) {
             <swiper-slide key={id} lazy='true'>
               <div className='h-full w-36 rounded overflow-hidden custom-shadow'>
                 <div className='aspect-[4/5] overflow-hidden'>
-                  <img loading='lazy' src={baseURL + pictureSize + picturePath} alt={`Picture of ${name}`} />
+                  {picturePath &&
+                    <img loading='lazy' src={baseURL + pictureSize + picturePath} alt={`Picture of ${name}`} />}
+                  {!picturePath &&
+                    <img loading='lazy' src={DefaultProfileImage} alt={`Picture of ${name}`} className='object-cover h-full' />}
                 </div>
                 <div className='p-2 h-full'>
                   <p className='no-swiping font-semibold w-fit'>{name}</p>

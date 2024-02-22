@@ -5,6 +5,8 @@ import { calculateImageSize, formatDate, formatRuntime } from '../../utils/utili
 import Section from '../UI/Section'
 import MovieVoteCard from './MovieVoteCard'
 
+import DefaultPosterImage from '../../assets/default-poster.png'
+
 export default function MovieHeader () {
   const {
     backdrop_path: backdropPath,
@@ -50,7 +52,7 @@ export default function MovieHeader () {
         className={`bg-neutral-800 bg-cover bg-no-repeat bg-[linear-gradient(to_bottom,_rgba(200,200,200,0.15),_40%,_rgb(10,10,10)),_url(${baseURL + backdropSize + backdropPath})] flex items-end gap-8 p-8`}
       >
         <Section className='mt-12 shadow-xl shadow-black rounded overflow-hidden'>
-          <img loading='lazy' src={baseURL + posterSize + posterPath} alt={title} className='w-48' />
+          <img loading='lazy' src={posterPath ? (baseURL + posterSize + posterPath) : DefaultPosterImage} alt={title} className='w-48 aspect-[2/3] object-cover' />
         </Section>
         <Section className='flex flex-col gap-2'>
           <div className='flex items-end gap-3'>

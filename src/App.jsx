@@ -6,6 +6,7 @@ import HomePage, { loader as homeLoader } from './pages/Home'
 import MovieDetailsLayout, { loader as movieDetailsLoader } from './layout/MovieDetailsLayout'
 import MovieDetailsPage from './pages/MovieDetails'
 import MovieCastPage from './pages/MovieCast'
+import MovieMediaPage from './pages/MovieMedia'
 
 export default function App () {
   const router = createBrowserRouter([
@@ -39,6 +40,10 @@ export default function App () {
             {
               path: 'cast',
               element: <MovieCastPage />
+            },
+            {
+              path: 'media',
+              element: <MovieMediaPage />
             }
           ]
         }

@@ -1,4 +1,4 @@
-import { Outlet, useLoaderData } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import MainNavigation from './MainNavigation'
 import { getAPIConfiguration } from '../utils/http'
 

@@ -10,7 +10,6 @@ export default function MovieDetailsLayout () {
     adult,
     belongs_to_collection: belongsToCollection,
     id,
-    images,
     imdb_id: imdbID,
     lists,
     popularity,
@@ -19,7 +18,6 @@ export default function MovieDetailsLayout () {
     reviews,
     spoken_languages: spokenLanguages,
     video,
-    videos,
     'watch/providers': watchProviders
   } = data
 
