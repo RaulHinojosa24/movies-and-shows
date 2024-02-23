@@ -1,6 +1,6 @@
 import { Link, useRouteLoaderData } from 'react-router-dom'
 import Section from '../UI/Section'
-import useWindowDimensions from '../../hooks/useWindowDimensions'
+import useBodyDimensions from '../../hooks/useBodyDimensions'
 import { calculateImageSize } from '../../utils/utility'
 import MovieVoteCard from './MovieVoteCard'
 import { useEffect, useRef } from 'react'
@@ -53,7 +53,7 @@ export default function MovieRecommendations ({ recommendations }) {
     }
   } = useRouteLoaderData('root')
 
-  const { width } = useWindowDimensions()
+  const { width } = useBodyDimensions()
 
   const backdropSize = calculateImageSize(backdropSizes.filter(s => s.includes('w')), width, 1 / 6)
 

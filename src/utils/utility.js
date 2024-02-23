@@ -1,9 +1,9 @@
 export function calculateImageSize (sizes, width, ratio) {
   const maxWidth = width * ratio
 
-  for (let i = 0; i < sizes.length; i++) {
+  for (let i = 0; i < sizes.length - 1; i++) {
     const current = sizes[i]
-    const n = current.match(/\d+/g)[0]
+    const n = current.match(/\d+/g)
 
     if (n > maxWidth) return current
   }
@@ -11,8 +11,20 @@ export function calculateImageSize (sizes, width, ratio) {
   return 'original'
 }
 
+export function formatShortDate (date) {
+  return new Date().toLocaleDateString('es-ES')
+}
+
+export function formatLongDate (date) {
+  return date.toLocaleDateString('es-ES', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  })
+}
+
 export function formatCurrency (amount) {
-  const USDollar = new Intl.NumberFormat('en-US', {
+  const USDollar = new Intl.NumberFormat('es-ES', {
     style: 'currency',
     currency: 'USD'
   })
@@ -62,8 +74,4 @@ export function getPersonGender (type) {
 
 export function getReleaseType (type) {
   return ['Not set / not specified', 'Premiere', 'Theatrical (limited)', 'Theatrical', 'Digital', 'Physical', 'TV'][type]
-}
-
-export function formatDate (date) {
-  return date.toLocaleDateString('es-ES')
 }

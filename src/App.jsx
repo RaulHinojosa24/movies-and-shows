@@ -4,7 +4,7 @@ import RootLayout, { loader as rootLoader } from './layout/RootLayout'
 import LoginPage, { loader as loginLoader, action as loginAction } from './pages/Login'
 import HomePage, { loader as homeLoader } from './pages/Home'
 import MovieDetailsLayout, { loader as movieDetailsLoader } from './layout/MovieDetailsLayout'
-import MovieDetailsPage from './pages/MovieDetails'
+import MovieDetailsPage from './pages/MovieGeneral'
 import MovieCastPage from './pages/MovieCast'
 import MovieMediaPage from './pages/MovieMedia'
 

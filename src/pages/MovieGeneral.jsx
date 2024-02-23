@@ -2,9 +2,12 @@ import { useRouteLoaderData } from 'react-router-dom'
 import Section from '../components/UI/Section'
 import SubSection from '../components/UI/SubSection'
 import { formatCurrency } from '../utils/utility'
-import MovieCast from '../components/MovieDetails/MovieCast'
-import MovieRecommendations from '../components/MovieDetails/MovieRecommendations'
-import MovieSocialLinks from '../components/MovieDetails/MovieSocialLinks'
+import MovieCast from '../components/MovieGeneral/MovieCast'
+import MovieRecommendations from '../components/MovieGeneral/MovieRecommendations'
+import MovieSocialLinks from '../components/MovieGeneral/MovieSocialLinks'
+import MovieLists from '../components/MovieGeneral/MovieLists'
+import MovieCollection from '../components/MovieGeneral/MovieCollection'
+import MovieReviews from '../components/MovieGeneral/MovieReviews'
 
 export default function MovieDetailsPage () {
   const {
@@ -69,9 +72,15 @@ export default function MovieDetailsPage () {
         <Section title='Sinopsis'>
           {overview}
         </Section>
-        <hr />
+        {/* <hr /> */}
         <MovieCast cast={cleanCast} />
-        <hr />
+        {/* <hr /> */}
+        <MovieCollection />
+        {/* <hr /> */}
+        <MovieReviews />
+        {/* <hr /> */}
+        <MovieLists />
+        {/* <hr /> */}
         <MovieRecommendations recommendations={cleanRecommendations} />
       </div>
       <MovieSocialLinks externalIDs={externalIDs} homepageLink={homepageLink} title={title} />

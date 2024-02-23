@@ -1,7 +1,7 @@
 /* eslint-disable no-octal-escape */
 import { useRouteLoaderData } from 'react-router-dom'
-import useWindowDimensions from '../../hooks/useWindowDimensions'
-import { calculateImageSize, formatDate, formatRuntime } from '../../utils/utility'
+import useBodyDimensions from '../../hooks/useBodyDimensions'
+import { calculateImageSize, formatShortDate, formatRuntime } from '../../utils/utility'
 import Section from '../UI/Section'
 import MovieVoteCard from './MovieVoteCard'
 
@@ -29,7 +29,7 @@ export default function MovieHeader () {
     }
   } = useRouteLoaderData('root')
 
-  const { width } = useWindowDimensions()
+  const { width } = useBodyDimensions()
 
   const backdropSize = calculateImageSize(backdropSizes.filter(s => s.includes('w')), width, 1)
   const posterSize = calculateImageSize(posterSizes.filter(s => s.includes('w')), width, width < 512 ? 1 : 1 / 4)
@@ -43,7 +43,7 @@ export default function MovieHeader () {
     ? (theatricalRelease || countryReleaseDates[0])
     : { certification: '', release_date: releaseDate }
 
-  const prettyDate = formatDate(new Date(officialReleaseDate))
+  const prettyDate = formatShortDate(new Date(officialReleaseDate))
 
   return (
     <>
@@ -62,14 +62,14 @@ export default function MovieHeader () {
           </div>
           <div className='flex [&>*+*]:before:content-["\2022"] [&>*+*]:before:mx-2'>
             {certification !== '' &&
-              <span className='border-[1px] px-1'>{certification}</span>}
+              <span className='border-1 px-1'>{certification}</span>}
             <span className='text-base font-normal break-keep'>
               {prettyRuntime}
             </span>
             <span>{prettyDate}</span>
-            <ul className='flex flex-wrap'>
-              {genres.map(({ id, name }, i) => (
-                <li key={id} className='mr-1'>{name}{i < genres.length - 1 && ','}</li>
+            <ul className='flex flex-wrap [&>*+*]:before:content-[","] [&>*+*]:before:mr-1'>
+              {genres.map(({ id, name }) => (
+                <li key={id}>{name}</li>
               ))}
             </ul>
           </div>

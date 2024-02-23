@@ -9,6 +9,9 @@ export default {
       margin: {
         'app-space': '2rem'
       },
+      borderWidth: {
+        1: '1px'
+      },
       padding: {
         'app-space': '2rem'
       },

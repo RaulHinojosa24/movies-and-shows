@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react'
 
 function getWindowDimensions () {
-  const { innerWidth: width, innerHeight: height } = window
+  const { clientWidth: width, clientHeight: height } = document.body
 
   return {
-    width: Math.min(width, 1536),
+    width,
     height
   }
 }
 
-export default function useWindowDimensions () {
+export default function useBodyDimensions () {
   const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions())
 
   useEffect(() => {
