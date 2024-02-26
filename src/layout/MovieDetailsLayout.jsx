@@ -12,13 +12,9 @@ export default function MovieDetailsLayout () {
     popularity,
     production_companies: productionCompanies,
     production_countries: productionCountries,
-    reviews,
     spoken_languages: spokenLanguages,
-    video,
     'watch/providers': watchProviders
   } = data
-
-  console.log(reviews)
 
   return (
     <section>

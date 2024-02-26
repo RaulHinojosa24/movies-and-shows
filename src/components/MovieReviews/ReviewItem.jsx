@@ -2,8 +2,16 @@ import { useRouteLoaderData } from 'react-router-dom'
 import { formatLongDate } from '../../utils/utility'
 
 import DefaultUser from '../../assets/default-user.png'
+import { useEffect, useRef, useState } from 'react'
 
 export default function ReviewItem ({ author, authorDetails, content, createdAt, id, updatedAt, url }) {
+  const clampedContent = useRef()
+  const [isClamped, setIsClamped] = useState(false)
+
+  useEffect(() => {
+    setIsClamped(clampedContent.current.scrollHeight > clampedContent.current.clientHeight)
+  }, [])
+
   const {
     images: {
       secure_base_url: baseURL,
@@ -18,7 +26,6 @@ export default function ReviewItem ({ author, authorDetails, content, createdAt,
     : DefaultUser
 
   const prettyCreationDate = formatLongDate(new Date(createdAt))
-
   return (
     <div className='custom-shadow border- rounded p-6'>
       <header className='flex items-center gap-4'>
@@ -34,8 +41,8 @@ export default function ReviewItem ({ author, authorDetails, content, createdAt,
         </div>
       </header>
       <main className='mt-3'>
-        <p className='whitespace-pre-line text-pretty line-clamp-5 read-shadow'>{content}</p>
-        <a href={url} target='_blank'>Leer más</a>
+        <p className={`whitespace-pre-line text-pretty line-clamp-5 ${isClamped ? 'read-shadow' : ''}`} ref={clampedContent}>{content}</p>
+        {isClamped && <a href={url} target='_blank'>Leer más</a>}
       </main>
     </div>
   )

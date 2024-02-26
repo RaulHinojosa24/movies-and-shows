@@ -16,8 +16,8 @@ export default {
         'app-space': '2rem'
       },
       animation: {
-        fade: 'fadeIn .5s ease-in-out',
-        'fade-up': 'fadeUp .5s ease-in-out'
+        fade: 'fadeIn .1s ease-in-out',
+        'fade-up': 'fadeUp .1s ease-in-out'
       },
       keyframes: {
         fadeIn: {
@@ -27,7 +27,7 @@ export default {
         fadeUp: {
           from: {
             opacity: 0,
-            transform: 'translateY(3rem)'
+            transform: 'translateY(5rem)'
           },
           to: {
             opacity: 1,
