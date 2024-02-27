@@ -5,7 +5,7 @@ import MediaVideos from '../components/MovieMedia/MediaVideos'
 
 export default function MovieMediaPage () {
   const {
-    images,
+    // images,
     videos
   } = useRouteLoaderData('movie-details')
 
@@ -13,8 +13,8 @@ export default function MovieMediaPage () {
 
   return (
     <main className='mx-app-space'>
-      {/* <MediaBackdrops /> */}
-      {/* <MediaPosters /> */}
+      <MediaBackdrops />
+      <MediaPosters />
       <MediaVideos />
     </main>
   )

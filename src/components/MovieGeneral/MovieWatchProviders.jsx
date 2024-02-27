@@ -3,6 +3,8 @@ import { useRouteLoaderData } from 'react-router-dom'
 import Modal from '../UI/Modal'
 import SubSection from '../UI/SubSection'
 import WatchProvidersList from './WatchProvidersList'
+import TmdbLogoAltShort from '../../logos/TmdbLogoAltShort'
+import JustWatchLogo from '../../logos/JustWatchLogo'
 
 export default function MovieWatchProviders ({ className = '' }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -23,7 +25,7 @@ export default function MovieWatchProviders ({ className = '' }) {
   const hasBuy = options.includes('buy')
   const hasStream = options.includes('flatrate')
 
-  const negativeResponse = 'no se han encontrado opciones para que puedas disfrutar del título de forma legal. Lo sentimos.'
+  const negativeResponse = 'no se han encontrado opciones para que puedas disfrutar del título de forma legal.\nLo sentimos'
 
   const positiveResponse = 'la película se encuentra disponible en los siguientes formatos:'
   return (
@@ -31,11 +33,11 @@ export default function MovieWatchProviders ({ className = '' }) {
       <button className={className + ' py-1 px-5 w-full rounded-b whitespace-nowrap font-semibold bg-yellow-400 text-black'} onClick={open}>Dónde ver</button>
       {isOpen &&
         <Modal crossInside onClose={close} className='rounded w-[calc(100%-4rem)] max-w-2xl bg-neutral-950 p-6 shadow-lg shadow-black'>
-          <h2 className='text-xl font-bold text-yellow-400 mb-4'>Dónde puedo ver "{title}"?</h2>
-          <p className='my-4'>
+          <h2 className='text-xl font-bold text-yellow-400'>Dónde puedo ver "{title}"?</h2>
+          <p className='my-4 whitespace-pre-line'>
             Gracias a la colaboración de TMDB y JustWatch, podemos informarle de que en España, {options.length > 0 ? positiveResponse : negativeResponse}
           </p>
-          <div className='space-y-2'>
+          <div className='my-6 space-y-2'>
             {hasStream &&
               <SubSection title='Streaming' className='space-y-2'>
                 <WatchProvidersList providers={flatrateProvs} />
@@ -48,6 +50,15 @@ export default function MovieWatchProviders ({ className = '' }) {
               <SubSection title='Compra' className='space-y-2'>
                 <WatchProvidersList providers={buyProvs} />
               </SubSection>}
+          </div>
+          <p className='my-4'>Si desea consultar más información, puede dirigirse a:</p>
+          <div className='flex flex-wrap justify-around'>
+            <a className='h-4 inline-block' href={tmdbLink} target='_blank' rel='noopener noreferrer'>
+              <TmdbLogoAltShort />
+            </a>
+            <a className='h-4 inline-block' href='https://www.justwatch.com/' target='_blank' rel='noopener noreferrer'>
+              <JustWatchLogo />
+            </a>
           </div>
         </Modal>}
     </>

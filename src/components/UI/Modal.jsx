@@ -23,7 +23,7 @@ export default function Modal ({ className = '', children, onClose, crossInside 
         document.getElementById('backdrop'))}
       {createPortal(
         <>
-          <div className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-40 ${className}`}>
+          <div className={`fixed max-h-screen overflow-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-40 ${className}`}>
             {children}
             {crossInside &&
               <button className='absolute h-4 aspect-square top-4 right-4 z-50' onClick={onClose}>
