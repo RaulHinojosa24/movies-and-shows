@@ -1,5 +1,11 @@
-export default function CollectionPage () {
+import CollectionList from '../components/Collection/CollectionList'
+import CollectionSummary from '../components/Collection/CollectionSummary'
+
+export default function CollectionGeneralPage () {
   return (
-    <h1>Collection Page</h1>
+    <main className='p-8'>
+      <CollectionSummary />
+      <CollectionList />
+    </main>
   )
 }

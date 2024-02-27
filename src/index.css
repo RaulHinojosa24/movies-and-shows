@@ -4,7 +4,7 @@
 
 @layer base {
   html {
-    @apply text-neutral-50 bg-neutral-950;
+    @apply text-white bg-neutral-950;
   }
 
   body {
@@ -24,7 +24,7 @@
   }
 }
 
-@layer components {
+@layer utilities {
   .custom-shadow {
     @apply border-1 border-neutral-700 border-opacity-50 shadow-md shadow-neutral-800
   }

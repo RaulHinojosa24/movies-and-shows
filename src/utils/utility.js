@@ -64,7 +64,7 @@ export function roundDecimals (number, decimals = 0) {
 }
 
 export function generateVoteColor (value) {
-  const hue = ((1 - 1 + value) * 120).toString(10)
+  const hue = (value * 120).toString(10)
   return ['hsl(', hue, ',100%,50%)'].join('')
 }
 
