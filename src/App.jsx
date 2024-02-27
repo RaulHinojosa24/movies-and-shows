@@ -7,6 +7,7 @@ import MovieDetailsLayout, { loader as movieDetailsLoader } from './layout/Movie
 import MovieDetailsPage from './pages/MovieGeneral'
 import MovieCastPage from './pages/MovieCast'
 import MovieMediaPage from './pages/MovieMedia'
+import CollectionDetailsLayout, { loader as collectionDetailsLoader } from './layout/CollectionDetailsLayout'
 
 export default function App () {
   const router = createBrowserRouter([
@@ -46,6 +47,12 @@ export default function App () {
               element: <MovieMediaPage />
             }
           ]
+        },
+        {
+          path: 'collection/:id',
+          id: 'collection-details',
+          element: <CollectionDetailsLayout />,
+          loader: collectionDetailsLoader
         }
       ]
     }

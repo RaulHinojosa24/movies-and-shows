@@ -1753,3 +1753,76 @@ const details = {
     twitter_id: 'MadameWeb'
   }
 }
+
+const collection = {
+  id: 284433,
+  name: 'Guardianes de la galaxia - Colección',
+  overview: '"Guardianes de la galaxia" es una película de superhéroes estadounidense de 2014 basada en el equipo de superhéroes del comics homónimo de Marvel, producido por Marvel Studios y distribuido por Walt Disney Studios Motion Pictures. Es la décima película en el Universo Cineamatográfico de Marvel. La película fue dirigida por James Gunn, quien escribió el guión con Nicole Perlman, y cuenta con un elenco formado por Chris Pratt, Zoe Saldana, Dave Bautista, Vin Diesel, Bradley Cooper, Lee Pace, Michael Rooker, Karen Gillan, Djimon Hounsou, John C. Reilly, Glenn Close y Benicio del Toro. En el 2017 se estreno la segunda película, titulada Guardianes de la galaxia Vol.2 y esta programado completar la trilogía en el 2023 con  Guardianes de la galaxia Vol. 3.',
+  poster_path: '/4KvfCk1haG5gSJhc2CwrizP2cV4.jpg',
+  backdrop_path: '/jdyyjulTBU8YUYAUvQFj6U1g2Pj.jpg',
+  parts: [
+    {
+      adult: false,
+      backdrop_path: '/uLtVbjvS1O7gXL8lUOwsFOH4man.jpg',
+      id: 118340,
+      title: 'Guardianes de la galaxia',
+      original_language: 'en',
+      original_title: 'Guardians of the Galaxy',
+      overview: 'El temerario aventurero Peter Quill es objeto de un implacable cazarrecompensas después de robar una misteriosa esfera codiciada por Ronan, un poderoso villano cuya ambición amenaza todo el universo. Para poder escapar del incansable Ronan, Quill se ve obligado a pactar una complicada tregua con un cuarteto de disparatados inadaptados: Rocket, un mapache armado con un rifle, Groot, un humanoide con forma de árbol, la letal y enigmática Gamora y el vengativo Drax the Destroyer. Pero cuando Quill descubre el verdadero poder de la esfera, deberá hacer todo lo posible para derrotar a sus extravagantes rivales en un intento desesperado de salvar el destino de la galaxia.',
+      poster_path: '/rzEmtM8qrvRKNdJUUiizdNHTccV.jpg',
+      media_type: 'movie',
+      genre_ids: [
+        28,
+        878,
+        12
+      ],
+      popularity: 63.366,
+      release_date: '2014-07-30',
+      video: false,
+      vote_average: 7.9,
+      vote_count: 27172
+    },
+    {
+      adult: false,
+      backdrop_path: '/n3gb8oqP9BeRCUsCmZVaT5eltPH.jpg',
+      id: 283995,
+      title: 'Guardianes de la galaxia Vol. 2',
+      original_language: 'en',
+      original_title: 'Guardians of the Galaxy Vol. 2',
+      overview: 'Continúan las aventuras del equipo en su travesía por los confines del cosmos. Los Guardianes deberán luchar para mantener unida a su nueva familia mientras intentan resolver el misterio de los verdaderos orígenes de Peter Quill. Viejos rivales se convertirán en nuevos aliados, y queridos personajes de los cómics clásicos acudirán en ayuda de nuestros héroes a medida que el universo cinematográfico de Marvel continúa expandiéndose.',
+      poster_path: '/kdg6Y06jfq9FV7qknWNcKLYtBJn.jpg',
+      media_type: 'movie',
+      genre_ids: [
+        878,
+        12,
+        28
+      ],
+      popularity: 72.91,
+      release_date: '2017-04-19',
+      video: false,
+      vote_average: 7.6,
+      vote_count: 20818
+    },
+    {
+      adult: false,
+      backdrop_path: '/5YZbUmjbMa3ClvSW1Wj3D6XGolb.jpg',
+      id: 447365,
+      title: 'Guardianes de la Galaxia: Volumen 3',
+      original_language: 'en',
+      original_title: 'Guardians of the Galaxy Vol. 3',
+      overview: 'La querida banda de los Guardianes se instala en Knowhere. Pero sus vidas no tardan en verse alteradas por los ecos del turbulento pasado de Rocket. Peter Quill, aún conmocionado por la pérdida de Gamora, debe reunir a su equipo en una peligrosa misión para salvar la vida de Rocket, una misión que, si no se completa con éxito, podría muy posiblemente conducir al final de los Guardianes tal y como los conocemos.',
+      poster_path: '/6GkKzdNosVAL7UGgwTtCHSxLQ67.jpg',
+      media_type: 'movie',
+      genre_ids: [
+        878,
+        12,
+        28
+      ],
+      popularity: 168.629,
+      release_date: '2023-05-03',
+      video: false,
+      vote_average: 8,
+      vote_count: 5966
+    }
+  ]
+}
