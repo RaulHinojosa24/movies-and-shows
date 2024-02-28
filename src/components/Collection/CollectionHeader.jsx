@@ -1,6 +1,6 @@
 import { useRouteLoaderData } from 'react-router-dom'
 import useBodyDimensions from '../../hooks/useBodyDimensions'
-import { calculateImageSize } from '../../utils/utility'
+import { calculateImageSize, retrieveConfig, retrieveMovieGenres } from '../../utils/utility'
 import Section from '../UI/Section'
 
 import DefaultPosterImage from '../../assets/default-poster.png'
@@ -10,7 +10,8 @@ export default function CollectionHeader () {
     name,
     overview,
     poster_path: posterPath,
-    backdrop_path: backdropPath
+    backdrop_path: backdropPath,
+    parts
   } = useRouteLoaderData('collection-details')
 
   const {
@@ -19,9 +20,15 @@ export default function CollectionHeader () {
       backdrop_sizes: backdropSizes,
       poster_sizes: posterSizes
     }
-  } = useRouteLoaderData('root')
+  } = retrieveConfig(useRouteLoaderData('root'))
+
+  const { genres: movieGenres } = retrieveMovieGenres(useRouteLoaderData('root'))
 
   const { width } = useBodyDimensions()
+
+  const genres = [...new Set(parts.reduce((acc, curr) => [...acc, ...curr.genre_ids], []))]
+    .map(id => movieGenres.find(genre => genre.id === id))
+    .sort((a, b) => a.name.localeCompare(b.name))
 
   const backdropSize = calculateImageSize(backdropSizes.filter(s => s.includes('w')), width, 1)
   const posterSize = calculateImageSize(posterSizes.filter(s => s.includes('w')), width, width < 512 ? 1 : 1 / 4)
@@ -40,11 +47,11 @@ export default function CollectionHeader () {
             <h1 className='text-4xl font-semibold'>{name}</h1>
           </div>
           <div>
-            {/* <ul className='flex flex-wrap [&>*+*]:before:content-[","] [&>*+*]:before:mr-1'>
+            <ul className='flex flex-wrap [&>*+*]:before:content-[","] [&>*+*]:before:mr-1'>
               {genres.map(({ id, name }) => (
                 <li key={id}>{name}</li>
               ))}
-            </ul> */}
+            </ul>
           </div>
           <p>{overview}</p>
         </Section>

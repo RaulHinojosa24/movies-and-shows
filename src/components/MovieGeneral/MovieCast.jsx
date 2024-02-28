@@ -1,5 +1,5 @@
 import { Link, useRouteLoaderData } from 'react-router-dom'
-import { calculateImageSize } from '../../utils/utility'
+import { calculateImageSize, retrieveConfig } from '../../utils/utility'
 import useBodyDimensions from '../../hooks/useBodyDimensions'
 import Section from '../UI/Section'
 import { useEffect, useRef } from 'react'
@@ -50,10 +50,9 @@ export default function MovieCast ({ cast }) {
       secure_base_url: baseURL,
       profile_sizes: profileSizes
     }
-  } = useRouteLoaderData('root')
+  } = retrieveConfig(useRouteLoaderData('root'))
 
   const { width } = useBodyDimensions()
-  console.log(width)
 
   const pictureSize = calculateImageSize(profileSizes.filter(s => s.includes('w')), width, 1 / 10)
 

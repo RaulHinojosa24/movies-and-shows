@@ -10,6 +10,7 @@ import Slideshow from 'yet-another-react-lightbox/plugins/slideshow'
 import Thumbnails from 'yet-another-react-lightbox/plugins/thumbnails'
 import Zoom from 'yet-another-react-lightbox/plugins/zoom'
 import 'yet-another-react-lightbox/plugins/thumbnails.css'
+import { retrieveConfig } from '../../utils/utility'
 
 export default function MediaPosters () {
   const [index, setIndex] = useState(-1)
@@ -25,7 +26,7 @@ export default function MediaPosters () {
       secure_base_url: baseURL,
       poster_sizes: posterSizes
     }
-  } = useRouteLoaderData('root')
+  } = retrieveConfig(useRouteLoaderData('root'))
 
   const photos = images.map(img => {
     const srcSet = posterSizes.map(size => {

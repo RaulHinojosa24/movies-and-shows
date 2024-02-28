@@ -2,6 +2,7 @@ import { useRouteLoaderData } from 'react-router-dom'
 import Section from '../UI/Section'
 import CastItem from './CastItem'
 import SubSection from '../UI/SubSection'
+import { retrieveConfig } from '../../utils/utility'
 
 export default function CrewList ({ crew }) {
   const {
@@ -9,7 +10,7 @@ export default function CrewList ({ crew }) {
       secure_base_url: baseURL,
       profile_sizes: profileSizes
     }
-  } = useRouteLoaderData('root')
+  } = retrieveConfig(useRouteLoaderData('root'))
 
   const depsWithMembers = []
 

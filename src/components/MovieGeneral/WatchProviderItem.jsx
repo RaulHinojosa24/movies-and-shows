@@ -1,4 +1,5 @@
 import { useRouteLoaderData } from 'react-router-dom'
+import { retrieveConfig } from '../../utils/utility'
 
 export default function WatchProviderItem ({ provider }) {
   const {
@@ -6,7 +7,7 @@ export default function WatchProviderItem ({ provider }) {
       secure_base_url: baseURL,
       logo_sizes: logoSizes
     }
-  } = useRouteLoaderData('root')
+  } = retrieveConfig(useRouteLoaderData('root'))
 
   const {
     logo_path: logoPath,

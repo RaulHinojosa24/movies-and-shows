@@ -1,6 +1,7 @@
 import { useRouteLoaderData } from 'react-router-dom'
 import Section from '../UI/Section'
 import CastItem from './CastItem'
+import { retrieveConfig } from '../../utils/utility'
 
 export default function CastList ({ cast }) {
   const {
@@ -8,7 +9,7 @@ export default function CastList ({ cast }) {
       secure_base_url: baseURL,
       profile_sizes: profileSizes
     }
-  } = useRouteLoaderData('root')
+  } = retrieveConfig(useRouteLoaderData('root'))
 
   return (
     <Section title='Reparto'>

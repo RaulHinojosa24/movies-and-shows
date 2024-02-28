@@ -1,7 +1,7 @@
 /* eslint-disable no-octal-escape */
 import { useRouteLoaderData } from 'react-router-dom'
 import useBodyDimensions from '../../hooks/useBodyDimensions'
-import { calculateImageSize, formatShortDate, formatRuntime } from '../../utils/utility'
+import { calculateImageSize, formatShortDate, formatRuntime, retrieveConfig } from '../../utils/utility'
 import Section from '../UI/Section'
 import MovieVoteCard from './MovieVoteCard'
 
@@ -28,7 +28,7 @@ export default function MovieHeader () {
       backdrop_sizes: backdropSizes,
       poster_sizes: posterSizes
     }
-  } = useRouteLoaderData('root')
+  } = retrieveConfig(useRouteLoaderData('root'))
 
   const { width } = useBodyDimensions()
 

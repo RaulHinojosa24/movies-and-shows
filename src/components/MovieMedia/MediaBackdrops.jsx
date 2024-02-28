@@ -10,6 +10,7 @@ import Slideshow from 'yet-another-react-lightbox/plugins/slideshow'
 import Thumbnails from 'yet-another-react-lightbox/plugins/thumbnails'
 import Zoom from 'yet-another-react-lightbox/plugins/zoom'
 import 'yet-another-react-lightbox/plugins/thumbnails.css'
+import { retrieveConfig } from '../../utils/utility'
 
 export default function MediaBackdrops () {
   const [index, setIndex] = useState(-1)
@@ -25,11 +26,8 @@ export default function MediaBackdrops () {
       secure_base_url: baseURL,
       backdrop_sizes: backdropSizes
     }
-  } = useRouteLoaderData('root')
-  console.log(backdropSizes)
-  console.log(images)
+  } = retrieveConfig(useRouteLoaderData('root'))
 
-  console.log(images)
   const photos = images.map(img => {
     const srcSet = backdropSizes.map(size => {
       const width = Number(size.match(/\d+/g)) || img.width

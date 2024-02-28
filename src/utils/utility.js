@@ -1,3 +1,13 @@
+//
+export function retrieveConfig (loaderData) {
+  return loaderData.config
+}
+
+export function retrieveMovieGenres (loaderData) {
+  return loaderData.movieGenres
+}
+//
+
 export function calculateImageSize (sizes, width, ratio) {
   const maxWidth = width * ratio
 

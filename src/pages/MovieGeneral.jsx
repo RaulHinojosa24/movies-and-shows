@@ -1,7 +1,7 @@
 import { useRouteLoaderData } from 'react-router-dom'
 import Section from '../components/UI/Section'
 import SubSection from '../components/UI/SubSection'
-import { formatCurrency } from '../utils/utility'
+import { formatCurrency, retrieveConfig } from '../utils/utility'
 import MovieCast from '../components/MovieGeneral/MovieCast'
 import MovieRecommendations from '../components/MovieGeneral/MovieRecommendations'
 import MovieSocialLinks from '../components/MovieGeneral/MovieSocialLinks'
@@ -44,7 +44,7 @@ export default function MovieDetailsPage () {
     voteCount: movie.vote_count
   }))
 
-  const { languages } = useRouteLoaderData('root')
+  const { languages } = retrieveConfig(useRouteLoaderData('root'))
 
   const { english_name: originalLanguageEnglishName, name: originalLanguageName } = languages.find(el => el.iso_639_1 === originalLanguage)
 

@@ -1,7 +1,7 @@
 import { Link, useRouteLoaderData } from 'react-router-dom'
 import Section from '../UI/Section'
 import useBodyDimensions from '../../hooks/useBodyDimensions'
-import { calculateImageSize } from '../../utils/utility'
+import { calculateImageSize, retrieveConfig } from '../../utils/utility'
 import MovieVoteCard from './MovieVoteCard'
 import { useEffect, useRef } from 'react'
 import DefaultLandscapeImage from '../../assets/default-landscape.png'
@@ -51,7 +51,7 @@ export default function MovieRecommendations ({ recommendations }) {
       secure_base_url: baseURL,
       backdrop_sizes: backdropSizes
     }
-  } = useRouteLoaderData('root')
+  } = retrieveConfig(useRouteLoaderData('root'))
 
   const { width } = useBodyDimensions()
 
@@ -75,20 +75,17 @@ export default function MovieRecommendations ({ recommendations }) {
           const releaseYear = new Date(releaseDate).getFullYear()
           return (
             <swiper-slide key={id} lazy='true'>
-              <Link to={`/movies/${id}`}>
-                <div className='rounded overflow-hidden w-80 h-full custom-shadow'>
-                  <div className='aspect-video w-full grid place-items-center'>
-                    {backdropPath &&
-                      <img loading='lazy' src={baseURL + backdropSize + backdropPath} alt={`Picture from the film ${title}`} className='w-full' />}
-                    {!backdropPath &&
-                      <img loading='lazy' src={DefaultLandscapeImage} alt={`Picture from the film ${title}`} className='w-full' />}
-                  </div>
-                  <div className='py-2 flex justify-between px-2'>
+              <div className='rounded overflow-hidden w-80 h-full custom-shadow'>
+                <Link to={`/movies/${id}`}>
+                  <img loading='lazy' src={backdropPath ? (baseURL + backdropSize + backdropPath) : DefaultLandscapeImage} alt={`Picture from the film ${title}`} className='w-full aspect-video object-cover' />
+                </Link>
+                <div className='py-2 flex justify-between px-2'>
+                  <Link to={`/movies/${id}`} className=''>
                     <p className='no-swiping font-semibold'>{title} ({releaseYear})</p>
-                    <MovieVoteCard avarage={voteAverage} count={voteCount} small />
-                  </div>
+                  </Link>
+                  <MovieVoteCard avarage={voteAverage} count={voteCount} small />
                 </div>
-              </Link>
+              </div>
             </swiper-slide>
           )
         })}

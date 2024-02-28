@@ -1,5 +1,5 @@
 import { useRouteLoaderData } from 'react-router-dom'
-import { formatLongDate } from '../../utils/utility'
+import { formatLongDate, retrieveConfig } from '../../utils/utility'
 
 import DefaultUser from '../../assets/default-user.png'
 import { useEffect, useRef, useState } from 'react'
@@ -17,7 +17,7 @@ export default function ReviewItem ({ author, authorDetails, content, createdAt,
       secure_base_url: baseURL,
       profile_sizes: profileSizes
     }
-  } = useRouteLoaderData('root')
+  } = retrieveConfig(useRouteLoaderData('root'))
 
   const { name, username, avatar_path: avatarPath, rating } = authorDetails
 

@@ -24,6 +24,10 @@ export function getAPIConfiguration () {
   return fetch('https://api.themoviedb.org/3/configuration?append_to_response=countries,jobs,languages', GET_OPTIONS)
 }
 
+export function getMovieGenres () {
+  return fetch('https://api.themoviedb.org/3/genre/movie/list?language=' + language, GET_OPTIONS)
+}
+
 export function getRequestToken () {
   return fetch('https://api.themoviedb.org/3/authentication/token/new', GET_OPTIONS)
 }

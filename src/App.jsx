@@ -9,8 +9,15 @@ import MovieCastPage from './pages/MovieCast'
 import MovieMediaPage from './pages/MovieMedia'
 import CollectionDetailsLayout, { loader as collectionDetailsLoader } from './layout/CollectionDetailsLayout'
 import CollectionGeneralPage from './pages/CollectionGeneral'
+import { useEffect } from 'react'
 
 export default function App () {
+  useEffect(() => {
+    window.addEventListener('popstate', e => {
+      window.scrollTo(0, 0)
+    })
+  }, [])
+
   const router = createBrowserRouter([
     {
       path: '/',

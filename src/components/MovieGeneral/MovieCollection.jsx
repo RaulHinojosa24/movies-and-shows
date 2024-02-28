@@ -3,7 +3,7 @@ import { Link, useRouteLoaderData } from 'react-router-dom'
 import Section from '../UI/Section'
 
 import useBodyDimensions from '../../hooks/useBodyDimensions'
-import { calculateImageSize } from '../../utils/utility'
+import { calculateImageSize, retrieveConfig } from '../../utils/utility'
 // {
 //   id: 131295,
 //   name: 'Capitán América - Colección',
@@ -19,7 +19,7 @@ export default function MovieCollection () {
       secure_base_url: baseURL,
       backdrop_sizes: backdropSizes
     }
-  } = useRouteLoaderData('root')
+  } = retrieveConfig(useRouteLoaderData('root'))
   const { width } = useBodyDimensions()
   const backdropSize = calculateImageSize(backdropSizes, width, 1)
   const backdropURL = baseURL + backdropSize + collection?.backdrop_path

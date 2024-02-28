@@ -1,4 +1,5 @@
 import { Link, useRouteLoaderData } from 'react-router-dom'
+import { retrieveConfig } from '../../utils/utility'
 
 export default function PosterCard ({ movie }) {
   const {
@@ -7,7 +8,7 @@ export default function PosterCard ({ movie }) {
       backdrop_sizes: backdropSizes,
       poster_sizes: posterSizes
     }
-  } = useRouteLoaderData('root')
+  } = retrieveConfig(useRouteLoaderData('root'))
 
   const {
     poster_path: posterPath,

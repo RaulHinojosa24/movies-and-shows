@@ -1,10 +1,11 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, ScrollRestoration } from 'react-router-dom'
 import MainNavigation from './MainNavigation'
-import { getAPIConfiguration } from '../utils/http'
+import { getAPIConfiguration, getMovieGenres } from '../utils/http'
 
 export default function RootLayout () {
   return (
     <>
+      <ScrollRestoration />
       <MainNavigation />
       <main className='pt-12 w-full'>
         <Outlet />
@@ -14,5 +15,9 @@ export default function RootLayout () {
 }
 
 export async function loader () {
-  return await getAPIConfiguration()
+  const [config, movieGenres] = await Promise.all([
+    getAPIConfiguration().then(res => res.json()),
+    getMovieGenres().then(res => res.json())
+  ])
+  return { config, movieGenres }
 }
