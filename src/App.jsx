@@ -10,6 +10,7 @@ import MovieMediaPage from './pages/MovieMedia'
 import CollectionDetailsLayout, { loader as collectionDetailsLoader } from './layout/CollectionDetailsLayout'
 import CollectionGeneralPage from './pages/CollectionGeneral'
 import { useEffect } from 'react'
+import CollectionMediaPage from './pages/CollectionMedia'
 
 export default function App () {
   useEffect(() => {
@@ -65,6 +66,10 @@ export default function App () {
             {
               index: true,
               element: <CollectionGeneralPage />
+            },
+            {
+              path: 'media',
+              element: <CollectionMediaPage />
             }
           ]
         }
