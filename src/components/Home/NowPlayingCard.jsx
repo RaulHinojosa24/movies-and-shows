@@ -22,7 +22,7 @@ export default function PosterCard ({ movie }) {
   const posterSize = posterSizes[posterSizes.length - 1]
 
   return (
-    <Link to={'/movies/' + id}>
+    <Link to={'/movie/' + id}>
       <article className='group aspect-[21/9] overflow-hidden grid place-content-center h-48 relative hover:cursor-pointer'>
         <main>
           {backdropPath &&

@@ -38,7 +38,7 @@ export default function App () {
           loader: loginLoader
         },
         {
-          path: 'movies/:id',
+          path: 'movie/:id',
           id: 'movie-details',
           element: <MovieDetailsLayout />,
           loader: movieDetailsLoader,
@@ -72,6 +72,12 @@ export default function App () {
               element: <CollectionMediaPage />
             }
           ]
+        },
+        {
+          path: 'person/:id',
+          id: 'person-details'
+          // element: <MovieDetailsLayout />,
+          // loader: movieDetailsLoader,
         }
       ]
     }

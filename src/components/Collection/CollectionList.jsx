@@ -78,12 +78,12 @@ export default function CollectionList () {
 
           return (
             <li key={id} className='flex rounded overflow-hidden custom-shadow'>
-              <Link to={'/movies/' + id}>
+              <Link to={'/movie/' + id}>
                 <img className='aspect-[2/3] object-cover min-w-24 w-24 h-full' src={baseURL + posterSizes[0] + posterPath} alt={'Poster de la película ' + title} />
               </Link>
               <div className='flex flex-col justify-around p-4'>
                 <div>
-                  <Link to={'/movies/' + id} className='inline-block'>
+                  <Link to={'/movie/' + id} className='inline-block'>
                     <h3 className='font-semibold text-lg'>{title}</h3>
                   </Link>
                   <p className='text-neutral-300'>{formatLongDate(new Date(releaseDate))}</p>

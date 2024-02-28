@@ -76,11 +76,11 @@ export default function MovieRecommendations ({ recommendations }) {
           return (
             <swiper-slide key={id} lazy='true'>
               <div className='rounded overflow-hidden w-80 h-full custom-shadow'>
-                <Link to={`/movies/${id}`}>
+                <Link to={`/movie/${id}`}>
                   <img loading='lazy' src={backdropPath ? (baseURL + backdropSize + backdropPath) : DefaultLandscapeImage} alt={`Picture from the film ${title}`} className='w-full aspect-video object-cover' />
                 </Link>
                 <div className='py-2 flex justify-between px-2'>
-                  <Link to={`/movies/${id}`} className=''>
+                  <Link to={`/movie/${id}`} className=''>
                     <p className='no-swiping font-semibold'>{title} ({releaseYear})</p>
                   </Link>
                   <MovieVoteCard avarage={voteAverage} count={voteCount} small />
