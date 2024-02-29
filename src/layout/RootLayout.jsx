@@ -7,9 +7,9 @@ export default function RootLayout () {
     <>
       <ScrollRestoration />
       <MainNavigation />
-      <main className='pt-12 w-full'>
-        <Outlet />
-      </main>
+      {/* <main> */}
+      <Outlet />
+      {/* </main> */}
     </>
   )
 }

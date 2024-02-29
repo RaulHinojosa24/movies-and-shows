@@ -1,14 +1,16 @@
+import { Link } from 'react-router-dom'
 import DefaultProfileImage from '../../assets/default-user.png'
 
-export default function CastItem ({ image, primary, secondary }) {
+export default function CastItem ({ id, image, primary, secondary }) {
+  const castImage = image || DefaultProfileImage
+
   return (
-    <div className='flex gap-6'>
-      <div className='aspect-[5/6] flex-shrink-0 h-20 overflow-hidden grid place-items-center rounded '>
-        {image && <img loading='lazy' src={image} alt={'Foto de perfil de ' + primary} />}
-        {!image && <img loading='lazy' src={DefaultProfileImage} alt={'Foto de perfil de ' + primary + ' no disponible'} className='h-full object-cover' />}
-      </div>
+    <div className='flex gap-4'>
+      <Link to={'/person/' + id}><img className='aspect-[5/6] h-20 object-cover object-top rounded' loading='lazy' src={castImage} alt={'Foto de perfil de ' + primary + ' no disponible'} /></Link>
       <div className='flex flex-col justify-center'>
-        <p className='font-semibold w-fit'>{primary}</p>
+        <Link to={'/person/' + id}>
+          <p className='font-semibold w-fit'>{primary}</p>
+        </Link>
         <p>{secondary}</p>
       </div>
     </div>

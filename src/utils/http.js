@@ -61,3 +61,7 @@ export function getMovieDetails (id) {
 export function getCollectionDetails (id) {
   return fetch(`https://api.themoviedb.org/3/collection/${id}?language=${language}&include_image_language=null&append_to_response=images`, GET_OPTIONS)
 }
+
+export function getPersonDetails (id) {
+  return fetch(`https://api.themoviedb.org/3/person/${id}?language=${language}&append_to_response=combined_credits,external_ids,images`, GET_OPTIONS)
+}

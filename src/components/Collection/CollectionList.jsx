@@ -86,7 +86,7 @@ export default function CollectionList () {
                   <Link to={'/movie/' + id} className='inline-block'>
                     <h3 className='font-semibold text-lg'>{title}</h3>
                   </Link>
-                  <p className='text-neutral-300'>{formatLongDate(new Date(releaseDate))}</p>
+                  <p className='text-neutral-300'>{formatLongDate(releaseDate)}</p>
                 </div>
                 <p className='line-clamp-2'>{overview}</p>
               </div>

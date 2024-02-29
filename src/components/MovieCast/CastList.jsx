@@ -19,7 +19,7 @@ export default function CastList ({ cast }) {
 
           return (
             <li key={el.id}>
-              <CastItem image={imagePath} primary={el.name} secondary={el.character} />
+              <CastItem id={el.id} image={imagePath} primary={el.name} secondary={el.character} />
             </li>
           )
         })}

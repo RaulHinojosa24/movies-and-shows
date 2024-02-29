@@ -4,13 +4,15 @@ import RootLayout, { loader as rootLoader } from './layout/RootLayout'
 import LoginPage, { loader as loginLoader, action as loginAction } from './pages/Login'
 import HomePage, { loader as homeLoader } from './pages/Home'
 import MovieDetailsLayout, { loader as movieDetailsLoader } from './layout/MovieDetailsLayout'
+import CollectionDetailsLayout, { loader as collectionDetailsLoader } from './layout/CollectionDetailsLayout'
+import PersonDetailsLayout, { loader as personDetailsLoader } from './layout/PersonDetailsLayout'
 import MovieDetailsPage from './pages/MovieGeneral'
 import MovieCastPage from './pages/MovieCast'
 import MovieMediaPage from './pages/MovieMedia'
-import CollectionDetailsLayout, { loader as collectionDetailsLoader } from './layout/CollectionDetailsLayout'
 import CollectionGeneralPage from './pages/CollectionGeneral'
 import { useEffect } from 'react'
 import CollectionMediaPage from './pages/CollectionMedia'
+import PersonGeneralPage from './pages/PersonGeneral'
 
 export default function App () {
   useEffect(() => {
@@ -75,9 +77,15 @@ export default function App () {
         },
         {
           path: 'person/:id',
-          id: 'person-details'
-          // element: <MovieDetailsLayout />,
-          // loader: movieDetailsLoader,
+          id: 'person-details',
+          element: <PersonDetailsLayout />,
+          loader: personDetailsLoader,
+          children: [
+            {
+              index: true,
+              element: <PersonGeneralPage />
+            }
+          ]
         }
       ]
     }

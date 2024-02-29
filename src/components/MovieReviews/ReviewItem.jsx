@@ -25,7 +25,7 @@ export default function ReviewItem ({ author, authorDetails, content, createdAt,
     ? baseURL + profileSizes[0] + avatarPath
     : DefaultUser
 
-  const prettyCreationDate = formatLongDate(new Date(createdAt))
+  const prettyCreationDate = formatLongDate(createdAt)
   return (
     <div className='custom-shadow border- rounded p-6'>
       <header className='flex items-center gap-4'>

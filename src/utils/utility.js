@@ -22,11 +22,11 @@ export function calculateImageSize (sizes, width, ratio) {
 }
 
 export function formatShortDate (date) {
-  return new Date().toLocaleDateString('es-ES')
+  return new Date(date).toLocaleDateString('es-ES')
 }
 
 export function formatLongDate (date) {
-  return date.toLocaleDateString('es-ES', {
+  return new Date(date).toLocaleDateString('es-ES', {
     day: 'numeric',
     month: 'long',
     year: 'numeric'
@@ -79,9 +79,20 @@ export function generateVoteColor (value) {
 }
 
 export function getPersonGender (type) {
-  return ['Not set / not specified', 'Female', 'Male', 'Non-binary'][type]
+  return ['Desconocido / Indefinido', 'Femenino', 'Masculino', 'No binario'][type]
 }
 
 export function getReleaseType (type) {
   return ['Not set / not specified', 'Premiere', 'Theatrical (limited)', 'Theatrical', 'Digital', 'Physical', 'TV'][type]
+}
+
+export function calculateAge (birthday, deathday) {
+  const today = deathday ? new Date(deathday) : new Date()
+  const birthDate = new Date(birthday)
+  let age = today.getFullYear() - birthDate.getFullYear()
+  const m = today.getMonth() - birthDate.getMonth()
+  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+    age--
+  }
+  return age
 }

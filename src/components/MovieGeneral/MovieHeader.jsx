@@ -44,7 +44,7 @@ export default function MovieHeader () {
     ? (theatricalRelease || countryReleaseDates[0])
     : { certification: '', release_date: releaseDate }
 
-  const prettyDate = formatShortDate(new Date(officialReleaseDate))
+  const prettyDate = formatShortDate(officialReleaseDate)
 
   return (
     <>
