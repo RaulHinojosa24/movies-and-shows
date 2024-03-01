@@ -15,7 +15,6 @@ export default function CreditItem ({
 
   const date = new Date(releaseDate || firstAirDate)
   const year = date.getFullYear()
-  console.log(year)
   const type = mediaType === 'movie'
     ? (video ? 'Corto' : 'Película')
     : 'Serie'
@@ -25,7 +24,6 @@ export default function CreditItem ({
   const path = posterPath
     ? baseURL + posterSizes[0] + posterPath
     : DefaultPoster
-  console.log(posterPath)
 
   return (
     <Link to={url}>
@@ -51,28 +49,4 @@ export default function CreditItem ({
       </div>
     </Link>
   )
-}
-
-const a = {
-  id: 93514,
-  poster_path: '/xpT3549LLOsS6oHFyGinFDDlA7m.jpg',
-  first_air_date: '2019-09-12',
-  name: 'La mente, en pocas palabras',
-  vote_average: 7.432,
-  character: 'Self - Narrator',
-  credit_id: '5d7a12b7af43243b2196bd5e',
-  episode_count: 10,
-  media_type: 'tv'
-}
-
-const b = {
-  id: 337404,
-  poster_path: '/tNFBP5OTmKm7CTc5ptUwgmepd8G.jpg',
-  release_date: '2021-05-26',
-  title: 'Cruella',
-  video: false,
-  vote_average: 8,
-  character: 'Estella / Cruella',
-  credit_id: '59a50d419251412f02004a64',
-  media_type: 'movie'
 }

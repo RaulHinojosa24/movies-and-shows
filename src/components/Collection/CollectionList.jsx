@@ -7,7 +7,7 @@ import SortDescIcon from '../../logos/SortDescIcon'
 
 export default function CollectionList () {
   const { parts } = useRouteLoaderData('collection-details')
-  console.log(parts)
+
   const {
     images: {
       secure_base_url: baseURL,
