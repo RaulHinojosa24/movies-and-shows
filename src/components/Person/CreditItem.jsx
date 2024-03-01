@@ -4,7 +4,7 @@ import { retrieveConfig } from '../../utils/utility'
 import DefaultPoster from '../../assets/default-poster.png'
 
 export default function CreditItem ({
-  id, title, character, releaseDate, voteAverage, voteCount, mediaType, posterPath, video, creditId, name, firstAirDate, episodeCount
+  id, title, character, job, releaseDate, voteAverage, voteCount, mediaType, posterPath, video, creditId, name, firstAirDate, episodeCount
 }) {
   const {
     images: {
@@ -37,8 +37,8 @@ export default function CreditItem ({
                 <VoteCard rating={voteAverage} precission={0} minimal title={`Valoración media de ${voteCount} votos`} />}
               <span className='opacity-75'>{type}</span>
             </p>
-            {character &&
-              <p className='opacity-75 text-sm'>...como {character}</p>}
+            {(character || job) &&
+              <p className='opacity-75 text-sm'>...como {character || job}</p>}
           </div>
         </div>
         <div className='flex flex-col items-end'>
