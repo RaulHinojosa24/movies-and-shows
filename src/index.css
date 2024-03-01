@@ -20,7 +20,7 @@
   }
 
   a {
-    @apply underline cursor-pointer underline-offset-[.25rem] w-fit;
+    /* @apply underline cursor-pointer underline-offset-[.25rem] w-fit; */
   }
 }
 

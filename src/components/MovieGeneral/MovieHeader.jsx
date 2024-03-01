@@ -3,7 +3,7 @@ import { useRouteLoaderData } from 'react-router-dom'
 import useBodyDimensions from '../../hooks/useBodyDimensions'
 import { calculateImageSize, formatShortDate, formatRuntime, retrieveConfig } from '../../utils/utility'
 import Section from '../UI/Section'
-import MovieVoteCard from './MovieVoteCard'
+import VoteCard from '../UI/VoteCard'
 
 import DefaultPosterImage from '../../assets/default-poster.png'
 import MovieWatchProviders from './MovieWatchProviders'
@@ -58,9 +58,7 @@ export default function MovieHeader () {
         </Section>
         <Section className='flex flex-col gap-2'>
           <div className='flex items-end gap-3'>
-            <h1 className='text-4xl font-semibold'>{title}
-
-            </h1>
+            <h1 className='text-4xl font-bold'>{title}</h1>
           </div>
           <div className='flex [&>*+*]:before:content-["\2022"] [&>*+*]:before:mx-2'>
             {certification !== '' &&
@@ -76,7 +74,7 @@ export default function MovieHeader () {
             </ul>
           </div>
           {tagline && <p className='italic text-neutral-300'>{tagline}</p>}
-          <MovieVoteCard avarage={voteAvarage} count={voteCount} />
+          <VoteCard rating={voteAvarage} count={voteCount} />
         </Section>
       </header>
     </>

@@ -3,7 +3,7 @@ import CollectionSummary from '../components/Collection/CollectionSummary'
 
 export default function CollectionGeneralPage () {
   return (
-    <main className='p-8'>
+    <main className='mx-app-space'>
       <CollectionSummary />
       <CollectionList />
     </main>

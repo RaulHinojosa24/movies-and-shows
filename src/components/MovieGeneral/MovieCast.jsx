@@ -83,7 +83,7 @@ export default function MovieCast ({ cast }) {
                   <Link to={'/person/' + id} className='inline-block'>
                     <p className='no-swiping font-semibold w-fit'>{name}</p>
                   </Link>
-                  <p className='no-swiping w-fit'>{character}</p>
+                  <p className='no-swiping w-fit text-sm'>{character}</p>
                 </div>
               </div>
             </swiper-slide>

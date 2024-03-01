@@ -11,7 +11,7 @@ export default function CastItem ({ id, image, primary, secondary }) {
         <Link to={'/person/' + id}>
           <p className='font-semibold w-fit'>{primary}</p>
         </Link>
-        <p>{secondary}</p>
+        <p className='text-sm'>{secondary}</p>
       </div>
     </div>
   )

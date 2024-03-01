@@ -2,7 +2,7 @@ import { Link, useRouteLoaderData } from 'react-router-dom'
 import Section from '../UI/Section'
 import useBodyDimensions from '../../hooks/useBodyDimensions'
 import { calculateImageSize, retrieveConfig } from '../../utils/utility'
-import MovieVoteCard from './MovieVoteCard'
+import VoteCard from '../UI/VoteCard'
 import { useEffect, useRef } from 'react'
 import DefaultLandscapeImage from '../../assets/default-landscape.png'
 
@@ -83,7 +83,7 @@ export default function MovieRecommendations ({ recommendations }) {
                   <Link to={`/movie/${id}`} className=''>
                     <p className='no-swiping font-semibold'>{title} ({releaseYear})</p>
                   </Link>
-                  <MovieVoteCard avarage={voteAverage} count={voteCount} small />
+                  <VoteCard rating={voteAverage} count={voteCount} small />
                 </div>
               </div>
             </swiper-slide>

@@ -2,6 +2,8 @@ import { useRouteLoaderData } from 'react-router-dom'
 import PersonInfo from '../components/Person/PersonInfo'
 import DefaultPoster from '../assets/default-poster.png'
 import { retrieveConfig } from '../utils/utility'
+import PersonBio from '../components/Person/PersonBio'
+import PersonCredits from '../components/Person/PersonCredits'
 
 export default function PersonGeneralPage () {
   const {
@@ -12,7 +14,8 @@ export default function PersonGeneralPage () {
   } = retrieveConfig(useRouteLoaderData('root'))
   const data = useRouteLoaderData('person-details')
   const {
-    profile_path: profilePath
+    profile_path: profilePath,
+    name
   } = data
 
   const prettyProfilePath = profilePath
@@ -20,10 +23,15 @@ export default function PersonGeneralPage () {
     : DefaultPoster
 
   return (
-    <main>
-      <section>
-        <img src={prettyProfilePath} alt='' />
+    <main className='flex mx-app-space gap-8'>
+      <section className='mt-8 w-56 shrink-0'>
+        <img className='aspect-[2/3] object-cover w-full rounded' src={prettyProfilePath} alt={'Foto de ' + name} />
         <PersonInfo />
+      </section>
+      <section>
+        <h1 className='text-4xl font-bold my-8'>{name}</h1>
+        <PersonBio />
+        <PersonCredits />
       </section>
     </main>
   )

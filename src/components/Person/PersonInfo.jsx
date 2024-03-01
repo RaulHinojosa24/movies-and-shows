@@ -13,7 +13,6 @@ export default function PersonInfo () {
     homepage,
     imdb_id: imdbId,
     known_for_department: knownForDepartment,
-    name,
     place_of_birth: placeOfBirth
   } = useRouteLoaderData('person-details')
 
@@ -26,7 +25,6 @@ export default function PersonInfo () {
 
   return (
     <Section title='Información personal' className='space-y-3'>
-      <SubSection title='Nombre'>{name}</SubSection>
       <SubSection title='Conocida por'>{knownForDepartment}</SubSection>
       <SubSection title='Género'>{prettyGender}</SubSection>
       <SubSection title='Fecha de nacimiento'>
