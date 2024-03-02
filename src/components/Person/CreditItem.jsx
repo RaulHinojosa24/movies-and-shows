@@ -4,7 +4,7 @@ import { retrieveConfig } from '../../utils/utility'
 import DefaultPoster from '../../assets/default-poster.png'
 
 export default function CreditItem ({
-  id, title, character, job, releaseDate, voteAverage, voteCount, mediaType, posterPath, video, creditId, name, firstAirDate, episodeCount
+  id, title, characters = [], jobs = [], releaseDate, voteAverage, voteCount, mediaType, posterPath, video, creditId, name, firstAirDate, episodeCount
 }) {
   const {
     images: {
@@ -12,6 +12,12 @@ export default function CreditItem ({
       poster_sizes: posterSizes
     }
   } = retrieveConfig(useRouteLoaderData('root'))
+
+  const charactersOrJobs = characters.length > 0
+    ? characters
+    : jobs.length > 0
+      ? jobs
+      : null
 
   const date = new Date(releaseDate || firstAirDate)
   const year = date.getFullYear()
@@ -37,8 +43,8 @@ export default function CreditItem ({
                 <VoteCard rating={voteAverage} precission={0} minimal title={`Valoración media de ${voteCount} votos`} />}
               <span className='opacity-75'>{type}</span>
             </p>
-            {(character || job) &&
-              <p className='opacity-75 text-sm'>...como {character || job}</p>}
+            {charactersOrJobs &&
+              <p className='opacity-75 text-sm'>...como {(charactersOrJobs).join(', ')}</p>}
           </div>
         </div>
         <div className='flex flex-col items-end'>

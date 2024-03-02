@@ -14,7 +14,7 @@ export default function CreditsCrew () {
     .map(c => ({
       id: c.id,
       title: c.title || c.original_title,
-      job: c.job,
+      jobs: c.job ? [c.job] : [],
       department: c.department,
       releaseDate: c.release_date,
       voteAverage: c.vote_average,
@@ -33,12 +33,21 @@ export default function CreditsCrew () {
 
   for (const crew of cleanCrew) {
     const crewDep = crew.department
+    const time = crew.sortDate - new Date() < 0 ? 'Anterior' : 'Próximamente'
     const department = crewPerDepartment[crewDep]
+    const depTime = department?.[time]
+    const alrCrew = department?.[time]?.find(c => (c.releaseDate || c.firstAirDate) === (crew.releaseDate || crew.firstAirDate) && (c.id === crew.id))
 
-    if (department) {
-      department.push(crew)
+    if (alrCrew) {
+      alrCrew.jobs.push(crew.jobs[0])
+    } else if (depTime) {
+      depTime.push(crew)
+    } else if (department) {
+      department[time] = [crew]
     } else {
-      crewPerDepartment[crewDep] = [crew]
+      crewPerDepartment[crewDep] = {
+        [time]: [crew]
+      }
     }
   }
 
@@ -46,14 +55,28 @@ export default function CreditsCrew () {
     <>
       {departments.map(dep => (
         <SubSection key={dep} title={dep} className='space-y-2'>
-          <Colapsible title='Todo' subtitle={crewPerDepartment[dep].length} className='custom-shadow-small'>
-            <ol>
-              {crewPerDepartment[dep].map(cast =>
-                <li key={cast.creditId}>
-                  <CreditItem {...cast} />
-                </li>)}
-            </ol>
-          </Colapsible>
+          {Object.keys(crewPerDepartment[dep]).sort().reverse().map(t => {
+            const sortedArr = [...crewPerDepartment[dep][t]]
+              .sort((a, b) => (
+                (a.releaseDate || a.firstAirDate) && (b.releaseDate || b.firstAirDate)
+                  ? b.sortDate - a.sortDate
+                  : (a.releaseDate || a.firstAirDate)
+                      ? 1
+                      : (b.releaseDate || b.firstAirDate)
+                          ? -1
+                          : (a.title || a.name).localeCompare((b.title || b.name))
+              ))
+            return (
+              <Colapsible key={t} title={t} subtitle={sortedArr.length} className='custom-shadow-small'>
+                <ol>
+                  {sortedArr.map(cast =>
+                    <li key={cast.creditId}>
+                      <CreditItem {...cast} />
+                    </li>)}
+                </ol>
+              </Colapsible>
+            )
+          })}
         </SubSection>
       ))}
     </>

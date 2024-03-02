@@ -10,7 +10,7 @@ export default function CreditsCast () {
     .map(c => ({
       id: c.id,
       title: c.title || c.original_title,
-      character: c.character,
+      characters: c.character ? [c.character] : [],
       releaseDate: c.release_date,
       voteAverage: c.vote_average,
       voteCount: c.vote_count,
@@ -25,17 +25,16 @@ export default function CreditsCast () {
     }))
 
   const upcomingCast = cleanCast
-    .filter(c => (!c.releaseDate && !c.firstAirDate) || new Date(c.releaseDate || c.firstAirDate) - new Date() > 0)
+    .filter(c => (!c.releaseDate && !c.firstAirDate) || c.sortDate - new Date() > 0)
     .sort((a, b) => (
       (a.releaseDate || a.firstAirDate)
         ? 1
         : (b.releaseDate || b.firstAirDate)
             ? -1
-            : 0 ||
-      (a.title || a.name).localeCompare((b.title || b.name))
+            : (a.title || a.name).localeCompare((b.title || b.name))
     ))
   const pastCast = cleanCast
-    .filter(c => (c.releaseDate || c.firstAirDate) && new Date(c.releaseDate || c.firstAirDate) - new Date() < 0)
+    .filter(c => (c.releaseDate || c.firstAirDate) && c.sortDate - new Date() < 0)
     .sort((a, b) =>
       b.sortDate - a.sortDate ||
       (a.title || a.name).localeCompare((b.title || b.name))

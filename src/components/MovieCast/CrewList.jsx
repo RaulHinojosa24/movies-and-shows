@@ -77,7 +77,7 @@ export default function CrewList ({ crew }) {
 
                       return (
                         <li key={el.id + el.job}>
-                          <CastItem image={imagePath} primary={el.name} secondary={jobs} />
+                          <CastItem id={el.id} image={imagePath} primary={el.name} secondary={jobs} />
                         </li>
                       )
                     })}
