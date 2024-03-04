@@ -19,9 +19,9 @@
     @apply border-yellow-400 opacity-25 my-8;
   }
 
-  a {
-    /* @apply underline cursor-pointer underline-offset-[.25rem] w-fit; */
-  }
+  /* a {
+    @apply underline cursor-pointer underline-offset-[.25rem] w-fit;
+  } */
 }
 
 @layer utilities {
@@ -35,7 +35,7 @@
     @apply w-8 hover:text-yellow-400 transition-colors;
   }
   .read-shadow {
-    @apply relative after:pointer-events-none after:absolute after:bottom-0 after:left-0 after:w-full after:h-4 after:bg-gradient-to-b after:from-transparent after:to-neutral-950;
+    @apply relative after:pointer-events-none after:absolute after:bottom-0 after:left-0 after:w-full after:h-8 after:bg-gradient-to-b after:from-transparent after:to-neutral-900;
   }
 }
 
@@ -47,4 +47,22 @@ swiper-container::part(container) {
 
 swiper-slide {
   @apply w-auto h-auto;
+}
+
+#scroll-to-top {
+  animation: appear linear both;
+  animation-timeline: scroll();
+  animation-range-start: 50vh;
+  animation-range-end: 51vh;
+}
+
+@keyframes appear {
+  from {
+    visibility: hidden;
+    opacity: 0;
+  }
+  to {
+    visibility: visible;
+    opacity: 1;
+  }
 }
