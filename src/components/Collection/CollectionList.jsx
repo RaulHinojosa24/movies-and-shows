@@ -59,7 +59,7 @@ export default function CollectionList () {
   return (
     <section className='m-auto max-w-screen-xl'>
       <div className='inline-grid grid-cols-[auto_auto] divide-x-1 divide-neutral-600'>
-        <Select name='collection-movies-sorting' options={options} onChange={e => setSortBy(e.target.value)} />
+        <Select name='collection-movies-sorting' options={options} onChange={e => setSortBy(e.target.value)} label='Ordenar por' />
         <div className='self-stretch grid place-content-center aspect-square cursor-pointer custom-shadow-small' onClick={() => setIsAsc(p => !p)}>
           {isAsc
             ? <SortAscIcon />
@@ -86,7 +86,7 @@ export default function CollectionList () {
                   <Link to={'/movie/' + id} className='inline-block'>
                     <h3 className='font-semibold text-lg'>{title}</h3>
                   </Link>
-                  <p className='text-neutral-300'>{formatLongDate(releaseDate)}</p>
+                  <p className='text-neutral-300'>{releaseDate ? formatLongDate(releaseDate) : 'Fecha desconocida'}</p>
                 </div>
                 <p className='line-clamp-2'>{overview}</p>
               </div>

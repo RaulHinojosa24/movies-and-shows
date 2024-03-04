@@ -1,16 +1,11 @@
 import { useRouteLoaderData } from 'react-router-dom'
 import SubSection from '../UI/SubSection'
-import CreditItem from './CreditItem'
-import Colapsible from '../UI/Colapsible'
+import GroupedCreditsDisplay from './GroupedCreditsDisplay'
 
-export default function CreditsCrew () {
+export default function CreditsCrew ({ groupBy, sorting }) {
   const { combined_credits: { crew } } = useRouteLoaderData('person-details')
 
-  const departments = [...new Set(crew
-    .map(c => c.department))]
-    .sort()
-
-  const cleanCrew = [...crew]
+  const cleanCrewCredits = [...crew]
     .map(c => ({
       id: c.id,
       title: c.title || c.original_title,
@@ -29,54 +24,27 @@ export default function CreditsCrew () {
       sortDate: new Date(c.release_date || c.first_air_date)
     }))
 
-  const crewPerDepartment = {}
+  const creditsPerDepartment = {}
 
-  for (const crew of cleanCrew) {
-    const crewDep = crew.department
-    const time = crew.sortDate - new Date() < 0 ? 'Anterior' : 'Próximamente'
-    const department = crewPerDepartment[crewDep]
-    const depTime = department?.[time]
-    const alrCrew = department?.[time]?.find(c => (c.releaseDate || c.firstAirDate) === (crew.releaseDate || crew.firstAirDate) && (c.id === crew.id))
+  for (const credit of cleanCrewCredits) {
+    const creditDep = credit.department
+    const department = creditsPerDepartment[creditDep]
+    const alr = department?.find(c => (c.releaseDate || c.firstAirDate) === (credit.releaseDate || credit.firstAirDate) && (c.id === credit.id))
 
-    if (alrCrew) {
-      alrCrew.jobs.push(crew.jobs[0])
-    } else if (depTime) {
-      depTime.push(crew)
+    if (alr) {
+      alr.jobs.push(credit.jobs[0])
     } else if (department) {
-      department[time] = [crew]
+      department.push(credit)
     } else {
-      crewPerDepartment[crewDep] = {
-        [time]: [crew]
-      }
+      creditsPerDepartment[creditDep] = [credit]
     }
   }
 
   return (
     <>
-      {departments.map(dep => (
+      {Object.keys(creditsPerDepartment).sort().map(dep => (
         <SubSection key={dep} title={dep} className='space-y-2'>
-          {Object.keys(crewPerDepartment[dep]).sort().reverse().map(t => {
-            const sortedArr = [...crewPerDepartment[dep][t]]
-              .sort((a, b) => (
-                (a.releaseDate || a.firstAirDate) && (b.releaseDate || b.firstAirDate)
-                  ? b.sortDate - a.sortDate
-                  : (a.releaseDate || a.firstAirDate)
-                      ? 1
-                      : (b.releaseDate || b.firstAirDate)
-                          ? -1
-                          : (a.title || a.name).localeCompare((b.title || b.name))
-              ))
-            return (
-              <Colapsible key={t} title={t} subtitle={sortedArr.length} className='custom-shadow-small'>
-                <ol>
-                  {sortedArr.map(cast =>
-                    <li key={cast.creditId}>
-                      <CreditItem {...cast} />
-                    </li>)}
-                </ol>
-              </Colapsible>
-            )
-          })}
+          <GroupedCreditsDisplay credits={creditsPerDepartment[dep]} groupBy={groupBy} sorting={sorting} />
         </SubSection>
       ))}
     </>
