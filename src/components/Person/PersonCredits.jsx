@@ -49,7 +49,7 @@ export default function PersonCredits () {
       <div className='grid grid-flow-col auto-cols-max gap-4'>
         <Select name='person-credits-group-by' label='Agrupar por' options={groupByOptions} onChange={handleGroupByChange} />
         <Select name='person-credits-sorting' label='Ordenar por' options={sortingOptions} onChange={handleSortingChange} />
-        <button className='custom-shadow-small aspect-square grid place-items-center self-stretch' onClick={toggleDirection}>
+        <button className=' rounded custom-shadow-small aspect-square grid place-items-center self-stretch' onClick={toggleDirection}>
           {direction === 'asc'
             ? <SortAscIcon />
             : <SortDescIcon />}

@@ -38,7 +38,7 @@ export default function SortedCreditsDisplay ({ title, credits, sorting, directi
   if (direction !== 'desc') sortedCredits.reverse()
 
   return (
-    <Colapsible title={title} subtitle={sortedCredits.length} className='custom-shadow-small'>
+    <Colapsible title={title} subtitle={sortedCredits.length} className='custom-shadow-small rounded'>
       <ol className='divide-y-1 divide-neutral-700'>
         {sortedCredits.map(cast =>
           <li key={cast.creditId}>

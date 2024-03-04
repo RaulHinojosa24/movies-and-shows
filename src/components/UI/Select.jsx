@@ -1,6 +1,6 @@
 export default function Select ({ name, label, options, ...props }) {
   return (
-    <div className='relative custom-shadow-small'>
+    <div className='relative custom-shadow-small rounded'>
       <label
         htmlFor={name} className='absolute px-2 left-1 text-xs text-neutral-300 bg-gradient-to-b from-neutral-950 from-[calc(3/5*100%-1px)] to-[calc(3/5*100%-1px)] to-neutral-900 -translate-y-[calc(3/5*100%)] max-w-[90%] whitespace-nowrap overflow-hidden overflow-ellipsis'
       >{label}
