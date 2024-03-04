@@ -4,6 +4,7 @@ import DefaultPoster from '../assets/default-poster.png'
 import { retrieveConfig } from '../utils/utility'
 import PersonBio from '../components/Person/PersonBio'
 import PersonCredits from '../components/Person/PersonCredits'
+import PersonKnownFor from '../components/Person/PersonKnownFor'
 
 export default function PersonGeneralPage () {
   const {
@@ -28,9 +29,10 @@ export default function PersonGeneralPage () {
         <img className='aspect-[2/3] object-cover w-full rounded' src={prettyProfilePath} alt={'Foto de ' + name} />
         <PersonInfo />
       </section>
-      <section>
+      <section className='min-w-0 w-full'>
         <h1 className='text-4xl font-bold my-8'>{name}</h1>
         <PersonBio />
+        <PersonKnownFor />
         <PersonCredits />
       </section>
     </main>

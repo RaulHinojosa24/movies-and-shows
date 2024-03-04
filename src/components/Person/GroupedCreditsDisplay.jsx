@@ -28,7 +28,7 @@ export default function GroupedCreditsDisplay ({ credits, groupBy, sorting, dire
       {Object.keys(groupedCredits).map(group => {
         const credits = groupedCredits[group]
         return credits.length > 0
-          ? <SortedCreditsDisplay credits={credits} title={group} sorting={sorting} direction={direction} />
+          ? <SortedCreditsDisplay key={group} credits={credits} title={group} sorting={sorting} direction={direction} />
           : null
       })}
     </>
