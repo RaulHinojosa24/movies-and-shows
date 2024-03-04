@@ -14,16 +14,28 @@ const yearSorting = (a, b) => (
 const nameSorting = (a, b) => (
   (a.title || a.name).localeCompare((b.title || b.name))
 )
+const popularitySorting = (a, b) => (
+  b.popularity - a.popularity ||
+  (a.title || a.name).localeCompare((b.title || b.name))
+)
+const ratingSorting = (a, b) => (
+  b.voteAverage - a.voteAverage ||
+  (a.title || a.name).localeCompare((b.title || b.name))
+)
 
 const SORTING_DICT = {
   year: yearSorting,
   name: nameSorting,
+  popularity: popularitySorting,
+  rating: ratingSorting,
   default: yearSorting
 }
 
-export default function SortedCreditsDisplay ({ title, credits, sorting }) {
+export default function SortedCreditsDisplay ({ title, credits, sorting, direction }) {
   const sortedCredits = credits
     .sort((SORTING_DICT[sorting] || SORTING_DICT.default))
+
+  if (direction !== 'desc') sortedCredits.reverse()
 
   return (
     <Colapsible title={title} subtitle={sortedCredits.length} className='custom-shadow-small'>

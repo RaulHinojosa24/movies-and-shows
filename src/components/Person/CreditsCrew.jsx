@@ -9,6 +9,7 @@ export default function CreditsCrew ({ groupBy, sorting }) {
     .map(c => ({
       id: c.id,
       title: c.title || c.original_title,
+      popularity: c.popularity,
       jobs: c.job ? [c.job] : [],
       department: c.department,
       releaseDate: c.release_date,

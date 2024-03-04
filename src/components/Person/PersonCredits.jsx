@@ -1,8 +1,10 @@
 import { useState } from 'react'
+import Select from '../UI/Select'
 import Section from '../UI/Section'
+import SortAscIcon from '../../logos/SortAscIcon'
+import SortDescIcon from '../../logos/SortDescIcon'
 import CreditsCast from './CreditsCast'
 import CreditsCrew from './CreditsCrew'
-import Select from '../UI/Select'
 
 const groupByOptions = [
   {
@@ -22,24 +24,39 @@ const sortingOptions = [
   {
     value: 'name',
     label: 'Título'
+  },
+  {
+    value: 'popularity',
+    label: 'Popularidad'
+  },
+  {
+    value: 'rating',
+    label: 'Puntuación'
   }
 ]
 
 export default function PersonCredits () {
   const [groupBy, setGroupBy] = useState('default')
   const [sorting, setSorting] = useState('default')
+  const [direction, setDirection] = useState('desc')
 
   const handleGroupByChange = (event) => setGroupBy(event.target.value)
   const handleSortingChange = (event) => setSorting(event.target.value)
+  const toggleDirection = () => setDirection(prev => prev === 'asc' ? 'desc' : 'asc')
 
   return (
     <Section title='Créditos' className='space-y-3'>
-      <div className='w-fit flex gap-4'>
+      <div className='grid grid-flow-col auto-cols-max gap-4'>
         <Select name='person-credits-group-by' label='Agrupar por' options={groupByOptions} onChange={handleGroupByChange} />
         <Select name='person-credits-sorting' label='Ordenar por' options={sortingOptions} onChange={handleSortingChange} />
+        <button className='custom-shadow-small aspect-square grid place-items-center self-stretch' onClick={toggleDirection}>
+          {direction === 'asc'
+            ? <SortAscIcon />
+            : <SortDescIcon />}
+        </button>
       </div>
-      <CreditsCast groupBy={groupBy} sorting={sorting} />
-      <CreditsCrew groupBy={groupBy} sorting={sorting} />
+      <CreditsCast groupBy={groupBy} sorting={sorting} direction={direction} />
+      <CreditsCrew groupBy={groupBy} sorting={sorting} direction={direction} />
     </Section>
   )
 }

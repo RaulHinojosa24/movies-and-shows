@@ -2,13 +2,14 @@ import { useRouteLoaderData } from 'react-router-dom'
 import SubSection from '../UI/SubSection'
 import GroupedCreditsDisplay from './GroupedCreditsDisplay'
 
-export default function CreditsCast ({ groupBy, sorting }) {
+export default function CreditsCast ({ groupBy, sorting, direction }) {
   const { combined_credits: { cast } } = useRouteLoaderData('person-details')
 
   const cleanCastCredits = [...cast]
     .map(c => ({
       id: c.id,
       title: c.title || c.original_title,
+      popularity: c.popularity,
       characters: c.character ? [c.character] : [],
       releaseDate: c.release_date,
       voteAverage: c.vote_average,
@@ -25,7 +26,7 @@ export default function CreditsCast ({ groupBy, sorting }) {
 
   return (
     <SubSection title='Reparto' className='space-y-2'>
-      <GroupedCreditsDisplay credits={cleanCastCredits} groupBy={groupBy} sorting={sorting} />
+      <GroupedCreditsDisplay credits={cleanCastCredits} groupBy={groupBy} sorting={sorting} direction={direction} />
     </SubSection>
   )
 }

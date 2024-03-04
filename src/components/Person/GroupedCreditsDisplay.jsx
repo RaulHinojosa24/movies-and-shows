@@ -20,7 +20,7 @@ const GROUP_BY_DICT = {
   default: groupByDate
 }
 
-export default function GroupedCreditsDisplay ({ credits, groupBy, sorting }) {
+export default function GroupedCreditsDisplay ({ credits, groupBy, sorting, direction }) {
   const groupedCredits = (GROUP_BY_DICT[groupBy] || GROUP_BY_DICT.default)(credits)
 
   return (
@@ -28,7 +28,7 @@ export default function GroupedCreditsDisplay ({ credits, groupBy, sorting }) {
       {Object.keys(groupedCredits).map(group => {
         const credits = groupedCredits[group]
         return credits.length > 0
-          ? <SortedCreditsDisplay credits={credits} title={group} sorting={sorting} />
+          ? <SortedCreditsDisplay credits={credits} title={group} sorting={sorting} direction={direction} />
           : null
       })}
     </>

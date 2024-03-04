@@ -58,13 +58,13 @@ export default function CollectionList () {
 
   return (
     <section className='m-auto max-w-screen-xl'>
-      <div className='inline-grid grid-cols-[auto_auto] divide-x-1 divide-neutral-600'>
+      <div className='grid grid-flow-col auto-cols-max gap-4 my-4'>
         <Select name='collection-movies-sorting' options={options} onChange={e => setSortBy(e.target.value)} label='Ordenar por' />
-        <div className='self-stretch grid place-content-center aspect-square cursor-pointer custom-shadow-small' onClick={() => setIsAsc(p => !p)}>
+        <button className='custom-shadow-small aspect-square grid place-items-center self-stretch' onClick={() => setIsAsc(p => !p)}>
           {isAsc
             ? <SortAscIcon />
             : <SortDescIcon />}
-        </div>
+        </button>
       </div>
       <ol className='space-y-4'>
         {sortedParts.map((part) => {
