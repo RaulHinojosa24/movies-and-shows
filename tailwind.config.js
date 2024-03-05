@@ -6,14 +6,24 @@ export default {
   ],
   theme: {
     extend: {
+      width: {
+        app: '1536px',
+        'small-content': '1280px',
+        aside: '14rem'
+      },
+      maxWidth: {
+        app: '1536px',
+        'small-content': '1280px',
+        aside: '14rem'
+      },
       margin: {
+        'app-space': '2rem'
+      },
+      padding: {
         'app-space': '2rem'
       },
       borderWidth: {
         1: '1px'
-      },
-      padding: {
-        'app-space': '2rem'
       },
       animation: {
         fade: 'fadeIn .1s ease-in-out',

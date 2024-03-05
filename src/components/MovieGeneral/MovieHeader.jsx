@@ -52,8 +52,8 @@ export default function MovieHeader () {
         style={{ backgroundImage: `linear-gradient(to bottom, rgba(200,200,200,0.15), 40%, rgb(10,10,10)),url(${baseURL + backdropSize + backdropPath})` }}
         className={`bg-neutral-800 bg-cover bg-no-repeat bg-[linear-gradient(to_bottom,_rgba(200,200,200,0.15),_40%,_rgb(10,10,10)),_url(${baseURL + backdropSize + backdropPath})] flex items-end gap-8 p-8`}
       >
-        <Section className='mt-12 overflow-hidden rounded shadow-xl shadow-neutral-950'>
-          <img loading='lazy' src={posterPath ? (baseURL + posterSize + posterPath) : DefaultPosterImage} alt={title} className='w-48 aspect-[2/3] object-cover' />
+        <Section className='w-aside overflow-hidden rounded shadow-xl shadow-neutral-950'>
+          <img loading='lazy' src={posterPath ? (baseURL + posterSize + posterPath) : DefaultPosterImage} alt={title} className='aspect-[2/3] object-cover w-full' />
           <MovieWatchProviders className='' />
         </Section>
         <Section className='flex flex-col gap-2'>

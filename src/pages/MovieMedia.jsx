@@ -4,7 +4,7 @@ import MediaVideos from '../components/MovieMedia/MediaVideos'
 
 export default function MovieMediaPage () {
   return (
-    <main className='mx-app-space'>
+    <main className='px-app-space mx-auto w-full max-w-small-content'>
       <MediaBackdrops />
       <MediaPosters />
       <MediaVideos />

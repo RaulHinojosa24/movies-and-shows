@@ -26,13 +26,13 @@ export default function PersonGeneralPage () {
     : DefaultPoster
 
   return (
-    <main className='flex mx-app-space gap-8'>
-      <section className='mt-8 w-56 shrink-0'>
+    <main className='flex p-app-space gap-8'>
+      <section className='w-aside shrink-0 space-y-8'>
         <img className='aspect-[2/3] object-cover w-full rounded' src={prettyProfilePath} alt={'Foto de ' + name} />
         <PersonInfo />
       </section>
-      <section className='min-w-0 w-full'>
-        <h1 className='text-4xl font-bold my-8'>{name}</h1>
+      <section className='min-w-0 w-full space-y-8'>
+        <h1 className='text-4xl font-bold'>{name}</h1>
         <PersonBio />
         <PersonKnownFor />
         <PersonCredits />

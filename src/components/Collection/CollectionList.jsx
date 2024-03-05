@@ -57,7 +57,7 @@ export default function CollectionList () {
   }
 
   return (
-    <section className='m-auto max-w-screen-xl'>
+    <section className='mt-8'>
       <div className='grid grid-flow-col auto-cols-max gap-4 my-4'>
         <Select name='collection-movies-sorting' options={options} onChange={e => setSortBy(e.target.value)} label='Ordenar por' />
         <button className='custom-shadow-small aspect-square grid place-items-center self-stretch' onClick={() => setIsAsc(p => !p)}>
