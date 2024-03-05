@@ -1,7 +1,6 @@
 import { Link, useRouteLoaderData } from 'react-router-dom'
 import Section from '../UI/Section'
-import useBodyDimensions from '../../hooks/useBodyDimensions'
-import { calculateImageSize, retrieveConfig } from '../../utils/utility'
+import { retrieveConfig } from '../../utils/utility'
 import VoteCard from '../UI/VoteCard'
 import { useEffect, useRef } from 'react'
 import DefaultLandscapeImage from '../../assets/default-landscape.png'
@@ -53,9 +52,7 @@ export default function MovieRecommendations ({ recommendations }) {
     }
   } = retrieveConfig(useRouteLoaderData('root'))
 
-  const { width } = useBodyDimensions()
-
-  const backdropSize = calculateImageSize(backdropSizes.filter(s => s.includes('w')), width, 1 / 6)
+  const backdropSize = backdropSizes[1]
 
   return (
     <Section title='Recomendaciones'>

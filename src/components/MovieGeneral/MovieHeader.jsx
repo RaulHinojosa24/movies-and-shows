@@ -1,7 +1,6 @@
 /* eslint-disable no-octal-escape */
 import { useRouteLoaderData } from 'react-router-dom'
-import useBodyDimensions from '../../hooks/useBodyDimensions'
-import { calculateImageSize, formatShortDate, formatRuntime, retrieveConfig } from '../../utils/utility'
+import { formatShortDate, formatRuntime, retrieveConfig } from '../../utils/utility'
 import Section from '../UI/Section'
 import VoteCard from '../UI/VoteCard'
 
@@ -30,10 +29,8 @@ export default function MovieHeader () {
     }
   } = retrieveConfig(useRouteLoaderData('root'))
 
-  const { width } = useBodyDimensions()
-
-  const backdropSize = calculateImageSize(backdropSizes.filter(s => s.includes('w')), width, 1)
-  const posterSize = calculateImageSize(posterSizes.filter(s => s.includes('w')), width, width < 512 ? 1 : 1 / 4)
+  const backdropSize = backdropSizes[2]
+  const posterSize = posterSizes[3]
 
   const prettyRuntime = formatRuntime(runtime)
 
@@ -50,7 +47,7 @@ export default function MovieHeader () {
     <>
       <header
         style={{ backgroundImage: `linear-gradient(to bottom, rgba(200,200,200,0.15), 40%, rgb(10,10,10)),url(${baseURL + backdropSize + backdropPath})` }}
-        className={`bg-neutral-800 bg-cover bg-no-repeat bg-[linear-gradient(to_bottom,_rgba(200,200,200,0.15),_40%,_rgb(10,10,10)),_url(${baseURL + backdropSize + backdropPath})] flex items-end gap-8 p-8`}
+        className={`bg-neutral-800 bg-cover bg-center bg-no-repeat bg-[linear-gradient(to_bottom,_rgba(200,200,200,0.15),_40%,_rgb(10,10,10)),_url(${baseURL + backdropSize + backdropPath})] flex items-end gap-8 p-8`}
       >
         <Section className='w-aside overflow-hidden rounded shadow-xl shadow-neutral-950'>
           <img loading='lazy' src={posterPath ? (baseURL + posterSize + posterPath) : DefaultPosterImage} alt={title} className='aspect-[2/3] object-cover w-full' />

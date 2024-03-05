@@ -11,17 +11,17 @@ export default function CollectionSummary () {
   const color = generateVoteColor(voteAvg / 10)
 
   return (
-    <section className='flex justify-around flex-wrap'>
+    <section className='flex justify-around items-center flex-wrap'>
       <SummaryItem data={nMovies} text='películas' />
       <SummaryItem style={{ color }} data={voteAvg} text='puntuación media' />
-      <SummaryItem data={totalVotes} text='votaciones' />
+      <SummaryItem data={totalVotes} text='valoraciones' />
     </section>
   )
 }
 
 function SummaryItem ({ data, text, style }) {
   return (
-    <div className='flex flex-col items-center justify-start min-w-fit w-fit min-h-full py-6 px-10 custom-shadow'>
+    <div className='flex flex-col items-center justify-center py-6 px-10 h-fit custom-shadow'>
       <span className='text-4xl font-semibold' style={style}>{data}</span>
       <p className='w-min text-center'>{text}</p>
     </div>

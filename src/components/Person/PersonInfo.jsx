@@ -33,7 +33,7 @@ export default function PersonInfo () {
       <SubSection title='Lugar de nacimiento'>{placeOfBirth}</SubSection>
       {deathday &&
         <SubSection title='Fecha de defunción'>{prettyDeathday} ({prettyAge})</SubSection>}
-      <SubSection title='También comocida como'>
+      <SubSection title='También conocida como'>
         <ul>
           {alsoKnownAs.map(n => <li key={n}>{n}</li>)}
         </ul>
