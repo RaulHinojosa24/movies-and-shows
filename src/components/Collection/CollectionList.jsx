@@ -2,8 +2,8 @@ import { Link, useRouteLoaderData } from 'react-router-dom'
 import { formatLongDate, retrieveConfig } from '../../utils/utility'
 import { useState } from 'react'
 import Select from '../UI/Select'
-import SortAscIcon from '../../logos/SortAscIcon'
-import SortDescIcon from '../../logos/SortDescIcon'
+import SortAscIcon from '../../icons/SortAscIcon'
+import SortDescIcon from '../../icons/SortDescIcon'
 
 export default function CollectionList () {
   const { parts } = useRouteLoaderData('collection-details')

@@ -1,4 +1,4 @@
-export default function TwitterLogo ({ className }) {
+export default function TwitterLogo ({ className = '' }) {
   return (
     <svg className={className} viewBox='1.38 0 125.25 128'>
       <title>Twitter logo</title>

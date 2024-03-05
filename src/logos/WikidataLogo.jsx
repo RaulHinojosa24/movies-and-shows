@@ -1,4 +1,4 @@
-export default function WikidataLogo ({ className }) {
+export default function WikidataLogo ({ className = '' }) {
   return (
     <svg className={className} version='1.2' viewBox='120 45 810 500'>
       <title>Wikidata logo</title>

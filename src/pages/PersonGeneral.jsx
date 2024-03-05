@@ -5,6 +5,7 @@ import { retrieveConfig } from '../utils/utility'
 import PersonBio from '../components/Person/PersonBio'
 import PersonCredits from '../components/Person/PersonCredits'
 import PersonKnownFor from '../components/Person/PersonKnownFor'
+import SocialLinks from '../components/UI/SocialLinks'
 
 export default function PersonGeneralPage () {
   const {
@@ -15,6 +16,7 @@ export default function PersonGeneralPage () {
   } = retrieveConfig(useRouteLoaderData('root'))
   const data = useRouteLoaderData('person-details')
   const {
+    external_ids: externalIDs,
     profile_path: profilePath,
     name
   } = data
@@ -34,6 +36,9 @@ export default function PersonGeneralPage () {
         <PersonBio />
         <PersonKnownFor />
         <PersonCredits />
+      </section>
+      <section>
+        <SocialLinks externalIDs={externalIDs} name={name} />
       </section>
     </main>
   )

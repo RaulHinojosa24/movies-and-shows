@@ -1,4 +1,4 @@
-import ArrowUp from '../../logos/ArrowUp'
+import ArrowUp from '../../icons/ArrowUpIcon'
 
 export default function GoToTopButton () {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })

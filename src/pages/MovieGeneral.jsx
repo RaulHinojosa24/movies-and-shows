@@ -4,7 +4,7 @@ import SubSection from '../components/UI/SubSection'
 import { formatCurrency, retrieveConfig } from '../utils/utility'
 import MovieCast from '../components/MovieGeneral/MovieCast'
 import MovieRecommendations from '../components/MovieGeneral/MovieRecommendations'
-import MovieSocialLinks from '../components/MovieGeneral/MovieSocialLinks'
+import SocialLinks from '../components/UI/SocialLinks'
 import MovieLists from '../components/MovieGeneral/MovieLists'
 import MovieCollection from '../components/MovieGeneral/MovieCollection'
 import MovieReviews from '../components/MovieGeneral/MovieReviews'
@@ -83,7 +83,7 @@ export default function MovieDetailsPage () {
         {/* <hr /> */}
         <MovieRecommendations recommendations={cleanRecommendations} />
       </div>
-      <MovieSocialLinks externalIDs={externalIDs} homepageLink={homepageLink} title={title} />
+      <SocialLinks externalIDs={externalIDs} homepageLink={homepageLink} name={title} />
     </main>
   )
 }

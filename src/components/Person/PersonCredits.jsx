@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import Select from '../UI/Select'
 import Section from '../UI/Section'
-import SortAscIcon from '../../logos/SortAscIcon'
-import SortDescIcon from '../../logos/SortDescIcon'
+import SortAscIcon from '../../icons/SortAscIcon'
+import SortDescIcon from '../../icons/SortDescIcon'
 import CreditsCast from './CreditsCast'
 import CreditsCrew from './CreditsCrew'
 
