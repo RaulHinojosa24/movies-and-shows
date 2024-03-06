@@ -14,6 +14,7 @@ import { useEffect } from 'react'
 import CollectionMediaPage from './pages/CollectionMedia'
 import PersonGeneralPage from './pages/PersonGeneral'
 import PersonMediaPage from './pages/PersonMedia'
+import TvDetailsLayout, { loader as tvDetailsLoader } from './layout/TvDetailsLayout'
 
 export default function App () {
   useEffect(() => {
@@ -91,6 +92,12 @@ export default function App () {
               element: <PersonMediaPage />
             }
           ]
+        },
+        {
+          path: 'tv/:id',
+          id: 'tv-details',
+          element: <TvDetailsLayout />,
+          loader: tvDetailsLoader
         }
       ]
     }
