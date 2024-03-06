@@ -12,37 +12,16 @@ import MovieReviews from '../components/MovieGeneral/MovieReviews'
 export default function MovieDetailsPage () {
   const {
     budget,
-    credits,
     external_ids: externalIDs,
     homepage: homepageLink,
     keywords,
     original_language: originalLanguage,
     original_title: originalTitle,
     overview,
-    recommendations,
     revenue,
     status,
     title
   } = useRouteLoaderData('movie-details')
-
-  const cleanCast = credits.cast.map(person => ({
-    id: person.id,
-    name: person.name,
-    originalName: person.original_name,
-    picturePath: person.profile_path,
-    character: person.character
-  }))
-
-  const cleanRecommendations = recommendations.results.map(movie => ({
-    id: movie.id,
-    title: movie.title,
-    posterPath: movie.poster_path,
-    backdropPath: movie.backdrop_path,
-    mediaType: movie.media_type,
-    releaseDate: movie.release_date,
-    voteAverage: movie.vote_average,
-    voteCount: movie.vote_count
-  }))
 
   const { languages } = retrieveConfig(useRouteLoaderData('root'))
 
@@ -73,7 +52,7 @@ export default function MovieDetailsPage () {
           {overview}
         </Section>
         {/* <hr /> */}
-        <MovieCast cast={cleanCast} />
+        <MovieCast />
         {/* <hr /> */}
         <MovieCollection />
         {/* <hr /> */}
@@ -81,7 +60,7 @@ export default function MovieDetailsPage () {
         {/* <hr /> */}
         <MovieLists />
         {/* <hr /> */}
-        <MovieRecommendations recommendations={cleanRecommendations} />
+        <MovieRecommendations />
       </div>
       <SocialLinks externalIDs={externalIDs} homepageLink={homepageLink} name={title} />
     </main>

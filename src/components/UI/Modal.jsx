@@ -1,5 +1,5 @@
 import { createPortal } from 'react-dom'
-import Cross from './Cross'
+import CrossIcon from '../../icons/CrossIcon'
 import { useEffect } from 'react'
 
 export default function Modal ({ className = '', children, onClose, crossInside }) {
@@ -27,12 +27,12 @@ export default function Modal ({ className = '', children, onClose, crossInside 
             {children}
             {crossInside &&
               <button className='absolute h-4 aspect-square top-4 right-4 z-50' onClick={onClose}>
-                <Cross />
+                <CrossIcon />
               </button>}
           </div>
           {!crossInside &&
             <button className='fixed top-[5vh] right-[5vh] h-6 aspect-square translate-x-1/2 -translate-y-1/2 z-50' onClick={onClose}>
-              <Cross />
+              <CrossIcon />
             </button>}
         </>, document.getElementById('modal'))}
     </>
