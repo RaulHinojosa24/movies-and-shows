@@ -1,6 +1,6 @@
-import { useRouteLoaderData } from 'react-router-dom'
+import { Link, useRouteLoaderData } from 'react-router-dom'
 import PersonInfo from '../components/Person/PersonInfo'
-import DefaultPoster from '../assets/default-poster.png'
+import DefaultProfile from '../assets/default-user.png'
 import { retrieveConfig } from '../utils/utility'
 import PersonBio from '../components/Person/PersonBio'
 import PersonCredits from '../components/Person/PersonCredits'
@@ -11,7 +11,7 @@ export default function PersonGeneralPage () {
   const {
     images: {
       secure_base_url: baseURL,
-      poster_sizes: posterSizes
+      profile_sizes: profileSizes
     }
   } = retrieveConfig(useRouteLoaderData('root'))
   const data = useRouteLoaderData('person-details')
@@ -22,8 +22,8 @@ export default function PersonGeneralPage () {
   } = data
 
   const prettyProfilePath = profilePath
-    ? baseURL + posterSizes[3] + profilePath
-    : DefaultPoster
+    ? baseURL + profileSizes[2] + profilePath
+    : DefaultProfile
 
   return (
     <main className='flex p-app-space gap-8'>
@@ -33,6 +33,7 @@ export default function PersonGeneralPage () {
       </section>
       <section className='min-w-0 w-full space-y-8'>
         <h1 className='text-4xl font-bold'>{name}</h1>
+        <Link to='media' className='font-bold'>TODO: Ver Media</Link>
         <PersonBio />
         <PersonKnownFor />
         <PersonCredits />

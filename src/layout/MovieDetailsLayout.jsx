@@ -1,24 +1,15 @@
-/* eslint-disable no-unused-vars */
-import { Outlet, useLoaderData } from 'react-router-dom'
+import { Outlet, useMatch } from 'react-router-dom'
 import { getMovieDetails } from '../utils/http'
 import MovieHeader from '../components/MovieGeneral/MovieHeader'
+import MovieHeaderCompact from '../components/MovieGeneral/MovieHeaderCompact'
 
 export default function MovieDetailsLayout () {
-  const data = useLoaderData()
-
-  const {
-    adult,
-    id,
-    popularity,
-    production_companies: productionCompanies,
-    production_countries: productionCountries,
-    spoken_languages: spokenLanguages,
-    'watch/providers': watchProviders
-  } = data
+  const isRootPage = useMatch('/movie/:id')
 
   return (
     <section>
-      <MovieHeader />
+      {isRootPage && <MovieHeader />}
+      {!isRootPage && <MovieHeaderCompact />}
       <Outlet />
     </section>
   )

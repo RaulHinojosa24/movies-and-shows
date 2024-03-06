@@ -13,6 +13,7 @@ import CollectionGeneralPage from './pages/CollectionGeneral'
 import { useEffect } from 'react'
 import CollectionMediaPage from './pages/CollectionMedia'
 import PersonGeneralPage from './pages/PersonGeneral'
+import PersonMediaPage from './pages/PersonMedia'
 
 export default function App () {
   useEffect(() => {
@@ -84,6 +85,10 @@ export default function App () {
             {
               index: true,
               element: <PersonGeneralPage />
+            },
+            {
+              path: 'media',
+              element: <PersonMediaPage />
             }
           ]
         }

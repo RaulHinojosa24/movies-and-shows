@@ -1,4 +1,4 @@
-import { useRouteLoaderData } from 'react-router-dom'
+import { Link, useRouteLoaderData } from 'react-router-dom'
 import Section from '../components/UI/Section'
 import SubSection from '../components/UI/SubSection'
 import { formatCurrency, retrieveConfig } from '../utils/utility'
@@ -48,6 +48,7 @@ export default function MovieDetailsPage () {
         </SubSection>
       </Section>
       <div className='space-y-8 min-w-0 w-full'>
+        <Link to='media' className='font-bold'>TODO: Ver Media</Link>
         <Section title='Sinopsis'>
           {overview}
         </Section>
