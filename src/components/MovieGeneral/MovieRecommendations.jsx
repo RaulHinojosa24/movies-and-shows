@@ -13,11 +13,23 @@ export default function MovieRecommendations () {
     }
   } = retrieveConfig(useRouteLoaderData('root'))
 
-  const { recommendations } = useRouteLoaderData('movie-details')
+  const {
+    recommendations: {
+      results: recommendations
+    }
+  } = useRouteLoaderData('movie-details')
 
-  const cleanRecommendations = recommendations.results.map(movie => ({
+  if (recommendations.length === 0) {
+    return (
+      <Section title='Recomendaciones'>
+        <p className='italic'>Actualmente no podemos ofrecerte ninguna recomendación.</p>
+      </Section>
+    )
+  }
+
+  const cleanRecommendations = recommendations.map(movie => ({
     id: movie.id,
-    title: movie.title,
+    title: movie.title || movie.original_title,
     backdropPath: movie.backdrop_path ? (baseURL + backdropSizes[1] + movie.backdrop_path) : DefaultLandscapeImage,
     mediaType: movie.media_type,
     releaseYear: movie.release_date ? new Date(movie.release_date).getFullYear() : null,
@@ -25,13 +37,13 @@ export default function MovieRecommendations () {
     voteCount: movie.vote_count
   }))
 
-  const slide = ({ id, backdropPath, title, releaseYear, voteAverage, voteCount }) => (
+  const slide = ({ id, backdropPath, title, releaseYear, voteAverage, voteCount, mediaType }) => (
     <div className='rounded overflow-hidden w-80 h-full custom-shadow'>
-      <Link to={`/movie/${id}`}>
-        <img loading='lazy' src={backdropPath} alt={`Picture from the film ${title}`} className='w-full aspect-video object-cover' />
+      <Link to={`/${mediaType}/${id}`}>
+        <img loading='lazy' src={backdropPath} alt={`Imagen de ${title}`} className='w-full aspect-video object-cover' />
       </Link>
-      <div className='py-2 flex justify-between px-2'>
-        <Link to={`/movie/${id}`} className=''>
+      <div className='p-2 flex justify-between gap-2'>
+        <Link to={`/${mediaType}/${id}`}>
           <p className='no-swiping font-semibold'>{title} {releaseYear && <>({releaseYear})</>}</p>
         </Link>
         <VoteCard rating={voteAverage} count={voteCount} small />

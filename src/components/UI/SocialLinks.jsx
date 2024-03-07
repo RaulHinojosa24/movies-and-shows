@@ -1,5 +1,3 @@
-import Section from './Section'
-
 import FacebookLogo from '../../logos/FacebookLogo'
 import ImdbLogo from '../../logos/ImdbLogo'
 import WikidataLogo from '../../logos/WikidataLogo'
@@ -71,17 +69,22 @@ export default function SocialLinks ({ externalIDs, homepageLink, name }) {
     }
   ]
 
+  const anySocial = socials.map(a => a.id).some(Boolean)
+
   return (
-    <Section>
-      <ul className='flex flex-col gap-6 items-center flex-wrap'>
-        {socials.map(social => (Boolean(social.id) &&
-          <li key={social.name}>
-            <a href={social.link} target='_blank' title={'Visita la página oficial de ' + social.name + ' de ' + name}>
-              <social.icon className='icon' />
-            </a>
-          </li>
-        ))}
-      </ul>
-    </Section>
+    <>
+      {anySocial &&
+        <section>
+          <ul className='flex flex-col gap-6 items-center flex-wrap'>
+            {socials.map(social => (Boolean(social.id) &&
+              <li key={social.name}>
+                <a href={social.link} target='_blank' title={'Visita la página oficial de ' + social.name + ' de ' + name}>
+                  <social.icon className='icon' />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>}
+    </>
   )
 }

@@ -5,7 +5,7 @@ import Section from '../UI/Section'
 import DefaultProfileImage from '../../assets/default-user.png'
 import Slider from '../UI/Slider'
 
-export default function MovieCast ({ cast }) {
+export default function MovieCast () {
   const {
     images: {
       secure_base_url: baseURL,
@@ -14,10 +14,21 @@ export default function MovieCast ({ cast }) {
   } = retrieveConfig(useRouteLoaderData('root'))
 
   const {
-    credits
+    credits: {
+      cast
+    }
   } = useRouteLoaderData('movie-details')
 
-  const cleanCast = credits.cast
+  if (cast.length === 0) {
+    return (
+      <Section title='Reparto principal'>
+        <p className='italic'>No disponemos de una lista del reparto actualmente.</p>
+        <Link to='cast' className='mt-2 inline-block'>Ver reparto y equipo completo</Link>
+      </Section>
+    )
+  }
+
+  const cleanCast = cast
     .filter((_, id) => id < 9)
     .map(person => ({
       id: person.id,
@@ -31,19 +42,20 @@ export default function MovieCast ({ cast }) {
   const slide = ({ id, name, picturePath, character }) => (
     <div className='h-full w-36 rounded overflow-hidden custom-shadow'>
       <Link to={'/person/' + id}>
-        <img loading='lazy' className='aspect-[4/5] object-cover object-top' src={picturePath} alt={`Picture of ${name}`} />
+        <img loading='lazy' className='aspect-[4/5] object-cover object-top' src={picturePath} alt={`Foto de perfil de ${name}`} />
       </Link>
-      <div className='p-2 h-full'>
-        <Link to={'/person/' + id} className='inline-block'>
-          <p className='no-swiping font-semibold w-fit'>{name}</p>
+      <div className='p-2'>
+        <Link to={'/person/' + id}>
+          <p className='no-swiping font-semibold inline'>{name}</p>
         </Link>
-        <p className='no-swiping w-fit text-sm'>{character}</p>
+        {character &&
+          <p className='no-swiping w-fit text-sm'>{character}</p>}
       </div>
     </div>
   )
 
   const lastSlide = () => (
-    <div className='w-32 h-full grid place-items-center'>
+    <div className='w-36 h-full grid place-items-center'>
       <Link to='cast'>Ver más ➡</Link>
     </div>
   )

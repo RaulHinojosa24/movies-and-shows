@@ -19,9 +19,10 @@
     @apply border-yellow-400 opacity-25 my-8;
   }
 
-  /* a {
-    @apply underline cursor-pointer underline-offset-[.25rem] w-fit;
-  } */
+  a {
+    /* @apply underline cursor-pointer underline-offset-[.25rem] w-fit; */
+    @apply w-fit;
+  }
 }
 
 @layer utilities {

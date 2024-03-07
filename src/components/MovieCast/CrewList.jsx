@@ -39,11 +39,11 @@ export default function CrewList ({ crew }) {
         const inClean = cleanMembers.find(el => el.id === member.id)
 
         if (inClean) {
-          inClean.job.push(member.job)
+          inClean.jobs.push(member.job)
         } else {
           cleanMembers.push({
             ...member,
-            job: [member.job]
+            jobs: [member.job]
           })
         }
       }
@@ -53,10 +53,10 @@ export default function CrewList ({ crew }) {
         members: cleanMembers
           .map(member => ({
             ...member,
-            job: member.job.sort()
+            jobs: member.jobs.sort()
           }))
           .sort((a, b) => (
-            a.job[0].localeCompare(b.job[0]) ||
+            a.jobs[0].localeCompare(b.jobs[0]) ||
             a.name.localeCompare(b.name)
           ))
       }
@@ -64,19 +64,19 @@ export default function CrewList ({ crew }) {
 
   return (
     <Section title='Equipo'>
-      <ol className='flex flex-col gap-4'>
+      <ol className='space-y-4'>
         {prettyCrew.map(({ department, members }) => {
           return (
             <li key={department}>
-              <SubSection title={department} className='gap-2'>
-                <ul className='flex flex-col gap-3'>
+              <SubSection title={department} className='space-y-2'>
+                <ul className='space-y-3'>
                   {members
                     .map(el => {
                       const imagePath = el.profile_path && baseURL + profileSizes[1] + el.profile_path
-                      const jobs = el.job.join(', ')
+                      const jobs = el.jobs.join(', ')
 
                       return (
-                        <li key={el.id + el.job}>
+                        <li key={el.id}>
                           <CastItem id={el.id} image={imagePath} primary={el.name} secondary={jobs} />
                         </li>
                       )

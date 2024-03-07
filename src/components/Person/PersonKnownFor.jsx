@@ -30,16 +30,17 @@ export default function PersonKnownFor () {
       title: cc.title,
       posterPath: cc.poster_path
         ? baseURL + posterSizes[1] + cc.poster_path
-        : DefaultProfileImage
+        : DefaultProfileImage,
+      type: cc.media_type
     }))
 
-  const slide = ({ id, name, title, posterPath }) => (
+  const slide = ({ id, name, title, posterPath, type }) => (
     <div className='h-full w-32 rounded overflow-hidden custom-shadow'>
-      <Link to={'/movie/' + id}>
+      <Link to={`/${type}/${id}`}>
         <img loading='lazy' className='aspect-[2/3] w-full object-cover object-top' src={posterPath} alt={`Picture of ${name}`} />
       </Link>
       <div className='p-2 h-full'>
-        <Link to={'/movie/' + id} className='inline-block'>
+        <Link to={`/${type}/${id}`} className='inline-block'>
           <p className='no-swiping font-semibold w-fit'>{title || name}</p>
         </Link>
       </div>

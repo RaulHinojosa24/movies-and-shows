@@ -15,6 +15,7 @@ import CollectionMediaPage from './pages/CollectionMedia'
 import PersonGeneralPage from './pages/PersonGeneral'
 import PersonMediaPage from './pages/PersonMedia'
 import TvDetailsLayout, { loader as tvDetailsLoader } from './layout/TvDetailsLayout'
+import TvGeneral from './pages/TvGeneral'
 
 export default function App () {
   useEffect(() => {
@@ -97,7 +98,13 @@ export default function App () {
           path: 'tv/:id',
           id: 'tv-details',
           element: <TvDetailsLayout />,
-          loader: tvDetailsLoader
+          loader: tvDetailsLoader,
+          children: [
+            {
+              index: true,
+              element: <TvGeneral />
+            }
+          ]
         }
       ]
     }

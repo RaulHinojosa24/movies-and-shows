@@ -1,20 +1,19 @@
 import { useState } from 'react'
-import { useRouteLoaderData } from 'react-router-dom'
 import Modal from '../UI/Modal'
 import SubSection from '../UI/SubSection'
 import WatchProvidersList from './WatchProvidersList'
 import TmdbLogoAltShort from '../../logos/TmdbLogoAltShort'
 import JustWatchLogo from '../../logos/JustWatchLogo'
 
-export default function MovieWatchProviders ({ className = '' }) {
+const TYPE_DICT = {
+  tv: 'la serie',
+  movie: 'la película'
+}
+
+export default function WatchProviders ({ className = '', watchProviders, title, type }) {
   const [isOpen, setIsOpen] = useState(false)
   const open = () => setIsOpen(true)
   const close = () => setIsOpen(false)
-
-  const {
-    title,
-    'watch/providers': watchProviders
-  } = useRouteLoaderData('movie-details')
 
   const tmdbLink = watchProviders.results.ES?.link
   const flatrateProvs = watchProviders.results.ES?.flatrate
@@ -27,7 +26,7 @@ export default function MovieWatchProviders ({ className = '' }) {
 
   const negativeResponse = 'no se han encontrado opciones para que puedas disfrutar del título de forma legal.\nLo sentimos'
 
-  const positiveResponse = 'la película se encuentra disponible en los siguientes formatos:'
+  const positiveResponse = TYPE_DICT[type] + ' se encuentra disponible en los siguientes formatos:'
   return (
     <>
       <button className={className + ' py-1 px-5 w-full rounded-b whitespace-nowrap font-semibold bg-yellow-400 text-black'} onClick={open}>Dónde ver</button>

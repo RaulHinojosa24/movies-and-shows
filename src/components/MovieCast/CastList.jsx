@@ -13,7 +13,7 @@ export default function CastList ({ cast }) {
 
   return (
     <Section title='Reparto'>
-      <ul className='flex flex-col gap-3'>
+      <ul className='space-y-3'>
         {cast.map(el => {
           const imagePath = el.profile_path && baseURL + profileSizes[1] + el.profile_path
 

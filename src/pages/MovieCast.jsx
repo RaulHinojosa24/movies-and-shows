@@ -10,7 +10,7 @@ export default function MovieCastPage () {
   const { cast, crew } = credits
 
   return (
-    <main className='px-app-space mx-auto w-full max-w-small-content flex flex-row justify-around'>
+    <main className='px-app-space mx-auto w-full max-w-small-content grid grid-cols-2'>
       <CastList cast={cast} />
       <CrewList crew={crew} />
     </main>
