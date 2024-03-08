@@ -5,7 +5,7 @@ import { retrieveConfig } from '../utils/utility'
 import PersonBio from '../components/Person/PersonBio'
 import PersonCredits from '../components/Person/PersonCredits'
 import PersonKnownFor from '../components/Person/PersonKnownFor'
-import SocialLinks from '../components/UI/SocialLinks'
+import SocialLinks from '../components/PageUI/SocialLinks'
 import Main from '../components/PageUI/Main'
 
 export default function PersonGeneralPage () {

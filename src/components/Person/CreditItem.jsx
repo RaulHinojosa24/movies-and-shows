@@ -1,5 +1,5 @@
 import { Link, useRouteLoaderData } from 'react-router-dom'
-import VoteCard from '../UI/VoteCard'
+import VoteCard from '../PageUI/VoteCard'
 import { retrieveConfig } from '../../utils/utility'
 import DefaultPoster from '../../assets/default-poster.png'
 

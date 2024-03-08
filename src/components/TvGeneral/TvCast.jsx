@@ -3,7 +3,7 @@ import { retrieveConfig } from '../../utils/utility'
 import Section from '../UI/Section'
 
 import DefaultProfileImage from '../../assets/default-user.png'
-import Slider from '../UI/Slider'
+import Slider from '../PageUI/Slider'
 
 export default function TvCast () {
   const {

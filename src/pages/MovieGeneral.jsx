@@ -1,7 +1,7 @@
 import { Link, useRouteLoaderData } from 'react-router-dom'
 import MovieCast from '../components/MovieGeneral/MovieCast'
 import MovieRecommendations from '../components/MovieGeneral/MovieRecommendations'
-import SocialLinks from '../components/UI/SocialLinks'
+import SocialLinks from '../components/PageUI/SocialLinks'
 import MovieLists from '../components/MovieGeneral/MovieLists'
 import MovieCollection from '../components/MovieGeneral/MovieCollection'
 import MovieReviews from '../components/MovieGeneral/MovieReviews'

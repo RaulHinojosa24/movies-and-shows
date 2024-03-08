@@ -1,11 +1,11 @@
 /* eslint-disable no-octal-escape */
 import { useRouteLoaderData } from 'react-router-dom'
 import { formatShortDate, formatRuntime, retrieveConfig } from '../../utils/utility'
-import VoteCard from '../UI/VoteCard'
+import VoteCard from '../PageUI/VoteCard'
 
 import DefaultPosterImage from '../../assets/default-poster.png'
 import WatchProviders from '../WatchProviders/WatchProviders'
-import HeaderMainCredits from '../UI/HeaderMainCredits'
+import HeaderMainCredits from '../PageUI/HeaderMainCredits'
 import useGenerateImageColors from '../../hooks/useGenerateImageColors'
 
 export default function Header ({ posterPath, backdropPath, title, releaseDate, firstAirDate, certification, runtime, genres = [], tagline, voteAverage, voteCount, mainCredits = [], watchProviders, mediaType, overview }) {

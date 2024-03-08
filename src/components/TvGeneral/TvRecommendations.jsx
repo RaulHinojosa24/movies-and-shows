@@ -1,9 +1,9 @@
 import { Link, useRouteLoaderData } from 'react-router-dom'
 import Section from '../UI/Section'
 import { retrieveConfig } from '../../utils/utility'
-import VoteCard from '../UI/VoteCard'
+import VoteCard from '../PageUI/VoteCard'
 import DefaultLandscapeImage from '../../assets/default-landscape.png'
-import Slider from '../UI/Slider'
+import Slider from '../PageUI/Slider'
 
 export default function TvRecommendations () {
   const {

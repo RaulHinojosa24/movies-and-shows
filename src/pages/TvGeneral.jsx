@@ -1,6 +1,6 @@
 import { Link, useRouteLoaderData } from 'react-router-dom'
 import TvDetails from '../components/TvGeneral/TvDetails'
-import SocialLinks from '../components/UI/SocialLinks'
+import SocialLinks from '../components/PageUI/SocialLinks'
 import Section from '../components/UI/Section'
 import TvCast from '../components/TvGeneral/TvCast'
 import TvRecommendations from '../components/TvGeneral/TvRecommendations'

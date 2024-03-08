@@ -3,7 +3,7 @@ import Section from '../UI/Section'
 import { retrieveConfig } from '../../utils/utility'
 
 import DefaultProfileImage from '../../assets/default-user.png'
-import Slider from '../UI/Slider'
+import Slider from '../PageUI/Slider'
 
 const sortingLogic = (cc) => cc.vote_count ** 2 * cc.vote_average
 
