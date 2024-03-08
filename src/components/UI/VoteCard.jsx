@@ -10,7 +10,7 @@ export default function VoteCard ({ rating, count, precission = 1, small, minima
   const avarageColor = generateVoteColor(rating / 10)
 
   return (
-    <div className='bg-neutral-900 rounded w-fit h-fit py-1 px-4 flex flex-col items-center font-semibold custom-shadow-small' {...props}>
+    <div className='bg-neutral-900 text-neutral-100 rounded w-fit h-fit py-1 px-4 flex flex-col items-center font-semibold custom-shadow-small' {...props}>
       <div className='flex items-end gap-1'>
         <span style={{ color: avarageColor }} className={`font-bold ${!small ? 'text-xl' : ''}`}>{prettyAvarage}</span>
         /

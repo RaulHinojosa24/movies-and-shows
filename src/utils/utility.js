@@ -75,7 +75,7 @@ export function roundDecimals (number, decimals = 0) {
 
 export function generateVoteColor (value) {
   const hue = (value * 120).toString(10)
-  return ['hsl(', hue, ',100%,50%)'].join('')
+  return ['hsl(', hue, ',100%,40%)'].join('')
 }
 
 export function getPersonGender (type) {
