@@ -51,15 +51,13 @@ export default function MediaVideos () {
             <div className='grid grid-cols-3 gap-2'>
               {videos.map(video => {
                 return (
-                  <a
-                    key={video.id}
-                    className='cursor-pointer'
+
+                  <div
+                    key={video.id} style={{ backgroundImage: `url(https://i3.ytimg.com/vi/${video.key}/hqdefault.jpg)` }} className='w-full aspect-video bg-cover bg-center grid place-content-center cursor-pointer'
                     onClick={() => setModalVideo(video)}
                   >
-                    <div style={{ backgroundImage: `url(https://i3.ytimg.com/vi/${video.key}/hqdefault.jpg)` }} className='w-full aspect-video bg-cover bg-center grid place-content-center'>
-                      <PlayButton />
-                    </div>
-                  </a>
+                    <PlayButton />
+                  </div>
                 )
               })}
             </div>
