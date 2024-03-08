@@ -13,7 +13,16 @@ export default function CastItem ({ id, image, primary, secondary }) {
         <Link to={'/person/' + id} className='font-semibold'>
           {primary}
         </Link>
-        <p className='text-sm'>{secondary}</p>
+        <p className='text-sm [&>*+*]:before:content-[","] [&>*+*]:before:mr-1'>{secondary.map(j => {
+          const { credit_id: id, job, character, episode_count: episodes } = j
+
+          return (
+            <span key={id}>
+              {job || character} {episodes && <>({episodes} episodios)</>}
+            </span>
+          )
+        })}
+        </p>
       </div>
     </div>
   )

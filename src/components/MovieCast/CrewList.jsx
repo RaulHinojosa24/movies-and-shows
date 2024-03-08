@@ -4,7 +4,7 @@ import CastItem from './CastItem'
 import SubSection from '../UI/SubSection'
 import { retrieveConfig } from '../../utils/utility'
 
-export default function CrewList ({ crew }) {
+export default function CrewList ({ crew, needJoin }) {
   const {
     images: {
       secure_base_url: baseURL,
@@ -33,19 +33,29 @@ export default function CrewList ({ crew }) {
 
   const prettyCrew = depsWithMembers
     .map(({ department, members }) => {
-      const cleanMembers = []
+      let cleanMembers = []
 
-      for (const member of members) {
-        const inClean = cleanMembers.find(el => el.id === member.id)
+      if (needJoin) {
+        for (const member of members) {
+          const inClean = cleanMembers.find(el => el.id === member.id)
 
-        if (inClean) {
-          inClean.jobs.push(member.job)
-        } else {
-          cleanMembers.push({
-            ...member,
-            jobs: [member.job]
-          })
+          if (inClean) {
+            inClean.jobs.push({
+              credit_id: member.credit_id,
+              job: member.job
+            })
+          } else {
+            cleanMembers.push({
+              ...member,
+              jobs: [{
+                credit_id: member.credit_id,
+                job: member.job
+              }]
+            })
+          }
         }
+      } else {
+        cleanMembers = members
       }
 
       return {
@@ -53,10 +63,10 @@ export default function CrewList ({ crew }) {
         members: cleanMembers
           .map(member => ({
             ...member,
-            jobs: member.jobs.sort()
+            jobs: member.jobs.sort((a, b) => a.job.localeCompare(b.job))
           }))
           .sort((a, b) => (
-            a.jobs[0].localeCompare(b.jobs[0]) ||
+            a.jobs[0].job.localeCompare(b.jobs[0].job) ||
             a.name.localeCompare(b.name)
           ))
       }
@@ -73,11 +83,10 @@ export default function CrewList ({ crew }) {
                   {members
                     .map(el => {
                       const imagePath = el.profile_path && baseURL + profileSizes[1] + el.profile_path
-                      const jobs = el.jobs.join(', ')
 
                       return (
                         <li key={el.id}>
-                          <CastItem id={el.id} image={imagePath} primary={el.name} secondary={jobs} />
+                          <CastItem id={el.id} image={imagePath} primary={el.name} secondary={el.jobs} />
                         </li>
                       )
                     })}
