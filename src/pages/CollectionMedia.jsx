@@ -1,11 +1,16 @@
 import MediaBackdrops from '../components/CollectionMedia/MediaBackdrops'
 import MediaPosters from '../components/CollectionMedia/MediaPosters'
+import Main from '../components/PageUI/Main'
 
 export default function CollectionMediaPage () {
   return (
-    <main className='px-app-space mx-auto w-full max-w-small-content'>
-      <MediaBackdrops />
-      <MediaPosters />
-    </main>
+    <Main
+      center={
+        <>
+          <MediaBackdrops />
+          <MediaPosters />
+        </>
+      }
+    />
   )
 }

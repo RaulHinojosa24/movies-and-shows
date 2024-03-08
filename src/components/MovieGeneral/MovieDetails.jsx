@@ -21,7 +21,7 @@ export default function MovieDetails () {
   const prettyRevenue = formatCurrency(revenue)
 
   return (
-    <Section title='Detalles' className='space-y-2'>
+    <Section title='Detalles' className='space-y-3'>
       {originalTitle &&
         <SubSection title='Título original'>
           {originalTitle}

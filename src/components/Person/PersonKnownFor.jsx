@@ -37,7 +37,7 @@ export default function PersonKnownFor () {
   const slide = ({ id, name, title, posterPath, type }) => (
     <div className='h-full w-32 rounded overflow-hidden custom-shadow'>
       <Link to={`/${type}/${id}`}>
-        <img loading='lazy' className='aspect-[2/3] w-full object-cover object-top' src={posterPath} alt={`Picture of ${name}`} />
+        <img loading='lazy' className='aspect-[2/3] w-full object-cover object-top' src={posterPath} alt={`Póster de ${title || name}`} />
       </Link>
       <div className='p-2 h-full'>
         <Link to={`/${type}/${id}`} className='inline-block'>

@@ -6,6 +6,7 @@ import PersonBio from '../components/Person/PersonBio'
 import PersonCredits from '../components/Person/PersonCredits'
 import PersonKnownFor from '../components/Person/PersonKnownFor'
 import SocialLinks from '../components/UI/SocialLinks'
+import Main from '../components/PageUI/Main'
 
 export default function PersonGeneralPage () {
   const {
@@ -26,21 +27,25 @@ export default function PersonGeneralPage () {
     : DefaultProfile
 
   return (
-    <main className='flex p-app-space gap-8'>
-      <section className='w-aside shrink-0 space-y-8'>
-        <img className='aspect-[2/3] object-cover w-full rounded' src={prettyProfilePath} alt={'Foto de ' + name} />
-        <PersonInfo />
-      </section>
-      <section className='min-w-0 w-full space-y-8'>
-        <h1 className='text-4xl font-bold'>{name}</h1>
-        <Link to='media' className='font-bold'>TODO: Ver Media</Link>
-        <PersonBio />
-        <PersonKnownFor />
-        <PersonCredits />
-      </section>
-      <section>
+    <Main
+      left={
+        <>
+          <img className='aspect-[2/3] object-cover w-full rounded' src={prettyProfilePath} alt={'Foto de ' + name} />
+          <PersonInfo />
+        </>
+      }
+      center={
+        <>
+          <h1 className='text-4xl font-bold'>{name}</h1>
+          <Link to='media' className='font-bold'>TODO: Ver Media</Link>
+          <PersonBio />
+          <PersonKnownFor />
+          <PersonCredits />
+        </>
+      }
+      right={
         <SocialLinks externalIDs={externalIDs} name={name} />
-      </section>
-    </main>
+      }
+    />
   )
 }

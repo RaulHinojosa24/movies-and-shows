@@ -2,6 +2,8 @@ import { useRouteLoaderData } from 'react-router-dom'
 import CastList from '../components/MovieCast/CastList'
 import CrewList from '../components/MovieCast/CrewList'
 
+import Main from '../components/PageUI/Main'
+
 export default function MovieCastPage () {
   const {
     credits
@@ -10,9 +12,13 @@ export default function MovieCastPage () {
   const { cast, crew } = credits
 
   return (
-    <main className='px-app-space mx-auto w-full max-w-small-content grid grid-cols-2'>
-      <CastList cast={cast} />
-      <CrewList crew={crew} />
-    </main>
+    <Main
+      center={
+        <div className='grid grid-cols-2'>
+          <CastList cast={cast} needJoin />
+          <CrewList crew={crew} needJoin />
+        </div>
+      }
+    />
   )
 }

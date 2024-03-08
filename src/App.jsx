@@ -16,6 +16,7 @@ import PersonGeneralPage from './pages/PersonGeneral'
 import PersonMediaPage from './pages/PersonMedia'
 import TvDetailsLayout, { loader as tvDetailsLoader } from './layout/TvDetailsLayout'
 import TvGeneral from './pages/TvGeneral'
+import TvCastPage from './pages/TvCast'
 
 export default function App () {
   useEffect(() => {
@@ -103,6 +104,10 @@ export default function App () {
             {
               index: true,
               element: <TvGeneral />
+            },
+            {
+              path: 'cast',
+              element: <TvCastPage />
             }
           ]
         }

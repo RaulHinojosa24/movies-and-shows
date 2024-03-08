@@ -26,7 +26,7 @@ export default function CreditItem ({
     : 'Serie'
   const url = mediaType === 'movie'
     ? '/movie/' + id
-    : ''
+    : '/tv/' + id
   const path = posterPath
     ? baseURL + posterSizes[0] + posterPath
     : DefaultPoster
