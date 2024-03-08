@@ -20,11 +20,8 @@ export default function useGenerateImageColors (posterPath, transparency = 1) {
     if (!posterPath) return
 
     fac.getColorAsync(URL + posterSizes[0] + posterPath, {
-      algorithm: 'simple',
-      ignoredColor: [
-        [255, 255, 255, 255],
-        [0, 0, 0, 255]
-      ]
+      algorithm: 'dominant',
+      ignoredColor: []
     })
       .then(color => {
         const [r, g, b] = color.value
