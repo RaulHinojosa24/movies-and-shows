@@ -38,7 +38,7 @@ export default function MovieRecommendations () {
   }))
 
   const slide = ({ id, backdropPath, title, releaseYear, voteAverage, voteCount, mediaType }) => (
-    <div className='rounded overflow-hidden w-80 h-full custom-shadow'>
+    <div className='rounded overflow-hidden w-72 md:w-80 h-full custom-shadow'>
       <Link to={`/${mediaType}/${id}`}>
         <img loading='lazy' src={backdropPath} alt={`Imagen de ${title}`} className='w-full aspect-video object-cover' />
       </Link>

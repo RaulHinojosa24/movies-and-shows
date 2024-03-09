@@ -27,10 +27,10 @@ export default function MovieCollection () {
           linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
           url(${backdropURL})
           `
-        }} className='flex flex-col items-center bg-cover bg-center bg-no-repeat rounded py-12'
+        }} className='flex flex-col items-center bg-cover bg-center bg-no-repeat rounded py-12 p-8'
       >
         <p>Ésta película pertenece a...</p>
-        <h3 className='text-3xl'>{collection.name}</h3>
+        <h3 className='text-3xl text-center'>{collection.name}</h3>
         <Link to={'/collection/' + collection.id} className='mt-8 bg-yellow-400 text-black font-bold py-1 px-6 rounded-full'>Ver la colección completa</Link>
       </div>
     </Section>

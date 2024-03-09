@@ -44,7 +44,7 @@ export default function PersonGeneralPage () {
         </>
       }
       right={
-        <SocialLinks externalIDs={externalIDs} name={name} />
+        <SocialLinks externalIDs={externalIDs} name={name} isPerson />
       }
     />
   )

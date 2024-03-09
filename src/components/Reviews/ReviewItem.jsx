@@ -41,7 +41,7 @@ export default function ReviewItem ({ author, authorDetails, content, createdAt,
         </div>
       </header>
       <main className='mt-3'>
-        <p className={`whitespace-pre-line text-pretty line-clamp-5 ${isClamped ? 'read-shadow' : ''}`} ref={clampedContent}>{content}</p>
+        <p className={`whitespace-pre-line text-pretty line-clamp-5 ${isClamped ? 'read-shadow after:to-neutral-900' : ''}`} ref={clampedContent}>{content}</p>
         {isClamped && <a href={url} target='_blank'>Leer más</a>}
       </main>
     </div>

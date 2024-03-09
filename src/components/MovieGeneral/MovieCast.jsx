@@ -40,7 +40,7 @@ export default function MovieCast () {
     }))
 
   const slide = ({ id, name, picturePath, character }) => (
-    <div className='h-full w-36 rounded overflow-hidden custom-shadow'>
+    <div className='h-full w-32 rounded overflow-hidden custom-shadow'>
       <Link to={'/person/' + id}>
         <img loading='lazy' className='aspect-[4/5] object-cover object-top' src={picturePath} alt={`Foto de perfil de ${name}`} />
       </Link>

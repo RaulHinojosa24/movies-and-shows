@@ -14,7 +14,7 @@ export default function TvCastPage () {
   return (
     <Main
       center={
-        <div className='grid grid-cols-2'>
+        <div className='grid md:grid-cols-2 gap-8'>
           <CastList cast={cast} />
           <CrewList crew={crew} />
         </div>

@@ -47,13 +47,13 @@ export default function MediaVideos () {
       {modalVideo && <VideoModal video={modalVideo} onClose={() => setModalVideo(null)} />}
       <Section title='Vídeos'>
         {cleanVideos.map(({ type, videos }) => (
-          <SubSection key={type} title={type}>
-            <div className='grid grid-cols-3 gap-2'>
+          <SubSection key={type} title={type} className='space-y-4'>
+            <div className='flex flex-wrap gap-2'>
               {videos.map(video => {
                 return (
 
                   <div
-                    key={video.id} style={{ backgroundImage: `url(https://i3.ytimg.com/vi/${video.key}/hqdefault.jpg)` }} className='w-full aspect-video bg-cover bg-center grid place-content-center cursor-pointer'
+                    key={video.id} style={{ backgroundImage: `url(https://i3.ytimg.com/vi/${video.key}/hqdefault.jpg)` }} className='w-full max-w-80 aspect-video bg-cover bg-center grid place-content-center cursor-pointer'
                     onClick={() => setModalVideo(video)}
                   >
                     <PlayButton />

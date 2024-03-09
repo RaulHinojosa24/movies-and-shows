@@ -7,7 +7,7 @@ import TiktokLogo from '../../logos/TiktokLogo'
 import YoutubeLogo from '../../logos/YoutubeLogo'
 import LinkIcon from '../../icons/LinkIcon'
 
-export default function SocialLinks ({ externalIDs, homepageLink, name }) {
+export default function SocialLinks ({ externalIDs, homepageLink, name, isPerson }) {
   const {
     imdb_id: imdb,
     wikidata_id: wikidata,
@@ -46,6 +46,7 @@ export default function SocialLinks ({ externalIDs, homepageLink, name }) {
     {
       name: 'IMDB',
       link: 'https://www.imdb.com/title/' + imdb,
+      personLink: 'https://www.imdb.com/name/' + imdb,
       icon: ImdbLogo,
       id: imdb
     },
@@ -75,10 +76,10 @@ export default function SocialLinks ({ externalIDs, homepageLink, name }) {
     <>
       {anySocial &&
         <section>
-          <ul className='flex flex-col gap-6 items-center flex-wrap'>
+          <ul className='flex flex-row w-3/5 md:w-full md:flex-col gap-6 justify-center mx-auto items-center flex-wrap'>
             {socials.map(social => (Boolean(social.id) &&
               <li key={social.name}>
-                <a href={social.link} target='_blank' title={'Visita la página oficial de ' + social.name + ' de ' + name}>
+                <a href={isPerson ? (social.personLink || social.link) : social.link} target='_blank' title={'Visita la página oficial de ' + social.name + ' de ' + name}>
                   <social.icon className='icon' />
                 </a>
               </li>
