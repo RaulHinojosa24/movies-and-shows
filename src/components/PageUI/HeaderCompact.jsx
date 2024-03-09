@@ -6,7 +6,7 @@ import DefaultPosterImage from '../../assets/default-poster.png'
 import useGenerateImageColors from '../../hooks/useGenerateImageColors'
 
 export default function HeaderCompact ({ posterPath, title, id, mediaType }) {
-  const [color, isDark] = useGenerateImageColors(posterPath)
+  const [[r, g, b], isDark] = useGenerateImageColors(posterPath, 0.4)
 
   const {
     images: {
@@ -22,8 +22,8 @@ export default function HeaderCompact ({ posterPath, title, id, mediaType }) {
   return (
     <>
       <header
-        style={{ backgroundColor: color }}
-        className={`flex p-app-space py-4 gap-4 ${isDark ? 'text-neutral-100' : 'text-black'} transition-all`}
+        style={{ backgroundColor: `rgb(${r},${g},${b})` }}
+        className={`flex p-app-space py-4 gap-4 ${isDark ? '' : 'text-black'}`}
       >
         <img loading='lazy' src={prettyPosterURL} alt={'Poster de ' + title} className='aspect-[2/3] object-cover w-16 shrink-0 rounded shadow-lg shadow-neutral-950' />
         <div className='flex flex-col justify-center '>

@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
-import { FastAverageColor } from 'fast-average-color'
 import { retrieveConfig } from '../utils/utility'
 import { useRouteLoaderData } from 'react-router-dom'
 
+import Vibrant from 'node-vibrant'
+
 export default function useGenerateImageColors (posterPath, transparency = 1) {
-  const [color, setColor] = useState('rgba(30,30,30,' + transparency + ')')
+  const [color, setColor] = useState([30, 30, 30])
   const [isDark, setIsDark] = useState(true)
 
   const {
@@ -15,24 +16,15 @@ export default function useGenerateImageColors (posterPath, transparency = 1) {
   } = retrieveConfig(useRouteLoaderData('root'))
 
   useEffect(() => {
-    const fac = new FastAverageColor()
-
     if (!posterPath) return
 
-    fac.getColorAsync(URL + posterSizes[0] + posterPath, {
-      algorithm: 'dominant',
-      ignoredColor: []
-    })
-      .then(color => {
-        const [r, g, b] = color.value
-        setColor(`rgba(${r},${g},${b},${transparency})`)
-        setIsDark(color.isDark)
-      })
-      .catch(e => {
-        console.log(e)
-      })
+    Vibrant.from(URL + posterSizes[0] + posterPath).getPalette()
+      .then((palette) => {
+        const swatch = palette.Vibrant
 
-    return () => fac.destroy()
+        setColor(swatch.getRgb())
+        setIsDark(swatch.getBodyTextColor() === '#fff')
+      })
   }, [URL, posterPath, posterSizes, transparency])
 
   return [color, isDark]
