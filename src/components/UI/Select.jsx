@@ -2,7 +2,7 @@ export default function Select ({ name, label, options, ...props }) {
   return (
     <div className='relative custom-shadow-small rounded'>
       <label
-        htmlFor={name} className='absolute px-2 left-1 text-xs text-neutral-300 bg-gradient-to-b from-neutral-950 from-[calc(3/5*100%-1px)] to-[calc(3/5*100%-1px)] to-neutral-900 -translate-y-[calc(3/5*100%)] max-w-[90%] whitespace-nowrap overflow-hidden overflow-ellipsis'
+        htmlFor={name} className='absolute px-2 left-1 text-xs dark:text-neutral-300 bg-gradient-to-b dark:from-neutral-950 from-white from-[calc(3/5*100%-1px)] to-[calc(3/5*100%-1px)] dark:to-neutral-900 to-white -translate-y-[calc(3/5*100%)] max-w-[90%] whitespace-nowrap overflow-hidden overflow-ellipsis'
       >{label}
       </label>
       <select
@@ -12,7 +12,7 @@ export default function Select ({ name, label, options, ...props }) {
         {options.map((option) => (
           <option
             key={option.value} value={option.value}
-            className='bg-neutral-900 active:bg-neutral-800'
+            className='dark:bg-neutral-900 dark:active:bg-neutral-800'
           >{option.label}
           </option>
         ))}

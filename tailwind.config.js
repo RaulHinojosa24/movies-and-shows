@@ -47,5 +47,6 @@ export default {
       }
     }
   },
-  plugins: []
+  plugins: [],
+  darkMode: 'media'
 }

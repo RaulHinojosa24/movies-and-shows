@@ -18,18 +18,8 @@ export default function Slider ({ slides, LastSlide, SlideComponent }) {
         .swiper {
           padding: 1px 5px 20px 5px;
           margin: -1px -5px -9px -5px;
-        }
-
-        .swiper::after {
-          content: "";
-          width: 60px;
-          height: 100%;
-          position: absolute;
-          top: 0;
-          right: 0;
-          background-image: linear-gradient(to right, transparent, #0a0a0a);
-          pointer-events: none;
-          z-index: 10;
+          mask-image: linear-gradient(to right, rgba(0,0,0,1) calc(100% - 4rem), rgba(0,0,0,0));
+          -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) calc(100% - 4rem), rgba(0,0,0,0));
         }
         `]
     }

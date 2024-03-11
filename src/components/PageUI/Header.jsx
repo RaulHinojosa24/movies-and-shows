@@ -44,11 +44,11 @@ export default function Header ({ posterPath, backdropPath, title, releaseDate, 
           `
         }}
         className={`
-          bg-cover bg-center bg-no-repeat flex flex-col items-center gap-8 p-8 ${isDark ? '' : 'text-black'}
+          bg-cover bg-center bg-no-repeat flex flex-col items-center gap-8 p-8 ${isDark ? 'text-white' : 'text-black'}
           md:flex-row md:items-end
         `}
       >
-        <section className='w-aside shrink-0 overflow-hidden rounded shadow-lg shadow-neutral-950'>
+        <section className='w-aside shrink-0 overflow-hidden rounded shadow-lg shadow-black/75'>
           <img loading='lazy' src={prettyPosterURL} alt={'Poster de ' + title} className='aspect-[2/3] object-cover w-full' />
           {watchProviders &&
             <WatchProviders watchProviders={watchProviders} title={title} type={mediaType} />}
@@ -77,7 +77,7 @@ export default function Header ({ posterPath, backdropPath, title, releaseDate, 
             </ul>}
           </div>
           {tagline &&
-            <p className={`italic ${isDark ? '' : 'text-neutral-900'} font-semibold`}>{tagline}</p>}
+            <p className={`italic ${isDark ? 'text-neutral-100' : 'text-neutral-900'} font-semibold`}>{tagline}</p>}
           {!!voteAverage && !!voteCount &&
             <VoteCard rating={voteAverage} count={voteCount} theme={isDark ? 'light' : 'dark'} />}
           {overview &&

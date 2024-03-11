@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Select from '../UI/Select'
 import SortAscIcon from '../../icons/SortAscIcon'
 import SortDescIcon from '../../icons/SortDescIcon'
+import DefaultPosterImg from '../../assets/default-poster.png'
 
 export default function CollectionList () {
   const { parts } = useRouteLoaderData('collection-details')
@@ -76,19 +77,24 @@ export default function CollectionList () {
             release_date: releaseDate
           } = part
 
+          const prettyPath = posterPath
+            ? baseURL + posterSizes[0] + posterPath
+            : DefaultPosterImg
+
           return (
             <li key={id} className='flex rounded overflow-hidden custom-shadow'>
               <Link to={'/movie/' + id} className='contents'>
-                <img className='aspect-[2/3] object-cover w-full max-w-24' src={baseURL + posterSizes[0] + posterPath} alt={'Poster de la película ' + title} />
+                <img className='aspect-[2/3] object-cover w-full max-w-24' src={prettyPath} alt={'Poster de la película ' + title} />
               </Link>
               <div className='flex flex-col justify-around p-4'>
                 <div>
                   <Link to={'/movie/' + id} className='inline-block'>
                     <h3 className='font-semibold text-lg'>{title}</h3>
                   </Link>
-                  <p className='text-neutral-300'>{releaseDate ? formatLongDate(releaseDate) : 'Fecha desconocida'}</p>
+                  <p className='dark:text-neutral-300 text-neutral-600'>{releaseDate ? formatLongDate(releaseDate) : 'Fecha desconocida'}</p>
                 </div>
-                <p className='line-clamp-2'>{overview}</p>
+                {overview &&
+                  <p className='line-clamp-2'>{overview}</p>}
               </div>
             </li>
           )

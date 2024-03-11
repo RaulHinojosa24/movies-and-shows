@@ -20,9 +20,11 @@ import TvCastPage from './pages/TvCast'
 
 export default function App () {
   useEffect(() => {
-    window.addEventListener('popstate', e => {
-      window.scrollTo(0, 0)
-    })
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+
+    if (prefersDark) {
+      document.documentElement.className = 'dark'
+    }
   }, [])
 
   const router = createBrowserRouter([

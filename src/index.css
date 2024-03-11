@@ -3,8 +3,16 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --bg-color: rgb(255, 255, 255);
+  }
+
   html {
-    @apply text-white bg-neutral-950;
+    @apply text-black bg-white dark:text-white dark:bg-neutral-950;
+  }
+
+  html.dark {
+    --bg-color: rgb(10, 10, 10);
   }
 
   body {
@@ -27,16 +35,18 @@
 
 @layer utilities {
   .custom-shadow {
-    @apply bg-neutral-900 shadow-md shadow-neutral-800 border-1 border-neutral-700/50;
+    @apply dark:bg-neutral-900 shadow-md dark:shadow-neutral-800 border-1 dark:border-neutral-700/50;
   }
   .custom-shadow-small {
-    @apply bg-neutral-900 shadow-sm shadow-neutral-800 border-1 border-neutral-700/50;
+    @apply dark:bg-neutral-900 shadow-sm dark:shadow-neutral-800 border-1 dark:border-neutral-700/50;
   }
   .icon {
     @apply w-8 hover:text-yellow-400 transition-colors;
   }
   .read-shadow {
     @apply relative after:pointer-events-none after:absolute after:bottom-0 after:left-0 after:w-full after:h-8 after:bg-gradient-to-b after:from-transparent;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) calc(100% - 2rem), rgba(0,0,0,0));
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) calc(100% - 2rem), rgba(0,0,0,0));
   }
 }
 

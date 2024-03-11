@@ -20,7 +20,7 @@ export default function MovieCollection () {
     : ''
 
   return (
-    <Section title='Colección'>
+    <Section title='Colección' className='text-white'>
       <div
         style={{
           backgroundImage: `

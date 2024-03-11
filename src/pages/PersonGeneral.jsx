@@ -30,7 +30,7 @@ export default function PersonGeneralPage () {
     <Main
       left={
         <>
-          <img className='aspect-[2/3] object-cover w-full rounded' src={prettyProfilePath} alt={'Foto de ' + name} />
+          <img className='aspect-[2/3] object-cover w-full max-w-aside rounded' src={prettyProfilePath} alt={'Foto de ' + name} />
           <PersonInfo />
         </>
       }

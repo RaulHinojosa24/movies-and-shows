@@ -37,7 +37,7 @@ export default function MovieDetails () {
         <SubSection title='Palabras clave'>
           <ul className='flex gap-2 flex-wrap'>
             {keywords.keywords.map(({ id, name }) => (
-              <li key={id} className='bg-neutral-900 px-2 py-1 rounded border-1 border-neutral-800 text-sm'>{name}</li>
+              <li key={id} className='dark:bg-neutral-900 px-2 py-1 rounded border-1 dark:border-neutral-800 text-sm'>{name}</li>
             ))}
           </ul>
         </SubSection>}
