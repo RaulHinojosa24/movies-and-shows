@@ -69,7 +69,7 @@ export default function Header ({ posterPath, backdropPath, title, releaseDate, 
                 ))}
               </ul>}
           </div>
-          <div className='md:hidden visible'>{prettyGenres.length > 0 &&
+          <div className='md:hidden block'>{prettyGenres.length > 0 &&
             <ul className='flex flex-wrap shrink-0 [&>*+*]:before:content-[","] [&>*+*]:before:mr-1'>
               {prettyGenres.map(({ id, name }) => (
                 <li key={id}>{name}</li>

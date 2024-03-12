@@ -30,14 +30,15 @@ export default function PersonGeneralPage () {
     <Main
       left={
         <>
-          <img className='aspect-[2/3] object-cover w-full max-w-aside rounded' src={prettyProfilePath} alt={'Foto de ' + name} />
-          <PersonInfo />
+          <img className='aspect-[2/3] object-cover w-full mx-auto max-w-aside rounded custom-shadow' src={prettyProfilePath} alt={'Foto de ' + name} />
+          <PersonInfo className='hidden md:block' />
         </>
       }
       center={
         <>
-          <h1 className='text-4xl font-bold'>{name}</h1>
-          <Link to='media' className='font-bold'>TODO: Ver Media</Link>
+          <h1 className='text-4xl font-bold text-center md:text-left'>{name}</h1>
+          <Link to='media' className='font-bold text-center md:text-left'>TODO: Ver Media</Link>
+          <PersonInfo className='md:hidden block' />
           <PersonBio />
           <PersonKnownFor />
           <PersonCredits />
