@@ -1,6 +1,6 @@
 import { Link, useRouteLoaderData } from 'react-router-dom'
 import Section from '../UI/Section'
-import ListItem from '../Lists/ListItem'
+import ListItem from '../List/ListItem'
 
 const shorListsLength = 5
 

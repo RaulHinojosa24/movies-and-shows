@@ -22,7 +22,7 @@ export default function PersonInfo ({ className = '' }) {
 
   return (
     <Section title='Información personal' className={className}>
-      <div className='flex flex-wrap gap-4 [&>*]:grow'>
+      <div className='flex md:flex-col flex-row flex-wrap gap-4 [&>*]:grow'>
         <SubSection title='Conocida por'>{knownForDepartment}</SubSection>
         <SubSection title='Género'>{prettyGender}</SubSection>
         <SubSection title='Fecha de nacimiento'>

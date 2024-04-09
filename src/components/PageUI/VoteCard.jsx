@@ -16,7 +16,7 @@ export default function VoteCard ({ rating, count, precission = 1, small, minima
         /
         <span>10</span>
       </div>
-      {!small && <p>{prettyCount} votos</p>}
+      {!small && <p className='text-sm'>{prettyCount} votos</p>}
     </div>
   )
 }

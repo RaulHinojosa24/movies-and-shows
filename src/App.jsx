@@ -17,6 +17,7 @@ import PersonMediaPage from './pages/PersonMedia'
 import TvDetailsLayout, { loader as tvDetailsLoader } from './layout/TvDetailsLayout'
 import TvGeneral from './pages/TvGeneral'
 import TvCastPage from './pages/TvCast'
+import ListPage, { loader as listLoader } from './pages/List'
 
 export default function App () {
   useEffect(() => {
@@ -112,6 +113,11 @@ export default function App () {
               element: <TvCastPage />
             }
           ]
+        },
+        {
+          path: 'list/:id',
+          element: <ListPage />,
+          loader: listLoader
         }
       ]
     }
