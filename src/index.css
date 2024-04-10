@@ -29,7 +29,7 @@
 
   a {
     /* @apply underline cursor-pointer underline-offset-[.25rem] w-fit; */
-    @apply w-fit;
+    @apply w-fit hover:underline underline-offset-4;
   }
 }
 
@@ -65,6 +65,23 @@ swiper-slide {
   animation-timeline: scroll();
   animation-range-start: 50vh;
   animation-range-end: 51vh;
+}
+
+.loader {
+  width: 60px;
+  aspect-ratio: 6;
+  --_g: no-repeat radial-gradient(circle closest-side,#000 90%,#0000);
+  background: 
+    var(--_g) 0%   50%,
+    var(--_g) 50%  50%,
+    var(--_g) 100% 50%;
+  background-size: calc(100%/3) 100%;
+  animation: l7 1s infinite linear;
+}
+@keyframes l7 {
+    33%{background-size:calc(100%/3) 0%  ,calc(100%/3) 100%,calc(100%/3) 100%}
+    50%{background-size:calc(100%/3) 100%,calc(100%/3) 0%  ,calc(100%/3) 100%}
+    66%{background-size:calc(100%/3) 100%,calc(100%/3) 100%,calc(100%/3) 0%  }
 }
 
 @keyframes appear {
