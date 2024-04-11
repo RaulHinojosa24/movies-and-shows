@@ -14,7 +14,7 @@ export default function VoteCard ({ rating, count, small, minimal, width, classN
 
   return (
     <div className={className}>
-      <div className={`bg-black rounded-full relative w-fit aspect-square grid place-content-center ${small ? 'px-2 text-base font-semibold' : 'px-3 text-2xl font-bold'}`} title={count > 0 && `Media basada en ${count} votos`}>
+      <div className={`bg-black rounded-full relative w-fit aspect-square grid place-content-center shadow-md shadow-black/50 ${small ? 'px-2 text-base font-semibold' : 'px-3 text-2xl font-bold'}`} title={count > 0 && `Media basada en ${count} votos`}>
         <svg
           style={{
             strokeWidth: 4,
