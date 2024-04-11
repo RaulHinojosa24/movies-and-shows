@@ -5,7 +5,7 @@ export default function GoToTopButton () {
   return (
     <button
       id='scroll-to-top'
-      className='fixed bottom-8 right-8 w-12 bg-yellow-400 aspect-square rounded-full grid place-items-center'
+      className='fixed bottom-8 right-8 w-12 bg-yellow-400 aspect-square rounded-full grid place-items-center z-10'
       onClick={scrollToTop}
     >
       <ArrowUp className='h-1/2' />
