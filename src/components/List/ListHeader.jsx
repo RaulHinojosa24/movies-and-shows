@@ -42,7 +42,7 @@ export default function ListHeader () {
             filter: backdropPath ? 'sepia(100%) saturate(300%) brightness(50%)' : ''
           }}
           className={`
-            -z-10 absolute top-0 left-0 w-full h-full bg-cover bg-center bg-no-repeat bg-yellow-500
+            -z-10 absolute top-0 left-0 w-full h-full bg-cover bg-center bg-no-repeat bg-yellow-500 pointer-events-none
           `}
         />
         <section className='flex flex-col px-app-space pt-app-space pb-4 gap-4 grow items-start'>
