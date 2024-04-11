@@ -56,7 +56,7 @@ export default function ListPage () {
       <ListHeader />
       <Main center={
         <>
-          <div className='md:table border-separate border-spacing-y-2'>
+          <div className='md:table border-separate border-spacing-y-2 space-y-2'>
             {sortedList.map((result, index) => {
               const {
                 id,
