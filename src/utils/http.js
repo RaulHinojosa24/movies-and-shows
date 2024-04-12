@@ -73,3 +73,32 @@ export function getTvDetails (id) {
 export function getListDetails (id, page = 1) {
   return fetch(`https://api.themoviedb.org/4/list/${id}?language=${language}&page=${page}`, GET_OPTIONS)
 }
+
+export function getMoviesByQuery (query, page = 1) {
+  const moviesUrl = new URL('https://api.themoviedb.org/3/search/movie')
+  moviesUrl.searchParams.append('query', query)
+  moviesUrl.searchParams.append('language', language)
+  moviesUrl.searchParams.append('include_adult', false)
+  moviesUrl.searchParams.append('page', page)
+
+  return fetch(moviesUrl.href, GET_OPTIONS)
+}
+
+export function getTvByQuery (query, page = 1) {
+  const seriesUrl = new URL('https://api.themoviedb.org/3/search/tv')
+  seriesUrl.searchParams.append('query', query)
+  seriesUrl.searchParams.append('language', language)
+  seriesUrl.searchParams.append('include_adult', false)
+  seriesUrl.searchParams.append('page', page)
+
+  return fetch(seriesUrl.href, GET_OPTIONS)
+}
+export function getPersonsByQuery (query, page = 1) {
+  const personUrl = new URL('https://api.themoviedb.org/3/search/person')
+  personUrl.searchParams.append('query', query)
+  personUrl.searchParams.append('language', language)
+  personUrl.searchParams.append('include_adult', false)
+  personUrl.searchParams.append('page', page)
+
+  return fetch(personUrl.href, GET_OPTIONS)
+}
