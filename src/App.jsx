@@ -18,6 +18,7 @@ import TvDetailsLayout, { loader as tvDetailsLoader } from './layout/TvDetailsLa
 import TvGeneral from './pages/TvGeneral'
 import TvCastPage from './pages/TvCast'
 import ListPage, { loader as listLoader } from './pages/List'
+import SearchLayout, { loader as searchLoader } from './layout/SearchLayout'
 
 export default function App () {
   useEffect(() => {
@@ -118,6 +119,26 @@ export default function App () {
           path: 'list/:id',
           element: <ListPage />,
           loader: listLoader
+        },
+        {
+          path: 'search',
+          element: <SearchLayout />,
+          loader: searchLoader,
+          children: [
+            {
+              index: true,
+              path: 'movie',
+              element: <>Movie</>
+            },
+            {
+              path: 'tv',
+              element: <>Tv</>
+            },
+            {
+              path: 'person',
+              element: <>Person</>
+            }
+          ]
         }
       ]
     }
