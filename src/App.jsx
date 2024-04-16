@@ -19,6 +19,9 @@ import TvGeneral from './pages/TvGeneral'
 import TvCastPage from './pages/TvCast'
 import ListPage, { loader as listLoader } from './pages/List'
 import SearchLayout, { loader as searchLoader } from './layout/SearchLayout'
+import MovieResults, { loader as movieResultsLoader } from './components/Search/MovieResults'
+import TvResults, { loader as tvResultsLoader } from './components/Search/TvResults'
+import PersonResults, { loader as personResultsLoader } from './components/Search/PersonResults'
 
 export default function App () {
   useEffect(() => {
@@ -122,21 +125,28 @@ export default function App () {
         },
         {
           path: 'search',
+          id: 'search',
           element: <SearchLayout />,
           loader: searchLoader,
           children: [
             {
-              index: true,
               path: 'movie',
-              element: <>Movie</>
+              element: <MovieResults />,
+              loader: movieResultsLoader
             },
             {
               path: 'tv',
-              element: <>Tv</>
+              element: <TvResults />,
+              loader: tvResultsLoader
             },
             {
               path: 'person',
-              element: <>Person</>
+              element: <PersonResults />,
+              loader: personResultsLoader
+            },
+            {
+              path: '*',
+              element: <>Hah</>
             }
           ]
         }
