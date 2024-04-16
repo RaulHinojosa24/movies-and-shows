@@ -22,6 +22,7 @@ import SearchLayout, { loader as searchLoader } from './layout/SearchLayout'
 import MovieResults, { loader as movieResultsLoader } from './components/Search/MovieResults'
 import TvResults, { loader as tvResultsLoader } from './components/Search/TvResults'
 import PersonResults, { loader as personResultsLoader } from './components/Search/PersonResults'
+import TvSeasonsPage from './pages/TvSeasons'
 
 export default function App () {
   useEffect(() => {
@@ -115,6 +116,10 @@ export default function App () {
             {
               path: 'cast',
               element: <TvCastPage />
+            },
+            {
+              path: 'season',
+              element: <TvSeasonsPage />
             }
           ]
         },
