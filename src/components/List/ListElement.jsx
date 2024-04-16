@@ -38,7 +38,8 @@ export default function ListElement ({ id, order, title, originalTitle, posterPa
               <span>{comment}</span>}
             {mediaType === 'movie' &&
               <div className='flex justify-between opacity-75'>
-                <span>{prettyRevenue}</span>
+                {revenue &&
+                  <span>{prettyRevenue}</span>}
                 {runtime &&
                   <span>{prettyRuntime}</span>}
               </div>}
@@ -71,7 +72,8 @@ export default function ListElement ({ id, order, title, originalTitle, posterPa
           <Cell className='hidden md:visible'>
             {mediaType === 'movie' &&
               <div className='flex gap-3 opacity-75'>
-                <span>{prettyRevenue}</span>
+                {revenue &&
+                  <span>{prettyRevenue}</span>}
                 {runtime &&
                   <span>{prettyRuntime}</span>}
               </div>}
