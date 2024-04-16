@@ -7,6 +7,7 @@ import TvLists from '../components/TvGeneral/TvLists'
 import TvReviews from '../components/TvGeneral/TvReviews'
 import Main from '../components/PageUI/Main'
 import TvOverview from '../components/TvGeneral/TvOverview'
+import TvLatestSeason from '../components/TvGeneral/TvLatestSeason'
 
 export default function TvGeneral () {
   const {
@@ -24,12 +25,9 @@ export default function TvGeneral () {
       center={
         <>
           <Link to='media' className='font-bold'>TODO: Ver Media</Link>
-          {/* <Section title='Sinopsis'>
-            {overview && overview}
-            {!overview && <p className='italic'>No tenemos una sinopsis en tu idioma.</p>}
-          </Section> */}
           <TvOverview />
           <TvCast />
+          <TvLatestSeason />
           <TvReviews />
           <TvLists />
           <TvRecommendations />
