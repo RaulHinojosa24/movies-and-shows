@@ -1,28 +1,35 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useMatch } from 'react-router-dom'
 import logo from '../assets/logo.png'
+import SearchBar from '../components/Search/SearchBar'
+
+const activeClasses = ({ isActive }) => 'no-underline ' + (isActive ? 'font-bold' : '')
 
 export default function MainNavigation () {
+  const isSearchPage = useMatch('/search/*')
+
   return (
     <header className='w-full h-12 px-app-space sticky top-0 bg-neutral-900 text-white z-20 shadow-sm shadow-neutral-900'>
       <div className='content h-full py-2 flex gap-4 items-center'>
         <NavLink to='/' className='h-full'><img loading='lazy' src={logo} className='h-full rounded' alt='Movies and Shows logo. Yellow background with "M&S" written in black.' /></NavLink>
-        <nav>
+        <nav className='mr-auto'>
           <ul className='flex gap-4'>
             <li>
-              <NavLink to='/'>Test</NavLink>
+              <NavLink to='/search' className={activeClasses}>Buscador</NavLink>
             </li>
             <li>
-              <NavLink to='/'>Test</NavLink>
+              <NavLink to='/' className={activeClasses}>Test</NavLink>
             </li>
             <li>
-              <NavLink to='/'>Test</NavLink>
+              <NavLink to='/' className={activeClasses}>Test</NavLink>
             </li>
             <li>
-              <NavLink to='/'>Test</NavLink>
+              <NavLink to='/' className={activeClasses}>Test</NavLink>
             </li>
           </ul>
         </nav>
-        <NavLink to='/login' className='ml-auto'>Log in</NavLink>
+        {!isSearchPage &&
+          <SearchBar compact />}
+        <NavLink to='/login'>Log in</NavLink>
       </div>
     </header>
   )
