@@ -5,7 +5,7 @@ export default function VoteCard ({ rating, count, small, minimal, width, classN
   const svgRef = useRef()
 
   if (minimal) {
-    return <span className='font-bold px-2 rounded mr-2 custom-shadow-small' {...props}>{roundDecimals(rating, 0)} &#9733;</span>
+    return <span className='font-bold px-2 rounded custom-shadow-small' {...props}>{roundDecimals(rating, 0)} &#9733;</span>
   }
 
   const prettyAvarage = (count || noCount) ? roundDecimals(rating * 10, 0) : 'NR'
