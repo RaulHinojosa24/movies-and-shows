@@ -1757,7 +1757,7 @@ const details = {
 const collection = {
   id: 284433,
   name: 'Guardianes de la galaxia - Colección',
-  overview: ''Guardianes de la galaxia' es una película de superhéroes estadounidense de 2014 basada en el equipo de superhéroes del comics homónimo de Marvel, producido por Marvel Studios y distribuido por Walt Disney Studios Motion Pictures. Es la décima película en el Universo Cineamatográfico de Marvel. La película fue dirigida por James Gunn, quien escribió el guión con Nicole Perlman, y cuenta con un elenco formado por Chris Pratt, Zoe Saldana, Dave Bautista, Vin Diesel, Bradley Cooper, Lee Pace, Michael Rooker, Karen Gillan, Djimon Hounsou, John C. Reilly, Glenn Close y Benicio del Toro. En el 2017 se estreno la segunda película, titulada Guardianes de la galaxia Vol.2 y esta programado completar la trilogía en el 2023 con  Guardianes de la galaxia Vol. 3.',
+  overview: '"Guardianes de la galaxia" es una película de superhéroes estadounidense de 2014 basada en el equipo de superhéroes del comics homónimo de Marvel, producido por Marvel Studios y distribuido por Walt Disney Studios Motion Pictures. Es la décima película en el Universo Cineamatográfico de Marvel. La película fue dirigida por James Gunn, quien escribió el guión con Nicole Perlman, y cuenta con un elenco formado por Chris Pratt, Zoe Saldana, Dave Bautista, Vin Diesel, Bradley Cooper, Lee Pace, Michael Rooker, Karen Gillan, Djimon Hounsou, John C. Reilly, Glenn Close y Benicio del Toro. En el 2017 se estreno la segunda película, titulada Guardianes de la galaxia Vol.2 y esta programado completar la trilogía en el 2023 con  Guardianes de la galaxia Vol. 3.',
   poster_path: '/4KvfCk1haG5gSJhc2CwrizP2cV4.jpg',
   backdrop_path: '/jdyyjulTBU8YUYAUvQFj6U1g2Pj.jpg',
   parts: [
@@ -6589,7 +6589,7 @@ const tv = {
         roles: [
           {
             credit_id: '579f8d3092514178bf003120',
-            character: 'Jane 'Eleven' Hopper',
+            character: 'Jane "Eleven" Hopper',
             episode_count: 34
           }
         ],
@@ -8404,7 +8404,7 @@ const tv = {
         roles: [
           {
             credit_id: '5d2683c7caab6d001395528b',
-            character: 'Mayor Kline's Secretary',
+            character: 'Mayor Kline"s Secretary',
             episode_count: 2
           }
         ],
@@ -8955,7 +8955,7 @@ const tv = {
         roles: [
           {
             credit_id: '59fca82ac3a3681a6402d669',
-            character: 'Dr. Owens' Assistant',
+            character: 'Dr. Owens" Assistant',
             episode_count: 1
           }
         ],
@@ -9487,7 +9487,7 @@ const tv = {
         roles: [
           {
             credit_id: '5d25827169d28024d0043fa9',
-            character: 'Troy's Mom',
+            character: 'Troy"s Mom',
             episode_count: 1
           }
         ],
@@ -9708,8 +9708,8 @@ const tv = {
         gender: 2,
         id: 223022,
         known_for_department: 'Acting',
-        name: 'Brandon O'Dell',
-        original_name: 'Brandon O'Dell',
+        name: 'Brandon O"Dell',
+        original_name: 'Brandon O"Dell',
         popularity: 4.409,
         profile_path: '/mquFOZsnuUPpnrDRz6ie9FFnoXf.jpg',
         roles: [
@@ -10000,7 +10000,7 @@ const tv = {
         roles: [
           {
             credit_id: '5d2681dcdc86470010a52ab5',
-            character: 'Billy's Mother',
+            character: 'Billy"s Mother',
             episode_count: 1
           }
         ],
@@ -10297,8 +10297,8 @@ const tv = {
         gender: 0,
         id: 1392835,
         known_for_department: 'Acting',
-        name: 'Todd D'Amour',
-        original_name: 'Todd D'Amour',
+        name: 'Todd D"Amour',
+        original_name: 'Todd D"Amour',
         popularity: 2.252,
         profile_path: null,
         roles: [
@@ -10589,7 +10589,7 @@ const tv = {
         roles: [
           {
             credit_id: '6291109e9a64350050a9015f',
-            character: 'Chrissy's Mom',
+            character: 'Chrissy"s Mom',
             episode_count: 1
           }
         ],
@@ -10665,7 +10665,7 @@ const tv = {
         roles: [
           {
             credit_id: '6291112689b5610066a7dc3e',
-            character: 'Chrissy's Dad',
+            character: 'Chrissy"s Dad',
             episode_count: 1
           }
         ],
@@ -10696,8 +10696,8 @@ const tv = {
         gender: 2,
         id: 2184808,
         known_for_department: 'Acting',
-        name: 'De'Jon Watts',
-        original_name: 'De'Jon Watts',
+        name: 'De"Jon Watts',
+        original_name: 'De"Jon Watts',
         popularity: 2.779,
         profile_path: '/huET3BOarwibapramM5D3I4v94R.jpg',
         roles: [
@@ -13755,7 +13755,7 @@ const tv = {
         name: 'The Boys',
         original_language: 'en',
         original_name: 'The Boys',
-        overview: 'La serie tiene lugar en un mundo en el que los superhéroes representan el lado oscuro de la celebridad y la fama. Un grupo de vigilantes que se hacen llamar 'The Boys' decide hacer todo lo posible por frenar a los superhéroes que están perjudicando a la sociedad, independientemente de los riesgos que ello conlleva.',
+        overview: 'La serie tiene lugar en un mundo en el que los superhéroes representan el lado oscuro de la celebridad y la fama. Un grupo de vigilantes que se hacen llamar "The Boys" decide hacer todo lo posible por frenar a los superhéroes que están perjudicando a la sociedad, independientemente de los riesgos que ello conlleva.',
         poster_path: '/cSAN6ofLRwRiuwOHYD81p4k6Yks.jpg',
         media_type: 'tv',
         genre_ids: [
@@ -13777,7 +13777,7 @@ const tv = {
         name: 'Juego de tronos',
         original_language: 'en',
         original_name: 'Game of Thrones',
-        overview: 'En una tierra donde los veranos duran décadas y los inviernos pueden durar toda una vida, los problemas acechan. Desde las maquinaciones del sur a las salvajes tierras del este, pasando por el helado norte y el milenario muro que protege el reino de las fuerzas tenebrosas, dos poderosas familias mantienen un enfrentamiento letal por gobernar los Siete Reinos de Poniente. Mientras la traición, la lujuria y las fuerzas sobrenaturales sacuden los pilares de los reinos, la sangrienta batalla por el trono de Hierro tendrá consecuencias imprevistas y trascendentales. El invierno se acerca. Que empiece 'Juego de tronos'.',
+        overview: 'En una tierra donde los veranos duran décadas y los inviernos pueden durar toda una vida, los problemas acechan. Desde las maquinaciones del sur a las salvajes tierras del este, pasando por el helado norte y el milenario muro que protege el reino de las fuerzas tenebrosas, dos poderosas familias mantienen un enfrentamiento letal por gobernar los Siete Reinos de Poniente. Mientras la traición, la lujuria y las fuerzas sobrenaturales sacuden los pilares de los reinos, la sangrienta batalla por el trono de Hierro tendrá consecuencias imprevistas y trascendentales. El invierno se acerca. Que empiece "Juego de tronos".',
         poster_path: '/z9gCSwIObDOD2BEtmUwfasar3xs.jpg',
         media_type: 'tv',
         genre_ids: [
@@ -13867,7 +13867,7 @@ const tv = {
         name: 'Black Mirror',
         original_language: 'en',
         original_name: 'Black Mirror',
-        overview: 'Black Mirror es una serie de televisión británica creada por Charlie Brooker que muestra el lado oscuro de la vida y la tecnología. La serie es producida por Zeppotron para Endemol. En cuanto al contenido del programa y la estructura, Brooker ha señalado que 'cada episodio tiene un tono diferente, un entorno diferente, incluso una realidad diferente, pero todos son acerca de la forma en que vivimos ahora - y la forma en que podríamos estar viviendo en 10 minutos si somos torpes'.',
+        overview: 'Black Mirror es una serie de televisión británica creada por Charlie Brooker que muestra el lado oscuro de la vida y la tecnología. La serie es producida por Zeppotron para Endemol. En cuanto al contenido del programa y la estructura, Brooker ha señalado que "cada episodio tiene un tono diferente, un entorno diferente, incluso una realidad diferente, pero todos son acerca de la forma en que vivimos ahora - y la forma en que podríamos estar viviendo en 10 minutos si somos torpes".',
         poster_path: '/6nDRo824oyBwg1prOZHc8UtonVB.jpg',
         media_type: 'tv',
         genre_ids: [
@@ -14050,7 +14050,7 @@ const tv = {
         name: 'Sex Education',
         original_language: 'en',
         original_name: 'Sex Education',
-        overview: 'Como el inseguro de Otis tiene respuesta para cualquier duda sobre sexo gracias a que su madre es sexóloga, una compañera lo anima a abrir una 'clínica' en el instituto.',
+        overview: 'Como el inseguro de Otis tiene respuesta para cualquier duda sobre sexo gracias a que su madre es sexóloga, una compañera lo anima a abrir una "clínica" en el instituto.',
         poster_path: '/oOEOg8rawAtc1nRbgGkf5fYcMB4.jpg',
         media_type: 'tv',
         genre_ids: [
@@ -14116,7 +14116,7 @@ const tv = {
         name: 'The Walking Dead',
         original_language: 'en',
         original_name: 'The Walking Dead',
-        overview: ''The Walking Dead' está ambientada en un futuro apocalíptico con la Tierra devastada por el efecto de un cataclismo, que ha provocado la mutación en zombies de la mayor parte de los habitantes del planeta. La serie, explora las dificultades de los protagonistas para sobrevivir en un mundo poblado por el horror, así como las relaciones personales que se establecen entre ellos, en ocasiones también una amenaza para su supervivencia.',
+        overview: '"The Walking Dead" está ambientada en un futuro apocalíptico con la Tierra devastada por el efecto de un cataclismo, que ha provocado la mutación en zombies de la mayor parte de los habitantes del planeta. La serie, explora las dificultades de los protagonistas para sobrevivir en un mundo poblado por el horror, así como las relaciones personales que se establecen entre ellos, en ocasiones también una amenaza para su supervivencia.',
         poster_path: '/hUblG1KZCTRpHc3wqqoU0DW98Q3.jpg',
         media_type: 'tv',
         genre_ids: [
@@ -15908,7 +15908,7 @@ const list = {
       'title': 'Capitán América: Un nuevo mundo',
       'original_language': 'en',
       'original_title': 'Captain America: Brave New World',
-      'overview': 'Cuarta entrega de la saga 'Capitán América' incluida en el Universo Cinematográfico MARVEL.',
+      'overview': 'Cuarta entrega de la saga "Capitán América" incluida en el Universo Cinematográfico MARVEL.',
       'poster_path': '/ghkjPyaPGMfDufOa4D2A51DFGWr.jpg',
       'media_type': 'movie',
       'runtime': null,
@@ -16207,7 +16207,7 @@ const list = {
       'title': 'Vengadores: Endgame',
       'original_language': 'en',
       'original_title': 'Avengers: Endgame',
-      'overview': 'Después de los eventos devastadores de 'Vengadores: Infinity War', el universo está en ruinas debido a las acciones de Thanos. Con la ayuda de los aliados que quedaron, los Vengadores deberán reunirse una vez más para intentar deshacer sus acciones y restaurar el orden en el universo de una vez por todas, sin importar cuáles sean las consecuencias... Cuarta y última entrega de la saga \'Vengadores\'.',
+      'overview': 'Después de los eventos devastadores de "Vengadores: Infinity War", el universo está en ruinas debido a las acciones de Thanos. Con la ayuda de los aliados que quedaron, los Vengadores deberán reunirse una vez más para intentar deshacer sus acciones y restaurar el orden en el universo de una vez por todas, sin importar cuáles sean las consecuencias... Cuarta y última entrega de la saga \'Vengadores\'.',
       'poster_path': '/br6krBFpaYmCSglLBWRuhui7tPc.jpg',
       'media_type': 'movie',
       'runtime': 181,
@@ -16230,7 +16230,7 @@ const list = {
       'title': 'Capitana Marvel',
       'original_language': 'en',
       'original_title': 'Captain Marvel',
-      'overview': 'La historia sigue a Carol Danvers mientras se convierte en uno de los héroes más poderosos del universo, cuando la Tierra se encuentra atrapada en medio de una guerra galáctica entre dos razas alienígenas. Situada en los años 90, 'Capitana Marvel' es una historia nueva de un período de tiempo nunca antes visto en la historia del Universo Cinematográfico de Marvel.',
+      'overview': 'La historia sigue a Carol Danvers mientras se convierte en uno de los héroes más poderosos del universo, cuando la Tierra se encuentra atrapada en medio de una guerra galáctica entre dos razas alienígenas. Situada en los años 90, "Capitana Marvel" es una historia nueva de un período de tiempo nunca antes visto en la historia del Universo Cinematográfico de Marvel.',
       'poster_path': '/5SPa7dZ85p54xa7E9tHRmfKq5ce.jpg',
       'media_type': 'movie',
       'runtime': 125,
@@ -16299,7 +16299,7 @@ const list = {
       'title': 'Black Panther',
       'original_language': 'en',
       'original_title': 'Black Panther',
-      'overview': 'Después de los acontecimientos de \'Capitán América: Civil War\', T'Challa vuelve a casa, la nación aislada y muy avanzada tecnológicamente de Wakanda, para ser proclamado Rey. Pero la reaparición de un viejo enemigo pone a prueba el temple de T'Challa como Rey y Black Panther ya que se ve arrastrado a un conflicto que pone en peligro todo el destino de Wakanda y del mundo.',
+      'overview': 'Después de los acontecimientos de \'Capitán América: Civil War\', T"Challa vuelve a casa, la nación aislada y muy avanzada tecnológicamente de Wakanda, para ser proclamado Rey. Pero la reaparición de un viejo enemigo pone a prueba el temple de T"Challa como Rey y Black Panther ya que se ve arrastrado a un conflicto que pone en peligro todo el destino de Wakanda y del mundo.',
       'poster_path': '/lAPzezdc5E6DFnttJwCWXZ9A9C6.jpg',
       'media_type': 'movie',
       'runtime': 134,
@@ -16360,4 +16360,4553 @@ const list = {
   'sort_by': 'primary_release_date.desc',
   'total_pages': 4,
   'total_results': 69
+}
+
+const season = {
+  "_id": "57599ae2c3a3684ea900242d",
+  "air_date": "2016-07-15",
+  "episodes": [
+      {
+          "air_date": "2016-07-15",
+          "episode_number": 1,
+          "episode_type": "standard",
+          "id": 1198665,
+          "name": "La desaparición de Will Byers",
+          "overview": "Cuando vuelve en bici a su casa, Will ve algo horroroso. Cerca de allí, un siniestro secreto acecha en las profundidades de un laboratorio estatal.",
+          "production_code": "0",
+          "runtime": 48,
+          "season_number": 1,
+          "show_id": 66732,
+          "still_path": "/AdwF2jXvhdODr6gUZ61bHKRkz09.jpg",
+          "vote_average": 8.4,
+          "vote_count": 1249,
+          "crew": [
+              {
+                  "job": "Director",
+                  "department": "Directing",
+                  "credit_id": "57b20164c3a36869e5000ba5",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1179419,
+                  "known_for_department": "Writing",
+                  "name": "Matt Duffer",
+                  "original_name": "Matt Duffer",
+                  "popularity": 11.339,
+                  "profile_path": "/kXO5CnSxC0znMAICGxnPeuGP73U.jpg"
+              },
+              {
+                  "job": "Writer",
+                  "department": "Writing",
+                  "credit_id": "5789c46cc3a36841e700099e",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1179419,
+                  "known_for_department": "Writing",
+                  "name": "Matt Duffer",
+                  "original_name": "Matt Duffer",
+                  "popularity": 11.339,
+                  "profile_path": "/kXO5CnSxC0znMAICGxnPeuGP73U.jpg"
+              },
+              {
+                  "job": "Writer",
+                  "department": "Writing",
+                  "credit_id": "5789c497c3a36841e70009b9",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1179422,
+                  "known_for_department": "Writing",
+                  "name": "Ross Duffer",
+                  "original_name": "Ross Duffer",
+                  "popularity": 10.553,
+                  "profile_path": "/kN1HdFViQkcJOQlNcvvFJIx9Uju.jpg"
+              },
+              {
+                  "job": "Director",
+                  "department": "Directing",
+                  "credit_id": "57b20174c3a3686a54000afa",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1179422,
+                  "known_for_department": "Writing",
+                  "name": "Ross Duffer",
+                  "original_name": "Ross Duffer",
+                  "popularity": 10.553,
+                  "profile_path": "/kN1HdFViQkcJOQlNcvvFJIx9Uju.jpg"
+              },
+              {
+                  "job": "Director of Photography",
+                  "department": "Camera",
+                  "credit_id": "60a81c446ee3d70029419e54",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1485876,
+                  "known_for_department": "Camera",
+                  "name": "Tim Ives",
+                  "original_name": "Tim Ives",
+                  "popularity": 5.058,
+                  "profile_path": "/cgQkPbS2akrEZlawCi5DN0AkPqs.jpg"
+              }
+          ],
+          "guest_stars": [
+              {
+                  "character": "Will Byers",
+                  "credit_id": "5759b99a9251416b530002a5",
+                  "order": 4,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1393177,
+                  "known_for_department": "Acting",
+                  "name": "Noah Schnapp",
+                  "original_name": "Noah Schnapp",
+                  "popularity": 24.859,
+                  "profile_path": "/3GSWWrqQjio6G8L42ugGBGNks37.jpg"
+              },
+              {
+                  "character": "Steve Harrington",
+                  "credit_id": "5759b9d89251410a9900213e",
+                  "order": 9,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1467219,
+                  "known_for_department": "Acting",
+                  "name": "Joe Keery",
+                  "original_name": "Joe Keery",
+                  "popularity": 33.081,
+                  "profile_path": "/ayIAVLMfZGEGIFwAo3pPnY7p59.jpg"
+              },
+              {
+                  "character": "Troy",
+                  "credit_id": "5bc10b8e92514179ba020982",
+                  "order": 520,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1668667,
+                  "known_for_department": "Acting",
+                  "name": "Peyton Wich",
+                  "original_name": "Peyton Wich",
+                  "popularity": 8.34,
+                  "profile_path": "/52101r7ph1aiJtlZ2pIXD5L7BKV.jpg"
+              },
+              {
+                  "character": "Benny Hammond",
+                  "credit_id": "5d257da9a698cf0fa7a83b45",
+                  "order": 531,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1293892,
+                  "known_for_department": "Acting",
+                  "name": "Chris Sullivan",
+                  "original_name": "Chris Sullivan",
+                  "popularity": 21.092,
+                  "profile_path": "/gKZ9xSFrDzUPv27iAkMpH6Qf0Sk.jpg"
+              },
+              {
+                  "character": "James",
+                  "credit_id": "5d257df6e24e3a00102bf53b",
+                  "order": 536,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 2358366,
+                  "known_for_department": "Acting",
+                  "name": "Cade Jones",
+                  "original_name": "Cade Jones",
+                  "popularity": 5.186,
+                  "profile_path": "/kZEnpoPn3gIYkiURtx5UiUlllql.jpg"
+              },
+              {
+                  "character": "Principal Coleman",
+                  "credit_id": "59fca957c3a3681a6402d7da",
+                  "order": 539,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 114850,
+                  "known_for_department": "Acting",
+                  "name": "Tony Vaughn",
+                  "original_name": "Tony Vaughn",
+                  "popularity": 4.288,
+                  "profile_path": "/m99yAF6psRJSOslZkxPY8i7u7NR.jpg"
+              },
+              {
+                  "character": "Barbara “Barb” Holland",
+                  "credit_id": "59f6602c925141428202220d",
+                  "order": 552,
+                  "adult": false,
+                  "gender": 1,
+                  "id": 1753911,
+                  "known_for_department": "Acting",
+                  "name": "Shannon Purser",
+                  "original_name": "Shannon Purser",
+                  "popularity": 12.867,
+                  "profile_path": "/zI5C3e0Rk5GjIdP7S4Dfde8R12N.jpg"
+              },
+              {
+                  "character": "Earl",
+                  "credit_id": "5d258723a698cf59f5a78feb",
+                  "order": 556,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 21084,
+                  "known_for_department": "Acting",
+                  "name": "David Dwyer",
+                  "original_name": "David Dwyer",
+                  "popularity": 8.379,
+                  "profile_path": "/kMTtoYRHltlJI9YzWPKe56gK99h.jpg"
+              },
+              {
+                  "character": "High School Principal",
+                  "credit_id": "5d25874169d28054b700c6e7",
+                  "order": 557,
+                  "adult": false,
+                  "gender": 1,
+                  "id": 1895872,
+                  "known_for_department": "Acting",
+                  "name": "Salem Murphy",
+                  "original_name": "Salem Murphy",
+                  "popularity": 44.606,
+                  "profile_path": "/43zUWawBYErN7PuG7EBytxo8Xdq.jpg"
+              },
+              {
+                  "character": "The Monster",
+                  "credit_id": "5b36ede80e0a26400a03468e",
+                  "order": 558,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1052211,
+                  "known_for_department": "Acting",
+                  "name": "Mark Steger",
+                  "original_name": "Mark Steger",
+                  "popularity": 14.11,
+                  "profile_path": "/3EeztYq3OfdeHsqjYSwRuNHrvnk.jpg"
+              },
+              {
+                  "character": "Florence",
+                  "credit_id": "59fca93b92514113bb02ef2b",
+                  "order": 599,
+                  "adult": false,
+                  "gender": 1,
+                  "id": 1916844,
+                  "known_for_department": "Acting",
+                  "name": "Susan Shalhoub Larkin",
+                  "original_name": "Susan Shalhoub Larkin",
+                  "popularity": 8.7,
+                  "profile_path": "/pLAwhYAHjYyxMZrfCCgLBqLcmcU.jpg"
+              },
+              {
+                  "character": "Scott Clarke",
+                  "credit_id": "5d2578ada698cf0010ab31cb",
+                  "order": 604,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1381393,
+                  "known_for_department": "Acting",
+                  "name": "Randy Havens",
+                  "original_name": "Randy Havens",
+                  "popularity": 18.644,
+                  "profile_path": "/7Lh5eGcXZUoPJcTWaUw369R706E.jpg"
+              },
+              {
+                  "character": "Calvin Powell",
+                  "credit_id": "5d26171ea698cf52eba6bfae",
+                  "order": 685,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1281250,
+                  "known_for_department": "Acting",
+                  "name": "Rob Morgan",
+                  "original_name": "Rob Morgan",
+                  "popularity": 18.485,
+                  "profile_path": "/ps6wR3JZnk6MY9tbtOLORgadqs6.jpg"
+              },
+              {
+                  "character": "Phil Callahan",
+                  "credit_id": "5d26185f37b3a96a3452a8a9",
+                  "order": 692,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1674830,
+                  "known_for_department": "Acting",
+                  "name": "John Reynolds",
+                  "original_name": "John Reynolds",
+                  "popularity": 14.598,
+                  "profile_path": "/1yzDTZqIeFQaI4i8eGC0TB1UfZg.jpg"
+              },
+              {
+                  "character": "Ted Wheeler",
+                  "credit_id": "5d267e6774645700126c239a",
+                  "order": 696,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 141762,
+                  "known_for_department": "Acting",
+                  "name": "Joe Chrest",
+                  "original_name": "Joe Chrest",
+                  "popularity": 21.578,
+                  "profile_path": "/7mcsJGnqRoVPTtxAUZEKt2dZnlw.jpg"
+              }
+          ]
+      },
+      {
+          "air_date": "2016-07-15",
+          "episode_number": 2,
+          "episode_type": "standard",
+          "id": 1203677,
+          "name": "La chica rara de la calle Maple",
+          "overview": "Lucas, Mike y Dustin intentan hablar con la niña que encontraron en el bosque. Hopper interroga a Joyce, que se ha puesto muy nerviosa por una llamada telefónica.",
+          "production_code": "",
+          "runtime": 55,
+          "season_number": 1,
+          "show_id": 66732,
+          "still_path": "/8iA56ugQyHZmX81wSsNqwXjCE6F.jpg",
+          "vote_average": 8.3,
+          "vote_count": 328,
+          "crew": [
+              {
+                  "job": "Director",
+                  "department": "Directing",
+                  "credit_id": "57b20164c3a36869e5000ba5",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1179419,
+                  "known_for_department": "Writing",
+                  "name": "Matt Duffer",
+                  "original_name": "Matt Duffer",
+                  "popularity": 11.339,
+                  "profile_path": "/kXO5CnSxC0znMAICGxnPeuGP73U.jpg"
+              },
+              {
+                  "job": "Writer",
+                  "department": "Writing",
+                  "credit_id": "5789c46cc3a36841e700099e",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1179419,
+                  "known_for_department": "Writing",
+                  "name": "Matt Duffer",
+                  "original_name": "Matt Duffer",
+                  "popularity": 11.339,
+                  "profile_path": "/kXO5CnSxC0znMAICGxnPeuGP73U.jpg"
+              },
+              {
+                  "job": "Writer",
+                  "department": "Writing",
+                  "credit_id": "5789c497c3a36841e70009b9",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1179422,
+                  "known_for_department": "Writing",
+                  "name": "Ross Duffer",
+                  "original_name": "Ross Duffer",
+                  "popularity": 10.553,
+                  "profile_path": "/kN1HdFViQkcJOQlNcvvFJIx9Uju.jpg"
+              },
+              {
+                  "job": "Director",
+                  "department": "Directing",
+                  "credit_id": "57b20174c3a3686a54000afa",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1179422,
+                  "known_for_department": "Writing",
+                  "name": "Ross Duffer",
+                  "original_name": "Ross Duffer",
+                  "popularity": 10.553,
+                  "profile_path": "/kN1HdFViQkcJOQlNcvvFJIx9Uju.jpg"
+              },
+              {
+                  "job": "Director of Photography",
+                  "department": "Camera",
+                  "credit_id": "60a81c446ee3d70029419e54",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1485876,
+                  "known_for_department": "Camera",
+                  "name": "Tim Ives",
+                  "original_name": "Tim Ives",
+                  "popularity": 5.058,
+                  "profile_path": "/cgQkPbS2akrEZlawCi5DN0AkPqs.jpg"
+              }
+          ],
+          "guest_stars": [
+              {
+                  "character": "Will Byers",
+                  "credit_id": "5759b99a9251416b530002a5",
+                  "order": 4,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1393177,
+                  "known_for_department": "Acting",
+                  "name": "Noah Schnapp",
+                  "original_name": "Noah Schnapp",
+                  "popularity": 24.859,
+                  "profile_path": "/3GSWWrqQjio6G8L42ugGBGNks37.jpg"
+              },
+              {
+                  "character": "Steve Harrington",
+                  "credit_id": "5759b9d89251410a9900213e",
+                  "order": 9,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1467219,
+                  "known_for_department": "Acting",
+                  "name": "Joe Keery",
+                  "original_name": "Joe Keery",
+                  "popularity": 33.081,
+                  "profile_path": "/ayIAVLMfZGEGIFwAo3pPnY7p59.jpg"
+              },
+              {
+                  "character": "Donald Melvald",
+                  "credit_id": "577a9f2492514174bb000db9",
+                  "order": 522,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1643635,
+                  "known_for_department": "Acting",
+                  "name": "Charles Lawlor",
+                  "original_name": "Charles Lawlor",
+                  "popularity": 6.648,
+                  "profile_path": "/yui3L3ugmNd8sYn9fJxGmzkTCxp.jpg"
+              },
+              {
+                  "character": "Sandra",
+                  "credit_id": "5d257ebae24e3a00122bf46d",
+                  "order": 532,
+                  "adult": false,
+                  "gender": 1,
+                  "id": 1254367,
+                  "known_for_department": "Acting",
+                  "name": "Bethany Anne Lind",
+                  "original_name": "Bethany Anne Lind",
+                  "popularity": 11.383,
+                  "profile_path": "/d0FjeKbWYhbTzFSimCnC9K1Maza.jpg"
+              },
+              {
+                  "character": "Barbara “Barb” Holland",
+                  "credit_id": "59f6602c925141428202220d",
+                  "order": 552,
+                  "adult": false,
+                  "gender": 1,
+                  "id": 1753911,
+                  "known_for_department": "Acting",
+                  "name": "Shannon Purser",
+                  "original_name": "Shannon Purser",
+                  "popularity": 12.867,
+                  "profile_path": "/zI5C3e0Rk5GjIdP7S4Dfde8R12N.jpg"
+              },
+              {
+                  "character": "Tommy H.",
+                  "credit_id": "5d257ea9e24e3a00132bf3ff",
+                  "order": 570,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1694082,
+                  "known_for_department": "Acting",
+                  "name": "Chester Rushing",
+                  "original_name": "Chester Rushing",
+                  "popularity": 10.71,
+                  "profile_path": "/34YpCnyxCgxlq5PYJqiro7losWy.jpg"
+              },
+              {
+                  "character": "Florence",
+                  "credit_id": "59fca93b92514113bb02ef2b",
+                  "order": 599,
+                  "adult": false,
+                  "gender": 1,
+                  "id": 1916844,
+                  "known_for_department": "Acting",
+                  "name": "Susan Shalhoub Larkin",
+                  "original_name": "Susan Shalhoub Larkin",
+                  "popularity": 8.7,
+                  "profile_path": "/pLAwhYAHjYyxMZrfCCgLBqLcmcU.jpg"
+              },
+              {
+                  "character": "Scott Clarke",
+                  "credit_id": "5d2578ada698cf0010ab31cb",
+                  "order": 604,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1381393,
+                  "known_for_department": "Acting",
+                  "name": "Randy Havens",
+                  "original_name": "Randy Havens",
+                  "popularity": 18.644,
+                  "profile_path": "/7Lh5eGcXZUoPJcTWaUw369R706E.jpg"
+              },
+              {
+                  "character": "Calvin Powell",
+                  "credit_id": "5d26171ea698cf52eba6bfae",
+                  "order": 685,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1281250,
+                  "known_for_department": "Acting",
+                  "name": "Rob Morgan",
+                  "original_name": "Rob Morgan",
+                  "popularity": 18.485,
+                  "profile_path": "/ps6wR3JZnk6MY9tbtOLORgadqs6.jpg"
+              },
+              {
+                  "character": "Phil Callahan",
+                  "credit_id": "5d26185f37b3a96a3452a8a9",
+                  "order": 692,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1674830,
+                  "known_for_department": "Acting",
+                  "name": "John Reynolds",
+                  "original_name": "John Reynolds",
+                  "popularity": 14.598,
+                  "profile_path": "/1yzDTZqIeFQaI4i8eGC0TB1UfZg.jpg"
+              },
+              {
+                  "character": "Ted Wheeler",
+                  "credit_id": "5d267e6774645700126c239a",
+                  "order": 696,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 141762,
+                  "known_for_department": "Acting",
+                  "name": "Joe Chrest",
+                  "original_name": "Joe Chrest",
+                  "popularity": 21.578,
+                  "profile_path": "/7mcsJGnqRoVPTtxAUZEKt2dZnlw.jpg"
+              },
+              {
+                  "character": "Carol Perkins",
+                  "credit_id": "629dcd667d5db5086be91ed4",
+                  "order": 707,
+                  "adult": false,
+                  "gender": 1,
+                  "id": 1572103,
+                  "known_for_department": "Acting",
+                  "name": "Chelsea Talmadge",
+                  "original_name": "Chelsea Talmadge",
+                  "popularity": 10.35,
+                  "profile_path": "/cxH53B64fEjbI6u7uLTMjJFpAe2.jpg"
+              }
+          ]
+      },
+      {
+          "air_date": "2016-07-15",
+          "episode_number": 3,
+          "episode_type": "standard",
+          "id": 1203679,
+          "name": "Todo está bien",
+          "overview": "Cada vez más preocupada, Nancy sigue buscando a Barb y descubre lo que tenía Jonathan entre manos. Joyce está segura de que Will intenta comunicarse con ella.",
+          "production_code": "",
+          "runtime": 51,
+          "season_number": 1,
+          "show_id": 66732,
+          "still_path": "/5snULpWQWp7aqFto7UbRcEkEyyS.jpg",
+          "vote_average": 8.5,
+          "vote_count": 226,
+          "crew": [
+              {
+                  "job": "Director",
+                  "department": "Directing",
+                  "credit_id": "57b201e6c3a368019a003110",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 17825,
+                  "known_for_department": "Directing",
+                  "name": "Shawn Levy",
+                  "original_name": "Shawn Levy",
+                  "popularity": 26.569,
+                  "profile_path": "/b1ulkCHz8biG87LjLQQiMCebEZo.jpg"
+              },
+              {
+                  "job": "Writer",
+                  "department": "Writing",
+                  "credit_id": "57b2022ac3a36869e5000bf3",
+                  "adult": false,
+                  "gender": 1,
+                  "id": 1562492,
+                  "known_for_department": "Writing",
+                  "name": "Jessica Mecklenburg",
+                  "original_name": "Jessica Mecklenburg",
+                  "popularity": 3.486,
+                  "profile_path": null
+              },
+              {
+                  "job": "Writer",
+                  "department": "Writing",
+                  "credit_id": "5789c46cc3a36841e700099e",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1179419,
+                  "known_for_department": "Writing",
+                  "name": "Matt Duffer",
+                  "original_name": "Matt Duffer",
+                  "popularity": 11.339,
+                  "profile_path": "/kXO5CnSxC0znMAICGxnPeuGP73U.jpg"
+              },
+              {
+                  "job": "Writer",
+                  "department": "Writing",
+                  "credit_id": "5789c497c3a36841e70009b9",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1179422,
+                  "known_for_department": "Writing",
+                  "name": "Ross Duffer",
+                  "original_name": "Ross Duffer",
+                  "popularity": 10.553,
+                  "profile_path": "/kN1HdFViQkcJOQlNcvvFJIx9Uju.jpg"
+              },
+              {
+                  "job": "Director of Photography",
+                  "department": "Camera",
+                  "credit_id": "60a81c4dbbd0b0002b40b3f3",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1580138,
+                  "known_for_department": "Camera",
+                  "name": "Tod Campbell",
+                  "original_name": "Tod Campbell",
+                  "popularity": 8.284,
+                  "profile_path": "/897Bl0aU94N0otv4Ab1gCr29yDV.jpg"
+              }
+          ],
+          "guest_stars": [
+              {
+                  "character": "Will Byers",
+                  "credit_id": "5759b99a9251416b530002a5",
+                  "order": 4,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1393177,
+                  "known_for_department": "Acting",
+                  "name": "Noah Schnapp",
+                  "original_name": "Noah Schnapp",
+                  "popularity": 24.859,
+                  "profile_path": "/3GSWWrqQjio6G8L42ugGBGNks37.jpg"
+              },
+              {
+                  "character": "Steve Harrington",
+                  "credit_id": "5759b9d89251410a9900213e",
+                  "order": 9,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1467219,
+                  "known_for_department": "Acting",
+                  "name": "Joe Keery",
+                  "original_name": "Joe Keery",
+                  "popularity": 33.081,
+                  "profile_path": "/ayIAVLMfZGEGIFwAo3pPnY7p59.jpg"
+              },
+              {
+                  "character": "Marissa",
+                  "credit_id": "58c03ecac3a3683a91000df5",
+                  "order": 500,
+                  "adult": false,
+                  "gender": 0,
+                  "id": 1772398,
+                  "known_for_department": "Acting",
+                  "name": "Christi Waldon",
+                  "original_name": "Christi Waldon",
+                  "popularity": 4.372,
+                  "profile_path": "/8KZh1ombwUA4z5s6c1hHasEiYTu.jpg"
+              },
+              {
+                  "character": "Troy",
+                  "credit_id": "5bc10b8e92514179ba020982",
+                  "order": 520,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1668667,
+                  "known_for_department": "Acting",
+                  "name": "Peyton Wich",
+                  "original_name": "Peyton Wich",
+                  "popularity": 8.34,
+                  "profile_path": "/52101r7ph1aiJtlZ2pIXD5L7BKV.jpg"
+              },
+              {
+                  "character": "Nicole",
+                  "credit_id": "59fca70ec3a3681a6402d505",
+                  "order": 533,
+                  "adult": false,
+                  "gender": 1,
+                  "id": 1330503,
+                  "known_for_department": "Acting",
+                  "name": "Glennellen Anderson",
+                  "original_name": "Glennellen Anderson",
+                  "popularity": 3.304,
+                  "profile_path": null
+              },
+              {
+                  "character": "Marsha Holland",
+                  "credit_id": "59fca73bc3a3681acd02f597",
+                  "order": 534,
+                  "adult": false,
+                  "gender": 1,
+                  "id": 995451,
+                  "known_for_department": "Acting",
+                  "name": "Cynthia Barrett",
+                  "original_name": "Cynthia Barrett",
+                  "popularity": 7.552,
+                  "profile_path": "/tWd0Yr3uIkHxnJevJ5gFtsKp0LU.jpg"
+              },
+              {
+                  "character": "Ally",
+                  "credit_id": "5d257f9569d2801be00381f5",
+                  "order": 535,
+                  "adult": false,
+                  "gender": 0,
+                  "id": 2358375,
+                  "known_for_department": "Acting",
+                  "name": "Sierra Rae",
+                  "original_name": "Sierra Rae",
+                  "popularity": 3.69,
+                  "profile_path": null
+              },
+              {
+                  "character": "James",
+                  "credit_id": "5d257df6e24e3a00102bf53b",
+                  "order": 536,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 2358366,
+                  "known_for_department": "Acting",
+                  "name": "Cade Jones",
+                  "original_name": "Cade Jones",
+                  "popularity": 5.186,
+                  "profile_path": "/kZEnpoPn3gIYkiURtx5UiUlllql.jpg"
+              },
+              {
+                  "character": "Barbara “Barb” Holland",
+                  "credit_id": "59f6602c925141428202220d",
+                  "order": 552,
+                  "adult": false,
+                  "gender": 1,
+                  "id": 1753911,
+                  "known_for_department": "Acting",
+                  "name": "Shannon Purser",
+                  "original_name": "Shannon Purser",
+                  "popularity": 12.867,
+                  "profile_path": "/zI5C3e0Rk5GjIdP7S4Dfde8R12N.jpg"
+              },
+              {
+                  "character": "Tommy H.",
+                  "credit_id": "5d257ea9e24e3a00132bf3ff",
+                  "order": 570,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1694082,
+                  "known_for_department": "Acting",
+                  "name": "Chester Rushing",
+                  "original_name": "Chester Rushing",
+                  "popularity": 10.71,
+                  "profile_path": "/34YpCnyxCgxlq5PYJqiro7losWy.jpg"
+              },
+              {
+                  "character": "Calvin Powell",
+                  "credit_id": "5d26171ea698cf52eba6bfae",
+                  "order": 685,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1281250,
+                  "known_for_department": "Acting",
+                  "name": "Rob Morgan",
+                  "original_name": "Rob Morgan",
+                  "popularity": 18.485,
+                  "profile_path": "/ps6wR3JZnk6MY9tbtOLORgadqs6.jpg"
+              },
+              {
+                  "character": "Terry Ives",
+                  "credit_id": "5d2578c937b3a94927529915",
+                  "order": 690,
+                  "adult": false,
+                  "gender": 1,
+                  "id": 1033252,
+                  "known_for_department": "Acting",
+                  "name": "Aimee Mullins",
+                  "original_name": "Aimee Mullins",
+                  "popularity": 12.192,
+                  "profile_path": "/A4H8dBREovAels6YFAw8wrprE8R.jpg"
+              },
+              {
+                  "character": "Phil Callahan",
+                  "credit_id": "5d26185f37b3a96a3452a8a9",
+                  "order": 692,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1674830,
+                  "known_for_department": "Acting",
+                  "name": "John Reynolds",
+                  "original_name": "John Reynolds",
+                  "popularity": 14.598,
+                  "profile_path": "/1yzDTZqIeFQaI4i8eGC0TB1UfZg.jpg"
+              },
+              {
+                  "character": "Carol Perkins",
+                  "credit_id": "629dcd667d5db5086be91ed4",
+                  "order": 707,
+                  "adult": false,
+                  "gender": 1,
+                  "id": 1572103,
+                  "known_for_department": "Acting",
+                  "name": "Chelsea Talmadge",
+                  "original_name": "Chelsea Talmadge",
+                  "popularity": 10.35,
+                  "profile_path": "/cxH53B64fEjbI6u7uLTMjJFpAe2.jpg"
+              }
+          ]
+      },
+      {
+          "air_date": "2016-07-15",
+          "episode_number": 4,
+          "episode_type": "standard",
+          "id": 1203680,
+          "name": "El cuerpo",
+          "overview": "Joyce se niega a aceptar que su hijo Will esté muerto e intenta contactar con él. Once cambia de imagen. Nancy y Jonathan forman una alianza imprevisible.",
+          "production_code": "",
+          "runtime": 50,
+          "season_number": 1,
+          "show_id": 66732,
+          "still_path": "/60wmC1e20HV8gu688GAhsWxqxPx.jpg",
+          "vote_average": 8.4,
+          "vote_count": 220,
+          "crew": [
+              {
+                  "job": "Director",
+                  "department": "Directing",
+                  "credit_id": "57b201e6c3a368019a003110",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 17825,
+                  "known_for_department": "Directing",
+                  "name": "Shawn Levy",
+                  "original_name": "Shawn Levy",
+                  "popularity": 26.569,
+                  "profile_path": "/b1ulkCHz8biG87LjLQQiMCebEZo.jpg"
+              },
+              {
+                  "job": "Writer",
+                  "department": "Writing",
+                  "credit_id": "5789c46cc3a36841e700099e",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1179419,
+                  "known_for_department": "Writing",
+                  "name": "Matt Duffer",
+                  "original_name": "Matt Duffer",
+                  "popularity": 11.339,
+                  "profile_path": "/kXO5CnSxC0znMAICGxnPeuGP73U.jpg"
+              },
+              {
+                  "job": "Writer",
+                  "department": "Writing",
+                  "credit_id": "5789c497c3a36841e70009b9",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1179422,
+                  "known_for_department": "Writing",
+                  "name": "Ross Duffer",
+                  "original_name": "Ross Duffer",
+                  "popularity": 10.553,
+                  "profile_path": "/kN1HdFViQkcJOQlNcvvFJIx9Uju.jpg"
+              },
+              {
+                  "job": "Director of Photography",
+                  "department": "Camera",
+                  "credit_id": "60a81c4dbbd0b0002b40b3f3",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1580138,
+                  "known_for_department": "Camera",
+                  "name": "Tod Campbell",
+                  "original_name": "Tod Campbell",
+                  "popularity": 8.284,
+                  "profile_path": "/897Bl0aU94N0otv4Ab1gCr29yDV.jpg"
+              }
+          ],
+          "guest_stars": [
+              {
+                  "character": "Will Byers",
+                  "credit_id": "5759b99a9251416b530002a5",
+                  "order": 4,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1393177,
+                  "known_for_department": "Acting",
+                  "name": "Noah Schnapp",
+                  "original_name": "Noah Schnapp",
+                  "popularity": 24.859,
+                  "profile_path": "/3GSWWrqQjio6G8L42ugGBGNks37.jpg"
+              },
+              {
+                  "character": "Steve Harrington",
+                  "credit_id": "5759b9d89251410a9900213e",
+                  "order": 9,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1467219,
+                  "known_for_department": "Acting",
+                  "name": "Joe Keery",
+                  "original_name": "Joe Keery",
+                  "popularity": 33.081,
+                  "profile_path": "/ayIAVLMfZGEGIFwAo3pPnY7p59.jpg"
+              },
+              {
+                  "character": "Troy",
+                  "credit_id": "5bc10b8e92514179ba020982",
+                  "order": 520,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1668667,
+                  "known_for_department": "Acting",
+                  "name": "Peyton Wich",
+                  "original_name": "Peyton Wich",
+                  "popularity": 8.34,
+                  "profile_path": "/52101r7ph1aiJtlZ2pIXD5L7BKV.jpg"
+              },
+              {
+                  "character": "Donald Melvald",
+                  "credit_id": "577a9f2492514174bb000db9",
+                  "order": 522,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1643635,
+                  "known_for_department": "Acting",
+                  "name": "Charles Lawlor",
+                  "original_name": "Charles Lawlor",
+                  "popularity": 6.648,
+                  "profile_path": "/yui3L3ugmNd8sYn9fJxGmzkTCxp.jpg"
+              },
+              {
+                  "character": "James",
+                  "credit_id": "5d257df6e24e3a00102bf53b",
+                  "order": 536,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 2358366,
+                  "known_for_department": "Acting",
+                  "name": "Cade Jones",
+                  "original_name": "Cade Jones",
+                  "popularity": 5.186,
+                  "profile_path": "/kZEnpoPn3gIYkiURtx5UiUlllql.jpg"
+              },
+              {
+                  "character": "Gary",
+                  "credit_id": "5d257fefa698cf0fa7a8428d",
+                  "order": 537,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 160351,
+                  "known_for_department": "Acting",
+                  "name": "Mark Withers",
+                  "original_name": "Mark Withers",
+                  "popularity": 6.295,
+                  "profile_path": "/8qxeiJ0iyku2UQQUz3GAzjvHwjb.jpg"
+              },
+              {
+                  "character": "Patty",
+                  "credit_id": "5d258006a698cf59f5a77f87",
+                  "order": 538,
+                  "adult": false,
+                  "gender": 0,
+                  "id": 1747720,
+                  "known_for_department": "Acting",
+                  "name": "Marianne Fraulo",
+                  "original_name": "Marianne Fraulo",
+                  "popularity": 5.264,
+                  "profile_path": "/9gqy2qmlSUmRaIyVejoYCnmHZd5.jpg"
+              },
+              {
+                  "character": "Principal Coleman",
+                  "credit_id": "59fca957c3a3681a6402d7da",
+                  "order": 539,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 114850,
+                  "known_for_department": "Acting",
+                  "name": "Tony Vaughn",
+                  "original_name": "Tony Vaughn",
+                  "popularity": 4.288,
+                  "profile_path": "/m99yAF6psRJSOslZkxPY8i7u7NR.jpg"
+              },
+              {
+                  "character": "Lonnie Byers",
+                  "credit_id": "5d25801937b3a9747d52a53f",
+                  "order": 541,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 45396,
+                  "known_for_department": "Acting",
+                  "name": "Ross Partridge",
+                  "original_name": "Ross Partridge",
+                  "popularity": 10.892,
+                  "profile_path": "/4GCbT5B0WeoDkl5gor8NuAvy4mV.jpg"
+              },
+              {
+                  "character": "Scott Clarke",
+                  "credit_id": "5d2578ada698cf0010ab31cb",
+                  "order": 604,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1381393,
+                  "known_for_department": "Acting",
+                  "name": "Randy Havens",
+                  "original_name": "Randy Havens",
+                  "popularity": 18.644,
+                  "profile_path": "/7Lh5eGcXZUoPJcTWaUw369R706E.jpg"
+              },
+              {
+                  "character": "Calvin Powell",
+                  "credit_id": "5d26171ea698cf52eba6bfae",
+                  "order": 685,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1281250,
+                  "known_for_department": "Acting",
+                  "name": "Rob Morgan",
+                  "original_name": "Rob Morgan",
+                  "popularity": 18.485,
+                  "profile_path": "/ps6wR3JZnk6MY9tbtOLORgadqs6.jpg"
+              },
+              {
+                  "character": "Phil Callahan",
+                  "credit_id": "5d26185f37b3a96a3452a8a9",
+                  "order": 692,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1674830,
+                  "known_for_department": "Acting",
+                  "name": "John Reynolds",
+                  "original_name": "John Reynolds",
+                  "popularity": 14.598,
+                  "profile_path": "/1yzDTZqIeFQaI4i8eGC0TB1UfZg.jpg"
+              },
+              {
+                  "character": "Ted Wheeler",
+                  "credit_id": "5d267e6774645700126c239a",
+                  "order": 696,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 141762,
+                  "known_for_department": "Acting",
+                  "name": "Joe Chrest",
+                  "original_name": "Joe Chrest",
+                  "popularity": 21.578,
+                  "profile_path": "/7mcsJGnqRoVPTtxAUZEKt2dZnlw.jpg"
+              },
+              {
+                  "character": "Morgue Worker",
+                  "credit_id": "63e3c017fac502007c5a020e",
+                  "order": 753,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 17825,
+                  "known_for_department": "Directing",
+                  "name": "Shawn Levy",
+                  "original_name": "Shawn Levy",
+                  "popularity": 26.569,
+                  "profile_path": "/b1ulkCHz8biG87LjLQQiMCebEZo.jpg"
+              }
+          ]
+      },
+      {
+          "air_date": "2016-07-15",
+          "episode_number": 5,
+          "episode_type": "standard",
+          "id": 1205904,
+          "name": "La pulga y el acróbata",
+          "overview": "Hopper entra en el laboratorio. Nancy y Jonathan se enfrentan a la fuerza que secuestró a Will. Los niños le preguntan al Sr. Clarke cómo se viaja a otra dimensión.",
+          "production_code": "",
+          "runtime": 52,
+          "season_number": 1,
+          "show_id": 66732,
+          "still_path": "/exT4NW9EdXG1qLZHKJnRpq3gh1H.jpg",
+          "vote_average": 8.3,
+          "vote_count": 220,
+          "crew": [
+              {
+                  "job": "Director",
+                  "department": "Directing",
+                  "credit_id": "57b20164c3a36869e5000ba5",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1179419,
+                  "known_for_department": "Writing",
+                  "name": "Matt Duffer",
+                  "original_name": "Matt Duffer",
+                  "popularity": 11.339,
+                  "profile_path": "/kXO5CnSxC0znMAICGxnPeuGP73U.jpg"
+              },
+              {
+                  "job": "Writer",
+                  "department": "Writing",
+                  "credit_id": "5789c46cc3a36841e700099e",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1179419,
+                  "known_for_department": "Writing",
+                  "name": "Matt Duffer",
+                  "original_name": "Matt Duffer",
+                  "popularity": 11.339,
+                  "profile_path": "/kXO5CnSxC0znMAICGxnPeuGP73U.jpg"
+              },
+              {
+                  "job": "Writer",
+                  "department": "Writing",
+                  "credit_id": "5789c497c3a36841e70009b9",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1179422,
+                  "known_for_department": "Writing",
+                  "name": "Ross Duffer",
+                  "original_name": "Ross Duffer",
+                  "popularity": 10.553,
+                  "profile_path": "/kN1HdFViQkcJOQlNcvvFJIx9Uju.jpg"
+              },
+              {
+                  "job": "Director",
+                  "department": "Directing",
+                  "credit_id": "57b20174c3a3686a54000afa",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1179422,
+                  "known_for_department": "Writing",
+                  "name": "Ross Duffer",
+                  "original_name": "Ross Duffer",
+                  "popularity": 10.553,
+                  "profile_path": "/kN1HdFViQkcJOQlNcvvFJIx9Uju.jpg"
+              },
+              {
+                  "job": "Writer",
+                  "department": "Writing",
+                  "credit_id": "5dd479182634620012b65360",
+                  "adult": false,
+                  "gender": 1,
+                  "id": 1825196,
+                  "known_for_department": "Writing",
+                  "name": "Alison Tatlock",
+                  "original_name": "Alison Tatlock",
+                  "popularity": 6.642,
+                  "profile_path": "/ecwoedjgH2x5IecaR1oWcaujrD0.jpg"
+              },
+              {
+                  "job": "Director of Photography",
+                  "department": "Camera",
+                  "credit_id": "60a81c446ee3d70029419e54",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1485876,
+                  "known_for_department": "Camera",
+                  "name": "Tim Ives",
+                  "original_name": "Tim Ives",
+                  "popularity": 5.058,
+                  "profile_path": "/cgQkPbS2akrEZlawCi5DN0AkPqs.jpg"
+              }
+          ],
+          "guest_stars": [
+              {
+                  "character": "Will Byers",
+                  "credit_id": "5759b99a9251416b530002a5",
+                  "order": 4,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1393177,
+                  "known_for_department": "Acting",
+                  "name": "Noah Schnapp",
+                  "original_name": "Noah Schnapp",
+                  "popularity": 24.859,
+                  "profile_path": "/3GSWWrqQjio6G8L42ugGBGNks37.jpg"
+              },
+              {
+                  "character": "Steve Harrington",
+                  "credit_id": "5759b9d89251410a9900213e",
+                  "order": 9,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1467219,
+                  "known_for_department": "Acting",
+                  "name": "Joe Keery",
+                  "original_name": "Joe Keery",
+                  "popularity": 33.081,
+                  "profile_path": "/ayIAVLMfZGEGIFwAo3pPnY7p59.jpg"
+              },
+              {
+                  "character": "Elevator Scientist",
+                  "credit_id": "5b36ee080e0a264016035465",
+                  "order": 519,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1217651,
+                  "known_for_department": "Acting",
+                  "name": "Andrew Benator",
+                  "original_name": "Andrew Benator",
+                  "popularity": 4.94,
+                  "profile_path": "/nlBSUWmZPEtEiwCxG4lx1u9U4Z6.jpg"
+              },
+              {
+                  "character": "Principal Coleman",
+                  "credit_id": "59fca957c3a3681a6402d7da",
+                  "order": 539,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 114850,
+                  "known_for_department": "Acting",
+                  "name": "Tony Vaughn",
+                  "original_name": "Tony Vaughn",
+                  "popularity": 4.288,
+                  "profile_path": "/m99yAF6psRJSOslZkxPY8i7u7NR.jpg"
+              },
+              {
+                  "character": "Lonnie Byers",
+                  "credit_id": "5d25801937b3a9747d52a53f",
+                  "order": 541,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 45396,
+                  "known_for_department": "Acting",
+                  "name": "Ross Partridge",
+                  "original_name": "Ross Partridge",
+                  "popularity": 10.892,
+                  "profile_path": "/4GCbT5B0WeoDkl5gor8NuAvy4mV.jpg"
+              },
+              {
+                  "character": "Hawkins Head of Security",
+                  "credit_id": "5b36ee249251413c9b030fb9",
+                  "order": 549,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1371000,
+                  "known_for_department": "Acting",
+                  "name": "Pete Burris",
+                  "original_name": "Pete Burris",
+                  "popularity": 5.068,
+                  "profile_path": "/9FfIl5oggZOkQNzXakbBqAHXSam.jpg"
+              },
+              {
+                  "character": "Lead Agent",
+                  "credit_id": "5b36ee3cc3a368530e03754f",
+                  "order": 550,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 951643,
+                  "known_for_department": "Acting",
+                  "name": "Tobias Jelinek",
+                  "original_name": "Tobias Jelinek",
+                  "popularity": 16.755,
+                  "profile_path": "/rGHghEJ13ez2uvTQ3SNPB7LoW75.jpg"
+              },
+              {
+                  "character": "The Monster",
+                  "credit_id": "5b36ede80e0a26400a03468e",
+                  "order": 558,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1052211,
+                  "known_for_department": "Acting",
+                  "name": "Mark Steger",
+                  "original_name": "Mark Steger",
+                  "popularity": 14.11,
+                  "profile_path": "/3EeztYq3OfdeHsqjYSwRuNHrvnk.jpg"
+              },
+              {
+                  "character": "Middle School Girl",
+                  "credit_id": "5d258a2c37b3a9492752c254",
+                  "order": 572,
+                  "adult": false,
+                  "gender": 0,
+                  "id": 2358417,
+                  "known_for_department": "Acting",
+                  "name": "Camden Ella Brown",
+                  "original_name": "Camden Ella Brown",
+                  "popularity": 1.297,
+                  "profile_path": null
+              },
+              {
+                  "character": "Cafeteria Worker",
+                  "credit_id": "5d258a3d37b3a9492752c283",
+                  "order": 573,
+                  "adult": false,
+                  "gender": 0,
+                  "id": 2126967,
+                  "known_for_department": "Acting",
+                  "name": "Judy McGee Burley",
+                  "original_name": "Judy McGee Burley",
+                  "popularity": 2.162,
+                  "profile_path": null
+              },
+              {
+                  "character": "Charles Sinclair",
+                  "credit_id": "5d258a4ea698cf0fa7a85af7",
+                  "order": 574,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 2011382,
+                  "known_for_department": "Acting",
+                  "name": "Bradford Haynes",
+                  "original_name": "Bradford Haynes",
+                  "popularity": 3.387,
+                  "profile_path": null
+              },
+              {
+                  "character": "Diane Hopper",
+                  "credit_id": "5d2582d1a698cf0fa7a849ce",
+                  "order": 575,
+                  "adult": false,
+                  "gender": 1,
+                  "id": 1502198,
+                  "known_for_department": "Acting",
+                  "name": "Jerri Tubbs",
+                  "original_name": "Jerri Tubbs",
+                  "popularity": 5.299,
+                  "profile_path": "/3oT4Og3EnTb9KsrCrV2MsG53Ung.jpg"
+              },
+              {
+                  "character": "Pastor Charles",
+                  "credit_id": "5d258a8c69d2802c6e0033f7",
+                  "order": 576,
+                  "adult": false,
+                  "gender": 0,
+                  "id": 1808566,
+                  "known_for_department": "Acting",
+                  "name": "Bill Eudaly",
+                  "original_name": "Bill Eudaly",
+                  "popularity": 4.978,
+                  "profile_path": "/19Yd2quxUTCTQ9mW3TL9qYzIc87.jpg"
+              },
+              {
+                  "character": "Jennifer Hayes",
+                  "credit_id": "5d258ac137b3a9492752c361",
+                  "order": 577,
+                  "adult": false,
+                  "gender": 0,
+                  "id": 2358419,
+                  "known_for_department": "Acting",
+                  "name": "Kaylee Glover",
+                  "original_name": "Kaylee Glover",
+                  "popularity": 1.4,
+                  "profile_path": null
+              },
+              {
+                  "character": "Florence",
+                  "credit_id": "59fca93b92514113bb02ef2b",
+                  "order": 599,
+                  "adult": false,
+                  "gender": 1,
+                  "id": 1916844,
+                  "known_for_department": "Acting",
+                  "name": "Susan Shalhoub Larkin",
+                  "original_name": "Susan Shalhoub Larkin",
+                  "popularity": 8.7,
+                  "profile_path": "/pLAwhYAHjYyxMZrfCCgLBqLcmcU.jpg"
+              },
+              {
+                  "character": "Scott Clarke",
+                  "credit_id": "5d2578ada698cf0010ab31cb",
+                  "order": 604,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1381393,
+                  "known_for_department": "Acting",
+                  "name": "Randy Havens",
+                  "original_name": "Randy Havens",
+                  "popularity": 18.644,
+                  "profile_path": "/7Lh5eGcXZUoPJcTWaUw369R706E.jpg"
+              },
+              {
+                  "character": "Calvin Powell",
+                  "credit_id": "5d26171ea698cf52eba6bfae",
+                  "order": 685,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1281250,
+                  "known_for_department": "Acting",
+                  "name": "Rob Morgan",
+                  "original_name": "Rob Morgan",
+                  "popularity": 18.485,
+                  "profile_path": "/ps6wR3JZnk6MY9tbtOLORgadqs6.jpg"
+              },
+              {
+                  "character": "Sue Sinclair",
+                  "credit_id": "5b1f12950e0a264f9b010eba",
+                  "order": 689,
+                  "adult": false,
+                  "gender": 1,
+                  "id": 1377994,
+                  "known_for_department": "Acting",
+                  "name": "Karen Ceesay",
+                  "original_name": "Karen Ceesay",
+                  "popularity": 5.63,
+                  "profile_path": "/j7EKFC2RZa0gBMcJJTRhhydONEX.jpg"
+              },
+              {
+                  "character": "Phil Callahan",
+                  "credit_id": "5d26185f37b3a96a3452a8a9",
+                  "order": 692,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1674830,
+                  "known_for_department": "Acting",
+                  "name": "John Reynolds",
+                  "original_name": "John Reynolds",
+                  "popularity": 14.598,
+                  "profile_path": "/1yzDTZqIeFQaI4i8eGC0TB1UfZg.jpg"
+              },
+              {
+                  "character": "Ted Wheeler",
+                  "credit_id": "5d267e6774645700126c239a",
+                  "order": 696,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 141762,
+                  "known_for_department": "Acting",
+                  "name": "Joe Chrest",
+                  "original_name": "Joe Chrest",
+                  "popularity": 21.578,
+                  "profile_path": "/7mcsJGnqRoVPTtxAUZEKt2dZnlw.jpg"
+              }
+          ]
+      },
+      {
+          "air_date": "2016-07-15",
+          "episode_number": 6,
+          "episode_type": "standard",
+          "id": 1205905,
+          "name": "El monstruo",
+          "overview": "Jonathan busca desesperadamente a Nancy en la oscuridad, pero Steve también quiere encontrarla. Hopper y Joyce desvelan el secreto de los experimentos del laboratorio.",
+          "production_code": "",
+          "runtime": 46,
+          "season_number": 1,
+          "show_id": 66732,
+          "still_path": "/lNS6qycyucewz3duTr1tf1LU688.jpg",
+          "vote_average": 8.3,
+          "vote_count": 166,
+          "crew": [
+              {
+                  "job": "Writer",
+                  "department": "Writing",
+                  "credit_id": "57b202d092514147840030b7",
+                  "adult": false,
+                  "gender": 0,
+                  "id": 1666688,
+                  "known_for_department": "Writing",
+                  "name": "Jessie Nickson-Lopez",
+                  "original_name": "Jessie Nickson-Lopez",
+                  "popularity": 5.045,
+                  "profile_path": "/nheqrMWbfgsc1uq69hcfU8CbCTA.jpg"
+              },
+              {
+                  "job": "Director",
+                  "department": "Directing",
+                  "credit_id": "57b20164c3a36869e5000ba5",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1179419,
+                  "known_for_department": "Writing",
+                  "name": "Matt Duffer",
+                  "original_name": "Matt Duffer",
+                  "popularity": 11.339,
+                  "profile_path": "/kXO5CnSxC0znMAICGxnPeuGP73U.jpg"
+              },
+              {
+                  "job": "Writer",
+                  "department": "Writing",
+                  "credit_id": "5789c46cc3a36841e700099e",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1179419,
+                  "known_for_department": "Writing",
+                  "name": "Matt Duffer",
+                  "original_name": "Matt Duffer",
+                  "popularity": 11.339,
+                  "profile_path": "/kXO5CnSxC0znMAICGxnPeuGP73U.jpg"
+              },
+              {
+                  "job": "Writer",
+                  "department": "Writing",
+                  "credit_id": "5789c497c3a36841e70009b9",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1179422,
+                  "known_for_department": "Writing",
+                  "name": "Ross Duffer",
+                  "original_name": "Ross Duffer",
+                  "popularity": 10.553,
+                  "profile_path": "/kN1HdFViQkcJOQlNcvvFJIx9Uju.jpg"
+              },
+              {
+                  "job": "Director",
+                  "department": "Directing",
+                  "credit_id": "57b20174c3a3686a54000afa",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1179422,
+                  "known_for_department": "Writing",
+                  "name": "Ross Duffer",
+                  "original_name": "Ross Duffer",
+                  "popularity": 10.553,
+                  "profile_path": "/kN1HdFViQkcJOQlNcvvFJIx9Uju.jpg"
+              },
+              {
+                  "job": "Director of Photography",
+                  "department": "Camera",
+                  "credit_id": "60a81c446ee3d70029419e54",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1485876,
+                  "known_for_department": "Camera",
+                  "name": "Tim Ives",
+                  "original_name": "Tim Ives",
+                  "popularity": 5.058,
+                  "profile_path": "/cgQkPbS2akrEZlawCi5DN0AkPqs.jpg"
+              }
+          ],
+          "guest_stars": [
+              {
+                  "character": "Steve Harrington",
+                  "credit_id": "5759b9d89251410a9900213e",
+                  "order": 9,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1467219,
+                  "known_for_department": "Acting",
+                  "name": "Joe Keery",
+                  "original_name": "Joe Keery",
+                  "popularity": 33.081,
+                  "profile_path": "/ayIAVLMfZGEGIFwAo3pPnY7p59.jpg"
+              },
+              {
+                  "character": "Hunting Store Owner",
+                  "credit_id": "5afdfff792514178c2000da9",
+                  "order": 512,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 111693,
+                  "known_for_department": "Acting",
+                  "name": "Adam Boyer",
+                  "original_name": "Adam Boyer",
+                  "popularity": 8.429,
+                  "profile_path": "/lxqVHfVnMxExCSzJLal5gFHeVW8.jpg"
+              },
+              {
+                  "character": "Troy",
+                  "credit_id": "5bc10b8e92514179ba020982",
+                  "order": 520,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1668667,
+                  "known_for_department": "Acting",
+                  "name": "Peyton Wich",
+                  "original_name": "Peyton Wich",
+                  "popularity": 8.34,
+                  "profile_path": "/52101r7ph1aiJtlZ2pIXD5L7BKV.jpg"
+              },
+              {
+                  "character": "Becky Ives",
+                  "credit_id": "5d2579b8a698cf0010ab33dd",
+                  "order": 540,
+                  "adult": false,
+                  "gender": 1,
+                  "id": 139150,
+                  "known_for_department": "Acting",
+                  "name": "Amy Seimetz",
+                  "original_name": "Amy Seimetz",
+                  "popularity": 19.49,
+                  "profile_path": "/qa7vCi7TViddGjuYEszLdi8DRqN.jpg"
+              },
+              {
+                  "character": "Female Clerk",
+                  "credit_id": "5d258132e24e3a00112bfe3b",
+                  "order": 542,
+                  "adult": false,
+                  "gender": 0,
+                  "id": 2358385,
+                  "known_for_department": "Acting",
+                  "name": "Linda Kang",
+                  "original_name": "Linda Kang",
+                  "popularity": 1.912,
+                  "profile_path": null
+              },
+              {
+                  "character": "Grocery Store Manager",
+                  "credit_id": "5d258146a698cf0010ab480a",
+                  "order": 543,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1874945,
+                  "known_for_department": "Acting",
+                  "name": "Kevin Patrick Murphy",
+                  "original_name": "Kevin Patrick Murphy",
+                  "popularity": 2.698,
+                  "profile_path": "/fCDieb3E8tqnKYceMmA4UsxSXwp.jpg"
+              },
+              {
+                  "character": "Agent Repairman",
+                  "credit_id": "5d258188e24e3a00112bff21",
+                  "order": 544,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1579625,
+                  "known_for_department": "Acting",
+                  "name": "Robert Walker Branchaud",
+                  "original_name": "Robert Walker Branchaud",
+                  "popularity": 6.631,
+                  "profile_path": "/gD7Te0niYEmfC0BDf4Xb2dHISDG.jpg"
+              },
+              {
+                  "character": "The Monster",
+                  "credit_id": "5b36ede80e0a26400a03468e",
+                  "order": 558,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1052211,
+                  "known_for_department": "Acting",
+                  "name": "Mark Steger",
+                  "original_name": "Mark Steger",
+                  "popularity": 14.11,
+                  "profile_path": "/3EeztYq3OfdeHsqjYSwRuNHrvnk.jpg"
+              },
+              {
+                  "character": "Tommy H.",
+                  "credit_id": "5d257ea9e24e3a00132bf3ff",
+                  "order": 570,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1694082,
+                  "known_for_department": "Acting",
+                  "name": "Chester Rushing",
+                  "original_name": "Chester Rushing",
+                  "popularity": 10.71,
+                  "profile_path": "/34YpCnyxCgxlq5PYJqiro7losWy.jpg"
+              },
+              {
+                  "character": "Florence",
+                  "credit_id": "59fca93b92514113bb02ef2b",
+                  "order": 599,
+                  "adult": false,
+                  "gender": 1,
+                  "id": 1916844,
+                  "known_for_department": "Acting",
+                  "name": "Susan Shalhoub Larkin",
+                  "original_name": "Susan Shalhoub Larkin",
+                  "popularity": 8.7,
+                  "profile_path": "/pLAwhYAHjYyxMZrfCCgLBqLcmcU.jpg"
+              },
+              {
+                  "character": "Scott Clarke",
+                  "credit_id": "5d2578ada698cf0010ab31cb",
+                  "order": 604,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1381393,
+                  "known_for_department": "Acting",
+                  "name": "Randy Havens",
+                  "original_name": "Randy Havens",
+                  "popularity": 18.644,
+                  "profile_path": "/7Lh5eGcXZUoPJcTWaUw369R706E.jpg"
+              },
+              {
+                  "character": "Calvin Powell",
+                  "credit_id": "5d26171ea698cf52eba6bfae",
+                  "order": 685,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1281250,
+                  "known_for_department": "Acting",
+                  "name": "Rob Morgan",
+                  "original_name": "Rob Morgan",
+                  "popularity": 18.485,
+                  "profile_path": "/ps6wR3JZnk6MY9tbtOLORgadqs6.jpg"
+              },
+              {
+                  "character": "Terry Ives",
+                  "credit_id": "5d2578c937b3a94927529915",
+                  "order": 690,
+                  "adult": false,
+                  "gender": 1,
+                  "id": 1033252,
+                  "known_for_department": "Acting",
+                  "name": "Aimee Mullins",
+                  "original_name": "Aimee Mullins",
+                  "popularity": 12.192,
+                  "profile_path": "/A4H8dBREovAels6YFAw8wrprE8R.jpg"
+              },
+              {
+                  "character": "Phil Callahan",
+                  "credit_id": "5d26185f37b3a96a3452a8a9",
+                  "order": 692,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1674830,
+                  "known_for_department": "Acting",
+                  "name": "John Reynolds",
+                  "original_name": "John Reynolds",
+                  "popularity": 14.598,
+                  "profile_path": "/1yzDTZqIeFQaI4i8eGC0TB1UfZg.jpg"
+              },
+              {
+                  "character": "Ted Wheeler",
+                  "credit_id": "5d267e6774645700126c239a",
+                  "order": 696,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 141762,
+                  "known_for_department": "Acting",
+                  "name": "Joe Chrest",
+                  "original_name": "Joe Chrest",
+                  "popularity": 21.578,
+                  "profile_path": "/7mcsJGnqRoVPTtxAUZEKt2dZnlw.jpg"
+              },
+              {
+                  "character": "Carol Perkins",
+                  "credit_id": "629dcd667d5db5086be91ed4",
+                  "order": 707,
+                  "adult": false,
+                  "gender": 1,
+                  "id": 1572103,
+                  "known_for_department": "Acting",
+                  "name": "Chelsea Talmadge",
+                  "original_name": "Chelsea Talmadge",
+                  "popularity": 10.35,
+                  "profile_path": "/cxH53B64fEjbI6u7uLTMjJFpAe2.jpg"
+              },
+              {
+                  "character": "Reed",
+                  "credit_id": "64c27eff1cfe3a0eb30c78f3",
+                  "order": 756,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 2077864,
+                  "known_for_department": "Acting",
+                  "name": "Chase Stokes",
+                  "original_name": "Chase Stokes",
+                  "popularity": 19.261,
+                  "profile_path": "/okoMZYMICceGRrca6jhCVkDxVxi.jpg"
+              }
+          ]
+      },
+      {
+          "air_date": "2016-07-15",
+          "episode_number": 7,
+          "episode_type": "standard",
+          "id": 1205906,
+          "name": "La bañera",
+          "overview": "Once intenta llegar a Will. Lucas les avisa de que \"vienen los hombres malos\". Nancy y Jonathan le enseñan a la policía lo que ha captado la cámara.",
+          "production_code": "",
+          "runtime": 42,
+          "season_number": 1,
+          "show_id": 66732,
+          "still_path": "/mkZzUTNWYfGwRH2f1TzlRgouypa.jpg",
+          "vote_average": 8.4,
+          "vote_count": 167,
+          "crew": [
+              {
+                  "job": "Writer",
+                  "department": "Writing",
+                  "credit_id": "57b203009251411a45000bb8",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1301304,
+                  "known_for_department": "Writing",
+                  "name": "Justin Doble",
+                  "original_name": "Justin Doble",
+                  "popularity": 4.862,
+                  "profile_path": "/7bTwDKXb8BsvI5b1b4UeKQhBCCN.jpg"
+              },
+              {
+                  "job": "Director",
+                  "department": "Directing",
+                  "credit_id": "57b20164c3a36869e5000ba5",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1179419,
+                  "known_for_department": "Writing",
+                  "name": "Matt Duffer",
+                  "original_name": "Matt Duffer",
+                  "popularity": 11.339,
+                  "profile_path": "/kXO5CnSxC0znMAICGxnPeuGP73U.jpg"
+              },
+              {
+                  "job": "Director",
+                  "department": "Directing",
+                  "credit_id": "57b20174c3a3686a54000afa",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1179422,
+                  "known_for_department": "Writing",
+                  "name": "Ross Duffer",
+                  "original_name": "Ross Duffer",
+                  "popularity": 10.553,
+                  "profile_path": "/kN1HdFViQkcJOQlNcvvFJIx9Uju.jpg"
+              },
+              {
+                  "job": "Director of Photography",
+                  "department": "Camera",
+                  "credit_id": "60a81c446ee3d70029419e54",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1485876,
+                  "known_for_department": "Camera",
+                  "name": "Tim Ives",
+                  "original_name": "Tim Ives",
+                  "popularity": 5.058,
+                  "profile_path": "/cgQkPbS2akrEZlawCi5DN0AkPqs.jpg"
+              }
+          ],
+          "guest_stars": [
+              {
+                  "character": "Will Byers",
+                  "credit_id": "5759b99a9251416b530002a5",
+                  "order": 4,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1393177,
+                  "known_for_department": "Acting",
+                  "name": "Noah Schnapp",
+                  "original_name": "Noah Schnapp",
+                  "popularity": 24.859,
+                  "profile_path": "/3GSWWrqQjio6G8L42ugGBGNks37.jpg"
+              },
+              {
+                  "character": "Steve Harrington",
+                  "credit_id": "5759b9d89251410a9900213e",
+                  "order": 9,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1467219,
+                  "known_for_department": "Acting",
+                  "name": "Joe Keery",
+                  "original_name": "Joe Keery",
+                  "popularity": 33.081,
+                  "profile_path": "/ayIAVLMfZGEGIFwAo3pPnY7p59.jpg"
+              },
+              {
+                  "character": "Troy",
+                  "credit_id": "5bc10b8e92514179ba020982",
+                  "order": 520,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1668667,
+                  "known_for_department": "Acting",
+                  "name": "Peyton Wich",
+                  "original_name": "Peyton Wich",
+                  "popularity": 8.34,
+                  "profile_path": "/52101r7ph1aiJtlZ2pIXD5L7BKV.jpg"
+              },
+              {
+                  "character": "Mary Mack Girl #2",
+                  "credit_id": "5d2581d969d28024d0043e2a",
+                  "order": 545,
+                  "adult": false,
+                  "gender": 0,
+                  "id": 2358394,
+                  "known_for_department": "Acting",
+                  "name": "Shae Britt",
+                  "original_name": "Shae Britt",
+                  "popularity": 3.213,
+                  "profile_path": null
+              },
+              {
+                  "character": "Jen",
+                  "credit_id": "5d2581e9e24e3a00132bfca9",
+                  "order": 546,
+                  "adult": false,
+                  "gender": 1,
+                  "id": 1510263,
+                  "known_for_department": "Acting",
+                  "name": "Jackie Dallas",
+                  "original_name": "Jackie Dallas",
+                  "popularity": 6.298,
+                  "profile_path": "/qgi2NIFFeDyRgSodxn8UZFpzugx.jpg"
+              },
+              {
+                  "character": "Mary Mack Girl #1",
+                  "credit_id": "5d258223e24e3a00122bfd6a",
+                  "order": 547,
+                  "adult": false,
+                  "gender": 0,
+                  "id": 2358396,
+                  "known_for_department": "Acting",
+                  "name": "Abigail Whitlock",
+                  "original_name": "Abigail Whitlock",
+                  "popularity": 2.801,
+                  "profile_path": null
+              },
+              {
+                  "character": "Troy's Mom",
+                  "credit_id": "5d25827169d28024d0043fa9",
+                  "order": 548,
+                  "adult": false,
+                  "gender": 1,
+                  "id": 155965,
+                  "known_for_department": "Acting",
+                  "name": "Amy Parrish",
+                  "original_name": "Amy Parrish",
+                  "popularity": 12.47,
+                  "profile_path": "/ueQFClINI5RNrnKQkM3sv8MQkzg.jpg"
+              },
+              {
+                  "character": "Tommy H.",
+                  "credit_id": "5d257ea9e24e3a00132bf3ff",
+                  "order": 570,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1694082,
+                  "known_for_department": "Acting",
+                  "name": "Chester Rushing",
+                  "original_name": "Chester Rushing",
+                  "popularity": 10.71,
+                  "profile_path": "/34YpCnyxCgxlq5PYJqiro7losWy.jpg"
+              },
+              {
+                  "character": "Scott Clarke",
+                  "credit_id": "5d2578ada698cf0010ab31cb",
+                  "order": 604,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1381393,
+                  "known_for_department": "Acting",
+                  "name": "Randy Havens",
+                  "original_name": "Randy Havens",
+                  "popularity": 18.644,
+                  "profile_path": "/7Lh5eGcXZUoPJcTWaUw369R706E.jpg"
+              },
+              {
+                  "character": "Calvin Powell",
+                  "credit_id": "5d26171ea698cf52eba6bfae",
+                  "order": 685,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1281250,
+                  "known_for_department": "Acting",
+                  "name": "Rob Morgan",
+                  "original_name": "Rob Morgan",
+                  "popularity": 18.485,
+                  "profile_path": "/ps6wR3JZnk6MY9tbtOLORgadqs6.jpg"
+              },
+              {
+                  "character": "Phil Callahan",
+                  "credit_id": "5d26185f37b3a96a3452a8a9",
+                  "order": 692,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1674830,
+                  "known_for_department": "Acting",
+                  "name": "John Reynolds",
+                  "original_name": "John Reynolds",
+                  "popularity": 14.598,
+                  "profile_path": "/1yzDTZqIeFQaI4i8eGC0TB1UfZg.jpg"
+              },
+              {
+                  "character": "Ted Wheeler",
+                  "credit_id": "5d267e6774645700126c239a",
+                  "order": 696,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 141762,
+                  "known_for_department": "Acting",
+                  "name": "Joe Chrest",
+                  "original_name": "Joe Chrest",
+                  "popularity": 21.578,
+                  "profile_path": "/7mcsJGnqRoVPTtxAUZEKt2dZnlw.jpg"
+              },
+              {
+                  "character": "Carol Perkins",
+                  "credit_id": "629dcd667d5db5086be91ed4",
+                  "order": 707,
+                  "adult": false,
+                  "gender": 1,
+                  "id": 1572103,
+                  "known_for_department": "Acting",
+                  "name": "Chelsea Talmadge",
+                  "original_name": "Chelsea Talmadge",
+                  "popularity": 10.35,
+                  "profile_path": "/cxH53B64fEjbI6u7uLTMjJFpAe2.jpg"
+              },
+              {
+                  "character": "Holly Wheeler",
+                  "credit_id": "59fca91cc3a3681adf02ccbd",
+                  "order": 746,
+                  "adult": false,
+                  "gender": 1,
+                  "id": 1916843,
+                  "known_for_department": "Acting",
+                  "name": "Tinsley Price",
+                  "original_name": "Tinsley Price",
+                  "popularity": 12.67,
+                  "profile_path": "/y76Z7ewNyvPOvPudCNrHSFIuTth.jpg"
+              },
+              {
+                  "character": "Holly Wheeler",
+                  "credit_id": "5d25825a37b3a9747d52ab65",
+                  "order": 748,
+                  "adult": false,
+                  "gender": 1,
+                  "id": 2264087,
+                  "known_for_department": "Acting",
+                  "name": "Anniston Price",
+                  "original_name": "Anniston Price",
+                  "popularity": 6.613,
+                  "profile_path": "/35hG4HtWsxT7HLrtAeMQfusfPB9.jpg"
+              }
+          ]
+      },
+      {
+          "air_date": "2016-07-15",
+          "episode_number": 8,
+          "episode_type": "finale",
+          "id": 1205907,
+          "name": "El otro lado",
+          "overview": "El Dr. Brenner interroga a Hopper y a Joyce mientras Once y los niños esperan en el gimnasio. En casa de Will, Nancy y Jonathan se preparan para luchar.",
+          "production_code": "",
+          "runtime": 54,
+          "season_number": 1,
+          "show_id": 66732,
+          "still_path": "/1teJ5dbuepfqOOs9uYhYTUjr2qs.jpg",
+          "vote_average": 8.4,
+          "vote_count": 175,
+          "crew": [
+              {
+                  "job": "Teleplay",
+                  "department": "Writing",
+                  "credit_id": "586e9e43c3a3683b6900947e",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1179419,
+                  "known_for_department": "Writing",
+                  "name": "Matt Duffer",
+                  "original_name": "Matt Duffer",
+                  "popularity": 11.339,
+                  "profile_path": "/kXO5CnSxC0znMAICGxnPeuGP73U.jpg"
+              },
+              {
+                  "job": "Teleplay",
+                  "department": "Writing",
+                  "credit_id": "586e9e54c3a3683b6900948c",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1179422,
+                  "known_for_department": "Writing",
+                  "name": "Ross Duffer",
+                  "original_name": "Ross Duffer",
+                  "popularity": 10.553,
+                  "profile_path": "/kN1HdFViQkcJOQlNcvvFJIx9Uju.jpg"
+              },
+              {
+                  "job": "Director",
+                  "department": "Directing",
+                  "credit_id": "57b20164c3a36869e5000ba5",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1179419,
+                  "known_for_department": "Writing",
+                  "name": "Matt Duffer",
+                  "original_name": "Matt Duffer",
+                  "popularity": 11.339,
+                  "profile_path": "/kXO5CnSxC0znMAICGxnPeuGP73U.jpg"
+              },
+              {
+                  "job": "Director",
+                  "department": "Directing",
+                  "credit_id": "57b20174c3a3686a54000afa",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1179422,
+                  "known_for_department": "Writing",
+                  "name": "Ross Duffer",
+                  "original_name": "Ross Duffer",
+                  "popularity": 10.553,
+                  "profile_path": "/kN1HdFViQkcJOQlNcvvFJIx9Uju.jpg"
+              },
+              {
+                  "job": "Story",
+                  "department": "Writing",
+                  "credit_id": "586e9e63925141294e00a1b5",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1666689,
+                  "known_for_department": "Writing",
+                  "name": "Paul Dichter",
+                  "original_name": "Paul Dichter",
+                  "popularity": 4.172,
+                  "profile_path": null
+              },
+              {
+                  "job": "Director of Photography",
+                  "department": "Camera",
+                  "credit_id": "60a81c446ee3d70029419e54",
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1485876,
+                  "known_for_department": "Camera",
+                  "name": "Tim Ives",
+                  "original_name": "Tim Ives",
+                  "popularity": 5.058,
+                  "profile_path": "/cgQkPbS2akrEZlawCi5DN0AkPqs.jpg"
+              }
+          ],
+          "guest_stars": [
+              {
+                  "character": "Will Byers",
+                  "credit_id": "5759b99a9251416b530002a5",
+                  "order": 4,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1393177,
+                  "known_for_department": "Acting",
+                  "name": "Noah Schnapp",
+                  "original_name": "Noah Schnapp",
+                  "popularity": 24.859,
+                  "profile_path": "/3GSWWrqQjio6G8L42ugGBGNks37.jpg"
+              },
+              {
+                  "character": "Steve Harrington",
+                  "credit_id": "5759b9d89251410a9900213e",
+                  "order": 9,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1467219,
+                  "known_for_department": "Acting",
+                  "name": "Joe Keery",
+                  "original_name": "Joe Keery",
+                  "popularity": 33.081,
+                  "profile_path": "/ayIAVLMfZGEGIFwAo3pPnY7p59.jpg"
+              },
+              {
+                  "character": "Hawkins Head of Security",
+                  "credit_id": "5b36ee249251413c9b030fb9",
+                  "order": 549,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1371000,
+                  "known_for_department": "Acting",
+                  "name": "Pete Burris",
+                  "original_name": "Pete Burris",
+                  "popularity": 5.068,
+                  "profile_path": "/9FfIl5oggZOkQNzXakbBqAHXSam.jpg"
+              },
+              {
+                  "character": "Lead Agent",
+                  "credit_id": "5b36ee3cc3a368530e03754f",
+                  "order": 550,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 951643,
+                  "known_for_department": "Acting",
+                  "name": "Tobias Jelinek",
+                  "original_name": "Tobias Jelinek",
+                  "popularity": 16.755,
+                  "profile_path": "/rGHghEJ13ez2uvTQ3SNPB7LoW75.jpg"
+              },
+              {
+                  "character": "Sara Hopper",
+                  "credit_id": "5d25830469d2802c6e002254",
+                  "order": 551,
+                  "adult": false,
+                  "gender": 1,
+                  "id": 1511922,
+                  "known_for_department": "Acting",
+                  "name": "Elle Graham",
+                  "original_name": "Elle Graham",
+                  "popularity": 16.642,
+                  "profile_path": "/eLsnIfOxENO2JsHCnlrnERdZ9fM.jpg"
+              },
+              {
+                  "character": "Barbara “Barb” Holland",
+                  "credit_id": "59f6602c925141428202220d",
+                  "order": 552,
+                  "adult": false,
+                  "gender": 1,
+                  "id": 1753911,
+                  "known_for_department": "Acting",
+                  "name": "Shannon Purser",
+                  "original_name": "Shannon Purser",
+                  "popularity": 12.867,
+                  "profile_path": "/zI5C3e0Rk5GjIdP7S4Dfde8R12N.jpg"
+              },
+              {
+                  "character": "Technician",
+                  "credit_id": "5d25833569d2801be0038b41",
+                  "order": 553,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 930994,
+                  "known_for_department": "Acting",
+                  "name": "Lucius Baston",
+                  "original_name": "Lucius Baston",
+                  "popularity": 5.733,
+                  "profile_path": "/b1E5U0OfLmc6V35Xl8nwDxLIYXW.jpg"
+              },
+              {
+                  "character": "The Monster",
+                  "credit_id": "5b36ede80e0a26400a03468e",
+                  "order": 558,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1052211,
+                  "known_for_department": "Acting",
+                  "name": "Mark Steger",
+                  "original_name": "Mark Steger",
+                  "popularity": 14.11,
+                  "profile_path": "/3EeztYq3OfdeHsqjYSwRuNHrvnk.jpg"
+              },
+              {
+                  "character": "Diane Hopper",
+                  "credit_id": "5d2582d1a698cf0fa7a849ce",
+                  "order": 575,
+                  "adult": false,
+                  "gender": 1,
+                  "id": 1502198,
+                  "known_for_department": "Acting",
+                  "name": "Jerri Tubbs",
+                  "original_name": "Jerri Tubbs",
+                  "popularity": 5.299,
+                  "profile_path": "/3oT4Og3EnTb9KsrCrV2MsG53Ung.jpg"
+              },
+              {
+                  "character": "Florence",
+                  "credit_id": "59fca93b92514113bb02ef2b",
+                  "order": 599,
+                  "adult": false,
+                  "gender": 1,
+                  "id": 1916844,
+                  "known_for_department": "Acting",
+                  "name": "Susan Shalhoub Larkin",
+                  "original_name": "Susan Shalhoub Larkin",
+                  "popularity": 8.7,
+                  "profile_path": "/pLAwhYAHjYyxMZrfCCgLBqLcmcU.jpg"
+              },
+              {
+                  "character": "Calvin Powell",
+                  "credit_id": "5d26171ea698cf52eba6bfae",
+                  "order": 685,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1281250,
+                  "known_for_department": "Acting",
+                  "name": "Rob Morgan",
+                  "original_name": "Rob Morgan",
+                  "popularity": 18.485,
+                  "profile_path": "/ps6wR3JZnk6MY9tbtOLORgadqs6.jpg"
+              },
+              {
+                  "character": "Phil Callahan",
+                  "credit_id": "5d26185f37b3a96a3452a8a9",
+                  "order": 692,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 1674830,
+                  "known_for_department": "Acting",
+                  "name": "John Reynolds",
+                  "original_name": "John Reynolds",
+                  "popularity": 14.598,
+                  "profile_path": "/1yzDTZqIeFQaI4i8eGC0TB1UfZg.jpg"
+              },
+              {
+                  "character": "Ted Wheeler",
+                  "credit_id": "5d267e6774645700126c239a",
+                  "order": 696,
+                  "adult": false,
+                  "gender": 2,
+                  "id": 141762,
+                  "known_for_department": "Acting",
+                  "name": "Joe Chrest",
+                  "original_name": "Joe Chrest",
+                  "popularity": 21.578,
+                  "profile_path": "/7mcsJGnqRoVPTtxAUZEKt2dZnlw.jpg"
+              }
+          ]
+      }
+  ],
+  "name": "Temporada 1",
+  "overview": "En Hawkins (Indiana) ocurren cosas extrañas. La desaparición de un niño saca a la luz a una niña con poderes sobrenaturales.",
+  "id": 77680,
+  "poster_path": "/1huQPqu92eebDgPCR2DZhKM7NPg.jpg",
+  "season_number": 1,
+  "vote_average": 8.4,
+  "account_states": {
+      "results": [
+          {
+              "id": 1198665,
+              "episode_number": 1,
+              "rated": false
+          },
+          {
+              "id": 1203677,
+              "episode_number": 2,
+              "rated": false
+          },
+          {
+              "id": 1203679,
+              "episode_number": 3,
+              "rated": false
+          },
+          {
+              "id": 1203680,
+              "episode_number": 4,
+              "rated": false
+          },
+          {
+              "id": 1205904,
+              "episode_number": 5,
+              "rated": false
+          },
+          {
+              "id": 1205905,
+              "episode_number": 6,
+              "rated": false
+          },
+          {
+              "id": 1205906,
+              "episode_number": 7,
+              "rated": false
+          },
+          {
+              "id": 1205907,
+              "episode_number": 8,
+              "rated": false
+          }
+      ]
+  },
+  "aggregate_credits": {
+      "cast": [
+          {
+              "adult": false,
+              "gender": 1,
+              "id": 1356210,
+              "known_for_department": "Acting",
+              "name": "Millie Bobby Brown",
+              "original_name": "Millie Bobby Brown",
+              "popularity": 61.021,
+              "profile_path": "/3Qblbk5JIMxzlGVd1k1ucSKK7rf.jpg",
+              "roles": [
+                  {
+                      "credit_id": "579f8d3092514178bf003120",
+                      "character": "Jane 'Eleven' Hopper",
+                      "episode_count": 8
+                  }
+              ],
+              "total_episode_count": 8,
+              "order": 0
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 1442069,
+              "known_for_department": "Acting",
+              "name": "Finn Wolfhard",
+              "original_name": "Finn Wolfhard",
+              "popularity": 30.421,
+              "profile_path": "/5OVmquAk0W5BIsRlVKslEP497JD.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5759b9909251416bab0002c4",
+                      "character": "Mike Wheeler",
+                      "episode_count": 8
+                  }
+              ],
+              "total_episode_count": 8,
+              "order": 1
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 1653291,
+              "known_for_department": "Acting",
+              "name": "Gaten Matarazzo",
+              "original_name": "Gaten Matarazzo",
+              "popularity": 18.157,
+              "profile_path": "/yanRypHyaFRgTn31fwq8xzcfSHg.jpg",
+              "roles": [
+                  {
+                      "credit_id": "57a49317c3a36865ed000ee2",
+                      "character": "Dustin Henderson",
+                      "episode_count": 8
+                  }
+              ],
+              "total_episode_count": 8,
+              "order": 2
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 1474123,
+              "known_for_department": "Acting",
+              "name": "Caleb McLaughlin",
+              "original_name": "Caleb McLaughlin",
+              "popularity": 21.393,
+              "profile_path": "/xKXJtSOcgGmzSXExU6kz2FXAysC.jpg",
+              "roles": [
+                  {
+                      "credit_id": "57a4932f9251411765000c50",
+                      "character": "Lucas Sinclair",
+                      "episode_count": 8
+                  }
+              ],
+              "total_episode_count": 8,
+              "order": 3
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 35029,
+              "known_for_department": "Acting",
+              "name": "David Harbour",
+              "original_name": "David Harbour",
+              "popularity": 28.476,
+              "profile_path": "/chPekukMF5SNnW6b22NbYPqAStr.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5759b986c3a3683e7c003967",
+                      "character": "Jim Hopper",
+                      "episode_count": 8
+                  }
+              ],
+              "total_episode_count": 8,
+              "order": 5
+          },
+          {
+              "adult": false,
+              "gender": 1,
+              "id": 1920,
+              "known_for_department": "Acting",
+              "name": "Winona Ryder",
+              "original_name": "Winona Ryder",
+              "popularity": 56.914,
+              "profile_path": "/dlffgYbqr1BllWacVLhAFw23nLl.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5759b97bc3a3684ea90029c1",
+                      "character": "Joyce Byers",
+                      "episode_count": 8
+                  }
+              ],
+              "total_episode_count": 8,
+              "order": 6
+          },
+          {
+              "adult": false,
+              "gender": 1,
+              "id": 1039011,
+              "known_for_department": "Acting",
+              "name": "Natalia Dyer",
+              "original_name": "Natalia Dyer",
+              "popularity": 30.842,
+              "profile_path": "/tzC5fcHLbKsT5we8rn5Az0eulEk.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5759b9a8c3a3683e9d0037d3",
+                      "character": "Nancy Wheeler",
+                      "episode_count": 8
+                  }
+              ],
+              "total_episode_count": 8,
+              "order": 7
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 1448222,
+              "known_for_department": "Acting",
+              "name": "Charlie Heaton",
+              "original_name": "Charlie Heaton",
+              "popularity": 28.203,
+              "profile_path": "/8Se6WZuvRmoB990bT29OPgVAyBo.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5759b9b8c3a3684ea90029cf",
+                      "character": "Jonathan Byers",
+                      "episode_count": 8
+                  }
+              ],
+              "total_episode_count": 8,
+              "order": 8
+          },
+          {
+              "adult": false,
+              "gender": 1,
+              "id": 20047,
+              "known_for_department": "Acting",
+              "name": "Cara Buono",
+              "original_name": "Cara Buono",
+              "popularity": 30.386,
+              "profile_path": "/8nK8PSGTfDr3GtqdgUcWwbSlyJX.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5d2572b3a698cf0010ab272b",
+                      "character": "Karen Wheeler",
+                      "episode_count": 8
+                  }
+              ],
+              "total_episode_count": 8,
+              "order": 12
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 8654,
+              "known_for_department": "Acting",
+              "name": "Matthew Modine",
+              "original_name": "Matthew Modine",
+              "popularity": 26.725,
+              "profile_path": "/z974QEHL12qUvLyk6hlWGAmDgom.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5759b9c4c3a3683e7c003977",
+                      "character": "Martin Brenner",
+                      "episode_count": 8
+                  }
+              ],
+              "total_episode_count": 8,
+              "order": 13
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 1281250,
+              "known_for_department": "Acting",
+              "name": "Rob Morgan",
+              "original_name": "Rob Morgan",
+              "popularity": 18.485,
+              "profile_path": "/ps6wR3JZnk6MY9tbtOLORgadqs6.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5d26171ea698cf52eba6bfae",
+                      "character": "Calvin Powell",
+                      "episode_count": 8
+                  }
+              ],
+              "total_episode_count": 8,
+              "order": 685
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 1674830,
+              "known_for_department": "Acting",
+              "name": "John Reynolds",
+              "original_name": "John Reynolds",
+              "popularity": 14.598,
+              "profile_path": "/1yzDTZqIeFQaI4i8eGC0TB1UfZg.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5d26185f37b3a96a3452a8a9",
+                      "character": "Phil Callahan",
+                      "episode_count": 8
+                  }
+              ],
+              "total_episode_count": 8,
+              "order": 692
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 141762,
+              "known_for_department": "Acting",
+              "name": "Joe Chrest",
+              "original_name": "Joe Chrest",
+              "popularity": 21.578,
+              "profile_path": "/7mcsJGnqRoVPTtxAUZEKt2dZnlw.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5d267e6774645700126c239a",
+                      "character": "Ted Wheeler",
+                      "episode_count": 7
+                  }
+              ],
+              "total_episode_count": 7,
+              "order": 696
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 1381393,
+              "known_for_department": "Acting",
+              "name": "Randy Havens",
+              "original_name": "Randy Havens",
+              "popularity": 18.644,
+              "profile_path": "/7Lh5eGcXZUoPJcTWaUw369R706E.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5d2578ada698cf0010ab31cb",
+                      "character": "Scott Clarke",
+                      "episode_count": 6
+                  }
+              ],
+              "total_episode_count": 6,
+              "order": 604
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 1668667,
+              "known_for_department": "Acting",
+              "name": "Peyton Wich",
+              "original_name": "Peyton Wich",
+              "popularity": 8.34,
+              "profile_path": "/52101r7ph1aiJtlZ2pIXD5L7BKV.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5bc10b8e92514179ba020982",
+                      "character": "Troy",
+                      "episode_count": 5
+                  }
+              ],
+              "total_episode_count": 5,
+              "order": 520
+          },
+          {
+              "adult": false,
+              "gender": 1,
+              "id": 1916844,
+              "known_for_department": "Acting",
+              "name": "Susan Shalhoub Larkin",
+              "original_name": "Susan Shalhoub Larkin",
+              "popularity": 8.7,
+              "profile_path": "/pLAwhYAHjYyxMZrfCCgLBqLcmcU.jpg",
+              "roles": [
+                  {
+                      "credit_id": "59fca93b92514113bb02ef2b",
+                      "character": "Florence",
+                      "episode_count": 5
+                  }
+              ],
+              "total_episode_count": 5,
+              "order": 599
+          },
+          {
+              "adult": false,
+              "gender": 1,
+              "id": 1753911,
+              "known_for_department": "Acting",
+              "name": "Shannon Purser",
+              "original_name": "Shannon Purser",
+              "popularity": 12.867,
+              "profile_path": "/zI5C3e0Rk5GjIdP7S4Dfde8R12N.jpg",
+              "roles": [
+                  {
+                      "credit_id": "59f6602c925141428202220d",
+                      "character": "Barbara “Barb” Holland",
+                      "episode_count": 4
+                  }
+              ],
+              "total_episode_count": 4,
+              "order": 552
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 1052211,
+              "known_for_department": "Acting",
+              "name": "Mark Steger",
+              "original_name": "Mark Steger",
+              "popularity": 14.11,
+              "profile_path": "/3EeztYq3OfdeHsqjYSwRuNHrvnk.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5b36ede80e0a26400a03468e",
+                      "character": "The Monster",
+                      "episode_count": 4
+                  }
+              ],
+              "total_episode_count": 4,
+              "order": 558
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 1694082,
+              "known_for_department": "Acting",
+              "name": "Chester Rushing",
+              "original_name": "Chester Rushing",
+              "popularity": 10.71,
+              "profile_path": "/34YpCnyxCgxlq5PYJqiro7losWy.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5d257ea9e24e3a00132bf3ff",
+                      "character": "Tommy H.",
+                      "episode_count": 4
+                  }
+              ],
+              "total_episode_count": 4,
+              "order": 570
+          },
+          {
+              "adult": false,
+              "gender": 1,
+              "id": 1572103,
+              "known_for_department": "Acting",
+              "name": "Chelsea Talmadge",
+              "original_name": "Chelsea Talmadge",
+              "popularity": 10.35,
+              "profile_path": "/cxH53B64fEjbI6u7uLTMjJFpAe2.jpg",
+              "roles": [
+                  {
+                      "credit_id": "629dcd667d5db5086be91ed4",
+                      "character": "Carol Perkins",
+                      "episode_count": 4
+                  }
+              ],
+              "total_episode_count": 4,
+              "order": 707
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 2358366,
+              "known_for_department": "Acting",
+              "name": "Cade Jones",
+              "original_name": "Cade Jones",
+              "popularity": 5.186,
+              "profile_path": "/kZEnpoPn3gIYkiURtx5UiUlllql.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5d257df6e24e3a00102bf53b",
+                      "character": "James",
+                      "episode_count": 3
+                  }
+              ],
+              "total_episode_count": 3,
+              "order": 536
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 114850,
+              "known_for_department": "Acting",
+              "name": "Tony Vaughn",
+              "original_name": "Tony Vaughn",
+              "popularity": 4.288,
+              "profile_path": "/m99yAF6psRJSOslZkxPY8i7u7NR.jpg",
+              "roles": [
+                  {
+                      "credit_id": "59fca957c3a3681a6402d7da",
+                      "character": "Principal Coleman",
+                      "episode_count": 3
+                  }
+              ],
+              "total_episode_count": 3,
+              "order": 539
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 1643635,
+              "known_for_department": "Acting",
+              "name": "Charles Lawlor",
+              "original_name": "Charles Lawlor",
+              "popularity": 6.648,
+              "profile_path": "/yui3L3ugmNd8sYn9fJxGmzkTCxp.jpg",
+              "roles": [
+                  {
+                      "credit_id": "577a9f2492514174bb000db9",
+                      "character": "Donald Melvald",
+                      "episode_count": 2
+                  }
+              ],
+              "total_episode_count": 2,
+              "order": 522
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 45396,
+              "known_for_department": "Acting",
+              "name": "Ross Partridge",
+              "original_name": "Ross Partridge",
+              "popularity": 10.892,
+              "profile_path": "/4GCbT5B0WeoDkl5gor8NuAvy4mV.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5d25801937b3a9747d52a53f",
+                      "character": "Lonnie Byers",
+                      "episode_count": 2
+                  }
+              ],
+              "total_episode_count": 2,
+              "order": 541
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 1371000,
+              "known_for_department": "Acting",
+              "name": "Pete Burris",
+              "original_name": "Pete Burris",
+              "popularity": 5.068,
+              "profile_path": "/9FfIl5oggZOkQNzXakbBqAHXSam.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5b36ee249251413c9b030fb9",
+                      "character": "Hawkins Head of Security",
+                      "episode_count": 2
+                  }
+              ],
+              "total_episode_count": 2,
+              "order": 549
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 951643,
+              "known_for_department": "Acting",
+              "name": "Tobias Jelinek",
+              "original_name": "Tobias Jelinek",
+              "popularity": 16.755,
+              "profile_path": "/rGHghEJ13ez2uvTQ3SNPB7LoW75.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5b36ee3cc3a368530e03754f",
+                      "character": "Lead Agent",
+                      "episode_count": 2
+                  }
+              ],
+              "total_episode_count": 2,
+              "order": 550
+          },
+          {
+              "adult": false,
+              "gender": 1,
+              "id": 1502198,
+              "known_for_department": "Acting",
+              "name": "Jerri Tubbs",
+              "original_name": "Jerri Tubbs",
+              "popularity": 5.299,
+              "profile_path": "/3oT4Og3EnTb9KsrCrV2MsG53Ung.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5d2582d1a698cf0fa7a849ce",
+                      "character": "Diane Hopper",
+                      "episode_count": 2
+                  }
+              ],
+              "total_episode_count": 2,
+              "order": 575
+          },
+          {
+              "adult": false,
+              "gender": 1,
+              "id": 1033252,
+              "known_for_department": "Acting",
+              "name": "Aimee Mullins",
+              "original_name": "Aimee Mullins",
+              "popularity": 12.192,
+              "profile_path": "/A4H8dBREovAels6YFAw8wrprE8R.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5d2578c937b3a94927529915",
+                      "character": "Terry Ives",
+                      "episode_count": 2
+                  }
+              ],
+              "total_episode_count": 2,
+              "order": 690
+          },
+          {
+              "adult": false,
+              "gender": 0,
+              "id": 1772398,
+              "known_for_department": "Acting",
+              "name": "Christi Waldon",
+              "original_name": "Christi Waldon",
+              "popularity": 4.372,
+              "profile_path": "/8KZh1ombwUA4z5s6c1hHasEiYTu.jpg",
+              "roles": [
+                  {
+                      "credit_id": "58c03ecac3a3683a91000df5",
+                      "character": "Marissa",
+                      "episode_count": 1
+                  }
+              ],
+              "total_episode_count": 1,
+              "order": 500
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 111693,
+              "known_for_department": "Acting",
+              "name": "Adam Boyer",
+              "original_name": "Adam Boyer",
+              "popularity": 8.429,
+              "profile_path": "/lxqVHfVnMxExCSzJLal5gFHeVW8.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5afdfff792514178c2000da9",
+                      "character": "Hunting Store Owner",
+                      "episode_count": 1
+                  }
+              ],
+              "total_episode_count": 1,
+              "order": 512
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 1217651,
+              "known_for_department": "Acting",
+              "name": "Andrew Benator",
+              "original_name": "Andrew Benator",
+              "popularity": 4.94,
+              "profile_path": "/nlBSUWmZPEtEiwCxG4lx1u9U4Z6.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5b36ee080e0a264016035465",
+                      "character": "Elevator Scientist",
+                      "episode_count": 1
+                  }
+              ],
+              "total_episode_count": 1,
+              "order": 519
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 1293892,
+              "known_for_department": "Acting",
+              "name": "Chris Sullivan",
+              "original_name": "Chris Sullivan",
+              "popularity": 21.092,
+              "profile_path": "/gKZ9xSFrDzUPv27iAkMpH6Qf0Sk.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5d257da9a698cf0fa7a83b45",
+                      "character": "Benny Hammond",
+                      "episode_count": 1
+                  }
+              ],
+              "total_episode_count": 1,
+              "order": 531
+          },
+          {
+              "adult": false,
+              "gender": 1,
+              "id": 1254367,
+              "known_for_department": "Acting",
+              "name": "Bethany Anne Lind",
+              "original_name": "Bethany Anne Lind",
+              "popularity": 11.383,
+              "profile_path": "/d0FjeKbWYhbTzFSimCnC9K1Maza.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5d257ebae24e3a00122bf46d",
+                      "character": "Sandra",
+                      "episode_count": 1
+                  }
+              ],
+              "total_episode_count": 1,
+              "order": 532
+          },
+          {
+              "adult": false,
+              "gender": 1,
+              "id": 1330503,
+              "known_for_department": "Acting",
+              "name": "Glennellen Anderson",
+              "original_name": "Glennellen Anderson",
+              "popularity": 3.304,
+              "profile_path": null,
+              "roles": [
+                  {
+                      "credit_id": "59fca70ec3a3681a6402d505",
+                      "character": "Nicole",
+                      "episode_count": 1
+                  }
+              ],
+              "total_episode_count": 1,
+              "order": 533
+          },
+          {
+              "adult": false,
+              "gender": 1,
+              "id": 995451,
+              "known_for_department": "Acting",
+              "name": "Cynthia Barrett",
+              "original_name": "Cynthia Barrett",
+              "popularity": 7.552,
+              "profile_path": "/tWd0Yr3uIkHxnJevJ5gFtsKp0LU.jpg",
+              "roles": [
+                  {
+                      "credit_id": "59fca73bc3a3681acd02f597",
+                      "character": "Marsha Holland",
+                      "episode_count": 1
+                  }
+              ],
+              "total_episode_count": 1,
+              "order": 534
+          },
+          {
+              "adult": false,
+              "gender": 0,
+              "id": 2358375,
+              "known_for_department": "Acting",
+              "name": "Sierra Rae",
+              "original_name": "Sierra Rae",
+              "popularity": 3.69,
+              "profile_path": null,
+              "roles": [
+                  {
+                      "credit_id": "5d257f9569d2801be00381f5",
+                      "character": "Ally",
+                      "episode_count": 1
+                  }
+              ],
+              "total_episode_count": 1,
+              "order": 535
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 160351,
+              "known_for_department": "Acting",
+              "name": "Mark Withers",
+              "original_name": "Mark Withers",
+              "popularity": 6.295,
+              "profile_path": "/8qxeiJ0iyku2UQQUz3GAzjvHwjb.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5d257fefa698cf0fa7a8428d",
+                      "character": "Gary",
+                      "episode_count": 1
+                  }
+              ],
+              "total_episode_count": 1,
+              "order": 537
+          },
+          {
+              "adult": false,
+              "gender": 0,
+              "id": 1747720,
+              "known_for_department": "Acting",
+              "name": "Marianne Fraulo",
+              "original_name": "Marianne Fraulo",
+              "popularity": 5.264,
+              "profile_path": "/9gqy2qmlSUmRaIyVejoYCnmHZd5.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5d258006a698cf59f5a77f87",
+                      "character": "Patty",
+                      "episode_count": 1
+                  }
+              ],
+              "total_episode_count": 1,
+              "order": 538
+          },
+          {
+              "adult": false,
+              "gender": 1,
+              "id": 139150,
+              "known_for_department": "Acting",
+              "name": "Amy Seimetz",
+              "original_name": "Amy Seimetz",
+              "popularity": 19.49,
+              "profile_path": "/qa7vCi7TViddGjuYEszLdi8DRqN.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5d2579b8a698cf0010ab33dd",
+                      "character": "Becky Ives",
+                      "episode_count": 1
+                  }
+              ],
+              "total_episode_count": 1,
+              "order": 540
+          },
+          {
+              "adult": false,
+              "gender": 0,
+              "id": 2358385,
+              "known_for_department": "Acting",
+              "name": "Linda Kang",
+              "original_name": "Linda Kang",
+              "popularity": 1.912,
+              "profile_path": null,
+              "roles": [
+                  {
+                      "credit_id": "5d258132e24e3a00112bfe3b",
+                      "character": "Female Clerk",
+                      "episode_count": 1
+                  }
+              ],
+              "total_episode_count": 1,
+              "order": 542
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 1874945,
+              "known_for_department": "Acting",
+              "name": "Kevin Patrick Murphy",
+              "original_name": "Kevin Patrick Murphy",
+              "popularity": 2.698,
+              "profile_path": "/fCDieb3E8tqnKYceMmA4UsxSXwp.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5d258146a698cf0010ab480a",
+                      "character": "Grocery Store Manager",
+                      "episode_count": 1
+                  }
+              ],
+              "total_episode_count": 1,
+              "order": 543
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 1579625,
+              "known_for_department": "Acting",
+              "name": "Robert Walker Branchaud",
+              "original_name": "Robert Walker Branchaud",
+              "popularity": 6.631,
+              "profile_path": "/gD7Te0niYEmfC0BDf4Xb2dHISDG.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5d258188e24e3a00112bff21",
+                      "character": "Agent Repairman",
+                      "episode_count": 1
+                  }
+              ],
+              "total_episode_count": 1,
+              "order": 544
+          },
+          {
+              "adult": false,
+              "gender": 0,
+              "id": 2358394,
+              "known_for_department": "Acting",
+              "name": "Shae Britt",
+              "original_name": "Shae Britt",
+              "popularity": 3.213,
+              "profile_path": null,
+              "roles": [
+                  {
+                      "credit_id": "5d2581d969d28024d0043e2a",
+                      "character": "Mary Mack Girl #2",
+                      "episode_count": 1
+                  }
+              ],
+              "total_episode_count": 1,
+              "order": 545
+          },
+          {
+              "adult": false,
+              "gender": 1,
+              "id": 1510263,
+              "known_for_department": "Acting",
+              "name": "Jackie Dallas",
+              "original_name": "Jackie Dallas",
+              "popularity": 6.298,
+              "profile_path": "/qgi2NIFFeDyRgSodxn8UZFpzugx.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5d2581e9e24e3a00132bfca9",
+                      "character": "Jen",
+                      "episode_count": 1
+                  }
+              ],
+              "total_episode_count": 1,
+              "order": 546
+          },
+          {
+              "adult": false,
+              "gender": 0,
+              "id": 2358396,
+              "known_for_department": "Acting",
+              "name": "Abigail Whitlock",
+              "original_name": "Abigail Whitlock",
+              "popularity": 2.801,
+              "profile_path": null,
+              "roles": [
+                  {
+                      "credit_id": "5d258223e24e3a00122bfd6a",
+                      "character": "Mary Mack Girl #1",
+                      "episode_count": 1
+                  }
+              ],
+              "total_episode_count": 1,
+              "order": 547
+          },
+          {
+              "adult": false,
+              "gender": 1,
+              "id": 155965,
+              "known_for_department": "Acting",
+              "name": "Amy Parrish",
+              "original_name": "Amy Parrish",
+              "popularity": 12.47,
+              "profile_path": "/ueQFClINI5RNrnKQkM3sv8MQkzg.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5d25827169d28024d0043fa9",
+                      "character": "Troy's Mom",
+                      "episode_count": 1
+                  }
+              ],
+              "total_episode_count": 1,
+              "order": 548
+          },
+          {
+              "adult": false,
+              "gender": 1,
+              "id": 1511922,
+              "known_for_department": "Acting",
+              "name": "Elle Graham",
+              "original_name": "Elle Graham",
+              "popularity": 16.642,
+              "profile_path": "/eLsnIfOxENO2JsHCnlrnERdZ9fM.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5d25830469d2802c6e002254",
+                      "character": "Sara Hopper",
+                      "episode_count": 1
+                  }
+              ],
+              "total_episode_count": 1,
+              "order": 551
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 930994,
+              "known_for_department": "Acting",
+              "name": "Lucius Baston",
+              "original_name": "Lucius Baston",
+              "popularity": 5.733,
+              "profile_path": "/b1E5U0OfLmc6V35Xl8nwDxLIYXW.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5d25833569d2801be0038b41",
+                      "character": "Technician",
+                      "episode_count": 1
+                  }
+              ],
+              "total_episode_count": 1,
+              "order": 553
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 21084,
+              "known_for_department": "Acting",
+              "name": "David Dwyer",
+              "original_name": "David Dwyer",
+              "popularity": 8.379,
+              "profile_path": "/kMTtoYRHltlJI9YzWPKe56gK99h.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5d258723a698cf59f5a78feb",
+                      "character": "Earl",
+                      "episode_count": 1
+                  }
+              ],
+              "total_episode_count": 1,
+              "order": 556
+          },
+          {
+              "adult": false,
+              "gender": 1,
+              "id": 1895872,
+              "known_for_department": "Acting",
+              "name": "Salem Murphy",
+              "original_name": "Salem Murphy",
+              "popularity": 44.606,
+              "profile_path": "/43zUWawBYErN7PuG7EBytxo8Xdq.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5d25874169d28054b700c6e7",
+                      "character": "High School Principal",
+                      "episode_count": 1
+                  }
+              ],
+              "total_episode_count": 1,
+              "order": 557
+          },
+          {
+              "adult": false,
+              "gender": 0,
+              "id": 2358417,
+              "known_for_department": "Acting",
+              "name": "Camden Ella Brown",
+              "original_name": "Camden Ella Brown",
+              "popularity": 1.297,
+              "profile_path": null,
+              "roles": [
+                  {
+                      "credit_id": "5d258a2c37b3a9492752c254",
+                      "character": "Middle School Girl",
+                      "episode_count": 1
+                  }
+              ],
+              "total_episode_count": 1,
+              "order": 572
+          },
+          {
+              "adult": false,
+              "gender": 0,
+              "id": 2126967,
+              "known_for_department": "Acting",
+              "name": "Judy McGee Burley",
+              "original_name": "Judy McGee Burley",
+              "popularity": 2.162,
+              "profile_path": null,
+              "roles": [
+                  {
+                      "credit_id": "5d258a3d37b3a9492752c283",
+                      "character": "Cafeteria Worker",
+                      "episode_count": 1
+                  }
+              ],
+              "total_episode_count": 1,
+              "order": 573
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 2011382,
+              "known_for_department": "Acting",
+              "name": "Bradford Haynes",
+              "original_name": "Bradford Haynes",
+              "popularity": 3.387,
+              "profile_path": null,
+              "roles": [
+                  {
+                      "credit_id": "5d258a4ea698cf0fa7a85af7",
+                      "character": "Charles Sinclair",
+                      "episode_count": 1
+                  }
+              ],
+              "total_episode_count": 1,
+              "order": 574
+          },
+          {
+              "adult": false,
+              "gender": 0,
+              "id": 1808566,
+              "known_for_department": "Acting",
+              "name": "Bill Eudaly",
+              "original_name": "Bill Eudaly",
+              "popularity": 4.978,
+              "profile_path": "/19Yd2quxUTCTQ9mW3TL9qYzIc87.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5d258a8c69d2802c6e0033f7",
+                      "character": "Pastor Charles",
+                      "episode_count": 1
+                  }
+              ],
+              "total_episode_count": 1,
+              "order": 576
+          },
+          {
+              "adult": false,
+              "gender": 0,
+              "id": 2358419,
+              "known_for_department": "Acting",
+              "name": "Kaylee Glover",
+              "original_name": "Kaylee Glover",
+              "popularity": 1.4,
+              "profile_path": null,
+              "roles": [
+                  {
+                      "credit_id": "5d258ac137b3a9492752c361",
+                      "character": "Jennifer Hayes",
+                      "episode_count": 1
+                  }
+              ],
+              "total_episode_count": 1,
+              "order": 577
+          },
+          {
+              "adult": false,
+              "gender": 1,
+              "id": 1377994,
+              "known_for_department": "Acting",
+              "name": "Karen Ceesay",
+              "original_name": "Karen Ceesay",
+              "popularity": 5.63,
+              "profile_path": "/j7EKFC2RZa0gBMcJJTRhhydONEX.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5b1f12950e0a264f9b010eba",
+                      "character": "Sue Sinclair",
+                      "episode_count": 1
+                  }
+              ],
+              "total_episode_count": 1,
+              "order": 689
+          },
+          {
+              "adult": false,
+              "gender": 1,
+              "id": 1916843,
+              "known_for_department": "Acting",
+              "name": "Tinsley Price",
+              "original_name": "Tinsley Price",
+              "popularity": 12.67,
+              "profile_path": "/y76Z7ewNyvPOvPudCNrHSFIuTth.jpg",
+              "roles": [
+                  {
+                      "credit_id": "59fca91cc3a3681adf02ccbd",
+                      "character": "Holly Wheeler",
+                      "episode_count": 1
+                  }
+              ],
+              "total_episode_count": 1,
+              "order": 746
+          },
+          {
+              "adult": false,
+              "gender": 1,
+              "id": 2264087,
+              "known_for_department": "Acting",
+              "name": "Anniston Price",
+              "original_name": "Anniston Price",
+              "popularity": 6.613,
+              "profile_path": "/35hG4HtWsxT7HLrtAeMQfusfPB9.jpg",
+              "roles": [
+                  {
+                      "credit_id": "5d25825a37b3a9747d52ab65",
+                      "character": "Holly Wheeler",
+                      "episode_count": 1
+                  }
+              ],
+              "total_episode_count": 1,
+              "order": 748
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 17825,
+              "known_for_department": "Directing",
+              "name": "Shawn Levy",
+              "original_name": "Shawn Levy",
+              "popularity": 26.569,
+              "profile_path": "/b1ulkCHz8biG87LjLQQiMCebEZo.jpg",
+              "roles": [
+                  {
+                      "credit_id": "63e3c017fac502007c5a020e",
+                      "character": "Morgue Worker",
+                      "episode_count": 1
+                  }
+              ],
+              "total_episode_count": 1,
+              "order": 753
+          }
+      ],
+      "crew": [
+          {
+              "adult": false,
+              "gender": 0,
+              "id": 933506,
+              "known_for_department": "Art",
+              "name": "William G. Davis",
+              "original_name": "William G. Davis",
+              "popularity": 1.4,
+              "profile_path": null,
+              "jobs": [
+                  {
+                      "credit_id": "57eac20c9251410db600001c",
+                      "job": "Art Direction",
+                      "episode_count": 8
+                  }
+              ],
+              "department": "Art",
+              "total_episode_count": 8
+          },
+          {
+              "adult": false,
+              "gender": 1,
+              "id": 1285825,
+              "known_for_department": "Art",
+              "name": "Jess Royal",
+              "original_name": "Jess Royal",
+              "popularity": 3.78,
+              "profile_path": null,
+              "jobs": [
+                  {
+                      "credit_id": "57eac21a9251410bfc000043",
+                      "job": "Set Decoration",
+                      "episode_count": 8
+                  }
+              ],
+              "department": "Art",
+              "total_episode_count": 8
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 966560,
+              "known_for_department": "Art",
+              "name": "Chris Trujillo",
+              "original_name": "Chris Trujillo",
+              "popularity": 3.792,
+              "profile_path": null,
+              "jobs": [
+                  {
+                      "credit_id": "57eac1fb9251410d63000029",
+                      "job": "Production Design",
+                      "episode_count": 8
+                  }
+              ],
+              "department": "Art",
+              "total_episode_count": 8
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 1485876,
+              "known_for_department": "Camera",
+              "name": "Tim Ives",
+              "original_name": "Tim Ives",
+              "popularity": 5.058,
+              "profile_path": "/cgQkPbS2akrEZlawCi5DN0AkPqs.jpg",
+              "jobs": [
+                  {
+                      "credit_id": "60a81c446ee3d70029419e54",
+                      "job": "Director of Photography",
+                      "episode_count": 6
+                  }
+              ],
+              "department": "Camera",
+              "total_episode_count": 6
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 1580138,
+              "known_for_department": "Camera",
+              "name": "Tod Campbell",
+              "original_name": "Tod Campbell",
+              "popularity": 8.284,
+              "profile_path": "/897Bl0aU94N0otv4Ab1gCr29yDV.jpg",
+              "jobs": [
+                  {
+                      "credit_id": "60a81c4dbbd0b0002b40b3f3",
+                      "job": "Director of Photography",
+                      "episode_count": 2
+                  }
+              ],
+              "department": "Camera",
+              "total_episode_count": 2
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 109129,
+              "known_for_department": "Costume & Make-Up",
+              "name": "Myke Michaels",
+              "original_name": "Myke Michaels",
+              "popularity": 5.441,
+              "profile_path": null,
+              "jobs": [
+                  {
+                      "credit_id": "57eac289c3a36813b3000072",
+                      "job": "Makeup Artist",
+                      "episode_count": 8
+                  }
+              ],
+              "department": "Costume & Make-Up",
+              "total_episode_count": 8
+          },
+          {
+              "adult": false,
+              "gender": 1,
+              "id": 1547655,
+              "known_for_department": "Costume & Make-Up",
+              "name": "Teresa Vest",
+              "original_name": "Teresa Vest",
+              "popularity": 2.043,
+              "profile_path": null,
+              "jobs": [
+                  {
+                      "credit_id": "57eac27bc3a36803d7000389",
+                      "job": "Makeup Artist",
+                      "episode_count": 8
+                  }
+              ],
+              "department": "Costume & Make-Up",
+              "total_episode_count": 8
+          },
+          {
+              "adult": false,
+              "gender": 0,
+              "id": 1332524,
+              "known_for_department": "Costume & Make-Up",
+              "name": "Ren Rohling",
+              "original_name": "Ren Rohling",
+              "popularity": 1.873,
+              "profile_path": null,
+              "jobs": [
+                  {
+                      "credit_id": "57eac2929251410bfc000066",
+                      "job": "Makeup Artist",
+                      "episode_count": 8
+                  }
+              ],
+              "department": "Costume & Make-Up",
+              "total_episode_count": 8
+          },
+          {
+              "adult": false,
+              "gender": 0,
+              "id": 1573037,
+              "known_for_department": "Costume & Make-Up",
+              "name": "Suzanna Boykin",
+              "original_name": "Suzanna Boykin",
+              "popularity": 3.738,
+              "profile_path": null,
+              "jobs": [
+                  {
+                      "credit_id": "57eac29c9251410bfc00006a",
+                      "job": "Hairstylist",
+                      "episode_count": 8
+                  }
+              ],
+              "department": "Costume & Make-Up",
+              "total_episode_count": 8
+          },
+          {
+              "adult": false,
+              "gender": 0,
+              "id": 1685632,
+              "known_for_department": "Costume & Make-Up",
+              "name": "Julie Hill-Parker",
+              "original_name": "Julie Hill-Parker",
+              "popularity": 1.679,
+              "profile_path": null,
+              "jobs": [
+                  {
+                      "credit_id": "57eac2b29251410d6600007e",
+                      "job": "Makeup Artist",
+                      "episode_count": 8
+                  }
+              ],
+              "department": "Costume & Make-Up",
+              "total_episode_count": 8
+          },
+          {
+              "adult": false,
+              "gender": 1,
+              "id": 587803,
+              "known_for_department": "Costume & Make-Up",
+              "name": "Kimberly Adams",
+              "original_name": "Kimberly Adams",
+              "popularity": 3.074,
+              "profile_path": "/hf94FYY3ggQiCi1gDuxOlx3zlA4.jpg",
+              "jobs": [
+                  {
+                      "credit_id": "57eac235c3a36803e1000300",
+                      "job": "Costume Design",
+                      "episode_count": 8
+                  }
+              ],
+              "department": "Costume & Make-Up",
+              "total_episode_count": 8
+          },
+          {
+              "adult": false,
+              "gender": 0,
+              "id": 1685633,
+              "known_for_department": "Costume & Make-Up",
+              "name": "Cass McClure",
+              "original_name": "Cass McClure",
+              "popularity": 1.712,
+              "profile_path": null,
+              "jobs": [
+                  {
+                      "credit_id": "57eac2dcc3a36803d70003a9",
+                      "job": "Makeup Artist",
+                      "episode_count": 8
+                  }
+              ],
+              "department": "Costume & Make-Up",
+              "total_episode_count": 8
+          },
+          {
+              "adult": false,
+              "gender": 1,
+              "id": 1533587,
+              "known_for_department": "Costume & Make-Up",
+              "name": "Sarah Hindsgaul",
+              "original_name": "Sarah Hindsgaul",
+              "popularity": 2.45,
+              "profile_path": "/mBiQtZV33h0BW98ERjQpwXuEJ40.jpg",
+              "jobs": [
+                  {
+                      "credit_id": "6297639ed48cee2c45c3bb68",
+                      "job": "Hairstylist",
+                      "episode_count": 8
+                  }
+              ],
+              "department": "Costume & Make-Up",
+              "total_episode_count": 8
+          },
+          {
+              "adult": false,
+              "gender": 0,
+              "id": 1228626,
+              "known_for_department": "Acting",
+              "name": "Kimora Lee Simmons",
+              "original_name": "Kimora Lee Simmons",
+              "popularity": 2.069,
+              "profile_path": null,
+              "jobs": [
+                  {
+                      "credit_id": "57eac2a8c3a36813b300007d",
+                      "job": "Hairstylist",
+                      "episode_count": 8
+                  }
+              ],
+              "department": "Costume & Make-Up",
+              "total_episode_count": 8
+          },
+          {
+              "adult": false,
+              "gender": 1,
+              "id": 1448743,
+              "known_for_department": "Costume & Make-Up",
+              "name": "Amy L. Forsythe",
+              "original_name": "Amy L. Forsythe",
+              "popularity": 1.306,
+              "profile_path": null,
+              "jobs": [
+                  {
+                      "credit_id": "57eac2469251410d5f000059",
+                      "job": "Makeup Artist",
+                      "episode_count": 8
+                  }
+              ],
+              "department": "Costume & Make-Up",
+              "total_episode_count": 8
+          },
+          {
+              "adult": false,
+              "gender": 1,
+              "id": 1685631,
+              "known_for_department": "Costume & Make-Up",
+              "name": "Evelyn Roach",
+              "original_name": "Evelyn Roach",
+              "popularity": 2.872,
+              "profile_path": null,
+              "jobs": [
+                  {
+                      "credit_id": "57eac26d9251417e8a0003d3",
+                      "job": "Hairstylist",
+                      "episode_count": 8
+                  }
+              ],
+              "department": "Costume & Make-Up",
+              "total_episode_count": 8
+          },
+          {
+              "adult": false,
+              "gender": 0,
+              "id": 1179273,
+              "known_for_department": "Costume & Make-Up",
+              "name": "Malgosia Turzanska",
+              "original_name": "Malgosia Turzanska",
+              "popularity": 4.124,
+              "profile_path": null,
+              "jobs": [
+                  {
+                      "credit_id": "57eac22a9251417e8f000328",
+                      "job": "Costume Design",
+                      "episode_count": 8
+                  }
+              ],
+              "department": "Costume & Make-Up",
+              "total_episode_count": 8
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 155416,
+              "known_for_department": "Acting",
+              "name": "Kevin Kirkpatrick",
+              "original_name": "Kevin Kirkpatrick",
+              "popularity": 7.151,
+              "profile_path": "/2xyYPajozspKyrEqguoXWAUOD0K.jpg",
+              "jobs": [
+                  {
+                      "credit_id": "57eac2c69251410d63000061",
+                      "job": "Makeup Effects",
+                      "episode_count": 8
+                  }
+              ],
+              "department": "Crew",
+              "total_episode_count": 8
+          },
+          {
+              "adult": false,
+              "gender": 0,
+              "id": 1685634,
+              "known_for_department": "Crew",
+              "name": "Joshua Kohl Hegmann",
+              "original_name": "Joshua Kohl Hegmann",
+              "popularity": 1.75,
+              "profile_path": null,
+              "jobs": [
+                  {
+                      "credit_id": "57eac2f19251417e8a000404",
+                      "job": "Post Production Supervisor",
+                      "episode_count": 8
+                  }
+              ],
+              "department": "Crew",
+              "total_episode_count": 8
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 1179419,
+              "known_for_department": "Writing",
+              "name": "Matt Duffer",
+              "original_name": "Matt Duffer",
+              "popularity": 11.339,
+              "profile_path": "/kXO5CnSxC0znMAICGxnPeuGP73U.jpg",
+              "jobs": [
+                  {
+                      "credit_id": "57b20164c3a36869e5000ba5",
+                      "job": "Director",
+                      "episode_count": 6
+                  }
+              ],
+              "department": "Directing",
+              "total_episode_count": 6
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 1179422,
+              "known_for_department": "Writing",
+              "name": "Ross Duffer",
+              "original_name": "Ross Duffer",
+              "popularity": 10.553,
+              "profile_path": "/kN1HdFViQkcJOQlNcvvFJIx9Uju.jpg",
+              "jobs": [
+                  {
+                      "credit_id": "57b20174c3a3686a54000afa",
+                      "job": "Director",
+                      "episode_count": 6
+                  }
+              ],
+              "department": "Directing",
+              "total_episode_count": 6
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 17825,
+              "known_for_department": "Directing",
+              "name": "Shawn Levy",
+              "original_name": "Shawn Levy",
+              "popularity": 26.569,
+              "profile_path": "/b1ulkCHz8biG87LjLQQiMCebEZo.jpg",
+              "jobs": [
+                  {
+                      "credit_id": "57b201e6c3a368019a003110",
+                      "job": "Director",
+                      "episode_count": 2
+                  }
+              ],
+              "department": "Directing",
+              "total_episode_count": 2
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 54271,
+              "known_for_department": "Editing",
+              "name": "Dean Zimmerman",
+              "original_name": "Dean Zimmerman",
+              "popularity": 7.005,
+              "profile_path": "/6mKK4thSO0CthmhygO2spWyVjcv.jpg",
+              "jobs": [
+                  {
+                      "credit_id": "57eac1dfc3a368141f000024",
+                      "job": "Editor",
+                      "episode_count": 8
+                  }
+              ],
+              "department": "Editing",
+              "total_episode_count": 8
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 37003,
+              "known_for_department": "Editing",
+              "name": "Kevin D. Ross",
+              "original_name": "Kevin D. Ross",
+              "popularity": 1.279,
+              "profile_path": null,
+              "jobs": [
+                  {
+                      "credit_id": "57eac1d19251410bfc000027",
+                      "job": "Editor",
+                      "episode_count": 8
+                  }
+              ],
+              "department": "Editing",
+              "total_episode_count": 8
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 17825,
+              "known_for_department": "Directing",
+              "name": "Shawn Levy",
+              "original_name": "Shawn Levy",
+              "popularity": 26.569,
+              "profile_path": "/b1ulkCHz8biG87LjLQQiMCebEZo.jpg",
+              "jobs": [
+                  {
+                      "credit_id": "59fcae48c3a3681a1b032109",
+                      "job": "Executive Producer",
+                      "episode_count": 8
+                  }
+              ],
+              "department": "Production",
+              "total_episode_count": 8
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 1695622,
+              "known_for_department": "Production",
+              "name": "Brian Wright",
+              "original_name": "Brian Wright",
+              "popularity": 2.214,
+              "profile_path": null,
+              "jobs": [
+                  {
+                      "credit_id": "5803e79a9251411aae0046b9",
+                      "job": "Executive Producer",
+                      "episode_count": 8
+                  }
+              ],
+              "department": "Production",
+              "total_episode_count": 8
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 1179419,
+              "known_for_department": "Writing",
+              "name": "Matt Duffer",
+              "original_name": "Matt Duffer",
+              "popularity": 11.339,
+              "profile_path": "/kXO5CnSxC0znMAICGxnPeuGP73U.jpg",
+              "jobs": [
+                  {
+                      "credit_id": "59fcac1992514113a602e2f6",
+                      "job": "Executive Producer",
+                      "episode_count": 8
+                  }
+              ],
+              "department": "Production",
+              "total_episode_count": 8
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 1718785,
+              "known_for_department": "Production",
+              "name": "Dan Cohen",
+              "original_name": "Dan Cohen",
+              "popularity": 3.828,
+              "profile_path": null,
+              "jobs": [
+                  {
+                      "credit_id": "62975f53d48cee2c45c3b031",
+                      "job": "Executive Producer",
+                      "episode_count": 8
+                  }
+              ],
+              "department": "Production",
+              "total_episode_count": 8
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 99411,
+              "known_for_department": "Writing",
+              "name": "Karl Gajdusek",
+              "original_name": "Karl Gajdusek",
+              "popularity": 8.634,
+              "profile_path": "/oeZTXdtTbqiW9uWoxFw35jbjsD0.jpg",
+              "jobs": [
+                  {
+                      "credit_id": "644d8a02f90b19061613183f",
+                      "job": "Executive Producer",
+                      "episode_count": 8
+                  }
+              ],
+              "department": "Production",
+              "total_episode_count": 8
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 64723,
+              "known_for_department": "Production",
+              "name": "Iain Paterson",
+              "original_name": "Iain Paterson",
+              "popularity": 2.622,
+              "profile_path": null,
+              "jobs": [
+                  {
+                      "credit_id": "644d8b4a6eecee04e800d7c7",
+                      "job": "Co-Executive Producer",
+                      "episode_count": 8
+                  }
+              ],
+              "department": "Production",
+              "total_episode_count": 8
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 1179422,
+              "known_for_department": "Writing",
+              "name": "Ross Duffer",
+              "original_name": "Ross Duffer",
+              "popularity": 10.553,
+              "profile_path": "/kN1HdFViQkcJOQlNcvvFJIx9Uju.jpg",
+              "jobs": [
+                  {
+                      "credit_id": "59fcad9bc3a3681a3f02c2a4",
+                      "job": "Executive Producer",
+                      "episode_count": 8
+                  }
+              ],
+              "department": "Production",
+              "total_episode_count": 8
+          },
+          {
+              "adult": false,
+              "gender": 1,
+              "id": 1458687,
+              "known_for_department": "Production",
+              "name": "Cindy Holland",
+              "original_name": "Cindy Holland",
+              "popularity": 4.467,
+              "profile_path": null,
+              "jobs": [
+                  {
+                      "credit_id": "644d8ae34d23dd070992be6d",
+                      "job": "Executive Producer",
+                      "episode_count": 8
+                  }
+              ],
+              "department": "Production",
+              "total_episode_count": 8
+          },
+          {
+              "adult": false,
+              "gender": 1,
+              "id": 230436,
+              "known_for_department": "Production",
+              "name": "Barbara Harris",
+              "original_name": "Barbara Harris",
+              "popularity": 7.747,
+              "profile_path": "/d1BGeZT2b81Wa9gCOPdrXGWUtmR.jpg",
+              "jobs": [
+                  {
+                      "credit_id": "6463608ba672540185894a9e",
+                      "job": "ADR Voice Casting",
+                      "episode_count": 8
+                  }
+              ],
+              "department": "Production",
+              "total_episode_count": 8
+          },
+          {
+              "adult": false,
+              "gender": 1,
+              "id": 51922,
+              "known_for_department": "Production",
+              "name": "Carmen Cuba",
+              "original_name": "Carmen Cuba",
+              "popularity": 3.93,
+              "profile_path": "/994fHTwOhrpvO8mnroGaGHZ2s11.jpg",
+              "jobs": [
+                  {
+                      "credit_id": "57eac1ed9251410d6600003e",
+                      "job": "Casting",
+                      "episode_count": 8
+                  }
+              ],
+              "department": "Production",
+              "total_episode_count": 8
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 1729244,
+              "known_for_department": "Production",
+              "name": "Diego Garzon",
+              "original_name": "Diego Garzon",
+              "popularity": 3.013,
+              "profile_path": null,
+              "jobs": [
+                  {
+                      "credit_id": "59553f6ac3a368382e037222",
+                      "job": "Assistant Production Coordinator",
+                      "episode_count": 8
+                  }
+              ],
+              "department": "Production",
+              "total_episode_count": 8
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 1685635,
+              "known_for_department": "Directing",
+              "name": "Timothy J. Lonsdale",
+              "original_name": "Timothy J. Lonsdale",
+              "popularity": 0.827,
+              "profile_path": null,
+              "jobs": [
+                  {
+                      "credit_id": "57eac2fd9251417e970003a3",
+                      "job": "Unit Production Manager",
+                      "episode_count": 8
+                  }
+              ],
+              "department": "Production",
+              "total_episode_count": 8
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 3025043,
+              "known_for_department": "Production",
+              "name": "Rand Geiger",
+              "original_name": "Rand Geiger",
+              "popularity": 7.787,
+              "profile_path": null,
+              "jobs": [
+                  {
+                      "credit_id": "59fca6afc3a3681aa5032812",
+                      "job": "Producer",
+                      "episode_count": 8
+                  }
+              ],
+              "department": "Production",
+              "total_episode_count": 8
+          },
+          {
+              "adult": false,
+              "gender": 1,
+              "id": 1562492,
+              "known_for_department": "Writing",
+              "name": "Jessica Mecklenburg",
+              "original_name": "Jessica Mecklenburg",
+              "popularity": 3.486,
+              "profile_path": null,
+              "jobs": [
+                  {
+                      "credit_id": "644d8ac8be4b360a9b546dc0",
+                      "job": "Co-Executive Producer",
+                      "episode_count": 8
+                  }
+              ],
+              "department": "Production",
+              "total_episode_count": 8
+          },
+          {
+              "adult": true,
+              "gender": 2,
+              "id": 1685626,
+              "known_for_department": "Sound",
+              "name": "Kyle Dixon",
+              "original_name": "Kyle Dixon",
+              "popularity": 1.284,
+              "profile_path": null,
+              "jobs": [
+                  {
+                      "credit_id": "60a81e185541fa006df080d3",
+                      "job": "Original Music Composer",
+                      "episode_count": 8
+                  }
+              ],
+              "department": "Sound",
+              "total_episode_count": 8
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 2225636,
+              "known_for_department": "Sound",
+              "name": "Michael Stein",
+              "original_name": "Michael Stein",
+              "popularity": 2.092,
+              "profile_path": null,
+              "jobs": [
+                  {
+                      "credit_id": "60a81e21d55e4d003f146125",
+                      "job": "Original Music Composer",
+                      "episode_count": 8
+                  }
+              ],
+              "department": "Sound",
+              "total_episode_count": 8
+          },
+          {
+              "adult": false,
+              "gender": 1,
+              "id": 1562492,
+              "known_for_department": "Writing",
+              "name": "Jessica Mecklenburg",
+              "original_name": "Jessica Mecklenburg",
+              "popularity": 3.486,
+              "profile_path": null,
+              "jobs": [
+                  {
+                      "credit_id": "57b2022ac3a36869e5000bf3",
+                      "job": "Writer",
+                      "episode_count": 1
+                  }
+              ],
+              "department": "Writing",
+              "total_episode_count": 1
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 1666689,
+              "known_for_department": "Writing",
+              "name": "Paul Dichter",
+              "original_name": "Paul Dichter",
+              "popularity": 4.172,
+              "profile_path": null,
+              "jobs": [
+                  {
+                      "credit_id": "586e9e63925141294e00a1b5",
+                      "job": "Story",
+                      "episode_count": 1
+                  }
+              ],
+              "department": "Writing",
+              "total_episode_count": 1
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 1179419,
+              "known_for_department": "Writing",
+              "name": "Matt Duffer",
+              "original_name": "Matt Duffer",
+              "popularity": 11.339,
+              "profile_path": "/kXO5CnSxC0znMAICGxnPeuGP73U.jpg",
+              "jobs": [
+                  {
+                      "credit_id": "586e9e43c3a3683b6900947e",
+                      "job": "Teleplay",
+                      "episode_count": 1
+                  }
+              ],
+              "department": "Writing",
+              "total_episode_count": 1
+          },
+          {
+              "adult": false,
+              "gender": 1,
+              "id": 1825196,
+              "known_for_department": "Writing",
+              "name": "Alison Tatlock",
+              "original_name": "Alison Tatlock",
+              "popularity": 6.642,
+              "profile_path": "/ecwoedjgH2x5IecaR1oWcaujrD0.jpg",
+              "jobs": [
+                  {
+                      "credit_id": "5dd479182634620012b65360",
+                      "job": "Writer",
+                      "episode_count": 1
+                  }
+              ],
+              "department": "Writing",
+              "total_episode_count": 1
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 1179422,
+              "known_for_department": "Writing",
+              "name": "Ross Duffer",
+              "original_name": "Ross Duffer",
+              "popularity": 10.553,
+              "profile_path": "/kN1HdFViQkcJOQlNcvvFJIx9Uju.jpg",
+              "jobs": [
+                  {
+                      "credit_id": "586e9e54c3a3683b6900948c",
+                      "job": "Teleplay",
+                      "episode_count": 1
+                  }
+              ],
+              "department": "Writing",
+              "total_episode_count": 1
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 1301304,
+              "known_for_department": "Writing",
+              "name": "Justin Doble",
+              "original_name": "Justin Doble",
+              "popularity": 4.862,
+              "profile_path": "/7bTwDKXb8BsvI5b1b4UeKQhBCCN.jpg",
+              "jobs": [
+                  {
+                      "credit_id": "57b203009251411a45000bb8",
+                      "job": "Writer",
+                      "episode_count": 1
+                  }
+              ],
+              "department": "Writing",
+              "total_episode_count": 1
+          },
+          {
+              "adult": false,
+              "gender": 0,
+              "id": 1666688,
+              "known_for_department": "Writing",
+              "name": "Jessie Nickson-Lopez",
+              "original_name": "Jessie Nickson-Lopez",
+              "popularity": 5.045,
+              "profile_path": "/nheqrMWbfgsc1uq69hcfU8CbCTA.jpg",
+              "jobs": [
+                  {
+                      "credit_id": "57b202d092514147840030b7",
+                      "job": "Writer",
+                      "episode_count": 1
+                  }
+              ],
+              "department": "Writing",
+              "total_episode_count": 1
+          }
+      ]
+  },
+  "images": {
+      "posters": [
+          {
+              "aspect_ratio": 0.667,
+              "height": 3000,
+              "iso_639_1": "en",
+              "file_path": "/rbnuP7hlynAMLdqcQRCpZW9qDkV.jpg",
+              "vote_average": 5.456,
+              "vote_count": 5,
+              "width": 2000
+          },
+          {
+              "aspect_ratio": 0.68,
+              "height": 1000,
+              "iso_639_1": "en",
+              "file_path": "/hb4KmdA4F1XMnf0vVjevPKKBEjV.jpg",
+              "vote_average": 5.322,
+              "vote_count": 5,
+              "width": 680
+          },
+          {
+              "aspect_ratio": 0.667,
+              "height": 2250,
+              "iso_639_1": null,
+              "file_path": "/ykGeFDVnbdY4DjkChNR2GuZYVUz.jpg",
+              "vote_average": 5.312,
+              "vote_count": 1,
+              "width": 1500
+          },
+          {
+              "aspect_ratio": 0.667,
+              "height": 1500,
+              "iso_639_1": "en",
+              "file_path": "/zka9GTG4QQhLmN4NR18KEjxICtt.jpg",
+              "vote_average": 5.252,
+              "vote_count": 4,
+              "width": 1000
+          },
+          {
+              "aspect_ratio": 0.675,
+              "height": 1481,
+              "iso_639_1": "en",
+              "file_path": "/sG3ZOx0aN8Qidiq6zDUGcUvHmU6.jpg",
+              "vote_average": 5.246,
+              "vote_count": 2,
+              "width": 1000
+          },
+          {
+              "aspect_ratio": 0.667,
+              "height": 1500,
+              "iso_639_1": "en",
+              "file_path": "/fOaUnQwDJV22esXEswhaDMSqn2w.jpg",
+              "vote_average": 5.246,
+              "vote_count": 2,
+              "width": 1000
+          },
+          {
+              "aspect_ratio": 0.667,
+              "height": 3000,
+              "iso_639_1": "en",
+              "file_path": "/xRTUb8oeQHGjyBWj7OOpkvUuvKO.jpg",
+              "vote_average": 5.19,
+              "vote_count": 5,
+              "width": 2000
+          },
+          {
+              "aspect_ratio": 0.692,
+              "height": 578,
+              "iso_639_1": "en",
+              "file_path": "/nE9Um5qv2pBhxTeeMU9mMqFCjzZ.jpg",
+              "vote_average": 5.172,
+              "vote_count": 1,
+              "width": 400
+          },
+          {
+              "aspect_ratio": 0.667,
+              "height": 1500,
+              "iso_639_1": "en",
+              "file_path": "/iyl4jUlmBZphjz0ygbWhIPUmS4p.jpg",
+              "vote_average": 5.172,
+              "vote_count": 1,
+              "width": 1000
+          },
+          {
+              "aspect_ratio": 0.692,
+              "height": 578,
+              "iso_639_1": "en",
+              "file_path": "/9lMQgzA2P5ho2ozUTD10Bcac4ib.jpg",
+              "vote_average": 5.172,
+              "vote_count": 1,
+              "width": 400
+          },
+          {
+              "aspect_ratio": 0.689,
+              "height": 1324,
+              "iso_639_1": "en",
+              "file_path": "/4333c614wsQ55KZhPivGmkb9xsV.jpg",
+              "vote_average": 5.172,
+              "vote_count": 1,
+              "width": 912
+          },
+          {
+              "aspect_ratio": 0.667,
+              "height": 750,
+              "iso_639_1": "en",
+              "file_path": "/5tOTcMIpa9bYKQvzqu7anfSnM4f.jpg",
+              "vote_average": 0,
+              "vote_count": 0,
+              "width": 500
+          },
+          {
+              "aspect_ratio": 0.667,
+              "height": 1500,
+              "iso_639_1": "en",
+              "file_path": "/fR7J46LajkjUNqAKLIEPa96d6GL.jpg",
+              "vote_average": 0,
+              "vote_count": 0,
+              "width": 1000
+          },
+          {
+              "aspect_ratio": 0.68,
+              "height": 1000,
+              "iso_639_1": "en",
+              "file_path": "/jVQETVYFkUye1e02p5rH04FaHA4.jpg",
+              "vote_average": 0,
+              "vote_count": 0,
+              "width": 680
+          },
+          {
+              "aspect_ratio": 0.667,
+              "height": 3000,
+              "iso_639_1": "en",
+              "file_path": "/oHu8CAhFkGgGNkANgdl59BrIRAb.jpg",
+              "vote_average": 0,
+              "vote_count": 0,
+              "width": 2000
+          },
+          {
+              "aspect_ratio": 0.667,
+              "height": 1500,
+              "iso_639_1": "en",
+              "file_path": "/6nxdtoIjJy1dUOqcfeSKJzNp7fH.jpg",
+              "vote_average": 0,
+              "vote_count": 0,
+              "width": 1000
+          },
+          {
+              "aspect_ratio": 0.667,
+              "height": 1500,
+              "iso_639_1": "en",
+              "file_path": "/qFR9az0RsVl93ESVleyl3O92vL.jpg",
+              "vote_average": 0,
+              "vote_count": 0,
+              "width": 1000
+          },
+          {
+              "aspect_ratio": 0.667,
+              "height": 3000,
+              "iso_639_1": "en",
+              "file_path": "/h7PsCUnXOPji0JUX92JcfUTsDT.jpg",
+              "vote_average": 0,
+              "vote_count": 0,
+              "width": 2000
+          },
+          {
+              "aspect_ratio": 0.68,
+              "height": 1000,
+              "iso_639_1": null,
+              "file_path": "/tmwpPICHTVVWRh9RZw7lTanSzrn.jpg",
+              "vote_average": 0,
+              "vote_count": 0,
+              "width": 680
+          }
+      ]
+  },
+  "videos": {
+      "results": [
+          {
+              "iso_639_1": "en",
+              "iso_3166_1": "US",
+              "name": "Stranger Things 1 Recap",
+              "key": "Hv8hWaHJT_Q",
+              "site": "YouTube",
+              "size": 1080,
+              "type": "Recap",
+              "official": true,
+              "published_at": "2022-03-24T15:00:01.000Z",
+              "id": "62d920e1d7059405e1f94d09"
+          },
+          {
+              "iso_639_1": "en",
+              "iso_3166_1": "US",
+              "name": "Stranger Things Season 1 Bloopers",
+              "key": "9JtvfL1mvm0",
+              "site": "YouTube",
+              "size": 1080,
+              "type": "Bloopers",
+              "official": true,
+              "published_at": "2019-11-07T00:00:00.000Z",
+              "id": "62d9203c0d9f5a0053c8a1dd"
+          },
+          {
+              "iso_639_1": "en",
+              "iso_3166_1": "US",
+              "name": "Winona Ryder Featurette",
+              "key": "aA8LzZpHx3U",
+              "site": "YouTube",
+              "size": 1080,
+              "type": "Featurette",
+              "official": true,
+              "published_at": "2016-07-26T14:00:03.000Z",
+              "id": "62d987f12ea6b9004c875276"
+          },
+          {
+              "iso_639_1": "en",
+              "iso_3166_1": "US",
+              "name": "Stranger Things (2016) Trailer - 80's VHS Tape",
+              "key": "8znAI7F7MEE",
+              "published_at": "2016-07-18T18:14:56.000Z",
+              "site": "YouTube",
+              "size": 1080,
+              "type": "Trailer",
+              "official": false,
+              "id": "5a5255e0925141132e020836"
+          }
+      ]
+  }
 }
