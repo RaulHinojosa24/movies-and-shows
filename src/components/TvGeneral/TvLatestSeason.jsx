@@ -4,7 +4,7 @@ import SeasonItem from '../TvSeasons/SeasonItem'
 
 export default function TvLatestSeason () {
   const { seasons } = useRouteLoaderData('tv-details')
-  const lastSeason = seasons[seasons.length - 1]
+  const lastSeason = seasons.findLast(s => Boolean(s.air_date))
   const {
     air_date: airDate,
     episode_count: episodeCount,
@@ -17,7 +17,7 @@ export default function TvLatestSeason () {
   } = lastSeason
 
   return (
-    <Section title={<>Última temporada <span /></>}>
+    <Section title='Temporada actual'>
       <SeasonItem airDate={airDate} episodeCount={episodeCount} id={id} name={name} overview={overview} posterPath={posterPath} seasonNumber={seasonNumber} voteAverage={voteAverage} />
       <Link to='season' className='inline-block mt-2'>Ver todas las temporadas</Link>
     </Section>
