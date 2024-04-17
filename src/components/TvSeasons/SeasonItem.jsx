@@ -10,17 +10,18 @@ export default function SeasonItem ({ airDate, episodeCount, id, name, overview,
       poster_sizes: posterSizes
     }
   } = retrieveConfig(useRouteLoaderData('root'))
+  const { id: seasonId } = useRouteLoaderData('tv-details')
 
   const prettyAirDate = formatLongDate(airDate)
   const prettyPosterPath = posterPath ? baseURL + posterSizes[2] + posterPath : DefaultPosterImage
 
   return (
     <div className='rounded overflow-hidden custom-shadow-small flex items-center'>
-      <Link to={`season/${id}`} className='contents'>
+      <Link to={'/tv/' + seasonId + '/season/' + seasonNumber} className='contents'>
         <img src={prettyPosterPath} className='aspect-[2/3] object-cover w-32' alt={'Poster de la serie de tv ' + name} loading='lazy' />
       </Link>
       <div className='flex flex-col p-4 gap-2'>
-        <Link to={`season/${id}`}>
+        <Link to={'/tv/' + seasonId + '/season/' + seasonNumber}>
           <h3 className='text-2xl font-semibold'>
             {name} &bull; <span className='text-xl text-neutral-500'>{episodeCount} episodios</span>
           </h3>
