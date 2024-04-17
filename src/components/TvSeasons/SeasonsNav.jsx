@@ -6,9 +6,8 @@ export default function SeasonsNav () {
   const { season: currentSeasonNumber, id: tvID } = useParams()
   const currentSeasonIndex = seasons.findIndex(s => String(s.season_number) === currentSeasonNumber)
   const prevSeason = seasons[currentSeasonIndex - 1]
-  console.log(prevSeason)
   const nextSeason = seasons[currentSeasonIndex + 1]
-  console.log(nextSeason)
+
   return (
     <section className='flex'>
       {prevSeason &&
