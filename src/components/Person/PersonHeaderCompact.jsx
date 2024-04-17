@@ -10,6 +10,6 @@ export default function PersonHeaderCompact () {
   } = useRouteLoaderData('person-details')
 
   return (
-    <HeaderCompact id={id} mediaType='person' posterPath={profilePath} title={name} />
+    <HeaderCompact target={'/person/' + id} mediaType='person' posterPath={profilePath} title={name} />
   )
 }

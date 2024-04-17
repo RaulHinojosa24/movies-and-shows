@@ -13,7 +13,7 @@ export default function MovieHeaderCompact () {
   const prettyTitle = title || originalTitle
 
   return (
-    <HeaderCompact id={id} mediaType='movie' posterPath={posterPath} title={prettyTitle} />
+    <HeaderCompact target={'/movie/' + id} mediaType='movie' posterPath={posterPath} title={prettyTitle} />
 
   )
 }

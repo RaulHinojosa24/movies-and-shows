@@ -10,6 +10,6 @@ export default function CollectionHeaderCompact () {
   } = useRouteLoaderData('collection-details')
 
   return (
-    <HeaderCompact id={id} mediaType='collection' posterPath={posterPath} title={name} />
+    <HeaderCompact target={'/collection/' + id} mediaType='collection' posterPath={posterPath} title={name} />
   )
 }

@@ -5,7 +5,7 @@ import DefaultUserImage from '../../assets/default-user.png'
 import DefaultPosterImage from '../../assets/default-poster.png'
 import useGenerateImageColors from '../../hooks/useGenerateImageColors'
 
-export default function HeaderCompact ({ posterPath, title, id, mediaType }) {
+export default function HeaderCompact ({ posterPath, title, target, mediaType }) {
   const [[r, g, b], isDark] = useGenerateImageColors(posterPath, 0.4)
 
   const {
@@ -27,10 +27,10 @@ export default function HeaderCompact ({ posterPath, title, id, mediaType }) {
       >
         <img loading='lazy' src={prettyPosterURL} alt={'Poster de ' + title} className='aspect-[2/3] object-cover w-16 shrink-0 rounded shadow-md shadow-black/75' />
         <div className='flex flex-col justify-center '>
-          <Link to={`/${mediaType}/${id}`}>
+          <Link to={target}>
             <h1 className='font-bold text-2xl'>{title}</h1>
           </Link>
-          <Link to={`/${mediaType}/${id}`}>
+          <Link to={target}>
             <p>⬅ Volver a la página principal</p>
           </Link>
         </div>

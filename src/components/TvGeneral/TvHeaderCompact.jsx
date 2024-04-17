@@ -13,6 +13,6 @@ export default function TvHeaderCompact () {
   const prettyName = name || originalName
 
   return (
-    <HeaderCompact id={id} mediaType='tv' posterPath={posterPath} title={prettyName} />
+    <HeaderCompact target={'/tv/' + id} mediaType='tv' posterPath={posterPath} title={prettyName} />
   )
 }
