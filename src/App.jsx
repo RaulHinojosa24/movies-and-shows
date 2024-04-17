@@ -23,6 +23,7 @@ import MovieResults, { loader as movieResultsLoader } from './components/Search/
 import TvResults, { loader as tvResultsLoader } from './components/Search/TvResults'
 import PersonResults, { loader as personResultsLoader } from './components/Search/PersonResults'
 import TvSeasonsPage from './pages/TvSeasons'
+import TvSeasonGeneralPage, { loader as tvSeasonGeneralLoader } from './pages/TvSeasonGeneral'
 
 export default function App () {
   useEffect(() => {
@@ -120,6 +121,12 @@ export default function App () {
             {
               path: 'season',
               element: <TvSeasonsPage />
+            },
+            {
+              path: 'season/:season',
+              id: 'season-details',
+              element: <TvSeasonGeneralPage />,
+              loader: tvSeasonGeneralLoader
             }
           ]
         },
