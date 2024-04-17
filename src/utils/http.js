@@ -93,6 +93,7 @@ export function getTvByQuery (query, page = 1) {
 
   return fetch(seriesUrl.href, GET_OPTIONS)
 }
+
 export function getPersonsByQuery (query, page = 1) {
   const personUrl = new URL('https://api.themoviedb.org/3/search/person')
   personUrl.searchParams.append('query', query)
@@ -101,4 +102,8 @@ export function getPersonsByQuery (query, page = 1) {
   personUrl.searchParams.append('page', page)
 
   return fetch(personUrl.href, GET_OPTIONS)
+}
+
+export function getTvSeasonDetails (tvID, season) {
+  return fetch(`https://api.themoviedb.org/3/tv/${tvID}/season/${season}?language=${language}&include_image_language=en,null&include_video_language=en,null&append_to_response=account_states,aggregate_credits,images,videos`, GET_OPTIONS)
 }
