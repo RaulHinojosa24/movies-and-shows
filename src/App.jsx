@@ -23,7 +23,10 @@ import MovieResults, { loader as movieResultsLoader } from './components/Search/
 import TvResults, { loader as tvResultsLoader } from './components/Search/TvResults'
 import PersonResults, { loader as personResultsLoader } from './components/Search/PersonResults'
 import TvSeasonsPage from './pages/TvSeasons'
-import TvSeasonGeneralPage, { loader as tvSeasonGeneralLoader } from './pages/TvSeasonGeneral'
+import TvSeasonGeneralPage from './pages/TvSeasonGeneral'
+import TvSeasonDetailsLayout, { loader as tvSeasonGeneralLoader } from './layout/TvSeasonDetailsLayout'
+import TvSeasonMediaPage from './pages/TvSeasonMedia'
+import TvMediaPage from './pages/TvMedia'
 
 export default function App () {
   useEffect(() => {
@@ -119,14 +122,28 @@ export default function App () {
               element: <TvCastPage />
             },
             {
+              path: 'media',
+              element: <TvMediaPage />
+            },
+            {
               path: 'season',
               element: <TvSeasonsPage />
             },
             {
               path: 'season/:season',
               id: 'season-details',
-              element: <TvSeasonGeneralPage />,
-              loader: tvSeasonGeneralLoader
+              element: <TvSeasonDetailsLayout />,
+              loader: tvSeasonGeneralLoader,
+              children: [
+                {
+                  index: true,
+                  element: <TvSeasonGeneralPage />
+                },
+                {
+                  path: 'media',
+                  element: <TvSeasonMediaPage />
+                }
+              ]
             }
           ]
         },
