@@ -9,12 +9,14 @@ export default {
       width: {
         app: '1536px',
         'small-content': '1280px',
-        aside: '14rem'
+        aside: '14rem',
+        68: '17rem'
       },
       maxWidth: {
         app: '1536px',
         'small-content': '1280px',
-        aside: '14rem'
+        aside: '14rem',
+        68: '17rem'
       },
       margin: {
         'app-space': '2rem'
