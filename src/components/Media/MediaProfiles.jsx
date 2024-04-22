@@ -12,47 +12,47 @@ import Zoom from 'yet-another-react-lightbox/plugins/zoom'
 import 'yet-another-react-lightbox/plugins/thumbnails.css'
 import { retrieveConfig } from '../../utils/utility'
 
-export default function MediaBackdrops () {
+export default function MediaProfiles ({ images }) {
   const [index, setIndex] = useState(-1)
-
-  const {
-    images: {
-      backdrops: images
-    }
-  } = useRouteLoaderData('movie-details')
+  const amount = images.length
 
   const {
     images: {
       secure_base_url: baseURL,
-      backdrop_sizes: backdropSizes
+      profile_sizes: profileSizes
     }
   } = retrieveConfig(useRouteLoaderData('root'))
 
-  const photos = images.map(img => {
-    const srcSet = backdropSizes.map(size => {
-      const width = Number(size.match(/\d+/g)) || img.width
-      const height = Math.round(width / img.aspect_ratio)
-      const src = baseURL + size + img.file_path
+  const photos = images
+    .map(img => {
+      const srcSet = profileSizes.map(size => {
+        const isHeight = size.includes('h')
+        const amount = Number(size.match(/\d+/g)) || (isHeight ? img.height : img.width)
+        const [width, height] = isHeight ? [Math.round(img.aspect_ratio * amount), amount] : [amount, Math.round(amount / img.aspect_ratio)]
+        const src = baseURL + size + img.file_path
+
+        return {
+          src,
+          width,
+          height
+        }
+      })
 
       return {
-        src,
-        width,
-        height
+        key: img.file_path,
+        src: baseURL + profileSizes[0] + img.file_path,
+        width: img.width,
+        height: img.height,
+        srcSet
       }
     })
 
-    return {
-      key: img.file_path,
-      src: baseURL + backdropSizes[0] + img.file_path,
-      width: img.width,
-      height: img.height,
-      srcSet
-    }
-  })
   return (
-    <Section title='Imágenes de fondo'>
+    <Section title={<>Retratos <span className='text-neutral-500 font-semibold'>{amount}</span></>}>
       <PhotoAlbum
-        photos={photos} layout='rows' targetRowHeight={150} onClick={({ index }) => setIndex(index)}
+        photos={photos} layout='masonry'
+        columns={(containerWidth) => Math.ceil(containerWidth / 300)}
+        onClick={({ index }) => setIndex(index)}
       />
 
       <Lightbox

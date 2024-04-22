@@ -12,47 +12,45 @@ import Zoom from 'yet-another-react-lightbox/plugins/zoom'
 import 'yet-another-react-lightbox/plugins/thumbnails.css'
 import { retrieveConfig } from '../../utils/utility'
 
-export default function MediaPosters () {
+export default function MediaBackdrops ({ images }) {
   const [index, setIndex] = useState(-1)
-
-  const {
-    images: {
-      posters: images
-    }
-  } = useRouteLoaderData('movie-details')
+  const amount = images.length
 
   const {
     images: {
       secure_base_url: baseURL,
-      poster_sizes: posterSizes
+      backdrop_sizes: backdropSizes
     }
   } = retrieveConfig(useRouteLoaderData('root'))
 
-  const photos = images.map(img => {
-    const srcSet = posterSizes.map(size => {
-      const width = Number(size.match(/\d+/g)) || img.width
-      const height = Math.round(width / img.aspect_ratio)
-      const src = baseURL + size + img.file_path
+  const photos = images
+    .map(img => {
+      const srcSet = backdropSizes.map(size => {
+        const width = Number(size.match(/\d+/g)) || img.width
+        const height = Math.round(width / img.aspect_ratio)
+        const src = baseURL + size + img.file_path
+
+        return {
+          src,
+          width,
+          height
+        }
+      })
 
       return {
-        src,
-        width,
-        height
+        key: img.file_path,
+        src: baseURL + backdropSizes[0] + img.file_path,
+        width: img.width,
+        height: img.height,
+        srcSet
       }
     })
-
-    return {
-      key: img.file_path,
-      src: baseURL + posterSizes[0] + img.file_path,
-      width: img.width,
-      height: img.height,
-      srcSet
-    }
-  })
   return (
-    <Section title='Carteles'>
+    <Section title={<>Imágenes de fondo <span className='text-neutral-500 font-semibold'>{amount}</span></>}>
       <PhotoAlbum
-        photos={photos} layout='rows' targetRowHeight={150} onClick={({ index }) => setIndex(index)}
+        photos={photos} layout='masonry'
+        columns={(containerWidth) => Math.ceil(containerWidth / 300)}
+        onClick={({ index }) => setIndex(index)}
       />
 
       <Lightbox
