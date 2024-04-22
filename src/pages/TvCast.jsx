@@ -1,6 +1,6 @@
 import { useRouteLoaderData } from 'react-router-dom'
-import CastList from '../components/MovieCast/CastList'
-import CrewList from '../components/MovieCast/CrewList'
+import CastList from '../components/Cast/CastList'
+import CrewList from '../components/Cast/CrewList'
 
 import Main from '../components/PageUI/Main'
 import { setDocTitle } from '../utils/utility'
