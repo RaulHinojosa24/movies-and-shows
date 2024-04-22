@@ -1,14 +1,17 @@
 import { Outlet, useMatch } from 'react-router-dom'
 import { getTvSeasonDetails } from '../utils/http'
-import SeasonHeaderCompact from '../components/TvSeasons/SeasonHeaderCompact'
+import SeasonHeader from '../components/TvSeasons/SeasonHeader'
+import SeasonsNav from '../components/TvSeasons/SeasonsNav'
+import SeasonHeaderMedia from '../components/TvSeasons/SeasonHeaderMedia'
 
 export default function TvSeasonDetailsLayout () {
   const isRootPage = useMatch('/tv/:id/season/:season')
 
   return (
     <section>
-      {isRootPage && <SeasonHeaderCompact />}
-      {!isRootPage && <SeasonHeaderCompact />}
+      {isRootPage && <SeasonHeader />}
+      {!isRootPage && <SeasonHeaderMedia />}
+      <SeasonsNav />
       <Outlet />
     </section>
   )
