@@ -2,7 +2,7 @@ import { useRouteLoaderData } from 'react-router-dom'
 
 import HeaderCompact from '../PageUI/HeaderCompact'
 
-export default function SeasonHeaderCompact () {
+export default function SeasonHeader () {
   const {
     poster_path: posterPath,
     name
