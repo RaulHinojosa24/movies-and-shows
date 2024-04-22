@@ -1,7 +1,6 @@
 import { Link, useRouteLoaderData } from 'react-router-dom'
 import Main from '../components/PageUI/Main'
 import EpisodeList from '../components/TvSeasons/EpisodeList'
-import SeasonsNav from '../components/TvSeasons/SeasonsNav'
 import { setDocTitle } from '../utils/utility'
 
 export default function TvSeasonGeneralPage () {
@@ -18,7 +17,6 @@ export default function TvSeasonGeneralPage () {
     <Main
       center={
         <>
-          <SeasonsNav />
           <Link to='media' className='font-bold'>TODO: Ver Media</Link>
           <EpisodeList />
         </>

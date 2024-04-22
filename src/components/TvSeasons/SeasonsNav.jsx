@@ -9,7 +9,7 @@ export default function SeasonsNav () {
   const nextSeason = seasons[currentSeasonIndex + 1]
 
   return (
-    <section className='flex'>
+    <section className='flex py-2 px-4'>
       {prevSeason &&
         <Link className='font-semibold flex items-center gap-1' to={`/tv/${tvID}/season/${prevSeason.season_number}`}>
           <ChevronIcon />
