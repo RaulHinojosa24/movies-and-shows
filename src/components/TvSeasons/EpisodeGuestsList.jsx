@@ -5,8 +5,8 @@ import DefaultProfileImage from '../../assets/default-user.png'
 
 export default function EpisodeGuestsList ({ className = '', guests }) {
   return (
-    <SubSection title={<>Invitadas estrella <span className='opacity-75 font-normal'>{guests.length}</span></>} className='space-y-2'>
-      <ul className={'grid lg:grid-cols-2 gap-2 ' + className}>
+    <SubSection title={<>Invitadas estrella <span className='opacity-75 font-normal'>{guests.length}</span></>} className='space-y-2 w-full'>
+      <ul className={'grid md:grid-cols-2 lg:grid-cols-3 gap-2 ' + className}>
         {guests.map(({ id, credit_id: crId, name, character, original_name: ogName, profile_path: profilePath }) => {
           return <GuestItem key={crId} id={id} name={name || ogName} character={character} profilePath={profilePath} />
         })}
