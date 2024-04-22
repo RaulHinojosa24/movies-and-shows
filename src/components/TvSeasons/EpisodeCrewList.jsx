@@ -14,7 +14,7 @@ export default function EpisodeCrewList ({ className = '', crew }) {
 function CrewItem ({ id, name, role }) {
   return (
     <li key={id}>
-      <Link to={'/person/' + id}>
+      <Link to={'/person/' + id} className='inline-block'>
         <h3 className='font-semibold'>{name}</h3>
       </Link>
       <p className='text-sm'>{role}</p>
