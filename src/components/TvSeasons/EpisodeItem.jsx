@@ -32,7 +32,7 @@ export default function EpisodeItem ({ airDate, episodeNumber, name, overview, r
   return (
     <li className='rounded custom-shadow-small overflow-hidden'>
       <section className='flex sm:flex-row flex-col'>
-        <img src={prettySmallStillPath} className='aspect-video object-cover sm:inline hidden' alt={`Imagen del episodio ${episodeNumber}-${name} de la serie de tv ${prettyTvName}`} loading='lazy' />
+        <img src={prettySmallStillPath} className='aspect-video object-cover sm:inline hidden max-w-72' alt={`Imagen del episodio ${episodeNumber}-${name} de la serie de tv ${prettyTvName}`} loading='lazy' />
         <img src={prettyBigStillPath} className='aspect-video object-cover sm:hidden inline' alt={`Imagen del episodio ${episodeNumber}-${name} de la serie de tv ${prettyTvName}`} loading='lazy' />
         <div className='p-4 content-center space-y-1'>
           <h3 className='font-semibold text-lg'><span className='dark:text-neutral-300 text-neutral-700'>{episodeNumber}</span> {name}</h3>
@@ -51,7 +51,7 @@ export default function EpisodeItem ({ airDate, episodeNumber, name, overview, r
       </button>
       {isExpanded &&
         <div className='p-4 flex sm:flex-row flex-col gap-4'>
-          <EpisodeCrewList crew={crew} className='w-56' />
+          <EpisodeCrewList crew={crew} className='w-68' />
           <EpisodeGuestsList guests={guestStars} />
         </div>}
     </li>
