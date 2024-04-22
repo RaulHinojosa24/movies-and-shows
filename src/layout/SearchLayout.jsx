@@ -3,6 +3,7 @@ import Main from '../components/PageUI/Main'
 import { getMoviesByQuery, getPersonsByQuery, getTvByQuery } from '../utils/http'
 import { useEffect } from 'react'
 import SearchBar from '../components/Search/SearchBar'
+import { setDocTitle } from '../utils/utility'
 
 const activeClasses = ({ isActive }) => 'no-underline flex justify-between w-full px-3 py-2 dark:hover:bg-neutral-800 hover:bg-neutral-200 ' + (isActive ? 'font-bold dark:bg-neutral-800 bg-neutral-200' : '')
 
@@ -14,6 +15,8 @@ export default function SearchPage () {
   const [searchParams] = useSearchParams()
   const query = searchParams.get('query')
   const navigate = useNavigate()
+
+  setDocTitle(`${query ? `"${query}" - ` : ''}Búsqueda`)
 
   useEffect(() => {
     if (!VALID_PATHNAMES.some(pathname => pathname === params.pathname)) {
