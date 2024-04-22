@@ -8,14 +8,18 @@ import MovieReviews from '../components/MovieGeneral/MovieReviews'
 import MovieDetails from '../components/MovieGeneral/MovieDetails'
 import MovieOverview from '../components/MovieGeneral/MovieOverview'
 import Main from '../components/PageUI/Main'
+import { setDocTitle } from '../utils/utility'
 
 export default function MovieDetailsPage () {
   const {
     external_ids: externalIDs,
     homepage: homepageLink,
     title,
+    original_title: originalTitle,
     belongs_to_collection: collection
   } = useRouteLoaderData('movie-details')
+
+  setDocTitle(title || originalTitle)
 
   return (
     <Main

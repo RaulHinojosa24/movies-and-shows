@@ -8,6 +8,7 @@ import TvReviews from '../components/TvGeneral/TvReviews'
 import Main from '../components/PageUI/Main'
 import TvOverview from '../components/TvGeneral/TvOverview'
 import TvLatestSeason from '../components/TvGeneral/TvLatestSeason'
+import { setDocTitle } from '../utils/utility'
 
 export default function TvGeneral () {
   const {
@@ -16,6 +17,8 @@ export default function TvGeneral () {
     name,
     original_name: originalName
   } = useRouteLoaderData('tv-details')
+
+  setDocTitle(name || originalName)
 
   return (
     <Main

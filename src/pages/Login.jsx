@@ -1,8 +1,10 @@
 import { json, redirect, useLoaderData } from 'react-router-dom'
 import Login from '../components/Login/Login'
 import { createSessionID, getRequestToken } from '../utils/http'
+import { setDocTitle } from '../utils/utility'
 
 export default function LoginPage () {
+  setDocTitle('Login')
   const { success, session_id: sessionID } = useLoaderData() || {}
 
   if (success) {

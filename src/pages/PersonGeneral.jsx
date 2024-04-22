@@ -1,7 +1,7 @@
 import { Link, useRouteLoaderData } from 'react-router-dom'
 import PersonInfo from '../components/Person/PersonInfo'
 import DefaultProfile from '../assets/default-user.png'
-import { retrieveConfig } from '../utils/utility'
+import { retrieveConfig, setDocTitle } from '../utils/utility'
 import PersonBio from '../components/Person/PersonBio'
 import PersonCredits from '../components/Person/PersonCredits'
 import PersonKnownFor from '../components/Person/PersonKnownFor'
@@ -15,12 +15,13 @@ export default function PersonGeneralPage () {
       profile_sizes: profileSizes
     }
   } = retrieveConfig(useRouteLoaderData('root'))
-  const data = useRouteLoaderData('person-details')
   const {
     external_ids: externalIDs,
     profile_path: profilePath,
     name
-  } = data
+  } = useRouteLoaderData('person-details')
+
+  setDocTitle(name)
 
   const prettyProfilePath = profilePath
     ? baseURL + profileSizes[2] + profilePath

@@ -2,6 +2,7 @@ import Main from '../components/PageUI/Main'
 import { useRouteLoaderData } from 'react-router-dom'
 import Section from '../components/UI/Section'
 import SeasonItem from '../components/TvSeasons/SeasonItem'
+import { setDocTitle } from '../utils/utility'
 
 export default function TvSeasonsPage () {
   const {
@@ -9,6 +10,8 @@ export default function TvSeasonsPage () {
     name,
     original_name: originalName
   } = useRouteLoaderData('tv-details')
+
+  setDocTitle(`${name || originalName} - Temporadas`)
 
   return (
     <Main

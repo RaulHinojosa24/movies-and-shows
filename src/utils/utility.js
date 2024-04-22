@@ -96,3 +96,7 @@ export function calculateAge (birthday, deathday) {
   }
   return age
 }
+
+export function setDocTitle (title) {
+  document.title = `${title} - Movies & Shows`
+}

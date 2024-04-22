@@ -1,10 +1,19 @@
-import { Link } from 'react-router-dom'
+import { Link, useRouteLoaderData } from 'react-router-dom'
 import Main from '../components/PageUI/Main'
-import { getTvSeasonDetails } from '../utils/http'
 import EpisodeList from '../components/TvSeasons/EpisodeList'
 import SeasonsNav from '../components/TvSeasons/SeasonsNav'
+import { setDocTitle } from '../utils/utility'
 
 export default function TvSeasonGeneralPage () {
+  const {
+    name,
+    original_name: originalName
+  } = useRouteLoaderData('tv-details')
+
+  const { name: seasonName } = useRouteLoaderData('season-details')
+
+  setDocTitle(`${name || originalName} - ${seasonName}`)
+
   return (
     <Main
       center={
@@ -16,10 +25,4 @@ export default function TvSeasonGeneralPage () {
       }
     />
   )
-}
-
-export function loader ({ request, params }) {
-  const { id, season } = params
-
-  return getTvSeasonDetails(id, season)
 }

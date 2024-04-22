@@ -7,6 +7,7 @@ import { useLoaderData, json } from 'react-router-dom'
 import Loading from '../components/UI/Loading'
 import useIntersectionObserver from '../hooks/useIntersectionObserver'
 import ListFilters from '../components/List/ListFilters'
+import { setDocTitle } from '../utils/utility'
 
 const dateSorting = (a, b) => (
   new Date(b.release_date || b.first_air_date) - (new Date(a.release_date || a.first_air_date)) ||
@@ -34,14 +35,16 @@ const SORTING = {
 }
 
 export default function ListPage () {
-  const data = useLoaderData()
   const {
     id,
     results,
     comments,
     page,
-    total_pages: totalPages
-  } = data
+    total_pages: totalPages,
+    name
+  } = useLoaderData()
+
+  setDocTitle(name)
 
   const [listElements, setListElements] = useState(results)
   const [currentPage, setCurrentPage] = useState(page)

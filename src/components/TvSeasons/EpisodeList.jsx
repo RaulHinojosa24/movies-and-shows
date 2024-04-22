@@ -1,9 +1,9 @@
-import { useLoaderData } from 'react-router-dom'
+import { useRouteLoaderData } from 'react-router-dom'
 import EpisodeItem from './EpisodeItem'
 import Section from '../UI/Section'
 
 export default function EpisodeList () {
-  const { episodes } = useLoaderData()
+  const { episodes } = useRouteLoaderData('season-details')
 
   return (
     <Section title='Episodios'>
