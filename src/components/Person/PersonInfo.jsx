@@ -18,7 +18,7 @@ export default function PersonInfo ({ className = '' }) {
     : calculateAge(birthday)) + ' años'
   const prettyGender = getPersonGender(gender)
   const prettyBirthday = formatLongDate(birthday)
-  const prettyDeathday = formatLongDate(birthday)
+  const prettyDeathday = formatLongDate(deathday)
 
   return (
     <Section title='Información personal' className={className}>
@@ -28,9 +28,9 @@ export default function PersonInfo ({ className = '' }) {
         <SubSection title='Fecha de nacimiento'>
           {prettyBirthday} {!deathday && <span className='whitespace-nowrap'>({prettyAge})</span>}
         </SubSection>
-        <SubSection title='Lugar de nacimiento'>{placeOfBirth}</SubSection>
         {deathday &&
           <SubSection title='Fecha de defunción'>{prettyDeathday} ({prettyAge})</SubSection>}
+        <SubSection title='Lugar de nacimiento'>{placeOfBirth}</SubSection>
         <SubSection title='También conocida como' className='hidden md:visible'>
           <ul>
             {alsoKnownAs.map(n => <li key={n}>{n}</li>)}
