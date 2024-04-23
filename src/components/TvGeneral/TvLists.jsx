@@ -22,7 +22,7 @@ export default function TvLists () {
       <ul className='flex flex-col gap-2'>
         {shortLists.map(list => (
           <li key={list.id}>
-            <ListItem name={list.name} description={list.description} count={list.item_count} favCount={list.favorite_count} />
+            <ListItem id={list.id} name={list.name} description={list.description} count={list.item_count} favCount={list.favorite_count} />
           </li>
         ))}
       </ul>
