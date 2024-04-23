@@ -14,6 +14,7 @@ export default function MovieCast () {
   } = retrieveConfig(useRouteLoaderData('root'))
 
   const {
+    id,
     credits: {
       cast
     }
@@ -61,7 +62,7 @@ export default function MovieCast () {
   )
   return (
     <Section title='Reparto principal'>
-      <Slider slides={cleanCast} SlideComponent={slide} LastSlide={lastSlide} />
+      <Slider key={id} slides={cleanCast} SlideComponent={slide} LastSlide={lastSlide} />
       <Link to='cast' className='mt-2 inline-block'>Ver reparto y equipo completo</Link>
     </Section>
   )

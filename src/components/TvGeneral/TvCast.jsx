@@ -14,6 +14,7 @@ export default function TvCast () {
   } = retrieveConfig(useRouteLoaderData('root'))
 
   const {
+    id,
     aggregate_credits: {
       cast
     }
@@ -76,7 +77,7 @@ export default function TvCast () {
   )
   return (
     <Section title='Reparto principal'>
-      <Slider slides={cleanCast} SlideComponent={slide} LastSlide={lastSlide} />
+      <Slider key={id} slides={cleanCast} SlideComponent={slide} LastSlide={lastSlide} />
       <Link to='cast' className='mt-2'>Ver reparto y equipo completo</Link>
     </Section>
   )

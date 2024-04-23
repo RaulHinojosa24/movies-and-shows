@@ -14,6 +14,7 @@ export default function TvRecommendations () {
   } = retrieveConfig(useRouteLoaderData('root'))
 
   const {
+    id,
     recommendations: {
       results: recommendations
     }
@@ -51,7 +52,7 @@ export default function TvRecommendations () {
 
   return (
     <Section title='Recomendaciones'>
-      <Slider slides={cleanRecommendations} SlideComponent={slide} />
+      <Slider key={id} slides={cleanRecommendations} SlideComponent={slide} />
     </Section>
   )
 }

@@ -9,6 +9,7 @@ const sortingLogic = (cc) => cc.vote_count ** 2 * cc.vote_average
 
 export default function PersonKnownFor () {
   const {
+    id,
     combined_credits: {
       cast, crew
     }
@@ -50,7 +51,7 @@ export default function PersonKnownFor () {
   return (
     <>
       <Section title='Conocida por'>
-        <Slider slides={combinedCredits} SlideComponent={slide} />
+        <Slider key={id} slides={combinedCredits} SlideComponent={slide} />
       </Section>
     </>
   )
