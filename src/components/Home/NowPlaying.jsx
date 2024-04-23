@@ -2,7 +2,7 @@ import { useLoaderData } from 'react-router-dom'
 import NowPlayingCard from './NowPlayingCard'
 
 export default function NowPlaying () {
-  const data = useLoaderData()
+  const { nowPlaying } = useLoaderData()
 
   return (
     <section>
@@ -17,7 +17,7 @@ export default function NowPlaying () {
         keyboard-enabled
         no-swiping-class='no-swiping'
       >
-        {data.results.map(movie => {
+        {nowPlaying.results.map(movie => {
           return (
             <swiper-slide key={movie.id}>
               <NowPlayingCard movie={movie} />

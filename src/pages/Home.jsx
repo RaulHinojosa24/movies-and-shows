@@ -1,5 +1,5 @@
 import NowPlaying from '../components/Home/NowPlaying'
-import { getNowPlayingMovies } from '../utils/http'
+import { getNowPlayingMovies, getTrendingAll } from '../utils/http'
 import { setDocTitle } from '../utils/utility'
 
 export default function HomePage () {
@@ -12,7 +12,10 @@ export default function HomePage () {
 }
 
 export async function loader () {
-  const res = await getNowPlayingMovies()
+  const [nowPlaying, trendingAll] = await Promise.all([
+    getNowPlayingMovies().then(res => res.json()),
+    getTrendingAll('week', 14).then(res => res.json())
+  ])
 
-  return res
+  return { nowPlaying, trendingAll }
 }

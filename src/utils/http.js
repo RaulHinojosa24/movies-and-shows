@@ -44,14 +44,11 @@ export function createSessionID (requestToken) {
 }
 
 export function getNowPlayingMovies () {
-  const today = new Date()
-  const lastMonth = new Date()
-  lastMonth.setDate(lastMonth.getDate() - 21)
+  return fetch(`https://api.themoviedb.org/3/movie/now_playing?language=${language}&page=1`, GET_OPTIONS)
+}
 
-  const todayDate = today.toISOString().split('T')[0]
-  const lastMonthDate = lastMonth.toISOString().split('T')[0]
-
-  return fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=${language}&page=1&sort_by=primary_release_date.desc&with_release_type=2|3&release_date.gte=${lastMonthDate}&release_date.lte=${todayDate}&region=${region}`, GET_OPTIONS)
+export function getTrendingAll (timeWindow = 'day', page = 1) {
+  return fetch(`https://api.themoviedb.org/3/trending/all/${timeWindow}?language=${language}&page=${page}`, GET_OPTIONS)
 }
 
 export function getMovieDetails (id) {
