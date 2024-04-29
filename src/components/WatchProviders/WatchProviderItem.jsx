@@ -16,7 +16,7 @@ export default function WatchProviderItem ({ provider }) {
 
   return (
     <li>
-      <img className='w-14 rounded aspect-square' src={baseURL + logoSizes[1] + logoPath} alt={'Logo of ' + providerName} />
+      <img loading='lazy' className='w-14 rounded aspect-square' src={baseURL + logoSizes[1] + logoPath} alt={'Logo de ' + providerName} title={providerName} />
     </li>
   )
 }
