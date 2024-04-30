@@ -27,6 +27,7 @@ import TvSeasonGeneralPage from './pages/TvSeasonGeneral'
 import TvSeasonDetailsLayout, { loader as tvSeasonGeneralLoader } from './layout/TvSeasonDetailsLayout'
 import TvSeasonMediaPage from './pages/TvSeasonMedia'
 import TvMediaPage from './pages/TvMedia'
+import MovieDiscoverPage, { loader as movieDiscoverLoader } from './pages/MovieDiscover'
 
 export default function App () {
   useEffect(() => {
@@ -54,6 +55,11 @@ export default function App () {
           element: <LoginPage />,
           action: loginAction,
           loader: loginLoader
+        },
+        {
+          path: 'movie',
+          element: <MovieDiscoverPage />,
+          loader: movieDiscoverLoader
         },
         {
           path: 'movie/:id',

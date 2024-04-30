@@ -104,3 +104,36 @@ export function getPersonsByQuery (query, page = 1) {
 export function getTvSeasonDetails (tvID, season) {
   return fetch(`https://api.themoviedb.org/3/tv/${tvID}/season/${season}?language=${language}&include_image_language=en,null&include_video_language=en,null&append_to_response=account_states,aggregate_credits,images,videos`, GET_OPTIONS)
 }
+
+export function discoverMovies ({
+  page = 1,
+  includeAdult,
+  sortBy,
+  sortDirection,
+  watchTypes,
+  voteMin,
+  voteMax,
+  durationMin,
+  durationMax,
+  fromDate,
+  toDate,
+  genres
+}) {
+  const url = new URL('https://api.themoviedb.org/3/discover/movie')
+  url.searchParams.append('page', page)
+  url.searchParams.append('include_video', true)
+  url.searchParams.append('language', language)
+  url.searchParams.append('watch_region', region)
+  url.searchParams.append('include_adult', includeAdult || false)
+  url.searchParams.append('sort_by', `${sortBy || 'popularity'}.${sortDirection || 'desc'}`)
+  url.searchParams.append('with_watch_monetization_types', watchTypes || '')
+  url.searchParams.append('vote_average.gte', voteMin || '')
+  url.searchParams.append('vote_average.lte', voteMax || '')
+  url.searchParams.append('with_runtime.gte', durationMin || '')
+  url.searchParams.append('with_runtime.lte', durationMax || '')
+  url.searchParams.append('release_date.gte', fromDate || '')
+  url.searchParams.append('release_date.lte', toDate || '')
+  url.searchParams.append('with_genres', genres || '')
+
+  return fetch(url.href, GET_OPTIONS)
+}

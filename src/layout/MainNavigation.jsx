@@ -17,7 +17,7 @@ export default function MainNavigation () {
               <NavLink to='/search' className={activeClasses}>Buscador</NavLink>
             </li>
             <li>
-              <NavLink to='/' className={activeClasses}>Test</NavLink>
+              <NavLink to='/movie' className={activeClasses}>Películas</NavLink>
             </li>
             <li>
               <NavLink to='/' className={activeClasses}>Test</NavLink>
