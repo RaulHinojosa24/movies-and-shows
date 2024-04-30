@@ -100,3 +100,8 @@ export function calculateAge (birthday, deathday) {
 export function setDocTitle (title) {
   document.title = `${title} - Movies & Shows`
 }
+
+export function countDecimals (value) {
+  if (Math.floor(value) === value) return 0
+  return value.toString().split('.')[1].length || 0
+}
