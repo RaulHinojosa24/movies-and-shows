@@ -105,6 +105,14 @@ export function getTvSeasonDetails (tvID, season) {
   return fetch(`https://api.themoviedb.org/3/tv/${tvID}/season/${season}?language=${language}&include_image_language=en,null&include_video_language=en,null&append_to_response=account_states,aggregate_credits,images,videos`, GET_OPTIONS)
 }
 
+export function getKeywordsByQuery (query, page = 1) {
+  const url = new URL('https://api.themoviedb.org/3/search/keyword')
+  url.searchParams.append('query', query)
+  url.searchParams.append('page', page)
+
+  return fetch(url.href, GET_OPTIONS)
+}
+
 export function discoverMovies ({
   page = 1,
   includeAdult,
@@ -117,7 +125,8 @@ export function discoverMovies ({
   durationMax,
   fromDate,
   toDate,
-  genres
+  genres,
+  tags
 }) {
   const url = new URL('https://api.themoviedb.org/3/discover/movie')
   url.searchParams.append('page', page)
@@ -134,6 +143,7 @@ export function discoverMovies ({
   url.searchParams.append('release_date.gte', fromDate || '')
   url.searchParams.append('release_date.lte', toDate || '')
   url.searchParams.append('with_genres', genres || '')
+  url.searchParams.append('with_keywords', tags ? tags.split('|').map(w => w.split('%')[0]).join('|') : '')
 
   return fetch(url.href, GET_OPTIONS)
 }

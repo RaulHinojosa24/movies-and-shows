@@ -31,6 +31,7 @@ export async function loader ({ request, params }) {
   const fromDate = new URL(request.url).searchParams.get('from_date')
   const toDate = new URL(request.url).searchParams.get('to_date')
   const genres = new URL(request.url).searchParams.get('genres')
+  const tags = new URL(request.url).searchParams.get('tags')
 
   return await discoverMovies({
     sortBy,
@@ -43,6 +44,7 @@ export async function loader ({ request, params }) {
     durationMax,
     fromDate,
     toDate,
-    genres
+    genres,
+    tags
   })
 }

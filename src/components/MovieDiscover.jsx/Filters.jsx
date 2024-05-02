@@ -30,6 +30,7 @@ export default function Filters () {
   const fromDateSP = searchParams.get('from_date')
   const toDateSP = searchParams.get('to_date')
   const genresSP = searchParams.get('genres')
+  const tagsSP = searchParams.get('tags')
 
   const [sortBy, setSortBy] = useState(VALID_SORT_BY.includes(sortBySP) ? sortBySP : 'popularity')
   const [sortDirection, setSortDirection] = useState(VALID_SORT_DIRECTION.includes(sortDirectionSP) ? sortDirectionSP : 'desc')
@@ -39,7 +40,14 @@ export default function Filters () {
   const [durationMin, durationMax, durationRange, setDurationMin, setDurationMax] = useMinMaxRange(DURATION_RANGE[0], DURATION_RANGE[1], 1, '', Number(durationMinSP), Number(durationMaxSP))
   const [fromDate, setFromDate] = useState(fromDateSP || '')
   const [toDate, setToDate] = useState(toDateSP || '')
-  const [genres, setGenres] = useState(genresSP ? genresSP.split(',') : [])
+  const [genres, setGenres] = useState(genresSP ? genresSP.split('|').map(Number) : [])
+  const [tags, setTags] = useState(tagsSP
+    ? tagsSP.split('|').map(w => {
+      const [id, name] = w.split('%')
+      return { id: Number(id), name }
+    })
+    : []
+  )
 
   const submitFormHandler = (event) => {
     event.preventDefault()
@@ -56,7 +64,8 @@ export default function Filters () {
     if (DURATION_RANGE[1] !== durationMax) newSearchParams.duration_max = durationMax
     if (fromDate) newSearchParams.from_date = fromDate
     if (toDate) newSearchParams.to_date = toDate
-    newSearchParams.genres = genres.join('|')
+    if (genres.length > 0) newSearchParams.genres = genres.join('|')
+    if (tags.length > 0) newSearchParams.tags = tags.map(tag => tag.id + '%' + tag.name).join('|')
 
     setSearchParams(newSearchParams)
   }
@@ -73,6 +82,7 @@ export default function Filters () {
     setFromDate('')
     setToDate('')
     setGenres([])
+    setTags([])
 
     setSearchParams({})
   }
@@ -92,7 +102,7 @@ export default function Filters () {
       </div>
       <DatesFilter fromDate={fromDate} setFromDate={setFromDate} toDate={toDate} setToDate={setToDate} />
       <GenresFilter genres={genres} setGenres={setGenres} />
-      <Tags />
+      <Tags tags={tags} setTags={setTags} />
       <button className='py-1 px-5 w-full rounded whitespace-nowrap font-semibold bg-yellow-400 text-black' type='submit'>Buscar</button>
       <button className='py-1 px-5 w-full rounded whitespace-nowrap font-semibold bg-neutral-200 text-black' type='button' onClick={resetFilters}>Limpiar filtros</button>
     </form>
