@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { getKeywordsByQuery } from '../../utils/http'
+import FilterItem from './FilterItem'
 
-export default function Tags ({ tags, setTags }) {
+export default function KeywordsFilter ({ keywords, setKeywords }) {
   const resultsListRef = useRef()
   const [userInput, setUserInput] = useState('')
   const [resultIndex, setResultIndex] = useState(0)
@@ -43,7 +44,7 @@ export default function Tags ({ tags, setTags }) {
   }, [resultIndex])
 
   const toggleTag = (newTag) => {
-    setTags(prevTags => prevTags.some(tag => tag.id === newTag.id)
+    setKeywords(prevTags => prevTags.some(tag => tag.id === newTag.id)
       ? prevTags.filter(tag => tag.id !== newTag.id)
       : [newTag, ...prevTags]
     )
@@ -82,11 +83,10 @@ export default function Tags ({ tags, setTags }) {
   const inputBlurHandler = () => setResultsVisible(false)
 
   return (
-    <>
-      <h3>Tags</h3>
+    <FilterItem title='Palabras clave'>
       <div className='w-full max-w-full relative'>
         <input
-          className='bg-transparent border-none outline-none w-full py-1 px-2' placeholder='Añadir palabra clave'
+          className='bg-transparent border-none outline-none w-full py-1' placeholder='Añadir palabra clave'
           value={userInput} onChange={changeHandler} onKeyDown={keyDownHandler} onBlur={inputBlurHandler}
         />
         {resultsVisible &&
@@ -95,7 +95,7 @@ export default function Tags ({ tags, setTags }) {
               <ul ref={resultsListRef}>
                 {results.map((result, index) => {
                   const isSelected = index === resultIndex
-                  const alreadyInList = tags.some(tag => tag.id === result.id)
+                  const alreadyInList = keywords.some(tag => tag.id === result.id)
                   const inListClass = 'bg-yellow-500 text-black font-semibold'
                   const selectedClass = 'bg-neutral-700'
                   const hoverClass = 'hover:bg-neutral-700 hover:text-white'
@@ -119,7 +119,7 @@ export default function Tags ({ tags, setTags }) {
           </div>}
       </div>
       <ul className='flex flex-wrap gap-2' onClick={focus}>
-        {tags.map(tag => (
+        {keywords.map(tag => (
           <li
             key={tag.id} className='cursor-pointer border-1 px-2 break-words text-pretty hyphens-auto max-w-full'
             onClick={() => toggleTag(tag)}
@@ -128,6 +128,6 @@ export default function Tags ({ tags, setTags }) {
           </li>
         ))}
       </ul>
-    </>
+    </FilterItem>
   )
 }
