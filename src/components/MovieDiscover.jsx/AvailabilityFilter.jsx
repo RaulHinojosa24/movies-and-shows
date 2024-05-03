@@ -1,3 +1,5 @@
+import FilterItem from './FilterItem'
+
 export default function AvailabilityFilter ({ watchTypes, setWatchTypes }) {
   const toggleWatchType = (wt) => {
     setWatchTypes(prev => {
@@ -9,8 +11,7 @@ export default function AvailabilityFilter ({ watchTypes, setWatchTypes }) {
   }
 
   return (
-    <div>
-      <h3>Disponibilidad</h3>
+    <FilterItem title='Disponibilidad'>
       <div>
         <input
           type='checkbox' name='availability' value='flatrate' id='flatrate' checked={watchTypes.includes('flatrate')}
@@ -46,6 +47,6 @@ export default function AvailabilityFilter ({ watchTypes, setWatchTypes }) {
         />
         <label htmlFor='buy'> Compra</label>
       </div>
-    </div>
+    </FilterItem>
   )
 }

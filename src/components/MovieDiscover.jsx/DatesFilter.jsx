@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import FilterItem from './FilterItem'
 
 // const TODAY = new Date().toLocaleDateString('en-CA')
 
@@ -6,7 +7,7 @@ export default function DatesFilter ({ fromDate, setFromDate, toDate, setToDate 
   const [showDates, setShowDates] = useState(fromDate !== '' && toDate !== '')
 
   return (
-    <div>
+    <FilterItem title='Fechas de estreno'>
       <div>
         <input type='checkbox' name='show-dates' id='show-dates' checked={showDates} onChange={() => setShowDates(p => !p)} />
         <label htmlFor='show-dates'> Filtrar por fecha de estreno</label>
@@ -22,6 +23,6 @@ export default function DatesFilter ({ fromDate, setFromDate, toDate, setToDate 
             <input className='bg-transparent cursor-pointer' type='date' name='to-date' id='to-date' min={fromDate || ''} value={toDate} onChange={e => setToDate(e.target.value)} />
           </div>
         </>}
-    </div>
+    </FilterItem>
   )
 }

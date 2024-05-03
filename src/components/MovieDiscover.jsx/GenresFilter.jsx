@@ -1,5 +1,6 @@
 import { useRouteLoaderData } from 'react-router-dom'
 import { retrieveMovieGenres } from '../../utils/utility'
+import FilterItem from './FilterItem'
 
 export default function GenresFilter ({ genres, setGenres }) {
   const { genres: movieGenres } = retrieveMovieGenres(useRouteLoaderData('root'))
@@ -8,8 +9,7 @@ export default function GenresFilter ({ genres, setGenres }) {
     .sort((a, b) => a.name.localeCompare(b.name))
 
   return (
-    <>
-      <h3>Géneros</h3>
+    <FilterItem title='Géneros'>
       <div>
         <ul className='flex flex-wrap gap-2 text-sm'>
           {sortedMovieGenres.map(genre => {
@@ -25,6 +25,6 @@ export default function GenresFilter ({ genres, setGenres }) {
           })}
         </ul>
       </div>
-    </>
+    </FilterItem>
   )
 }
