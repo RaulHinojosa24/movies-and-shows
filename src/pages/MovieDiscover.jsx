@@ -24,6 +24,7 @@ export async function loader ({ request, params }) {
   const sortDirection = new URL(request.url).searchParams.get('sort_direction')
   const includeAdult = new URL(request.url).searchParams.get('include_adult')
   const watchTypes = new URL(request.url).searchParams.get('watch_types')
+  const voteCount = new URL(request.url).searchParams.get('vote_count')
   const voteMin = new URL(request.url).searchParams.get('vote_min')
   const voteMax = new URL(request.url).searchParams.get('vote_max')
   const durationMin = new URL(request.url).searchParams.get('duration_min')
@@ -31,13 +32,14 @@ export async function loader ({ request, params }) {
   const fromDate = new URL(request.url).searchParams.get('from_date')
   const toDate = new URL(request.url).searchParams.get('to_date')
   const genres = new URL(request.url).searchParams.get('genres')
-  const tags = new URL(request.url).searchParams.get('tags')
+  const keywords = new URL(request.url).searchParams.get('keywords')
 
   return await discoverMovies({
     sortBy,
     sortDirection,
     includeAdult,
     watchTypes,
+    voteCount,
     voteMin,
     voteMax,
     durationMin,
@@ -45,6 +47,6 @@ export async function loader ({ request, params }) {
     fromDate,
     toDate,
     genres,
-    tags
+    keywords
   })
 }
