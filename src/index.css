@@ -178,3 +178,21 @@ input[type=range]::-moz-range-thumb {
 ::-webkit-calendar-picker-indicator {
   @apply dark:invert;
 }
+
+details > summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+summary::-webkit-details-marker {
+  display: none
+}
+
+summary::after {
+  content: ' ⯈';
+}
+details[open] summary:after {
+  content: " ⯆";
+}
