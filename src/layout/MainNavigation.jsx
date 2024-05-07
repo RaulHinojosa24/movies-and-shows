@@ -20,7 +20,7 @@ export default function MainNavigation () {
               <NavLink to='/movie' className={activeClasses}>Películas</NavLink>
             </li>
             <li>
-              <NavLink to='/' className={activeClasses}>Test</NavLink>
+              <NavLink to='/tv' className={activeClasses}>Series de TV</NavLink>
             </li>
             <li>
               <NavLink to='/' className={activeClasses}>Test</NavLink>

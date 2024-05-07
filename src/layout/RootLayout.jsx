@@ -1,6 +1,6 @@
 import { Outlet, ScrollRestoration } from 'react-router-dom'
 import MainNavigation from './MainNavigation'
-import { getAPIConfiguration, getMovieGenres } from '../utils/http'
+import { getAPIConfiguration, getMovieGenres, getTvGenres } from '../utils/http'
 import GoToTopButton from '../components/PageUI/GoToTopButton'
 
 export default function RootLayout () {
@@ -17,9 +17,10 @@ export default function RootLayout () {
 }
 
 export async function loader () {
-  const [config, movieGenres] = await Promise.all([
+  const [config, movieGenres, tvGenres] = await Promise.all([
     getAPIConfiguration().then(res => res.json()),
-    getMovieGenres().then(res => res.json())
+    getMovieGenres().then(res => res.json()),
+    getTvGenres().then(res => res.json())
   ])
-  return { config, movieGenres }
+  return { config, movieGenres, tvGenres }
 }

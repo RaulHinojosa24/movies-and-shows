@@ -32,6 +32,13 @@ export function getMovieProviders () {
   return fetch(`https://api.themoviedb.org/3/watch/providers/movie?language=${language}&watch_region=${region}`, GET_OPTIONS)
 }
 
+export function getTvGenres () {
+  return fetch('https://api.themoviedb.org/3/genre/tv/list?language=' + language, GET_OPTIONS)
+}
+
+export function getTvProviders () {
+  return fetch(`https://api.themoviedb.org/3/watch/providers/tv?language=${language}&watch_region=${region}`, GET_OPTIONS)
+}
 
 export function getRequestToken () {
   return fetch('https://api.themoviedb.org/3/authentication/token/new', GET_OPTIONS)
@@ -132,7 +139,8 @@ export function discoverMovies ({
   fromDate,
   toDate,
   genres,
-  keywords
+  keywords,
+  watchProviders
 }) {
   const url = new URL('https://api.themoviedb.org/3/discover/movie')
   url.searchParams.append('page', page)
@@ -151,6 +159,45 @@ export function discoverMovies ({
   url.searchParams.append('release_date.lte', toDate || '')
   url.searchParams.append('with_genres', genres || '')
   url.searchParams.append('with_keywords', keywords ? keywords.split('|').map(kw => kw.split('%')[0]).join('|') : '')
+  url.searchParams.append('with_watch_providers', watchProviders || '')
+
+  return fetch(url.href, GET_OPTIONS)
+}
+
+export function discoverTvs ({
+  page = 1,
+  includeAdult,
+  sortBy,
+  sortDirection,
+  watchTypes,
+  voteCount,
+  voteMin,
+  voteMax,
+  durationMin,
+  durationMax,
+  fromDate,
+  toDate,
+  genres,
+  keywords,
+  watchProviders
+}) {
+  const url = new URL('https://api.themoviedb.org/3/discover/tv')
+  url.searchParams.append('page', page)
+  url.searchParams.append('language', language)
+  url.searchParams.append('watch_region', region)
+  url.searchParams.append('include_adult', includeAdult || false)
+  url.searchParams.append('sort_by', `${sortBy || 'popularity'}.${sortDirection || 'desc'}`)
+  url.searchParams.append('with_watch_monetization_types', watchTypes || '')
+  url.searchParams.append('vote_count.gte', voteCount || '')
+  url.searchParams.append('vote_average.gte', voteMin || '')
+  url.searchParams.append('vote_average.lte', voteMax || '')
+  url.searchParams.append('with_runtime.gte', durationMin || '')
+  url.searchParams.append('with_runtime.lte', durationMax || '')
+  url.searchParams.append('first_air_date.gte', fromDate || '')
+  url.searchParams.append('first_air_date.lte', toDate || '')
+  url.searchParams.append('with_genres', genres || '')
+  url.searchParams.append('with_keywords', keywords ? keywords.split('|').map(kw => kw.split('%')[0]).join('|') : '')
+  url.searchParams.append('with_watch_providers', watchProviders || '')
 
   return fetch(url.href, GET_OPTIONS)
 }

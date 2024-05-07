@@ -28,6 +28,7 @@ import TvSeasonDetailsLayout, { loader as tvSeasonGeneralLoader } from './layout
 import TvSeasonMediaPage from './pages/TvSeasonMedia'
 import TvMediaPage from './pages/TvMedia'
 import MovieDiscoverPage, { loader as movieDiscoverLoader } from './pages/MovieDiscover'
+import TvDiscoverPage, { loader as tvDiscoverLoader } from './pages/TvDiscover'
 
 export default function App () {
   useEffect(() => {
@@ -60,6 +61,11 @@ export default function App () {
           path: 'movie',
           element: <MovieDiscoverPage />,
           loader: movieDiscoverLoader
+        },
+        {
+          path: 'tv',
+          element: <TvDiscoverPage />,
+          loader: tvDiscoverLoader
         },
         {
           path: 'movie/:id',

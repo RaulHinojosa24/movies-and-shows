@@ -6,6 +6,10 @@ export function retrieveConfig (loaderData) {
 export function retrieveMovieGenres (loaderData) {
   return loaderData.movieGenres
 }
+
+export function retrieveTvGenres (loaderData) {
+  return loaderData.tvGenres
+}
 //
 
 export function calculateImageSize (sizes, width, ratio) {
