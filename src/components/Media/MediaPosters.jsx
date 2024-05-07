@@ -58,7 +58,6 @@ export default function MediaPosters ({ images }) {
         open={index >= 0}
         index={index}
         close={() => setIndex(-1)}
-  // enable optional lightbox plugins
         plugins={[Fullscreen, Slideshow, Thumbnails, Zoom]}
       />
     </Section>

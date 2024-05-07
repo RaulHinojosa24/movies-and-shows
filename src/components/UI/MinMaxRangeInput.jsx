@@ -39,16 +39,6 @@ export default function MinMaxRangeInput ({ min, max, step = 0.1, symbol = '', l
         <span>{Number(low)} {symbol}</span>
         <span>{Number(high)} {symbol}</span>
       </div>
-      {/* <div className='w-full flex justify-between'>
-    <input
-      className='text-black rounded' type='number' name='low-input' id='low-input' step={step} value={low} onChange={(e) => {
-        setLow((+e.target.value).toFixed(nDecimals))
-        console.log(e.target.value.length)
-        e.target.style.width = e.target.value.length + 2 + 'ch'
-      }}
-    /><span>{symbol}</span>
-    <input className='text-black w-fit rounded' type='number' name='low-input' id='low-input' defaultValue={high} /><span>{symbol}</span>
-  </div> */}
     </div>
   )
 }

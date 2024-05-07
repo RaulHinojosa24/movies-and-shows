@@ -1,4 +1,3 @@
-/* eslint-disable no-octal-escape */
 import { useRouteLoaderData } from 'react-router-dom'
 import Header from '../PageUI/Header'
 

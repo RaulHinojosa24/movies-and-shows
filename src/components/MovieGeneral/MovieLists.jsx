@@ -16,7 +16,6 @@ export default function MovieLists () {
   }
 
   const shortLists = lists.results.filter((_, i) => i < shorListsLength)
-  console.log(shortLists)
 
   return (
     <Section title='Listas de usuarios'>

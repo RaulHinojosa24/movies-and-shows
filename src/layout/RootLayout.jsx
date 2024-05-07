@@ -9,9 +9,7 @@ export default function RootLayout () {
       <GoToTopButton />
       <ScrollRestoration />
       <MainNavigation />
-      {/* <main> */}
       <Outlet />
-      {/* </main> */}
     </>
   )
 }
