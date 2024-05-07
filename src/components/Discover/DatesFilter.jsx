@@ -1,8 +1,6 @@
 import { useState } from 'react'
 import FilterItem from './FilterItem'
 
-// const TODAY = new Date().toLocaleDateString('en-CA')
-
 export default function DatesFilter ({ fromDate, setFromDate, toDate, setToDate }) {
   const [showDates, setShowDates] = useState(fromDate !== '' && toDate !== '')
 

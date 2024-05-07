@@ -3,10 +3,7 @@ import ResultItem from './ResultItem'
 
 export default function Results () {
   const {
-    results
-    // total_results: totalResults,
-    // page,
-    // total_pages: totalPages
+    data: { results }
   } = useLoaderData()
 
   return (

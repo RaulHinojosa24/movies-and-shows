@@ -1,7 +1,7 @@
-import Filters from '../components/MovieDiscover.jsx/Filters'
-import Results from '../components/MovieDiscover.jsx/Results'
+import Filters from '../components/MovieDiscover/Filters'
+import Results from '../components/MovieDiscover/Results'
 import Main from '../components/PageUI/Main'
-import { discoverMovies } from '../utils/http'
+import { discoverMovies, getMovieProviders } from '../utils/http'
 import { setDocTitle } from '../utils/utility'
 
 export default function MovieDiscoverPage () {
@@ -33,20 +33,27 @@ export async function loader ({ request, params }) {
   const toDate = new URL(request.url).searchParams.get('to_date')
   const genres = new URL(request.url).searchParams.get('genres')
   const keywords = new URL(request.url).searchParams.get('keywords')
+  const watchProvs = new URL(request.url).searchParams.get('watch_providers')
 
-  return await discoverMovies({
-    sortBy,
-    sortDirection,
-    includeAdult,
-    watchTypes,
-    voteCount,
-    voteMin,
-    voteMax,
-    durationMin,
-    durationMax,
-    fromDate,
-    toDate,
-    genres,
-    keywords
-  })
+  const [data, watchProviders] = await Promise.all([
+    discoverMovies({
+      sortBy,
+      sortDirection,
+      includeAdult,
+      watchTypes,
+      voteCount,
+      voteMin,
+      voteMax,
+      durationMin,
+      durationMax,
+      fromDate,
+      toDate,
+      genres,
+      keywords,
+      watchProviders: watchProvs
+    }).then(res => res.json()),
+    getMovieProviders().then(res => res.json())
+  ])
+
+  return { data, watchProviders }
 }

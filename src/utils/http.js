@@ -28,6 +28,11 @@ export function getMovieGenres () {
   return fetch('https://api.themoviedb.org/3/genre/movie/list?language=' + language, GET_OPTIONS)
 }
 
+export function getMovieProviders () {
+  return fetch(`https://api.themoviedb.org/3/watch/providers/movie?language=${language}&watch_region=${region}`, GET_OPTIONS)
+}
+
+
 export function getRequestToken () {
   return fetch('https://api.themoviedb.org/3/authentication/token/new', GET_OPTIONS)
 }

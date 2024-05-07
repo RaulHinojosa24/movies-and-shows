@@ -1,20 +1,72 @@
 import { useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
-import SortFilter from './SortFilter'
-import AdultFilter from './AdultFilter'
-import AvailabilityFilter from './AvailabilityFilter'
-import DatesFilter from './DatesFilter'
-import GenresFilter from './GenresFilter'
-import FilterGroup from './FilterGroup'
-import DurationFilter from './DurationFilter'
-import VoteAverageFilter from './VoteAverageFilter'
-import VoteCountFilter from './VoteCountFilter'
-import KeywordsFilter from './KeywordsFilter'
+import { useLoaderData, useRouteLoaderData, useSearchParams } from 'react-router-dom'
+import SortFilter from '../Discover/SortFilter'
+import AdultFilter from '../Discover/AdultFilter'
+import AvailabilityFilter from '../Discover/AvailabilityFilter'
+import DatesFilter from '../Discover/DatesFilter'
+import GenresFilter from '../Discover/GenresFilter'
+import FilterGroup from '../Discover/FilterGroup'
+import DurationFilter from '../Discover/DurationFilter'
+import VoteAverageFilter from '../Discover/VoteAverageFilter'
+import VoteCountFilter from '../Discover/VoteCountFilter'
+import KeywordsFilter from '../Discover/KeywordsFilter'
+import { retrieveMovieGenres } from '../../utils/utility'
+import WatchProvidersFilter from '../Discover/WatchProvidersFilter'
 
-const VALID_SORT_BY = ['popularity', 'vote_average', 'primary_release_date', 'title', 'original_title', 'revenue', 'vote_count']
+const VALID_SORT_BY = [
+  {
+    value: 'popularity',
+    label: 'Popularidad'
+  },
+  {
+    value: 'vote_average',
+    label: 'Valoración media'
+  },
+  {
+    value: 'primary_release_date',
+    label: 'Fecha de estreno'
+  },
+  {
+    value: 'title',
+    label: 'Título'
+  },
+  {
+    value: 'original_title',
+    label: 'Título original'
+  },
+  {
+    value: 'revenue',
+    label: 'Ingresos'
+  },
+  {
+    value: 'vote_count',
+    label: 'Número de votos'
+  }
+]
 const VALID_SORT_DIRECTION = ['desc', 'asc']
 const VALID_INCLUDE_ADULT = [false, true]
-const VALID_WATCH_TYPES = ['flatrate', 'free', 'ads', 'rent', 'buy']
+const VALID_WATCH_TYPES = [
+  {
+    label: 'Streaming',
+    value: 'flatrate'
+  },
+  {
+    label: 'Gratis',
+    value: 'free'
+  },
+  {
+    label: 'Anuncios',
+    value: 'ads'
+  },
+  {
+    label: 'Alquiler',
+    value: 'rent'
+  },
+  {
+    label: 'Compra',
+    value: 'buy'
+  }
+]
 const VOTE_AVERAGE_RANGE = [0, 10]
 const VOTE_COUNT_RANGE = [0, 500]
 const DURATION_RANGE = [0, 400]
@@ -31,12 +83,16 @@ const calculateMaxRange = (minSP, maxSP, range) => {
 }
 
 export default function Filters () {
+  const { genres: movieGenres } = retrieveMovieGenres(useRouteLoaderData('root'))
+  const {
+    watchProviders: { results: watchProvidersList }
+  } = useLoaderData()
   const [searchParams, setSearchParams] = useSearchParams()
   const sortBySP = searchParams.get('sort_by')
   const sortDirectionSP = searchParams.get('sort_direction')
   const includeAdultSP = searchParams.get('include_adult') === 'true'
   const watchTypesSP = searchParams.get('watch_types')
-    ? searchParams.get('watch_types').split('|').filter(i => VALID_WATCH_TYPES.includes(i))
+    ? searchParams.get('watch_types').split('|').filter(i => VALID_WATCH_TYPES.some(wt => wt.value === i))
     : null
   const voteMinSP = searchParams.get('vote_min')
   const voteMaxSP = searchParams.get('vote_max')
@@ -47,11 +103,12 @@ export default function Filters () {
   const toDateSP = searchParams.get('to_date')
   const genresSP = searchParams.get('genres')
   const keywordsSP = searchParams.get('keywords')
+  const watchProvidersSP = searchParams.get('watch_providers')
 
-  const [sortBy, setSortBy] = useState(VALID_SORT_BY.includes(sortBySP) ? sortBySP : 'popularity')
+  const [sortBy, setSortBy] = useState(VALID_SORT_BY.some(sb => sb.value === sortBySP) ? sortBySP : VALID_SORT_BY[0].value)
   const [sortDirection, setSortDirection] = useState(VALID_SORT_DIRECTION.includes(sortDirectionSP) ? sortDirectionSP : 'desc')
   const [includeAdult, setIncludeAdult] = useState(VALID_INCLUDE_ADULT.includes(includeAdultSP) ? includeAdultSP : false)
-  const [watchTypes, setWatchTypes] = useState(watchTypesSP || VALID_WATCH_TYPES)
+  const [watchTypes, setWatchTypes] = useState(watchTypesSP || VALID_WATCH_TYPES.map(wt => wt.value))
   const [voteCount, setVoteCount] = useState(voteCountSP && voteCountSP >= VOTE_COUNT_RANGE[0] && voteCountSP <= VOTE_COUNT_RANGE[1]
     ? voteCountSP
     : 0)
@@ -69,6 +126,9 @@ export default function Filters () {
     })
     : []
   )
+  const [watchProviders, setWatchProviders] = useState(watchProvidersSP
+    ? watchProvidersSP.split('|').map(Number)
+    : [])
 
   const submitFormHandler = (event) => {
     event.preventDefault()
@@ -76,7 +136,7 @@ export default function Filters () {
     const newSearchParams = {}
 
     if (includeAdult !== false) newSearchParams.include_adult = includeAdult
-    if (sortBy !== 'popularity') newSearchParams.sort_by = sortBy
+    if (sortBy !== VALID_SORT_BY[0].value) newSearchParams.sort_by = sortBy
     if (sortDirection !== 'desc') newSearchParams.sort_direction = sortDirection
     if (watchTypes.length > 0 && watchTypes.length < VALID_WATCH_TYPES.length) newSearchParams.watch_types = watchTypes.join('|')
     if (VOTE_AVERAGE_RANGE[0] !== voteMin) newSearchParams.vote_min = voteMin
@@ -88,15 +148,16 @@ export default function Filters () {
     if (genres.length > 0) newSearchParams.genres = genres.join('|')
     if (keywords.length > 0) newSearchParams.keywords = keywords.map(tag => tag.id + '%' + tag.name).join('|')
     if (voteCount > VOTE_COUNT_RANGE[0]) newSearchParams.vote_count = voteCount
+    if (watchProviders.length > 0) newSearchParams.watch_providers = watchProviders.join('|')
 
     setSearchParams(newSearchParams)
   }
 
   const resetFilters = () => {
-    setSortBy('popularity')
+    setSortBy(VALID_SORT_BY[0].value)
     setSortDirection('desc')
     setIncludeAdult(false)
-    setWatchTypes(VALID_WATCH_TYPES)
+    setWatchTypes(VALID_WATCH_TYPES.map(wt => wt.value))
     setVoteCount(VOTE_COUNT_RANGE[0])
     setVoteMin(VOTE_AVERAGE_RANGE[0])
     setVoteMax(VOTE_AVERAGE_RANGE[1])
@@ -106,6 +167,7 @@ export default function Filters () {
     setToDate('')
     setGenres([])
     setKeywords([])
+    setWatchProviders([])
 
     setSearchParams({})
   }
@@ -114,6 +176,7 @@ export default function Filters () {
     <form action='/' onSubmit={submitFormHandler} className='space-y-4'>
       <FilterGroup title='Ordenar'>
         <SortFilter
+          options={VALID_SORT_BY}
           sortBy={sortBy} setSortBy={setSortBy}
           sortDirection={sortDirection} setSortDirection={setSortDirection}
         />
@@ -122,14 +185,21 @@ export default function Filters () {
           setIncludeAdult={setIncludeAdult}
         />
       </FilterGroup>
-      <FilterGroup title='Proveedores'>
+      <FilterGroup title='Dónde ver'>
+        <WatchProvidersFilter
+          watchProvidersList={watchProvidersList}
+          watchProviders={watchProviders}
+          setWatchProviders={setWatchProviders}
+        />
         <AvailabilityFilter
           watchTypes={watchTypes}
           setWatchTypes={setWatchTypes}
+          options={VALID_WATCH_TYPES}
         />
       </FilterGroup>
       <FilterGroup title='Detalles'>
         <DurationFilter
+          durationRange={DURATION_RANGE}
           durationMin={durationMin} durationMax={durationMax}
           setDurationMin={setDurationMin} setDurationMax={setDurationMax}
         />
@@ -138,6 +208,7 @@ export default function Filters () {
           setFromDate={setFromDate} setToDate={setToDate}
         />
         <GenresFilter
+          options={movieGenres}
           genres={genres}
           setGenres={setGenres}
         />
@@ -148,10 +219,12 @@ export default function Filters () {
       </FilterGroup>
       <FilterGroup title='Usuarios'>
         <VoteCountFilter
+          voteCountRange={VOTE_COUNT_RANGE}
           voteCount={voteCount}
           setVoteCount={setVoteCount}
         />
         <VoteAverageFilter
+          voteAverageRange={VOTE_AVERAGE_RANGE}
           voteMin={voteMin} voteMax={voteMax}
           setVoteMin={setVoteMin} setVoteMax={setVoteMax}
         />

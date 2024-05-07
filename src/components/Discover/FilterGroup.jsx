@@ -3,7 +3,7 @@ export default function FilterGroup ({ children, title }) {
     <div>
       <details className='custom-shadow-small rounded divide-y-1 divide-neutral-800 [&>*]:p-2'>
         <summary className='font-semibold pb-2 text-lg'>{title}</summary>
-        <div>{children}</div>
+        <div className='space-y-2'>{children}</div>
       </details>
     </div>
   )

@@ -1,18 +1,14 @@
-import { useRouteLoaderData } from 'react-router-dom'
-import { retrieveMovieGenres } from '../../utils/utility'
 import FilterItem from './FilterItem'
 
-export default function GenresFilter ({ genres, setGenres }) {
-  const { genres: movieGenres } = retrieveMovieGenres(useRouteLoaderData('root'))
-
-  const sortedMovieGenres = movieGenres
+export default function GenresFilter ({ genres, setGenres, options }) {
+  const sortedOptions = options
     .sort((a, b) => a.name.localeCompare(b.name))
 
   return (
     <FilterItem title='Géneros'>
       <div>
         <ul className='flex flex-wrap gap-2 text-sm'>
-          {sortedMovieGenres.map(genre => {
+          {sortedOptions.map(genre => {
             const isSelected = genres.includes(genre.id)
             const selected = isSelected
               ? 'bg-yellow-400 text-black border-yellow-400'
