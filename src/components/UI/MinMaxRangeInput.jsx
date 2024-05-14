@@ -11,6 +11,9 @@ export default function MinMaxRangeInput ({ min, max, step = 0.1, symbol = '', l
     <div>
       <div className='relative h-6'>
         <div
+          className='h-1 bg-neutral-500 absolute left-0 top-1/2 -translate-y-1/2 w-full rounded'
+        />
+        <div
           className='h-1 bg-yellow-400 absolute left-0 top-1/2 -translate-y-1/2 w-full rounded'
           style={{
             left: 100 - highWidth + '%',
@@ -18,10 +21,9 @@ export default function MinMaxRangeInput ({ min, max, step = 0.1, symbol = '', l
           }}
         />
         <input
-          type='range' name='low-range' id='low-range' step={step} max={high} min={min} value={high - low} onChange={(e) => setLow((high - e.target.value).toFixed(nDecimals))}
+          type='range' name='low-range' id='low-range' dir='rtl' step={step} max={high} min={min} value={high - low} onChange={(e) => setLow((high - e.target.value).toFixed(nDecimals))}
           className='absolute top-1/2 left-0 -translate-y-1/2'
           style={{
-            direction: 'rtl',
             width: lowWidth + '%'
           }}
         />
