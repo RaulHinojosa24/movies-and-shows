@@ -1,12 +1,8 @@
 import Section from '../UI/Section'
 import SubSection from '../UI/SubSection'
-import PlayButton from '../UI/PlayButton'
 import VideoModal from './VideoModal'
-import { useState } from 'react'
 
 export default function MediaVideos ({ videos }) {
-  const [modalVideo, setModalVideo] = useState(null)
-
   const groupedVideos = {}
   const cleanVideos = []
 
@@ -36,26 +32,18 @@ export default function MediaVideos ({ videos }) {
     .sort((a, b) => a.type.localeCompare(b.type))
 
   return (
-    <>
-      {modalVideo && <VideoModal video={modalVideo} onClose={() => setModalVideo(null)} />}
-      <Section title='Vídeos' className='space-y-4'>
-        {cleanVideos.map(({ type, videos }) => (
-          <SubSection key={type} title={<>{type} <span className='text-neutral-500'>{videos.length}</span></>} className='space-y-2'>
-            <div className='flex flex-wrap gap-2'>
-              {videos.map(video => {
-                return (
-                  <div
-                    key={video.id} style={{ backgroundImage: `url(https://i3.ytimg.com/vi/${video.key}/hqdefault.jpg)` }} className='w-full max-w-96 aspect-video bg-cover bg-center grid place-content-center cursor-pointer'
-                    onClick={() => setModalVideo(video)}
-                  >
-                    <PlayButton />
-                  </div>
-                )
-              })}
-            </div>
-          </SubSection>
-        ))}
-      </Section>
-    </>
+    <Section title='Vídeos' className='space-y-4'>
+      {cleanVideos.map(({ type, videos }) => (
+        <SubSection key={type} title={<>{type} <span className='text-neutral-500'>{videos.length}</span></>} className='space-y-2'>
+          <div className='flex flex-wrap gap-2'>
+            {videos.map(video => {
+              return (
+                <VideoModal key={video.id} video={video} className='w-full max-w-96' />
+              )
+            })}
+          </div>
+        </SubSection>
+      ))}
+    </Section>
   )
 }

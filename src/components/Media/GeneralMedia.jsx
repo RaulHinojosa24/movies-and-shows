@@ -1,8 +1,6 @@
-import { useState } from 'react'
 import VideoModal from '../Media/VideoModal'
 import Section from '../UI/Section'
 import { Link, useRouteLoaderData } from 'react-router-dom'
-import PlayButton from '../UI/PlayButton'
 import { retrieveConfig } from '../../utils/utility'
 
 export default function GeneralMedia ({ title, backdrops = [], posters, videos = [], pageType, className = '' }) {
@@ -75,7 +73,7 @@ export default function GeneralMedia ({ title, backdrops = [], posters, videos =
                 {wideEls.map((el, i) => {
                   if (i > 1) return null
                   if (el.type) {
-                    return <Video key={el.id} element={el} />
+                    return <VideoModal key={el.id} video={el} />
                   } else {
                     return (
                       <Image key={el.file_path} pageType={pageType} element={el} title={title} mediaType='backdrop' />
@@ -94,7 +92,7 @@ export default function GeneralMedia ({ title, backdrops = [], posters, videos =
               {wideEls.map((el, i) => {
                 if (i > 1) return null
                 if (el.type) {
-                  return <Video key={el.id} element={el} className='w-[42.1%]' />
+                  return <VideoModal key={el.id} video={el} className='w-[42.1%]' />
                 } else {
                   return (
                     <Image key={el.file_path} pageType={pageType} element={el} title={title} mediaType='backdrop' className='w-[42.1%]' />
@@ -115,7 +113,7 @@ export default function GeneralMedia ({ title, backdrops = [], posters, videos =
               {wideEls.map((el, i) => {
                 if (i >= 2) return null
                 if (el.type) {
-                  return <Video key={el.id} element={el} className='w-full' />
+                  return <VideoModal key={el.id} video={el} className='w-full' />
                 } else {
                   return (
                     <Image key={el.file_path} pageType={pageType} element={el} title={title} mediaType='backdrop' className='w-full' />
@@ -127,7 +125,7 @@ export default function GeneralMedia ({ title, backdrops = [], posters, videos =
               {wideEls.map((el, i) => {
                 if (i >= 2) return null
                 if (el.type) {
-                  return <Video key={el.id} element={el} className='w-1/2' />
+                  return <VideoModal key={el.id} video={el} className='w-1/2' />
                 } else {
                   return (
                     <Image key={el.file_path} pageType={pageType} element={el} title={title} mediaType='backdrop' className='w-1/2' />
@@ -140,7 +138,7 @@ export default function GeneralMedia ({ title, backdrops = [], posters, videos =
           <>
             <div className='flex sm:hidden md:flex lg:hidden flex-col items-center [&>*:first-child]:rounded-t [&>*:last-child]:rounded-b'>
               {wideEls[0].type
-                ? <Video key={wideEls[0].id} element={wideEls[0]} className={`w-full ${highEls.length < 3 && 'rounded-br'}`} />
+                ? <VideoModal key={wideEls[0].id} video={wideEls[0]} className={`w-full ${highEls.length < 3 && 'rounded-br'}`} />
                 : <Image key={wideEls[0].file_path} pageType={pageType} element={wideEls[0]} title={title} mediaType='backdrop' className={`w-full ${highEls.length < 3 && 'rounded-br'}`} />}
               {highEls.length > 0 &&
                 <div className='flex w-full overflow-hidden'>
@@ -154,7 +152,7 @@ export default function GeneralMedia ({ title, backdrops = [], posters, videos =
             </div>
             <div className='hidden sm:flex md:hidden lg:flex items-center [&>*:first-child]:rounded-l [&>*:last-child]:rounded-r'>
               {wideEls[0].type
-                ? <Video key={wideEls[0].id} element={wideEls[0]} className='w-[47%]' />
+                ? <VideoModal key={wideEls[0].id} video={wideEls[0]} className='w-[47%]' />
                 : <Image key={wideEls[0].file_path} pageType={pageType} element={wideEls[0]} title={title} mediaType='backdrop' className='w-[47%]' />}
               {highEls.map((poster, i) => {
                 if (i >= 3) return null
@@ -203,24 +201,6 @@ export default function GeneralMedia ({ title, backdrops = [], posters, videos =
   )
 }
 
-const Video = ({ element, className = '' }) => {
-  const [modalVideo, setModalVideo] = useState(null)
-
-  return (
-    <>
-      {modalVideo && <VideoModal video={modalVideo} onClose={() => setModalVideo(null)} />}
-      <div
-        style={{
-          backgroundImage: `url(https://i3.ytimg.com/vi/${element.key}/hqdefault.jpg)`
-        }}
-        className={'aspect-video bg-cover bg-center bg-no-repeat grid place-content-center cursor-pointer ' + className}
-        onClick={() => setModalVideo(element)}
-      >
-        <PlayButton />
-      </div>
-    </>
-  )
-}
 const Image = ({ element, mediaType, pageType, title, className = '' }) => {
   const {
     images: {
