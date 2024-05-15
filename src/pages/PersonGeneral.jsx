@@ -31,14 +31,16 @@ export default function PersonGeneralPage () {
     <Main
       left={
         <>
-          <img className='aspect-[2/3] object-cover w-full mx-auto max-w-aside rounded custom-shadow' src={prettyProfilePath} alt={'Foto de ' + name} />
+          <Link to='media' className='block mx-auto relative group'>
+            <span className='absolute top-0 left-0 w-full h-full grid text-center content-center font-semibold opacity-0 group-hover:opacity-100 transition-opacity bg-black/70 backdrop-blur-sm px-12 text-lg'>Ver todas las imágenes</span>
+            <img className='aspect-[2/3] object-cover w-full mx-auto max-w-aside rounded custom-shadow' src={prettyProfilePath} alt={'Foto de ' + name} />
+          </Link>
           <PersonInfo className='hidden md:block' />
         </>
       }
       center={
         <>
           <h1 className='text-4xl font-bold text-center md:text-left'>{name}</h1>
-          <Link to='media' className='font-bold text-center md:text-left'>TODO: Ver Media</Link>
           <PersonInfo className='md:hidden block' />
           <PersonBio />
           <PersonKnownFor />

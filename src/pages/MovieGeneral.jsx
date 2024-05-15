@@ -1,4 +1,4 @@
-import { Link, useRouteLoaderData } from 'react-router-dom'
+import { useRouteLoaderData } from 'react-router-dom'
 import MovieCast from '../components/MovieGeneral/MovieCast'
 import MovieRecommendations from '../components/MovieGeneral/MovieRecommendations'
 import SocialLinks from '../components/PageUI/SocialLinks'
@@ -9,6 +9,7 @@ import MovieDetails from '../components/MovieGeneral/MovieDetails'
 import MovieOverview from '../components/MovieGeneral/MovieOverview'
 import Main from '../components/PageUI/Main'
 import { setDocTitle } from '../utils/utility'
+import GeneralMedia from '../components/Media/GeneralMedia'
 
 export default function MovieDetailsPage () {
   const {
@@ -16,10 +17,18 @@ export default function MovieDetailsPage () {
     homepage: homepageLink,
     title,
     original_title: originalTitle,
-    belongs_to_collection: collection
+    belongs_to_collection: collection,
+    images: {
+      backdrops, posters
+    },
+    videos: {
+      results: videos
+    }
   } = useRouteLoaderData('movie-details')
 
-  setDocTitle(title || originalTitle)
+  const prettyTitle = title || originalTitle
+
+  setDocTitle(prettyTitle)
 
   return (
     <Main
@@ -28,8 +37,8 @@ export default function MovieDetailsPage () {
       }
       center={
         <>
-          <Link to='media' className='font-bold'>TODO: Ver Media</Link>
           <MovieOverview />
+          <GeneralMedia backdrops={backdrops} posters={posters} title={prettyTitle} videos={videos} pageType='película' />
           <MovieCast />
           {collection && <MovieCollection />}
           <MovieReviews />

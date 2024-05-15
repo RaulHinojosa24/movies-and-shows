@@ -1,7 +1,8 @@
-import { Link, useRouteLoaderData } from 'react-router-dom'
+import { useRouteLoaderData } from 'react-router-dom'
 import Main from '../components/PageUI/Main'
 import EpisodeList from '../components/TvSeasons/EpisodeList'
 import { setDocTitle } from '../utils/utility'
+import GeneralMedia from '../components/Media/GeneralMedia'
 
 export default function TvSeasonGeneralPage () {
   const {
@@ -9,7 +10,11 @@ export default function TvSeasonGeneralPage () {
     original_name: originalName
   } = useRouteLoaderData('tv-details')
 
-  const { name: seasonName } = useRouteLoaderData('season-details')
+  const {
+    name: seasonName,
+    images: { posters },
+    videos: { results }
+  } = useRouteLoaderData('season-details')
 
   setDocTitle(`${name || originalName} - ${seasonName}`)
 
@@ -17,7 +22,7 @@ export default function TvSeasonGeneralPage () {
     <Main
       center={
         <>
-          <Link to='media' className='font-bold'>TODO: Ver Media</Link>
+          <GeneralMedia posters={posters} videos={results} pageType='temporada' title={name} />
           <EpisodeList />
         </>
       }

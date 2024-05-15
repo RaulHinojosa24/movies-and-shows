@@ -1,4 +1,4 @@
-import { Link, useRouteLoaderData } from 'react-router-dom'
+import { useRouteLoaderData } from 'react-router-dom'
 import TvDetails from '../components/TvGeneral/TvDetails'
 import SocialLinks from '../components/PageUI/SocialLinks'
 import TvCast from '../components/TvGeneral/TvCast'
@@ -9,16 +9,25 @@ import Main from '../components/PageUI/Main'
 import TvOverview from '../components/TvGeneral/TvOverview'
 import TvLatestSeason from '../components/TvGeneral/TvLatestSeason'
 import { setDocTitle } from '../utils/utility'
+import GeneralMedia from '../components/Media/GeneralMedia'
 
 export default function TvGeneral () {
   const {
     external_ids: externalIds,
     homepage,
     name,
-    original_name: originalName
+    original_name: originalName,
+    images: {
+      backdrops, posters
+    },
+    videos: {
+      results: videos
+    }
   } = useRouteLoaderData('tv-details')
 
-  setDocTitle(name || originalName)
+  const prettyName = name || originalName
+
+  setDocTitle(prettyName)
 
   return (
     <Main
@@ -27,8 +36,8 @@ export default function TvGeneral () {
       }
       center={
         <>
-          <Link to='media' className='font-bold'>TODO: Ver Media</Link>
           <TvOverview />
+          <GeneralMedia backdrops={backdrops} posters={posters} title={prettyName} videos={videos} pageType='serie de tv' />
           <TvCast />
           <TvLatestSeason />
           <TvReviews />
