@@ -1,7 +1,7 @@
-import { NavLink, Outlet, defer, useLoaderData, useLocation, useNavigate, useSearchParams } from 'react-router-dom'
+import { Await, NavLink, Outlet, defer, useLoaderData, useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 import Main from '../components/PageUI/Main'
 import { getMoviesByQuery, getPersonsByQuery, getTvByQuery } from '../utils/http'
-import { useEffect } from 'react'
+import { Suspense, useEffect } from 'react'
 import SearchBar from '../components/Search/SearchBar'
 import { setDocTitle } from '../utils/utility'
 
@@ -10,7 +10,7 @@ const activeClasses = ({ isActive }) => 'no-underline flex justify-between w-ful
 const VALID_PATHNAMES = ['/search/movie', '/search/tv', '/search/person']
 
 export default function SearchPage () {
-  const data = useLoaderData()
+  const loaderData = useLoaderData()
   const params = useLocation()
   const [searchParams] = useSearchParams()
   const query = searchParams.get('query')
@@ -35,17 +35,44 @@ export default function SearchPage () {
             <ul className='py-2'>
               <li>
                 <NavLink to={'/search/movie' + (query ? `?query=${query}` : '')} className={activeClasses}>
-                  Películas <Badge>{data?.movies?.total_results || 0}</Badge>
+                  Películas
+                  <Badge>
+                    <Suspense fallback='...'>
+                      <Await resolve={loaderData?.movies}>
+                        {(loadedMovies) => {
+                          return loadedMovies?.total_results || 0
+                        }}
+                      </Await>
+                    </Suspense>
+                  </Badge>
                 </NavLink>
               </li>
               <li>
                 <NavLink to={'/search/tv' + (query ? `?query=${query}` : '')} className={activeClasses}>
-                  Series de TV <Badge>{data?.tvs?.total_results || 0}</Badge>
+                  Series de TV
+                  <Badge>
+                    <Suspense fallback='...'>
+                      <Await resolve={loaderData?.tvs}>
+                        {(loadedTvs) => {
+                          return loadedTvs?.total_results || 0
+                        }}
+                      </Await>
+                    </Suspense>
+                  </Badge>
                 </NavLink>
               </li>
               <li>
                 <NavLink to={'/search/person' + (query ? `?query=${query}` : '')} className={activeClasses}>
-                  Gente <Badge>{data?.persons?.total_results || 0}</Badge>
+                  Gente
+                  <Badge>
+                    <Suspense fallback='...'>
+                      <Await resolve={loaderData?.persons}>
+                        {(loadedPersons) => {
+                          return loadedPersons?.total_results || 0
+                        }}
+                      </Await>
+                    </Suspense>
+                  </Badge>
                 </NavLink>
               </li>
             </ul>
@@ -67,13 +94,11 @@ export async function loader ({ request, params }) {
   const url = new URL(request.url)
   const query = url.searchParams.get('query') || ''
 
-  if (query.trim()) {
-    return defer({
-      movies: await getMoviesByQuery(query),
-      tvs: await getTvByQuery(query),
-      persons: await getPersonsByQuery(query)
-    })
-  }
+  if (!query.trim()) return null
 
-  return null
+  return defer({
+    movies: getMoviesByQuery(query),
+    tvs: getTvByQuery(query),
+    persons: getPersonsByQuery(query)
+  })
 }

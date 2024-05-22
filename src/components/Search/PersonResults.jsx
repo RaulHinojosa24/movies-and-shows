@@ -1,57 +1,71 @@
-import { Link, defer, useLoaderData, useRouteLoaderData } from 'react-router-dom'
+import { Await, Link, defer, useLoaderData, useRouteLoaderData } from 'react-router-dom'
 import { getPersonsByQuery } from '../../utils/http'
 import { retrieveConfig } from '../../utils/utility'
 import Pagination from './Pagination'
 import DefaultUserImage from '../../assets/default-user.png'
+import { Suspense, useEffect, useState } from 'react'
+import SearchResultsSkeleton from '../Skeletons/SearchResultsSkeleton'
 
 export default function PersonResults () {
-  const currentPageData = useLoaderData()
-  const baseData = useRouteLoaderData('search')
-
-  const firstPage = baseData?.persons
-  const totalPages = baseData?.persons?.total_pages
-  const totalResults = baseData?.persons?.total_results
-
-  const persons = (currentPageData || firstPage)?.results
+  const { data: loaderData } = useLoaderData()
+  const baseLoaderData = useRouteLoaderData('search')
 
   return (
-    <>
-      {persons && persons.length > 0 &&
-        <ul className='space-y-2'>
-          {persons.map(person => {
-            const {
-              id,
-              known_for_department: knownForDepartment,
-              name,
-              original_name: originalName,
-              profile_path: profilePath,
-              known_for: knownFor
-            } = person
+    <Suspense fallback={<Fallback />}>
+      <Await resolve={loaderData || baseLoaderData?.persons}>
+        {loadedData => {
+          const persons = loadedData?.results
+          const totalPages = loadedData?.total_pages
+          const totalResults = loadedData?.total_results
 
-            return (
-              <PersonCard key={id} id={id} name={name} originalName={originalName} profilePath={profilePath} knownForDepartment={knownForDepartment} knownFor={knownFor} />
-            )
-          })}
-        </ul>}
-      {persons && totalResults > 0 && persons.length === 0 &&
-        <p>Parece que te has pasado de página, vuelve a la última!</p>}
-      {(!persons || totalResults === 0) &&
-        <p>No hemos podido encontrar ninguna persona que se adapte a tu búsqueda...</p>}
-      {persons && totalResults > 0 &&
-        <Pagination totalPages={totalPages} />}
-    </>
+          return (
+            <>
+              {persons && persons.length > 0 &&
+                <ul className='space-y-2'>
+                  {persons.map(person => {
+                    const {
+                      id,
+                      known_for_department: knownForDepartment,
+                      name,
+                      original_name: originalName,
+                      profile_path: profilePath,
+                      known_for: knownFor
+                    } = person
+
+                    return (
+                      <PersonCard key={id} id={id} name={name} originalName={originalName} profilePath={profilePath} knownForDepartment={knownForDepartment} knownFor={knownFor} />
+                    )
+                  })}
+                </ul>}
+              {persons && totalResults > 0 && persons.length === 0 &&
+                <p>Parece que te has pasado de página, vuelve a la última!</p>}
+              {(!persons || totalResults === 0) &&
+                <p>No hemos podido encontrar ninguna persona que se adapte a tu búsqueda...</p>}
+              {persons && totalResults > 0 &&
+                <Pagination totalPages={totalPages} />}
+            </>
+          )
+        }}
+      </Await>
+    </Suspense>
   )
 }
 
 function PersonCard ({ id, name, originalName, profilePath, knownForDepartment, knownFor }) {
-  const {
-    images: {
-      secure_base_url: baseURL,
-      profile_sizes: profileSizes
-    }
-  } = retrieveConfig(useRouteLoaderData('root'))
+  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
+  const [prettyPosterPath, setPrettyPosterPath] = useState(DefaultUserImage)
 
-  const prettyPosterPath = profilePath ? baseURL + profileSizes[1] + profilePath : DefaultUserImage
+  useEffect(() => {
+    loaderConfig.then(({
+      images: {
+        secure_base_url: baseURL,
+        profile_sizes: profileSizes
+      }
+    }) => {
+      if (profilePath) setPrettyPosterPath(baseURL + profileSizes[1] + profilePath)
+    })
+  }, [loaderConfig, profilePath])
+
   const sameName = name === originalName
   const prettyKnownFor = knownFor.map(kf => {
     const { id, media_type: mediaType, name, original_name: originalName, title, original_title: originalTitle } = kf
@@ -87,14 +101,22 @@ function PersonCard ({ id, name, originalName, profilePath, knownForDepartment, 
   )
 }
 
+function Fallback () {
+  return (
+    <div className='space-y-2'>
+      {Array(10).fill().map((_, i) => <SearchResultsSkeleton key={i} />)}
+    </div>
+  )
+}
+
 export async function loader ({ request, params }) {
   const url = new URL(request.url)
   const query = url.searchParams.get('query') || ''
   const page = Number(url.searchParams.get('page') || '')
 
   if (query && Boolean(page) && page > 1) {
-    return defer(await getPersonsByQuery(query, page))
+    return defer({ data: getPersonsByQuery(query, page) })
   }
 
-  return null
+  return { data: null }
 }

@@ -1,58 +1,74 @@
-import { Link, defer, useLoaderData, useRouteLoaderData } from 'react-router-dom'
+import { Await, Link, defer, useLoaderData, useRouteLoaderData } from 'react-router-dom'
 import { getTvByQuery } from '../../utils/http'
 import { formatLongDate, retrieveConfig } from '../../utils/utility'
 import Pagination from './Pagination'
 import DefaultPosterImage from '../../assets/default-poster.png'
+import { Suspense, useEffect, useState } from 'react'
+import SearchResultsSkeleton from '../Skeletons/SearchResultsSkeleton'
 
 export default function TvResults () {
-  const currentPageData = useLoaderData()
-  const baseData = useRouteLoaderData('search')
-
-  const firstPage = baseData?.tvs
-  const totalPages = baseData?.tvs?.total_pages
-  const totalResults = baseData?.tvs?.total_results
-
-  const tvs = (currentPageData || firstPage)?.results
+  const { data: loaderData } = useLoaderData()
+  const baseLoaderData = useRouteLoaderData('search')
 
   return (
-    <>
-      {tvs && tvs.length > 0 &&
-        <ul className='space-y-2'>
-          {tvs.map(tv => {
-            const {
-              id,
-              name,
-              original_name: originalName,
-              poster_path: posterPath,
-              overview,
-              first_air_date: firstAirDate
-            } = tv
+    <Suspense fallback={<Fallback />}>
+      <Await resolve={loaderData || baseLoaderData?.tvs}>
+        {loadedData => {
+          const tvs = loadedData?.results
+          const totalPages = loadedData?.total_pages
+          const totalResults = loadedData?.total_results
 
-            return (
-              <TvCard key={id} id={id} name={name} originalName={originalName} posterPath={posterPath} overview={overview} firstAirDate={firstAirDate} />
-            )
-          })}
-        </ul>}
-      {tvs && totalResults > 0 && tvs.length === 0 &&
-        <p>Parece que te has pasado de página, vuelve a la última!</p>}
-      {(!tvs || totalResults === 0) &&
-        <p>No hemos podido encontrar ninguna serie de tv que se adapte a tu búsqueda...</p>}
-      {tvs && totalResults > 0 &&
-        <Pagination totalPages={totalPages} />}
-    </>
+          return (
+            <>
+              {tvs && tvs.length > 0 &&
+                <ul className='space-y-2'>
+                  {tvs.map(tv => {
+                    const {
+                      id,
+                      name,
+                      original_name: originalName,
+                      poster_path: posterPath,
+                      overview,
+                      first_air_date: firstAirDate
+                    } = tv
+
+                    return (
+                      <TvCard key={id} id={id} name={name} originalName={originalName} posterPath={posterPath} overview={overview} firstAirDate={firstAirDate} />
+                    )
+                  })}
+                </ul>}
+              {tvs && totalResults > 0 && tvs.length === 0 &&
+                <p>Parece que te has pasado de página, vuelve a la última!</p>}
+              {(!tvs || totalResults === 0) &&
+                <p>No hemos podido encontrar ninguna serie de tv que se adapte a tu búsqueda...</p>}
+              {tvs && totalResults > 0 &&
+                <Pagination totalPages={totalPages} />}
+            </>
+          )
+        }}
+      </Await>
+    </Suspense>
   )
 }
 
 function TvCard ({ id, name, originalName, posterPath, overview, firstAirDate }) {
-  const {
-    images: {
-      secure_base_url: baseURL,
-      poster_sizes: posterSizes
+  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
+  const [prettyPosterPath, setPrettyPosterPath] = useState(DefaultPosterImage)
+
+  useEffect(() => {
+    if (posterPath) {
+      loaderConfig.then(({
+        images: {
+          secure_base_url: baseURL,
+          poster_sizes: posterSizes
+        }
+      }) => {
+        setPrettyPosterPath(baseURL + posterSizes[1] + posterPath)
+      })
     }
-  } = retrieveConfig(useRouteLoaderData('root'))
+  }, [loaderConfig, posterPath])
 
   const prettyReleaseDate = formatLongDate(firstAirDate)
-  const prettyPosterPath = posterPath ? baseURL + posterSizes[1] + posterPath : DefaultPosterImage
   const sameName = name === originalName
 
   return (
@@ -74,14 +90,22 @@ function TvCard ({ id, name, originalName, posterPath, overview, firstAirDate })
   )
 }
 
+function Fallback () {
+  return (
+    <div className='space-y-2'>
+      {Array(10).fill().map((_, i) => <SearchResultsSkeleton key={i} />)}
+    </div>
+  )
+}
+
 export async function loader ({ request, params }) {
   const url = new URL(request.url)
   const query = url.searchParams.get('query') || ''
   const page = Number(url.searchParams.get('page') || '')
 
   if (query && Boolean(page) && page > 1) {
-    return defer(await getTvByQuery(query, page))
+    return defer({ data: getTvByQuery(query, page) })
   }
 
-  return null
+  return { data: null }
 }

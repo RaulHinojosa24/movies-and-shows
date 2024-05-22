@@ -1,57 +1,75 @@
-import { Link, defer, useLoaderData, useRouteLoaderData } from 'react-router-dom'
+import { Await, Link, defer, useLoaderData, useRouteLoaderData } from 'react-router-dom'
 import { getMoviesByQuery } from '../../utils/http'
 import { formatLongDate, retrieveConfig } from '../../utils/utility'
 import Pagination from './Pagination'
 import DefaultPosterImage from '../../assets/default-poster.png'
+import { Suspense, useEffect, useState } from 'react'
+import SearchResultsSkeleton from '../Skeletons/SearchResultsSkeleton'
 
 export default function MovieResults () {
-  const currentPageData = useLoaderData()
-  const baseData = useRouteLoaderData('search')
+  const { data: loaderData } = useLoaderData()
+  const baseLoaderData = useRouteLoaderData('search')
 
-  const firstPage = baseData?.movies
-  const totalPages = baseData?.movies?.total_pages
-  const totalResults = baseData?.movies?.total_results
-
-  const movies = (currentPageData || firstPage)?.results
   return (
-    <>
-      {movies && movies.length > 0 &&
-        <ul className='space-y-2'>
-          {movies.map(movie => {
-            const {
-              id,
-              title,
-              original_title: originalTitle,
-              poster_path: posterPath,
-              overview,
-              release_date: releaseDate
-            } = movie
+    <Suspense fallback={<Fallback />}>
+      <Await resolve={loaderData || baseLoaderData?.movies}>
+        {loadedData => {
+          const movies = loadedData?.results
+          const totalPages = loadedData?.total_pages
+          const totalResults = loadedData?.total_results
 
-            return (
-              <MovieCard key={id} id={id} title={title} originalTitle={originalTitle} posterPath={posterPath} overview={overview} releaseDate={releaseDate} />
-            )
-          })}
-        </ul>}
-      {movies && totalResults > 0 && movies.length === 0 &&
-        <p>Parece que te has pasado de página, vuelve a la última!</p>}
-      {(!movies || totalResults === 0) &&
-        <p>No hemos podido encontrar ninguna película que se adapte a tu búsqueda...</p>}
-      {movies && totalResults > 0 &&
-        <Pagination totalPages={totalPages} />}
-    </>
+          return (
+            <>
+              {movies && movies.length > 0 &&
+                <ul className='space-y-2'>
+                  {movies.map(movie => {
+                    const {
+                      id,
+                      title,
+                      original_title: originalTitle,
+                      poster_path: posterPath,
+                      overview,
+                      release_date: releaseDate
+                    } = movie
+                    return (
+                      <MovieCard key={id} id={id} title={title} originalTitle={originalTitle} posterPath={posterPath} overview={overview} releaseDate={releaseDate} />
+                    )
+                  })}
+                </ul>}
+              {movies && totalResults > 0 && movies.length === 0 &&
+                <p>Parece que te has pasado de página, vuelve a la última!</p>}
+              {totalResults === 0 &&
+                <p>No hemos podido encontrar ninguna película que se adapte a tu búsqueda...</p>}
+              {!movies &&
+                <p>Adelante, haga una búsqueda!</p>}
+              {movies && totalResults > 0 &&
+                <Pagination totalPages={totalPages} />}
+            </>
+          )
+        }}
+      </Await>
+    </Suspense>
   )
 }
 
 function MovieCard ({ id, title, originalTitle, posterPath, overview, releaseDate }) {
-  const {
-    images: {
-      secure_base_url: baseURL,
-      poster_sizes: posterSizes
+  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
+  const [prettyPosterPath, setPrettyPosterPath] = useState(DefaultPosterImage)
+
+  useEffect(() => {
+    if (posterPath) {
+      loaderConfig.then(({
+        images: {
+          secure_base_url: baseURL,
+          poster_sizes: posterSizes
+        }
+      }) => {
+        setPrettyPosterPath(baseURL + posterSizes[1] + posterPath)
+      })
     }
-  } = retrieveConfig(useRouteLoaderData('root'))
+  }, [loaderConfig, posterPath])
 
   const prettyReleaseDate = formatLongDate(releaseDate)
-  const prettyPosterPath = posterPath ? baseURL + posterSizes[1] + posterPath : DefaultPosterImage
   const sameTitle = title === originalTitle
 
   return (
@@ -73,14 +91,22 @@ function MovieCard ({ id, title, originalTitle, posterPath, overview, releaseDat
   )
 }
 
+function Fallback () {
+  return (
+    <div className='space-y-2'>
+      {Array(10).fill().map((_, i) => <SearchResultsSkeleton key={i} />)}
+    </div>
+  )
+}
+
 export async function loader ({ request, params }) {
   const url = new URL(request.url)
   const query = url.searchParams.get('query') || ''
   const page = Number(url.searchParams.get('page') || '')
 
   if (query && Boolean(page) && page > 1) {
-    return defer(await getMoviesByQuery(query, page))
+    return defer({ data: getMoviesByQuery(query, page) })
   }
 
-  return null
+  return { data: null }
 }
