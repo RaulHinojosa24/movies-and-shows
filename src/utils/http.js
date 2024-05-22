@@ -22,7 +22,7 @@ const POST_OPTIONS = {
 }
 
 async function sendRequest (url, options, time = 0) {
-  return new Promise(resolve => setTimeout(resolve, 0)).then(async () => {
+  return new Promise(resolve => setTimeout(resolve, time)).then(async () => {
     const response = await fetch(url, options)
 
     if (!response.ok) {
@@ -38,11 +38,11 @@ async function sendRequest (url, options, time = 0) {
 }
 
 export function getAPIConfiguration () {
-  return sendRequest('https://api.themoviedb.org/3/configuration?append_to_response=countries,jobs,languages', GET_OPTIONS, 1000)
+  return sendRequest('https://api.themoviedb.org/3/configuration?append_to_response=countries,jobs,languages', GET_OPTIONS)
 }
 
 export function getMovieGenres () {
-  return sendRequest('https://api.themoviedb.org/3/genre/movie/list?language=' + language, GET_OPTIONS, 2000)
+  return sendRequest('https://api.themoviedb.org/3/genre/movie/list?language=' + language, GET_OPTIONS)
 }
 
 export function getTvGenres () {
