@@ -181,7 +181,7 @@ export async function loader ({ request, params }) {
 
     if (!data.public) {
       throw json(
-        { message: "The list you're trying to access is set to private." },
+        { message: 'Parece que la lista a la que intentas acceder es privada.' },
         { status: 401 }
       )
     } else {

@@ -1,3 +1,4 @@
+import { defer } from 'react-router-dom'
 import Filters from '../components/MovieDiscover/Filters'
 import Results from '../components/MovieDiscover/Results'
 import Main from '../components/PageUI/Main'
@@ -35,8 +36,8 @@ export async function loader ({ request, params }) {
   const keywords = new URL(request.url).searchParams.get('keywords')
   const watchProvs = new URL(request.url).searchParams.get('watch_providers')
 
-  const [data, watchProviders] = await Promise.all([
-    discoverMovies({
+  return defer({
+    data: await discoverMovies({
       sortBy,
       sortDirection,
       includeAdult,
@@ -51,9 +52,7 @@ export async function loader ({ request, params }) {
       genres,
       keywords,
       watchProviders: watchProvs
-    }).then(res => res.json()),
-    getMovieProviders().then(res => res.json())
-  ])
-
-  return { data, watchProviders }
+    }),
+    watchProviders: await getMovieProviders()
+  })
 }

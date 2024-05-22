@@ -1,3 +1,4 @@
+import { json } from 'react-router-dom'
 import { TMDB_ACCESS_TOKEN } from '../../config'
 
 const language = 'es-ES'
@@ -20,28 +21,44 @@ const POST_OPTIONS = {
   }
 }
 
+async function sendRequest (url, options, time = 0) {
+  return new Promise(resolve => setTimeout(resolve, 0)).then(async () => {
+    const response = await fetch(url, options)
+
+    if (!response.ok) {
+      return json(
+        { message: 'Something went wrong.' },
+        { status: response.status }
+      )
+    } else {
+      const data = await response.json()
+      return data
+    }
+  })
+}
+
 export function getAPIConfiguration () {
-  return fetch('https://api.themoviedb.org/3/configuration?append_to_response=countries,jobs,languages', GET_OPTIONS)
+  return sendRequest('https://api.themoviedb.org/3/configuration?append_to_response=countries,jobs,languages', GET_OPTIONS, 1000)
 }
 
 export function getMovieGenres () {
-  return fetch('https://api.themoviedb.org/3/genre/movie/list?language=' + language, GET_OPTIONS)
-}
-
-export function getMovieProviders () {
-  return fetch(`https://api.themoviedb.org/3/watch/providers/movie?language=${language}&watch_region=${region}`, GET_OPTIONS)
+  return sendRequest('https://api.themoviedb.org/3/genre/movie/list?language=' + language, GET_OPTIONS, 2000)
 }
 
 export function getTvGenres () {
-  return fetch('https://api.themoviedb.org/3/genre/tv/list?language=' + language, GET_OPTIONS)
+  return sendRequest('https://api.themoviedb.org/3/genre/tv/list?language=' + language, GET_OPTIONS)
+}
+
+export function getMovieProviders () {
+  return sendRequest(`https://api.themoviedb.org/3/watch/providers/movie?language=${language}&watch_region=${region}`, GET_OPTIONS)
 }
 
 export function getTvProviders () {
-  return fetch(`https://api.themoviedb.org/3/watch/providers/tv?language=${language}&watch_region=${region}`, GET_OPTIONS)
+  return sendRequest(`https://api.themoviedb.org/3/watch/providers/tv?language=${language}&watch_region=${region}`, GET_OPTIONS)
 }
 
 export function getRequestToken () {
-  return fetch('https://api.themoviedb.org/3/authentication/token/new', GET_OPTIONS)
+  return sendRequest('https://api.themoviedb.org/3/authentication/token/new', GET_OPTIONS)
 }
 
 export function createSessionID (requestToken) {
@@ -56,27 +73,27 @@ export function createSessionID (requestToken) {
 }
 
 export function getNowPlayingMovies () {
-  return fetch(`https://api.themoviedb.org/3/movie/now_playing?language=${language}&page=1`, GET_OPTIONS)
+  return sendRequest(`https://api.themoviedb.org/3/movie/now_playing?language=${language}&page=1`, GET_OPTIONS)
 }
 
 export function getTrendingAll (timeWindow = 'day', page = 1) {
-  return fetch(`https://api.themoviedb.org/3/trending/all/${timeWindow}?language=${language}&page=${page}`, GET_OPTIONS)
+  return sendRequest(`https://api.themoviedb.org/3/trending/all/${timeWindow}?language=${language}&page=${page}`, GET_OPTIONS)
 }
 
 export function getMovieDetails (id) {
-  return fetch(`https://api.themoviedb.org/3/movie/${id}?language=${language}&include_image_language=null&append_to_response=images,videos,keywords,lists,recommendations,reviews,watch/providers,release_dates,external_ids,credits`, GET_OPTIONS)
+  return sendRequest(`https://api.themoviedb.org/3/movie/${id}?language=${language}&include_image_language=null&append_to_response=images,videos,keywords,lists,recommendations,reviews,watch/providers,release_dates,external_ids,credits`, GET_OPTIONS)
 }
 
 export function getCollectionDetails (id) {
-  return fetch(`https://api.themoviedb.org/3/collection/${id}?language=${language}&include_image_language=null&append_to_response=images`, GET_OPTIONS)
+  return sendRequest(`https://api.themoviedb.org/3/collection/${id}?language=${language}&include_image_language=null&append_to_response=images`, GET_OPTIONS)
 }
 
 export function getPersonDetails (id) {
-  return fetch(`https://api.themoviedb.org/3/person/${id}?language=${language}&append_to_response=combined_credits,external_ids,images`, GET_OPTIONS)
+  return sendRequest(`https://api.themoviedb.org/3/person/${id}?language=${language}&append_to_response=combined_credits,external_ids,images`, GET_OPTIONS)
 }
 
 export function getTvDetails (id) {
-  return fetch(`https://api.themoviedb.org/3/tv/${id}?language=${language}&append_to_response=aggregate_credits,content_ratings,external_ids,images,keywords,lists,recommendations,reviews,videos,watch/providers&include_image_language=null`, GET_OPTIONS)
+  return sendRequest(`https://api.themoviedb.org/3/tv/${id}?language=${language}&append_to_response=aggregate_credits,content_ratings,external_ids,images,keywords,lists,recommendations,reviews,videos,watch/providers&include_image_language=null`, GET_OPTIONS)
 }
 
 export function getListDetails (id, page = 1) {
@@ -90,7 +107,7 @@ export function getMoviesByQuery (query, page = 1) {
   moviesUrl.searchParams.append('include_adult', false)
   moviesUrl.searchParams.append('page', page)
 
-  return fetch(moviesUrl.href, GET_OPTIONS)
+  return sendRequest(moviesUrl.href, GET_OPTIONS)
 }
 
 export function getTvByQuery (query, page = 1) {
@@ -100,7 +117,7 @@ export function getTvByQuery (query, page = 1) {
   seriesUrl.searchParams.append('include_adult', false)
   seriesUrl.searchParams.append('page', page)
 
-  return fetch(seriesUrl.href, GET_OPTIONS)
+  return sendRequest(seriesUrl.href, GET_OPTIONS)
 }
 
 export function getPersonsByQuery (query, page = 1) {
@@ -110,11 +127,11 @@ export function getPersonsByQuery (query, page = 1) {
   personUrl.searchParams.append('include_adult', false)
   personUrl.searchParams.append('page', page)
 
-  return fetch(personUrl.href, GET_OPTIONS)
+  return sendRequest(personUrl.href, GET_OPTIONS)
 }
 
 export function getTvSeasonDetails (tvID, season) {
-  return fetch(`https://api.themoviedb.org/3/tv/${tvID}/season/${season}?language=${language}&include_image_language=en,null&include_video_language=en,null&append_to_response=account_states,aggregate_credits,images,videos`, GET_OPTIONS)
+  return sendRequest(`https://api.themoviedb.org/3/tv/${tvID}/season/${season}?language=${language}&include_image_language=en,null&include_video_language=en,null&append_to_response=account_states,aggregate_credits,images,videos`, GET_OPTIONS)
 }
 
 export function getKeywordsByQuery (query, page = 1) {
@@ -122,7 +139,7 @@ export function getKeywordsByQuery (query, page = 1) {
   url.searchParams.append('query', query)
   url.searchParams.append('page', page)
 
-  return fetch(url.href, GET_OPTIONS)
+  return sendRequest(url.href, GET_OPTIONS)
 }
 
 export function discoverMovies ({
@@ -161,7 +178,7 @@ export function discoverMovies ({
   url.searchParams.append('with_keywords', keywords ? keywords.split('|').map(kw => kw.split('%')[0]).join('|') : '')
   url.searchParams.append('with_watch_providers', watchProviders || '')
 
-  return fetch(url.href, GET_OPTIONS)
+  return sendRequest(url.href, GET_OPTIONS)
 }
 
 export function discoverTvs ({
@@ -199,5 +216,5 @@ export function discoverTvs ({
   url.searchParams.append('with_keywords', keywords ? keywords.split('|').map(kw => kw.split('%')[0]).join('|') : '')
   url.searchParams.append('with_watch_providers', watchProviders || '')
 
-  return fetch(url.href, GET_OPTIONS)
+  return sendRequest(url.href, GET_OPTIONS)
 }

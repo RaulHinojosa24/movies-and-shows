@@ -1,4 +1,4 @@
-import { Outlet, useMatch } from 'react-router-dom'
+import { Outlet, defer, useMatch } from 'react-router-dom'
 import { getMovieDetails } from '../utils/http'
 import MovieHeader from '../components/MovieGeneral/MovieHeader'
 import MovieHeaderCompact from '../components/MovieGeneral/MovieHeaderCompact'
@@ -15,8 +15,8 @@ export default function MovieDetailsLayout () {
   )
 }
 
-export function loader ({ request, params }) {
+export async function loader ({ request, params }) {
   const { id } = params
 
-  return getMovieDetails(id)
+  return defer(await getMovieDetails(id))
 }

@@ -1,4 +1,4 @@
-import { Outlet, useMatch } from 'react-router-dom'
+import { Outlet, defer, useMatch } from 'react-router-dom'
 import { getTvSeasonDetails } from '../utils/http'
 import SeasonHeader from '../components/TvSeasons/SeasonHeader'
 import SeasonsNav from '../components/TvSeasons/SeasonsNav'
@@ -17,8 +17,8 @@ export default function TvSeasonDetailsLayout () {
   )
 }
 
-export function loader ({ request, params }) {
+export async function loader ({ request, params }) {
   const { id, season } = params
 
-  return getTvSeasonDetails(id, season)
+  return defer(await getTvSeasonDetails(id, season))
 }

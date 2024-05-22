@@ -1,4 +1,4 @@
-import { Outlet, useMatch } from 'react-router-dom'
+import { Outlet, defer, useMatch } from 'react-router-dom'
 import { getPersonDetails } from '../utils/http'
 import PersonHeaderCompact from '../components/Person/PersonHeaderCompact'
 
@@ -15,5 +15,5 @@ export default function PersonDetailsLayout () {
 
 export async function loader ({ params }) {
   const { id } = params
-  return await getPersonDetails(id)
+  return defer(await getPersonDetails(id))
 }

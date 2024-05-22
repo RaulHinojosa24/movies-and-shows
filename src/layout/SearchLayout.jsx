@@ -1,4 +1,4 @@
-import { NavLink, Outlet, useLoaderData, useLocation, useNavigate, useSearchParams } from 'react-router-dom'
+import { NavLink, Outlet, defer, useLoaderData, useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 import Main from '../components/PageUI/Main'
 import { getMoviesByQuery, getPersonsByQuery, getTvByQuery } from '../utils/http'
 import { useEffect } from 'react'
@@ -68,13 +68,11 @@ export async function loader ({ request, params }) {
   const query = url.searchParams.get('query') || ''
 
   if (query.trim()) {
-    const [movies, tvs, persons] = await Promise.all([
-      getMoviesByQuery(query).then(res => res.json()),
-      getTvByQuery(query).then(res => res.json()),
-      getPersonsByQuery(query).then(res => res.json())
-    ])
-
-    return { movies, tvs, persons }
+    return defer({
+      movies: await getMoviesByQuery(query),
+      tvs: await getTvByQuery(query),
+      persons: await getPersonsByQuery(query)
+    })
   }
 
   return null

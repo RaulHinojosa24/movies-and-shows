@@ -3,6 +3,7 @@ import Results from '../components/TvDiscover/Results'
 import Main from '../components/PageUI/Main'
 import { discoverTvs, getTvProviders } from '../utils/http'
 import { setDocTitle } from '../utils/utility'
+import { defer } from 'react-router-dom'
 
 export default function TvDiscoverPage () {
   setDocTitle('Descubrir series de tv')
@@ -35,8 +36,8 @@ export async function loader ({ request, params }) {
   const keywords = new URL(request.url).searchParams.get('keywords')
   const watchProvs = new URL(request.url).searchParams.get('watch_providers')
 
-  const [data, watchProviders] = await Promise.all([
-    discoverTvs({
+  return defer({
+    data: await discoverTvs({
       sortBy,
       sortDirection,
       includeAdult,
@@ -51,9 +52,7 @@ export async function loader ({ request, params }) {
       genres,
       keywords,
       watchProviders: watchProvs
-    }).then(res => res.json()),
-    getTvProviders().then(res => res.json())
-  ])
-
-  return { data, watchProviders }
+    }),
+    watchProviders: await getTvProviders()
+  })
 }

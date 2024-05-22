@@ -1,4 +1,4 @@
-import { Link, useLoaderData, useRouteLoaderData } from 'react-router-dom'
+import { Link, defer, useLoaderData, useRouteLoaderData } from 'react-router-dom'
 import { getMoviesByQuery } from '../../utils/http'
 import { formatLongDate, retrieveConfig } from '../../utils/utility'
 import Pagination from './Pagination'
@@ -73,13 +73,13 @@ function MovieCard ({ id, title, originalTitle, posterPath, overview, releaseDat
   )
 }
 
-export function loader ({ request, params }) {
+export async function loader ({ request, params }) {
   const url = new URL(request.url)
   const query = url.searchParams.get('query') || ''
   const page = Number(url.searchParams.get('page') || '')
 
   if (query && Boolean(page) && page > 1) {
-    return getMoviesByQuery(query, page)
+    return defer(await getMoviesByQuery(query, page))
   }
 
   return null

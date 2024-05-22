@@ -1,4 +1,4 @@
-import { Link, useLoaderData, useRouteLoaderData } from 'react-router-dom'
+import { Link, defer, useLoaderData, useRouteLoaderData } from 'react-router-dom'
 import { getPersonsByQuery } from '../../utils/http'
 import { retrieveConfig } from '../../utils/utility'
 import Pagination from './Pagination'
@@ -87,13 +87,13 @@ function PersonCard ({ id, name, originalName, profilePath, knownForDepartment, 
   )
 }
 
-export function loader ({ request, params }) {
+export async function loader ({ request, params }) {
   const url = new URL(request.url)
   const query = url.searchParams.get('query') || ''
   const page = Number(url.searchParams.get('page') || '')
 
   if (query && Boolean(page) && page > 1) {
-    return getPersonsByQuery(query, page)
+    return defer(await getPersonsByQuery(query, page))
   }
 
   return null

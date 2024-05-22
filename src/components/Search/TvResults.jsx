@@ -1,4 +1,4 @@
-import { Link, useLoaderData, useRouteLoaderData } from 'react-router-dom'
+import { Link, defer, useLoaderData, useRouteLoaderData } from 'react-router-dom'
 import { getTvByQuery } from '../../utils/http'
 import { formatLongDate, retrieveConfig } from '../../utils/utility'
 import Pagination from './Pagination'
@@ -74,13 +74,13 @@ function TvCard ({ id, name, originalName, posterPath, overview, firstAirDate })
   )
 }
 
-export function loader ({ request, params }) {
+export async function loader ({ request, params }) {
   const url = new URL(request.url)
   const query = url.searchParams.get('query') || ''
   const page = Number(url.searchParams.get('page') || '')
 
   if (query && Boolean(page) && page > 1) {
-    return getTvByQuery(query, page)
+    return defer(await getTvByQuery(query, page))
   }
 
   return null

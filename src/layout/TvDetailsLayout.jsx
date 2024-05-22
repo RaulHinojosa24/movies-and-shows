@@ -1,4 +1,4 @@
-import { Outlet, useMatch } from 'react-router-dom'
+import { Outlet, defer, useMatch } from 'react-router-dom'
 import { getTvDetails } from '../utils/http'
 import TvHeader from '../components/TvGeneral/TvHeader'
 import TvHeaderCompact from '../components/TvGeneral/TvHeaderCompact'
@@ -16,8 +16,8 @@ export default function TvDetailsLayout () {
   )
 }
 
-export function loader ({ request, params }) {
+export async function loader ({ request, params }) {
   const { id } = params
 
-  return getTvDetails(id)
+  return defer(await getTvDetails(id))
 }
