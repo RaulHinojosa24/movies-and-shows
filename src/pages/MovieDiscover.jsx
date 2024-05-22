@@ -14,7 +14,9 @@ export default function MovieDiscoverPage () {
         <Filters />
       }
       center={
-        <Results />
+        <>
+          <Results />
+        </>
       }
     />
   )
@@ -37,7 +39,7 @@ export async function loader ({ request, params }) {
   const watchProvs = new URL(request.url).searchParams.get('watch_providers')
 
   return defer({
-    data: await discoverMovies({
+    data: discoverMovies({
       sortBy,
       sortDirection,
       includeAdult,
@@ -53,6 +55,6 @@ export async function loader ({ request, params }) {
       keywords,
       watchProviders: watchProvs
     }),
-    watchProviders: await getMovieProviders()
+    watchProviders: getMovieProviders()
   })
 }

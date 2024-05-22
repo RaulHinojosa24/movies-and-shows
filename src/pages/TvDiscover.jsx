@@ -37,7 +37,7 @@ export async function loader ({ request, params }) {
   const watchProvs = new URL(request.url).searchParams.get('watch_providers')
 
   return defer({
-    data: await discoverTvs({
+    data: discoverTvs({
       sortBy,
       sortDirection,
       includeAdult,
@@ -53,6 +53,6 @@ export async function loader ({ request, params }) {
       keywords,
       watchProviders: watchProvs
     }),
-    watchProviders: await getTvProviders()
+    watchProviders: getTvProviders()
   })
 }

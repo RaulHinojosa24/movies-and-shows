@@ -83,10 +83,8 @@ const calculateMaxRange = (minSP, maxSP, range) => {
 }
 
 export default function Filters () {
-  const { genres: movieGenres } = retrieveMovieGenres(useRouteLoaderData('root'))
-  const {
-    watchProviders: { results: watchProvidersList }
-  } = useLoaderData()
+  const loaderMovieGenres = retrieveMovieGenres(useRouteLoaderData('root'))
+  const { watchProviders: loaderWatchProviders } = useLoaderData()
   const [searchParams, setSearchParams] = useSearchParams()
   const sortBySP = searchParams.get('sort_by')
   const sortDirectionSP = searchParams.get('sort_direction')
@@ -187,7 +185,7 @@ export default function Filters () {
       </FilterGroup>
       <FilterGroup title='Dónde ver'>
         <WatchProvidersFilter
-          watchProvidersList={watchProvidersList}
+          watchProvidersPromise={loaderWatchProviders}
           watchProviders={watchProviders}
           setWatchProviders={setWatchProviders}
         />
@@ -208,7 +206,7 @@ export default function Filters () {
           setFromDate={setFromDate} setToDate={setToDate}
         />
         <GenresFilter
-          options={movieGenres}
+          optionsPromise={loaderMovieGenres}
           genres={genres}
           setGenres={setGenres}
         />

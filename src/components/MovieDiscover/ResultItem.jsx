@@ -2,16 +2,25 @@ import DefaultPoster from '../../assets/default-poster.png'
 import { formatLongDate, retrieveConfig } from '../../utils/utility'
 import { Link, useRouteLoaderData } from 'react-router-dom'
 import VoteCard from '../PageUI/VoteCard'
+import { useEffect, useState } from 'react'
 
 export default function ResultItem ({ id, originalTitle, posterPath, releaseDate, title, voteAverage, voteCount, overview }) {
-  const {
-    images: {
-      secure_base_url: baseURL,
-      poster_sizes: posterSizes
-    }
-  } = retrieveConfig(useRouteLoaderData('root'))
+  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
+  const [prettyPosterPath, setPrettyPosterPath] = useState(DefaultPoster)
 
-  const prettyPosterPath = posterPath ? baseURL + posterSizes[2] + posterPath : DefaultPoster
+  useEffect(() => {
+    loaderConfig.then(config => {
+      const {
+        images: {
+          secure_base_url: baseURL,
+          poster_sizes: posterSizes
+        }
+      } = config
+
+      if (posterPath) setPrettyPosterPath(baseURL + posterSizes[2] + posterPath)
+    })
+  }, [loaderConfig, posterPath])
+
   const prettyTitle = title || originalTitle
   const showOriginalName = prettyTitle !== originalTitle
 

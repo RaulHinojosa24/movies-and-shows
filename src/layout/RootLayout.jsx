@@ -16,8 +16,8 @@ export default function RootLayout () {
 
 export async function loader () {
   return defer({
-    config: await getAPIConfiguration(),
-    movieGenres: await getMovieGenres(),
-    tvGenres: await getTvGenres()
+    config: getAPIConfiguration(),
+    movieGenres: getMovieGenres(),
+    tvGenres: getTvGenres()
   })
 }

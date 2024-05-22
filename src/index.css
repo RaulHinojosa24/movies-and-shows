@@ -193,6 +193,21 @@ summary::-webkit-details-marker {
 summary::after {
   content: ' ⯈';
 }
+
 details[open] summary:after {
   content: " ⯆";
+}
+
+.skeleton {
+  animation: skeleton-loading 1s linear infinite alternate;
+  @apply bg-neutral-700;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.3;
+  }
 }
