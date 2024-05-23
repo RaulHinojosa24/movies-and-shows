@@ -1,31 +1,38 @@
 import { useEffect, useState } from 'react'
-import { retrieveConfig } from '../utils/utility'
-import { useRouteLoaderData } from 'react-router-dom'
 
 import Vibrant from 'node-vibrant'
+import { retrieveConfig } from '../utils/utility'
+import { useRouteLoaderData } from 'react-router-dom'
 
 export default function useGenerateImageColors (posterPath, transparency = 1) {
   const [color, setColor] = useState([30, 30, 30])
   const [isDark, setIsDark] = useState(true)
+  const [prettyPosterPath, setPrettyPosterPath] = useState('')
 
-  const {
-    images: {
-      base_url: URL,
-      poster_sizes: posterSizes
-    }
-  } = retrieveConfig(useRouteLoaderData('root'))
+  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
 
   useEffect(() => {
-    if (!posterPath) return
+    loaderConfig.then(({
+      images: {
+        base_url: URL,
+        poster_sizes: posterSizes
+      }
+    }) => {
+      if (posterPath) setPrettyPosterPath(URL + posterSizes[0] + posterPath)
+    })
+  }, [loaderConfig, posterPath])
 
-    Vibrant.from(URL + posterSizes[0] + posterPath).getPalette()
+  useEffect(() => {
+    if (!prettyPosterPath) return
+
+    Vibrant.from(prettyPosterPath).getPalette()
       .then((palette) => {
         const swatch = palette.Vibrant
 
         setColor(swatch.getRgb())
         setIsDark(swatch.getBodyTextColor() === '#fff')
       })
-  }, [URL, posterPath, posterSizes, transparency])
+  }, [prettyPosterPath])
 
   return [color, isDark]
 }

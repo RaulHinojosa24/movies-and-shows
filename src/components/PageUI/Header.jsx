@@ -7,19 +7,27 @@ import DefaultPosterImage from '../../assets/default-poster.png'
 import WatchProviders from '../WatchProviders/WatchProviders'
 import HeaderMainCredits from '../PageUI/HeaderMainCredits'
 import useGenerateImageColors from '../../hooks/useGenerateImageColors'
+import { useEffect, useState } from 'react'
 
 export default function Header ({ posterPath, backdropPath, title, releaseDate, firstAirDate, certification, runtime, genres = [], tagline, voteAverage, voteCount, mainCredits = [], watchProviders, mediaType, overview }) {
+  const [prettyBackdropURL, setPrettyBackdropURL] = useState('')
+  const [prettyPosterURL, setPrettyPosterURL] = useState('')
   const [[r, g, b], isDark] = useGenerateImageColors(posterPath, 0.4)
-  const {
-    images: {
-      secure_base_url: baseURL,
-      backdrop_sizes: backdropSizes,
-      poster_sizes: posterSizes
-    }
-  } = retrieveConfig(useRouteLoaderData('root'))
+  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
 
-  const prettyBackdropURL = backdropPath ? baseURL + backdropSizes[2] + backdropPath : ''
-  const prettyPosterURL = posterPath ? baseURL + posterSizes[3] + posterPath : DefaultPosterImage
+  useEffect(() => {
+    loaderConfig.then(({
+      images: {
+        secure_base_url: baseURL,
+        backdrop_sizes: backdropSizes,
+        poster_sizes: posterSizes
+      }
+    }) => {
+      setPrettyBackdropURL(backdropPath ? baseURL + backdropSizes[2] + backdropPath : DefaultPosterImage)
+      if (posterPath) setPrettyPosterURL(baseURL + posterSizes[3] + posterPath)
+    })
+  }, [backdropPath, loaderConfig, posterPath])
+
   const prettyRuntime = formatRuntime(runtime || 0)
   const prettyDate = formatShortDate(releaseDate || firstAirDate)
   const prettyGenres = [...genres]
