@@ -1,14 +1,10 @@
 import { Link, useRouteLoaderData } from 'react-router-dom'
 import { retrieveConfig } from '../../utils/utility'
+import { useEffect, useState } from 'react'
 
 export default function PosterCard ({ movie }) {
-  const {
-    images: {
-      secure_base_url: baseURL,
-      backdrop_sizes: backdropSizes,
-      poster_sizes: posterSizes
-    }
-  } = retrieveConfig(useRouteLoaderData('root'))
+  const [picturePath, setPicturePath] = useState(undefined)
+  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
 
   const {
     poster_path: posterPath,
@@ -18,19 +14,31 @@ export default function PosterCard ({ movie }) {
     id
   } = movie
 
-  const backdropSize = backdropSizes[backdropSizes.length - 2]
-  const posterSize = posterSizes[posterSizes.length - 1]
+  useEffect(() => {
+    loaderConfig.then(({
+      images: {
+        secure_base_url: baseURL,
+        backdrop_sizes: backdropSizes,
+        poster_sizes: posterSizes
+      }
+    }) => setPicturePath(backdropPath
+      ? baseURL + backdropSizes[1] + backdropPath
+      : posterPath
+        ? baseURL + posterSizes[4] + posterPath
+        : ''
+    ))
+  })
 
   return (
     <Link to={'/movie/' + id}>
       <article className='group aspect-[21/9] overflow-hidden grid place-content-center h-48 relative hover:cursor-pointer'>
-        <main>
-          {backdropPath &&
-            <img loading='lazy' src={baseURL + backdropSize + backdropPath} alt='' />}
-          {posterPath && !backdropPath &&
-            <img loading='lazy' src={baseURL + posterSize + posterPath} alt='' />}
-          {!backdropPath && !posterPath &&
-            <p className='text-center italic'>No poster available for "{title}"</p>}
+        <main className='w-full'>
+          {picturePath &&
+            <img loading='lazy' className='w-full object-cover' src={picturePath} alt='' />}
+          {picturePath === '' &&
+            <p className='text-center italic'>No tenemos póster para "{title}"</p>}
+          {picturePath === undefined &&
+            <p className='text-center italic'>Cargando imágen...</p>}
         </main>
         <footer className='absolute w-full h-auto bottom-0 p-4 bg-gradient-to-t from-black/100 flex flex-col justify-end gap-2 group-hover:h-full'>
           <h3 className='no-swiping text-2xl font-semibold w-fit'>{title}</h3>

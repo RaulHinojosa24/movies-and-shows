@@ -14,6 +14,6 @@ export default function HomePage () {
 
 export async function loader () {
   return defer({
-    nowPlaying: await getNowPlayingMovies()
+    nowPlaying: getNowPlayingMovies()
   })
 }
