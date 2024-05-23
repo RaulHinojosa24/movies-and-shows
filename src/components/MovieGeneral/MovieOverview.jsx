@@ -1,12 +1,7 @@
-import { useRouteLoaderData } from 'react-router-dom'
 import Section from '../UI/Section'
 import ClampedText from '../UI/ClampedText'
 
-export default function MovieOverview () {
-  const {
-    overview
-  } = useRouteLoaderData('movie-details')
-
+export default function MovieOverview ({ overview }) {
   return (
     <Section title='Sinopsis'>
       {overview &&

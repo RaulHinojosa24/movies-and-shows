@@ -1,21 +1,11 @@
-import { Link, useRouteLoaderData } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Section from '../UI/Section'
 import ListItem from '../List/ListItem'
 
 const shorListsLength = 5
 
-export default function MovieLists () {
-  const { lists } = useRouteLoaderData('movie-details')
-
-  if (lists.results.length === 0) {
-    return (
-      <Section title='Listas de usuarios'>
-        <p className='italic'>Parece que nadie se ha guardado esta película.</p>
-      </Section>
-    )
-  }
-
-  const shortLists = lists.results.filter((_, i) => i < shorListsLength)
+export default function MovieLists ({ lists }) {
+  const shortLists = lists.filter((_, i) => i < shorListsLength)
 
   return (
     <Section title='Listas de usuarios'>
@@ -26,7 +16,7 @@ export default function MovieLists () {
           </li>
         ))}
       </ul>
-      {lists.results.length > shorListsLength &&
+      {lists.length > shorListsLength &&
         <Link to='' className='inline-block mt-4'>Ver la lista completa</Link>}
     </Section>
   )

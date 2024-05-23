@@ -1,22 +1,8 @@
-import { Link, useRouteLoaderData } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Section from '../UI/Section'
 import ReviewItem from '../Reviews/ReviewItem'
 
-export default function MovieReviews () {
-  const {
-    reviews: {
-      results: reviews
-    }
-  } = useRouteLoaderData('movie-details')
-
-  if (reviews.length === 0) {
-    return (
-      <Section title='Reseñas'>
-        <p className='italic'>Todavía no tenemos ninguna reseña en tu idioma.</p>
-      </Section>
-    )
-  }
-
+export default function MovieReviews ({ reviews }) {
   const {
     author,
     author_details: authorDetails,

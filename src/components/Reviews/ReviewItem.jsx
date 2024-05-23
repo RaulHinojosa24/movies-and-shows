@@ -4,22 +4,26 @@ import { formatLongDate, retrieveConfig } from '../../utils/utility'
 import DefaultUser from '../../assets/default-user.png'
 import ClampedText from '../UI/ClampedText'
 import VoteCard from '../PageUI/VoteCard'
+import { useEffect, useState } from 'react'
 
 export default function ReviewItem ({ author, authorDetails, content, createdAt, id, updatedAt, url }) {
-  const {
-    images: {
-      secure_base_url: baseURL,
-      profile_sizes: profileSizes
-    }
-  } = retrieveConfig(useRouteLoaderData('root'))
-
+  const [userImg, setUserImg] = useState(DefaultUser)
+  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
   const { name, username, avatar_path: avatarPath, rating } = authorDetails
 
-  const userImg = avatarPath
-    ? baseURL + profileSizes[0] + avatarPath
-    : DefaultUser
+  useEffect(() => {
+    loaderConfig.then(({
+      images: {
+        secure_base_url: baseURL,
+        profile_sizes: profileSizes
+      }
+    }) => {
+      if (avatarPath) setUserImg(baseURL + profileSizes[0] + avatarPath)
+    })
+  }, [avatarPath, loaderConfig])
 
   const prettyCreationDate = formatLongDate(createdAt)
+
   return (
     <div className='custom-shadow border- rounded p-6'>
       <header className='flex items-center gap-4'>

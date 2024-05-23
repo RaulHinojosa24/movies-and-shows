@@ -2,6 +2,7 @@ import VideoModal from '../Media/VideoModal'
 import Section from '../UI/Section'
 import { Link, useRouteLoaderData } from 'react-router-dom'
 import { retrieveConfig } from '../../utils/utility'
+import { useEffect, useState } from 'react'
 
 export default function GeneralMedia ({ title, backdrops = [], posters, videos = [], pageType, className = '' }) {
   const trailer = videos.reduce((acc, curr) => {
@@ -202,17 +203,22 @@ export default function GeneralMedia ({ title, backdrops = [], posters, videos =
 }
 
 const Image = ({ element, mediaType, pageType, title, className = '' }) => {
-  const {
-    images: {
-      secure_base_url: baseURL,
-      poster_sizes: posterSizes,
-      backdrop_sizes: backdropSizes
-    }
-  } = retrieveConfig(useRouteLoaderData('root'))
+  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
+  const [prettyURL, setPrettyURL] = useState('')
 
-  const prettyURL = baseURL + (mediaType === 'poster'
-    ? posterSizes[2]
-    : backdropSizes[1]) + element.file_path
+  useEffect(() => {
+    loaderConfig.then(({
+      images: {
+        secure_base_url: baseURL,
+        poster_sizes: posterSizes,
+        backdrop_sizes: backdropSizes
+      }
+    }) => {
+      setPrettyURL(baseURL + (mediaType === 'poster'
+        ? posterSizes[2]
+        : backdropSizes[1]) + element.file_path)
+    })
+  }, [element.file_path, loaderConfig, mediaType])
 
   const alt = `${mediaType === 'poster' ? 'Poster' : 'Imagen de fondo'} de la ${pageType} ${title}`
   const classes = `${mediaType === 'poster' ? 'aspect-[2/3]' : 'aspect-video'} object-cover ${className}`

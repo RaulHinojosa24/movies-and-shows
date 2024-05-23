@@ -4,22 +4,9 @@ import { retrieveConfig } from '../../utils/utility'
 import VoteCard from '../PageUI/VoteCard'
 import DefaultLandscapeImage from '../../assets/default-landscape.png'
 import Slider from '../PageUI/Slider'
+import { useEffect, useState } from 'react'
 
-export default function MovieRecommendations () {
-  const {
-    images: {
-      secure_base_url: baseURL,
-      backdrop_sizes: backdropSizes
-    }
-  } = retrieveConfig(useRouteLoaderData('root'))
-
-  const {
-    id,
-    recommendations: {
-      results: recommendations
-    }
-  } = useRouteLoaderData('movie-details')
-
+export default function MovieRecommendations ({ id, recommendations }) {
   if (recommendations.length === 0) {
     return (
       <Section title='Recomendaciones'>
@@ -31,17 +18,39 @@ export default function MovieRecommendations () {
   const cleanRecommendations = recommendations.map(movie => ({
     id: movie.id,
     title: movie.title || movie.original_title,
-    backdropPath: movie.backdrop_path ? (baseURL + backdropSizes[1] + movie.backdrop_path) : DefaultLandscapeImage,
+    backdropPath: movie.backdrop_path,
     mediaType: movie.media_type,
     releaseYear: movie.release_date ? new Date(movie.release_date).getFullYear() : null,
     voteAverage: movie.vote_average,
     voteCount: movie.vote_count
   }))
 
-  const slide = ({ id, backdropPath, title, releaseYear, voteAverage, voteCount, mediaType }) => (
+  return (
+    <Section title='Recomendaciones'>
+      <Slider key={id} slides={cleanRecommendations} SlideComponent={Slide} />
+    </Section>
+  )
+}
+
+const Slide = ({ id, backdropPath, title, releaseYear, voteAverage, voteCount, mediaType }) => {
+  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
+  const [prettyBackdropPath, setPrettyBackdropPath] = useState(DefaultLandscapeImage)
+
+  useEffect(() => {
+    loaderConfig.then(({
+      images: {
+        secure_base_url: baseURL,
+        backdrop_sizes: backdropSizes
+      }
+    }) => {
+      if (backdropPath) setPrettyBackdropPath(baseURL + backdropSizes[1] + backdropPath)
+    })
+  }, [backdropPath, loaderConfig])
+
+  return (
     <div className='rounded overflow-hidden w-72 md:w-80 h-full custom-shadow'>
       <Link to={`/${mediaType}/${id}`}>
-        <img loading='lazy' src={backdropPath} alt={`Imagen de ${title}`} className='w-full aspect-video object-cover' />
+        <img loading='lazy' src={prettyBackdropPath} alt={`Imagen de ${title}`} className='w-full aspect-video object-cover' />
       </Link>
       <div className='p-2 flex justify-between gap-2'>
         <Link to={`/${mediaType}/${id}`}>
@@ -50,12 +59,5 @@ export default function MovieRecommendations () {
         <VoteCard rating={voteAverage} count={voteCount} small />
       </div>
     </div>
-
-  )
-
-  return (
-    <Section title='Recomendaciones'>
-      <Slider key={id} slides={cleanRecommendations} SlideComponent={slide} />
-    </Section>
   )
 }
