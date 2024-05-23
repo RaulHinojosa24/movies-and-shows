@@ -1,17 +1,8 @@
-import { useRouteLoaderData } from 'react-router-dom'
 import Section from '../UI/Section'
 import CastItem from './CastItem'
 import SubSection from '../UI/SubSection'
-import { retrieveConfig } from '../../utils/utility'
 
 export default function CrewList ({ crew, needJoin }) {
-  const {
-    images: {
-      secure_base_url: baseURL,
-      profile_sizes: profileSizes
-    }
-  } = retrieveConfig(useRouteLoaderData('root'))
-
   const depsWithMembers = []
 
   for (const member of crew) {
@@ -81,15 +72,12 @@ export default function CrewList ({ crew, needJoin }) {
               <SubSection title={department} className='space-y-2'>
                 <ul className='space-y-3'>
                   {members
-                    .map(el => {
-                      const imagePath = el.profile_path && baseURL + profileSizes[1] + el.profile_path
-
-                      return (
-                        <li key={el.id}>
-                          <CastItem id={el.id} image={imagePath} primary={el.name} secondary={el.jobs} />
-                        </li>
-                      )
-                    })}
+                    .map(el => (
+                      <li key={el.id}>
+                        <CastItem id={el.id} image={el.profile_path} primary={el.name} secondary={el.jobs} />
+                      </li>
+                    )
+                    )}
                 </ul>
               </SubSection>
             </li>
