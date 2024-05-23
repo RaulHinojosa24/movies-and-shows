@@ -18,5 +18,5 @@ export default function MovieDetailsLayout () {
 export async function loader ({ request, params }) {
   const { id } = params
 
-  return defer(await getMovieDetails(id))
+  return defer({ data: getMovieDetails(id) })
 }

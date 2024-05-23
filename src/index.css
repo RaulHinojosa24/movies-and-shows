@@ -202,12 +202,24 @@ details[open] summary:after {
   animation: skeleton-loading 1s linear infinite alternate;
   @apply bg-neutral-700;
 }
+.skeleton__text {
+  @apply skeleton rounded-lg h-4;
+}
+.skeleton__title {
+  @apply skeleton rounded-lg h-8;
+}
+.skeleton__paragraph {
+  @apply skeleton rounded-lg h-12;
+}
+.skeleton__bg {
+  @apply bg-neutral-900;
+}
 
 @keyframes skeleton-loading {
   0% {
-    opacity: 1;
+    opacity: 0.6;
   }
   100% {
-    opacity: 0.3;
+    opacity: 0.2;
   }
 }
