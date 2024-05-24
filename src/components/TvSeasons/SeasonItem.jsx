@@ -2,26 +2,30 @@ import { Link, useRouteLoaderData } from 'react-router-dom'
 import { formatLongDate, retrieveConfig } from '../../utils/utility'
 import DefaultPosterImage from '../../assets/default-poster.png'
 import VoteCard from '../PageUI/VoteCard'
+import { useEffect, useState } from 'react'
 
-export default function SeasonItem ({ airDate, episodeCount, id, name, overview, posterPath, seasonNumber, voteAverage }) {
-  const {
-    images: {
-      secure_base_url: baseURL,
-      poster_sizes: posterSizes
-    }
-  } = retrieveConfig(useRouteLoaderData('root'))
-  const { id: seasonId } = useRouteLoaderData('tv-details')
+export default function SeasonItem ({ airDate, episodeCount, tvId, name, overview, posterPath, seasonNumber, voteAverage }) {
+  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
+  const [prettyPosterPath, setPrettyPosterPath] = useState('')
+
+  useEffect(() => {
+    loaderConfig.then(({
+      images: {
+        secure_base_url: baseURL,
+        poster_sizes: posterSizes
+      }
+    }) => setPrettyPosterPath(posterPath ? baseURL + posterSizes[2] + posterPath : DefaultPosterImage))
+  }, [loaderConfig, posterPath])
 
   const prettyAirDate = formatLongDate(airDate)
-  const prettyPosterPath = posterPath ? baseURL + posterSizes[2] + posterPath : DefaultPosterImage
 
   return (
     <div className='rounded overflow-hidden custom-shadow-small flex items-center'>
-      <Link to={'/tv/' + seasonId + '/season/' + seasonNumber} className='contents'>
+      <Link to={'/tv/' + tvId + '/season/' + seasonNumber} className='contents'>
         <img src={prettyPosterPath} className='aspect-[2/3] object-cover w-32' alt={'Poster de la serie de tv ' + name} loading='lazy' />
       </Link>
       <div className='flex flex-col p-4 gap-2'>
-        <Link to={'/tv/' + seasonId + '/season/' + seasonNumber}>
+        <Link to={'/tv/' + tvId + '/season/' + seasonNumber}>
           <h3 className='text-2xl font-semibold'>
             {name} &bull; <span className='text-xl text-neutral-500'>{episodeCount} episodios</span>
           </h3>

@@ -1,30 +1,29 @@
-import { Link, useRouteLoaderData } from 'react-router-dom'
+import { Await, Link, useRouteLoaderData } from 'react-router-dom'
 import Section from '../UI/Section'
 import SubSection from '../UI/SubSection'
 import { retrieveConfig } from '../../utils/utility'
+import { Suspense, useEffect, useState } from 'react'
 
-export default function TvDetails () {
-  const {
-    episode_run_time: episodeRunTime,
-    in_production: inProduction,
-    keywords,
-    networks,
-    original_language: originalLanguage,
-    original_name: originalName,
-    status,
-    type
-  } = useRouteLoaderData('tv-details')
-  const {
-    images: {
-      logo_sizes: logoSizes,
-      secure_base_url: baseURL
-    },
-    languages
-  } = retrieveConfig(useRouteLoaderData('root'))
+export default function TvDetails ({
+  episodeRunTime,
+  inProduction,
+  keywords,
+  networks,
+  originalLanguage,
+  originalName,
+  status,
+  type
+}) {
+  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
+  const [prettyLanguage, setPrettyLanguage] = useState('...')
 
-  const isoLanguage = languages
-    .find(l => l.iso_639_1 === originalLanguage)
-  const prettyLanguage = isoLanguage?.name || isoLanguage?.english_name || originalLanguage
+  useEffect(() => {
+    loaderConfig.then(({ languages }) => {
+      const isoLanguage = languages
+        .find(l => l.iso_639_1 === originalLanguage)
+      setPrettyLanguage(isoLanguage?.name || isoLanguage?.english_name || originalLanguage)
+    })
+  }, [loaderConfig, originalLanguage])
 
   return (
     <Section title='Detalles' className='space-y-2'>
@@ -47,16 +46,33 @@ export default function TvDetails () {
       {networks.length > 0 &&
         <SubSection title='Canal'>
           <ul>
-            {networks.map(net => (
-              <li key={net.id} className=''>
-                <Link to={'/network/' + net.id} className='inline-block'>
-                  {net.logo_path &&
-                    <img src={baseURL + logoSizes[1] + net.logo_path} alt='' className='bg-white p-1 h-8' />}
-                  {!net.logo_path &&
-                    <span className='underline'>{net.name}</span>}
-                </Link>
-              </li>
-            ))}
+            {networks.map(net => {
+              return (
+                <li key={net.id} className=''>
+                  <Link to={'/network/' + net.id} className='inline-block'>
+                    <Suspense fallback={<span className='underline'>{net.name}</span>}>
+                      <Await resolve={loaderConfig}>
+                        {({
+                          images: {
+                            logo_sizes: logoSizes,
+                            secure_base_url: baseURL
+                          }
+                        }) => {
+                          return (
+                            <>{net.logo_path &&
+                              <img src={baseURL + logoSizes[1] + net.logo_path} alt='' className='bg-white p-1 h-8' />}
+                              {!net.logo_path &&
+                                <span className='underline'>{net.name}</span>}
+                            </>
+                          )
+                        }}
+                      </Await>
+                    </Suspense>
+                  </Link>
+                </li>
+              )
+            }
+            )}
           </ul>
         </SubSection>}
       {keywords.results.length > 0 &&

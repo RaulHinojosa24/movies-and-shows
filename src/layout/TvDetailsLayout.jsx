@@ -19,5 +19,5 @@ export default function TvDetailsLayout () {
 export async function loader ({ request, params }) {
   const { id } = params
 
-  return defer(await getTvDetails(id))
+  return defer({ data: getTvDetails(id) })
 }

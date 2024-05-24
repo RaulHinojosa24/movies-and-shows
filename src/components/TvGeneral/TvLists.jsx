@@ -1,20 +1,10 @@
-import { Link, useRouteLoaderData } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Section from '../UI/Section'
 import ListItem from '../List/ListItem'
 
 const shorListsLength = 5
 
-export default function TvLists () {
-  const { lists } = useRouteLoaderData('tv-details')
-
-  if (lists.results.length === 0) {
-    return (
-      <Section title='Listas de usuarios'>
-        <p className='italic'>Parece que nadie se ha guardado esta serie.</p>
-      </Section>
-    )
-  }
-
+export default function TvLists ({ lists }) {
   const shortLists = lists.results.filter((_, i) => i < shorListsLength)
 
   return (

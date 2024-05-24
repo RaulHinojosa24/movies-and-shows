@@ -1,12 +1,7 @@
-import { useRouteLoaderData } from 'react-router-dom'
 import Section from '../UI/Section'
 import ClampedText from '../UI/ClampedText'
 
-export default function TvOverview () {
-  const {
-    overview
-  } = useRouteLoaderData('tv-details')
-
+export default function TvOverview ({ overview }) {
   return (
     <Section title='Sinopsis'>
       {overview &&
