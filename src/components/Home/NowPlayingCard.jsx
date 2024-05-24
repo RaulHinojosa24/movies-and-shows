@@ -27,7 +27,7 @@ export default function PosterCard ({ movie }) {
         ? baseURL + posterSizes[4] + posterPath
         : ''
     ))
-  })
+  }, [backdropPath, loaderConfig, posterPath])
 
   return (
     <Link to={'/movie/' + id}>

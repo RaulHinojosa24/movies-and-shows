@@ -23,7 +23,7 @@ export default function MovieDetails ({
         .find(l => l.iso_639_1 === originalLanguage)
       setPrettyLanguage(isoLanguage?.name || isoLanguage?.english_name || originalLanguage)
     })
-  })
+  }, [loaderConfig, originalLanguage])
 
   return (
     <Section title='Detalles' className='space-y-3'>
