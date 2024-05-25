@@ -17,7 +17,8 @@ export default function TvSeasonsPage () {
             {({
               seasons,
               name,
-              original_name: originalName
+              original_name: originalName,
+              id: tvId
             }) => {
               setDocTitle(`${name || originalName} - Temporadas`)
 
@@ -36,7 +37,7 @@ export default function TvSeasonsPage () {
                         vote_average: voteAverage
                       } = season
 
-                      return <SeasonItem key={id} airDate={airDate} episodeCount={episodeCount} id={id} name={name} overview={overview} posterPath={posterPath} seasonNumber={seasonNumber} voteAverage={voteAverage} />
+                      return <SeasonItem key={id} airDate={airDate} episodeCount={episodeCount} id={id} name={name} overview={overview} posterPath={posterPath} seasonNumber={seasonNumber} voteAverage={voteAverage} tvId={tvId} />
                     })}
                   </ol>
                 </Section>
