@@ -4,6 +4,10 @@ import SeasonItem from '../TvSeasons/SeasonItem'
 
 export default function TvLatestSeason ({ tvId, seasons }) {
   const lastSeason = seasons.findLast(s => new Date(s.air_date) - new Date() < 0)
+  const nextSeason = seasons.findLast(s => new Date(s.air_date) - new Date() > 0)
+
+  if (!lastSeason && !nextSeason) return null
+
   const {
     air_date: airDate,
     episode_count: episodeCount,
@@ -12,10 +16,10 @@ export default function TvLatestSeason ({ tvId, seasons }) {
     poster_path: posterPath,
     season_number: seasonNumber,
     vote_average: voteAverage
-  } = lastSeason
+  } = (lastSeason || nextSeason)
 
   return (
-    <Section title='Última temporada'>
+    <Section title={!lastSeason ? 'Siguiente temporada' : 'Última temporada'}>
       <SeasonItem airDate={airDate} episodeCount={episodeCount} tvId={tvId} name={name} overview={overview} posterPath={posterPath} seasonNumber={seasonNumber} voteAverage={voteAverage} />
       <Link to='season' className='inline-block mt-2'>Ver todas las temporadas</Link>
     </Section>
