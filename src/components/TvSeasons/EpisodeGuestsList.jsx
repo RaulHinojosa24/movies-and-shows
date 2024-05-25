@@ -2,6 +2,7 @@ import { Link, useRouteLoaderData } from 'react-router-dom'
 import { retrieveConfig } from '../../utils/utility'
 import SubSection from '../UI/SubSection'
 import DefaultProfileImage from '../../assets/default-user.png'
+import { useEffect, useState } from 'react'
 
 export default function EpisodeGuestsList ({ className = '', guests }) {
   return (
@@ -16,14 +17,17 @@ export default function EpisodeGuestsList ({ className = '', guests }) {
 }
 
 function GuestItem ({ id, profilePath, name, character }) {
-  const {
-    images: {
-      secure_base_url: baseURL,
-      profile_sizes: profileSizes
-    }
-  } = retrieveConfig(useRouteLoaderData('root'))
+  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
+  const [prettyProfilePath, setPrettyProfilePath] = useState('')
 
-  const prettyProfilePath = profilePath ? baseURL + profileSizes[1] + profilePath : DefaultProfileImage
+  useEffect(() => {
+    loaderConfig.then(({
+      images: {
+        secure_base_url: baseURL,
+        profile_sizes: profileSizes
+      }
+    }) => setPrettyProfilePath(profilePath ? baseURL + profileSizes[1] + profilePath : DefaultProfileImage))
+  })
 
   return (
     <li className='flex gap-4'>

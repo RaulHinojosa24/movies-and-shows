@@ -3,29 +3,33 @@ import { formatLongDate, formatRuntime, retrieveConfig } from '../../utils/utili
 import DefaultLandscape from '../../assets/default-landscape.png'
 import { useRouteLoaderData } from 'react-router-dom'
 import VoteCard from '../PageUI/VoteCard'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import EpisodeCrewList from './EpisodeCrewList'
 import EpisodeGuestsList from './EpisodeGuestsList'
 import ChevronIcon from '../../icons/ChevronIcon'
 
-export default function EpisodeItem ({ airDate, episodeNumber, name, overview, runtime, seasonNumber, showId, stillPath, voteAverage, voteCount, crew, guestStars }) {
-  const {
-    images: {
-      secure_base_url: baseURL,
-      still_sizes: stillSizes
-    }
-  } = retrieveConfig(useRouteLoaderData('root'))
-  const {
-    tvName,
-    orinigal_name: tvOriginalName
-  } = useRouteLoaderData('tv-details')
+export default function EpisodeItem ({ airDate, episodeNumber, name, overview, runtime, seasonNumber, showId, stillPath, voteAverage, voteCount, crew, guestStars, tvName, tvOriginalName }) {
+  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
+  const [prettySmallStillPath, setPrettySmallStillPath] = useState('')
+  const [prettyBigStillPath, setPrettyBigStillPath] = useState('')
+
+  useEffect(() => {
+    loaderConfig.then(({
+      images: {
+        secure_base_url: baseURL,
+        still_sizes: stillSizes
+      }
+    }) => {
+      setPrettySmallStillPath(stillPath ? baseURL + stillSizes[2] + stillPath : DefaultLandscape)
+      setPrettyBigStillPath(stillPath ? baseURL + stillSizes[3] + stillPath : DefaultLandscape)
+    })
+  })
+
   const [isExpanded, setIsExpanded] = useState(false)
 
   const prettyTvName = tvName || tvOriginalName
   const prettyAirDate = formatLongDate(airDate)
   const prettyRuntime = formatRuntime(runtime)
-  const prettySmallStillPath = stillPath ? baseURL + stillSizes[2] + stillPath : DefaultLandscape
-  const prettyBigStillPath = stillPath ? baseURL + stillSizes[3] + stillPath : DefaultLandscape
 
   const toggleIsExpanded = () => setIsExpanded(p => !p)
 
