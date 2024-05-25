@@ -18,7 +18,7 @@ export default function GeneralMedia ({ title, backdrops = [], posters, videos =
 
   if (pageType === 'colección') {
     return (
-      <Link to='media' className='block mx-auto relative group'>
+      <Link to='media' className='mx-auto relative group'>
         <div className='flex md:hidden justify-center items-center'>
           {wideEls.map((el, i) => {
             if (i >= 2) return null
@@ -42,7 +42,7 @@ export default function GeneralMedia ({ title, backdrops = [], posters, videos =
 
   if (pageType === 'temporada') {
     return (
-      <Link to='media' className='block mx-auto relative group'>
+      <Link to='media' className='mx-auto relative group'>
         <div className='flex items-center sm:hidden relative'>
           {highEls.map((poster, i) => {
             if (i >= 4) return null
