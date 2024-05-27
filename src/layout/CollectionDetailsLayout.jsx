@@ -15,8 +15,7 @@ export default function CollectionDetailsLayout () {
   )
 }
 export async function loader ({ request, params }) {
-  const id = params.id
-  if (!id) return null
+  const { id } = params
 
-  return defer(await getCollectionDetails(id))
+  return defer({ data: getCollectionDetails(id) })
 }

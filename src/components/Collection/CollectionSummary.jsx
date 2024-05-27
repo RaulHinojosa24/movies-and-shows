@@ -1,9 +1,6 @@
-import { useRouteLoaderData } from 'react-router-dom'
 import { formatNumberSymbols, generateVoteColor, roundDecimals } from '../../utils/utility'
 
-export default function CollectionSummary () {
-  const { parts } = useRouteLoaderData('collection-details')
-
+export default function CollectionSummary ({ parts }) {
   const nMovies = parts?.length || 0
   const votedMovies = (parts || []).filter(m => m.vote_count > 0).length
   const totalVotes = formatNumberSymbols(parts?.reduce((acc, curr) => acc + curr.vote_count, 0))

@@ -1,15 +1,22 @@
-import { useRouteLoaderData } from 'react-router-dom'
+import { Await, useRouteLoaderData } from 'react-router-dom'
 
 import HeaderCompact from '../PageUI/HeaderCompact'
+import { Suspense } from 'react'
+import HeaderCompactSkeleton from '../Skeletons/HeaderCompactSkeleton'
 
 export default function CollectionHeaderCompact () {
-  const {
-    id,
-    name,
-    poster_path: posterPath
-  } = useRouteLoaderData('collection-details')
+  const { data: loaderCollectionDetails } = useRouteLoaderData('collection-details')
 
   return (
-    <HeaderCompact target={'/collection/' + id} mediaType='collection' posterPath={posterPath} title={name} />
+    <Suspense fallback={<HeaderCompactSkeleton />}>
+      <Await resolve={loaderCollectionDetails}>
+        {({
+          id,
+          name,
+          poster_path: posterPath
+        }) => <HeaderCompact target={'/collection/' + id} mediaType='collection' posterPath={posterPath} title={name} />}
+      </Await>
+    </Suspense>
+
   )
 }

@@ -1,21 +1,10 @@
-import { Link, useRouteLoaderData } from 'react-router-dom'
-import { formatLongDate, retrieveConfig } from '../../utils/utility'
 import { useState } from 'react'
 import Select from '../UI/Select'
 import SortAscIcon from '../../icons/SortAscIcon'
 import SortDescIcon from '../../icons/SortDescIcon'
-import DefaultPosterImg from '../../assets/default-poster.png'
+import CollectionListItem from './CollectionListItem'
 
-export default function CollectionList () {
-  const { parts } = useRouteLoaderData('collection-details')
-
-  const {
-    images: {
-      secure_base_url: baseURL,
-      poster_sizes: posterSizes
-    }
-  } = retrieveConfig(useRouteLoaderData('root'))
-
+export default function CollectionList ({ parts }) {
   const options = [
     {
       value: 'release-date',
@@ -68,37 +57,13 @@ export default function CollectionList () {
         </button>
       </div>
       <ol className='space-y-4'>
-        {sortedParts.map((part) => {
-          const {
-            id,
-            title,
-            overview,
-            poster_path: posterPath,
-            release_date: releaseDate
-          } = part
-
-          const prettyPath = posterPath
-            ? baseURL + posterSizes[0] + posterPath
-            : DefaultPosterImg
-
-          return (
-            <li key={id} className='flex rounded overflow-hidden custom-shadow'>
-              <Link to={'/movie/' + id} className='contents'>
-                <img className='aspect-[2/3] object-cover w-full max-w-24' src={prettyPath} alt={'Poster de la película ' + title} />
-              </Link>
-              <div className='flex flex-col justify-around p-4'>
-                <div>
-                  <Link to={'/movie/' + id} className='inline-block'>
-                    <h3 className='font-semibold text-lg'>{title}</h3>
-                  </Link>
-                  <p className='dark:text-neutral-300 text-neutral-600'>{releaseDate ? formatLongDate(releaseDate) : 'Fecha desconocida'}</p>
-                </div>
-                {overview &&
-                  <p className='line-clamp-2'>{overview}</p>}
-              </div>
-            </li>
-          )
-        })}
+        {sortedParts.map(({
+          id,
+          title,
+          overview,
+          poster_path: posterPath,
+          release_date: releaseDate
+        }) => <CollectionListItem key={id} title={title} overview={overview} posterPath={posterPath} releaseDate={releaseDate} />)}
       </ol>
     </section>
   )
