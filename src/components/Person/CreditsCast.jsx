@@ -1,10 +1,7 @@
-import { useRouteLoaderData } from 'react-router-dom'
 import SubSection from '../UI/SubSection'
 import GroupedCreditsDisplay from './GroupedCreditsDisplay'
 
-export default function CreditsCast ({ groupBy, sorting, direction }) {
-  const { combined_credits: { cast } } = useRouteLoaderData('person-details')
-
+export default function CreditsCast ({ groupBy, sorting, direction, cast }) {
   const cleanCastCredits = [...cast]
     .map(c => ({
       id: c.id,

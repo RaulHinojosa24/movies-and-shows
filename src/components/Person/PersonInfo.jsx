@@ -1,18 +1,8 @@
-import { useRouteLoaderData } from 'react-router-dom'
 import SubSection from '../UI/SubSection'
 import { calculateAge, formatLongDate, getPersonGender } from '../../utils/utility'
 import Section from '../UI/Section'
 
-export default function PersonInfo ({ className = '' }) {
-  const {
-    also_known_as: alsoKnownAs,
-    birthday,
-    deathday,
-    gender,
-    known_for_department: knownForDepartment,
-    place_of_birth: placeOfBirth
-  } = useRouteLoaderData('person-details')
-
+export default function PersonInfo ({ alsoKnownAs, birthday, deathday, gender, knownForDepartment, placeOfBirth }) {
   const prettyAge = (deathday
     ? calculateAge(birthday, deathday)
     : calculateAge(birthday)) + ' años'
@@ -21,7 +11,7 @@ export default function PersonInfo ({ className = '' }) {
   const prettyDeathday = formatLongDate(deathday)
 
   return (
-    <Section title='Información personal' className={className}>
+    <Section>
       <div className='flex md:flex-col flex-row flex-wrap gap-4 [&>*]:grow'>
         <SubSection title='Conocida por'>{knownForDepartment}</SubSection>
         <SubSection title='Género'>{prettyGender}</SubSection>

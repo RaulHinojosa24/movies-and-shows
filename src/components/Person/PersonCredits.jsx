@@ -35,7 +35,7 @@ const sortingOptions = [
   }
 ]
 
-export default function PersonCredits () {
+export default function PersonCredits ({ cast, crew }) {
   const [groupBy, setGroupBy] = useState('default')
   const [sorting, setSorting] = useState('default')
   const [direction, setDirection] = useState('desc')
@@ -55,8 +55,8 @@ export default function PersonCredits () {
             : <SortDescIcon />}
         </button>
       </div>
-      <CreditsCast groupBy={groupBy} sorting={sorting} direction={direction} />
-      <CreditsCrew groupBy={groupBy} sorting={sorting} direction={direction} />
+      <CreditsCast groupBy={groupBy} sorting={sorting} direction={direction} cast={cast} />
+      <CreditsCrew groupBy={groupBy} sorting={sorting} direction={direction} crew={crew} />
     </Section>
   )
 }

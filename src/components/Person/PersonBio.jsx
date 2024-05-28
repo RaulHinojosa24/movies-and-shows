@@ -1,10 +1,7 @@
-import { useRouteLoaderData } from 'react-router-dom'
 import Section from '../UI/Section'
 import ClampedText from '../UI/ClampedText'
 
-export default function PersonBio () {
-  const { biography } = useRouteLoaderData('person-details')
-
+export default function PersonBio ({ biography }) {
   return (
     <Section title='Biografía'>
       {biography &&

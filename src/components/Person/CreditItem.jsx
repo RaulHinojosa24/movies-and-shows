@@ -2,16 +2,24 @@ import { Link, useRouteLoaderData } from 'react-router-dom'
 import VoteCard from '../PageUI/VoteCard'
 import { retrieveConfig } from '../../utils/utility'
 import DefaultPoster from '../../assets/default-poster.png'
+import { useEffect, useState } from 'react'
 
 export default function CreditItem ({
   id, title, characters = [], jobs = [], releaseDate, voteAverage, voteCount, mediaType, posterPath, video, creditId, name, firstAirDate, episodeCount
 }) {
-  const {
-    images: {
-      secure_base_url: baseURL,
-      poster_sizes: posterSizes
-    }
-  } = retrieveConfig(useRouteLoaderData('root'))
+  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
+  const [prettyPosterPath, setPrettyPosterPath] = useState('')
+
+  useEffect(() => {
+    loaderConfig.then(({
+      images: {
+        secure_base_url: baseURL,
+        poster_sizes: posterSizes
+      }
+    }) => setPrettyPosterPath(posterPath
+      ? baseURL + posterSizes[0] + posterPath
+      : DefaultPoster))
+  }, [loaderConfig, posterPath])
 
   const charactersOrJobs = characters.length > 0
     ? characters
@@ -27,15 +35,12 @@ export default function CreditItem ({
   const url = mediaType === 'movie'
     ? '/movie/' + id
     : '/tv/' + id
-  const path = posterPath
-    ? baseURL + posterSizes[0] + posterPath
-    : DefaultPoster
 
   return (
     <Link to={url}>
       <div className='flex justify-between items-center py-2'>
         <div className='flex gap-2 items-center'>
-          <img className='aspect-[2/3] object-cover w-10' loading='lazy' src={path} alt='' />
+          <img className='aspect-[2/3] object-cover w-10' loading='lazy' src={prettyPosterPath} alt='' />
           <div>
             <h3 className='font-semibold'>{title || name}</h3>
             <p className='text-sm'>
