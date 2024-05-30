@@ -96,8 +96,26 @@ export function getTvDetails (id) {
   return sendRequest(`https://api.themoviedb.org/3/tv/${id}?language=${language}&append_to_response=aggregate_credits,content_ratings,external_ids,images,keywords,lists,recommendations,reviews,videos,watch/providers&include_image_language=null`, GET_OPTIONS)
 }
 
-export function getListDetails (id, page = 1) {
-  return fetch(`https://api.themoviedb.org/4/list/${id}?language=${language}&page=${page}`, GET_OPTIONS)
+export async function getListDetails (id, page = 1) {
+  const response = await fetch(`https://api.themoviedb.org/4/list/${id}?language=${language}&page=${page}`, GET_OPTIONS)
+
+  if (!response.ok) {
+    return json(
+      { message: 'Something went wrong.' },
+      { status: response.status }
+    )
+  } else {
+    const data = await response.json()
+
+    if (!data.public) {
+      throw json(
+        { message: 'Parece que la lista a la que intentas acceder es privada.' },
+        { status: 401 }
+      )
+    } else {
+      return data
+    }
+  }
 }
 
 export function getMoviesByQuery (query, page = 1) {

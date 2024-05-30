@@ -1,29 +1,24 @@
-import { useLoaderData, useRouteLoaderData } from 'react-router-dom'
+import { useRouteLoaderData } from 'react-router-dom'
 import { formatNumberSymbols, formatRuntime, generateVoteColor, retrieveConfig } from '../../utils/utility'
+import { useEffect, useState } from 'react'
 
-export default function ListHeader () {
-  const {
-    images: {
-      secure_base_url: baseURL,
-      backdrop_sizes: backdropSizes,
-      profile_sizes: profileSizes
-    }
-  } = retrieveConfig(useRouteLoaderData('root'))
-  const data = useLoaderData()
+export default function ListHeader ({ averageRating, backdropPath, createdBy, description, itemCount, name, revenue, runtime }) {
+  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
+  const [prettyBackdropURL, setPrettyBackdropURL] = useState('')
+  const [prettyProfileURL, setPrettyProfileURL] = useState('')
 
-  const {
-    average_rating: averageRating,
-    backdrop_path: backdropPath,
-    created_by: createdBy,
-    description,
-    item_count: itemCount,
-    name,
-    revenue,
-    runtime
-  } = data
-
-  const prettyBackdropURL = backdropPath ? baseURL + backdropSizes[2] + backdropPath : ''
-  const prettyProfileURL = createdBy?.avatar_path ? baseURL + profileSizes[0] + createdBy.avatar_path : ''
+  useEffect(() => {
+    loaderConfig.then(({
+      images: {
+        secure_base_url: baseURL,
+        backdrop_sizes: backdropSizes,
+        profile_sizes: profileSizes
+      }
+    }) => {
+      if (backdropPath) setPrettyBackdropURL(baseURL + backdropSizes[2] + backdropPath)
+      if (createdBy?.avatar_path) setPrettyProfileURL(baseURL + profileSizes[0] + createdBy.avatar_path)
+    })
+  })
   const prettyRuntime = formatRuntime(runtime || 0)
   const prettyRevenue = '$' + formatNumberSymbols(revenue, 1)
   const avgColor = generateVoteColor(averageRating)
@@ -50,7 +45,7 @@ export default function ListHeader () {
           <p>{description}</p>
           <div className='flex items-center gap-2 text-base'>
             {prettyProfileURL &&
-              <img src={prettyProfileURL} alt={'Imagen de perfil del usuario ' + prettyCreatorName} width={45} className='rounded-full' />}
+              <img src={prettyProfileURL} alt={'Imagen de perfil del usuario ' + prettyCreatorName} width={45} className='aspect-square rounded-full object-cover' />}
             <p>Una lista de <span className='font-semibold'>{prettyCreatorName}</span></p>
           </div>
         </section>

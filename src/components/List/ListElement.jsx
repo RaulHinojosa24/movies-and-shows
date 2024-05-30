@@ -1,19 +1,24 @@
 import DefaultPoster from '../../assets/default-poster.png'
-import { formatLongDate, formatNumberSymbols, formatRuntime, formatShortDate, retrieveConfig } from '../../utils/utility'
+import { formatLongDate, formatNumberSymbols, formatRuntime, retrieveConfig } from '../../utils/utility'
 import { Link, useRouteLoaderData } from 'react-router-dom'
 import VoteCard from '../PageUI/VoteCard'
 import TvIcon from '../../icons/TvIcon'
 import MovieIcon from '../../icons/MovieIcon'
+import { useEffect, useState } from 'react'
 
 export default function ListElement ({ id, order, title, originalTitle, posterPath, mediaType, comment = '', releaseDate, voteAverage, voteCount, revenue, runtime, posterMode, commentVisible }) {
-  const {
-    images: {
-      secure_base_url: baseURL,
-      poster_sizes: posterSizes
-    }
-  } = retrieveConfig(useRouteLoaderData('root'))
+  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
+  const [prettyPosterPath, setPrettyPosterPath] = useState('')
 
-  const prettyPosterPath = posterPath ? baseURL + posterSizes[3] + posterPath : DefaultPoster
+  useEffect(() => {
+    loaderConfig.then(({
+      images: {
+        secure_base_url: baseURL,
+        poster_sizes: posterSizes
+      }
+    }) => setPrettyPosterPath(posterPath ? baseURL + posterSizes[3] + posterPath : DefaultPoster))
+  })
+
   const prettyRevenue = '$' + formatNumberSymbols(revenue, 1)
   const prettyRuntime = formatRuntime(runtime)
   const prettyTitle = title || originalTitle
