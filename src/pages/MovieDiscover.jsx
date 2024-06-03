@@ -1,11 +1,17 @@
-import { defer } from 'react-router-dom'
+import { Await, defer, useLoaderData } from 'react-router-dom'
 import Filters from '../components/MovieDiscover/Filters'
 import Results from '../components/MovieDiscover/Results'
 import Main from '../components/PageUI/Main'
 import { discoverMovies, getMovieProviders } from '../utils/http'
 import { setDocTitle } from '../utils/utility'
+import Pagination from '../components/Search/Pagination'
+import { Suspense } from 'react'
 
 export default function MovieDiscoverPage () {
+  const {
+    data: loaderDiscoverMovies
+  } = useLoaderData()
+
   setDocTitle('Descubrir películas')
 
   return (
@@ -16,6 +22,11 @@ export default function MovieDiscoverPage () {
       center={
         <>
           <Results />
+          <Suspense>
+            <Await resolve={loaderDiscoverMovies}>
+              {({ total_pages: totalPages }) => <Pagination totalPages={totalPages} />}
+            </Await>
+          </Suspense>
         </>
       }
     />
@@ -37,6 +48,7 @@ export async function loader ({ request, params }) {
   const genres = new URL(request.url).searchParams.get('genres')
   const keywords = new URL(request.url).searchParams.get('keywords')
   const watchProvs = new URL(request.url).searchParams.get('watch_providers')
+  const page = new URL(request.url).searchParams.get('page')
 
   return defer({
     data: discoverMovies({
@@ -53,7 +65,8 @@ export async function loader ({ request, params }) {
       toDate,
       genres,
       keywords,
-      watchProviders: watchProvs
+      watchProviders: watchProvs,
+      page
     }),
     watchProviders: getMovieProviders()
   })

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useLoaderData, useRouteLoaderData, useSearchParams } from 'react-router-dom'
 import SortFilter from '../Discover/SortFilter'
 import AdultFilter from '../Discover/AdultFilter'
@@ -85,6 +85,8 @@ const calculateMaxRange = (minSP, maxSP, range) => {
 export default function Filters () {
   const loaderMovieGenres = retrieveMovieGenres(useRouteLoaderData('root'))
   const { watchProviders: loaderWatchProviders } = useLoaderData()
+
+  const [watchProvidersList, setWatchProvidersList] = useState([])
   const [searchParams, setSearchParams] = useSearchParams()
   const sortBySP = searchParams.get('sort_by')
   const sortDirectionSP = searchParams.get('sort_direction')
@@ -127,6 +129,10 @@ export default function Filters () {
   const [watchProviders, setWatchProviders] = useState(watchProvidersSP
     ? watchProvidersSP.split('|').map(Number)
     : [])
+
+  useEffect(() => {
+    loaderWatchProviders.then(({ results }) => setWatchProvidersList(results))
+  }, [loaderWatchProviders])
 
   const submitFormHandler = (event) => {
     event.preventDefault()
@@ -185,7 +191,7 @@ export default function Filters () {
       </FilterGroup>
       <FilterGroup title='Dónde ver'>
         <WatchProvidersFilter
-          watchProvidersPromise={loaderWatchProviders}
+          watchProvidersList={watchProvidersList}
           watchProviders={watchProviders}
           setWatchProviders={setWatchProviders}
         />

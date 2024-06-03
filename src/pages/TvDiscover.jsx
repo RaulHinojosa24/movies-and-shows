@@ -3,9 +3,15 @@ import Results from '../components/TvDiscover/Results'
 import Main from '../components/PageUI/Main'
 import { discoverTvs, getTvProviders } from '../utils/http'
 import { setDocTitle } from '../utils/utility'
-import { defer } from 'react-router-dom'
+import { Await, defer, useLoaderData } from 'react-router-dom'
+import { Suspense } from 'react'
+import Pagination from '../components/Search/Pagination'
 
 export default function TvDiscoverPage () {
+  const {
+    data: loaderDiscoverTvs
+  } = useLoaderData()
+
   setDocTitle('Descubrir series de tv')
 
   return (
@@ -14,7 +20,14 @@ export default function TvDiscoverPage () {
         <Filters />
       }
       center={
-        <Results />
+        <>
+          <Results />
+          <Suspense>
+            <Await resolve={loaderDiscoverTvs}>
+              {({ total_pages: totalPages }) => <Pagination totalPages={totalPages} />}
+            </Await>
+          </Suspense>
+        </>
       }
     />
   )
@@ -35,6 +48,7 @@ export async function loader ({ request, params }) {
   const genres = new URL(request.url).searchParams.get('genres')
   const keywords = new URL(request.url).searchParams.get('keywords')
   const watchProvs = new URL(request.url).searchParams.get('watch_providers')
+  const page = new URL(request.url).searchParams.get('page')
 
   return defer({
     data: discoverTvs({
@@ -51,7 +65,8 @@ export async function loader ({ request, params }) {
       toDate,
       genres,
       keywords,
-      watchProviders: watchProvs
+      watchProviders: watchProvs,
+      page
     }),
     watchProviders: getTvProviders()
   })

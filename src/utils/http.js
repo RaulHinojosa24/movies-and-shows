@@ -157,7 +157,7 @@ export function getKeywordsByQuery (query, page = 1) {
   url.searchParams.append('query', query)
   url.searchParams.append('page', page)
 
-  return sendRequest(url.href, GET_OPTIONS)
+  return fetch(url.href, GET_OPTIONS)
 }
 
 export function discoverMovies ({
@@ -178,7 +178,7 @@ export function discoverMovies ({
   watchProviders
 }) {
   const url = new URL('https://api.themoviedb.org/3/discover/movie')
-  url.searchParams.append('page', page)
+  url.searchParams.append('page', page || 1)
   url.searchParams.append('include_video', true)
   url.searchParams.append('language', language)
   url.searchParams.append('watch_region', region)
@@ -217,7 +217,7 @@ export function discoverTvs ({
   watchProviders
 }) {
   const url = new URL('https://api.themoviedb.org/3/discover/tv')
-  url.searchParams.append('page', page)
+  url.searchParams.append('page', page || 1)
   url.searchParams.append('language', language)
   url.searchParams.append('watch_region', region)
   url.searchParams.append('include_adult', includeAdult || false)
