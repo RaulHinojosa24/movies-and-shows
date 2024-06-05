@@ -31,6 +31,23 @@
     /* @apply underline cursor-pointer underline-offset-[.25rem] w-fit; */
     @apply w-fit hover:underline underline-offset-4;
   }
+
+  .skeleton {
+    animation: skeleton-loading 1s linear infinite alternate;
+    @apply dark:bg-neutral-700 bg-neutral-400;
+  }
+  .skeleton__text {
+    @apply skeleton rounded-lg h-4;
+  }
+  .skeleton__title {
+    @apply skeleton rounded-lg h-8;
+  }
+  .skeleton__paragraph {
+    @apply skeleton rounded-lg h-12;
+  }
+  .skeleton__bg {
+    @apply dark:bg-neutral-900 bg-neutral-200;
+  }
 }
 
 @layer utilities {
@@ -196,23 +213,6 @@ summary::after {
 
 details[open] summary:after {
   content: " ⯆";
-}
-
-.skeleton {
-  animation: skeleton-loading 1s linear infinite alternate;
-  @apply bg-neutral-700;
-}
-.skeleton__text {
-  @apply skeleton rounded-lg h-4;
-}
-.skeleton__title {
-  @apply skeleton rounded-lg h-8;
-}
-.skeleton__paragraph {
-  @apply skeleton rounded-lg h-12;
-}
-.skeleton__bg {
-  @apply bg-neutral-900;
 }
 
 @keyframes skeleton-loading {
