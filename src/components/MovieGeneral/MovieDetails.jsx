@@ -1,4 +1,4 @@
-import { useRouteLoaderData } from 'react-router-dom'
+import { Link, useRouteLoaderData } from 'react-router-dom'
 import { formatCurrency, retrieveConfig } from '../../utils/utility'
 import Section from '../UI/Section'
 import SubSection from '../UI/SubSection'
@@ -42,7 +42,9 @@ export default function MovieDetails ({
         <SubSection title='Palabras clave'>
           <ul className='flex gap-2 flex-wrap'>
             {keywords.keywords.map(({ id, name }) => (
-              <li key={id} className='dark:bg-neutral-900 px-2 py-1 rounded border-1 dark:border-neutral-800 text-sm'>{name}</li>
+              <li key={id}>
+                <Link to={`/movie?keywords=${id}%25${name}`} className='inline-block dark:bg-neutral-900 px-2 py-1 rounded border-1 dark:border-neutral-800 text-sm'>{name}</Link>
+              </li>
             ))}
           </ul>
         </SubSection>}

@@ -79,7 +79,9 @@ export default function TvDetails ({
         <SubSection title='Palabras clave'>
           <ul className='flex gap-2 flex-wrap'>
             {keywords.results.map(({ id, name }) => (
-              <li key={id} className='dark:bg-neutral-900 px-2 py-1 rounded border-1 dark:border-neutral-800 text-sm'>{name}</li>
+              <li key={id}>
+                <Link to={`/tv?keywords=${id}%25${name}`} className='inline-block dark:bg-neutral-900 px-2 py-1 rounded border-1 dark:border-neutral-800 text-sm'>{name}</Link>
+              </li>
             ))}
           </ul>
         </SubSection>}
