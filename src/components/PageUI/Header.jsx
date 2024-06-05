@@ -1,5 +1,5 @@
 /* eslint-disable no-octal-escape */
-import { useRouteLoaderData } from 'react-router-dom'
+import { Link, useRouteLoaderData } from 'react-router-dom'
 import { formatShortDate, formatRuntime, retrieveConfig } from '../../utils/utility'
 import VoteCard from '../PageUI/VoteCard'
 
@@ -73,7 +73,7 @@ export default function Header ({ posterPath, backdropPath, title, releaseDate, 
             {prettyGenres.length > 0 &&
               <ul className='hidden md:flex flex-wrap shrink-0 [&>*+*]:before:content-[","] [&>*+*]:before:mr-1'>
                 {prettyGenres.map(({ id, name }) => (
-                  <li key={id}>{name}</li>
+                  <li key={id}><Link to={`/${mediaType}?genres=${id}`}>{name}</Link></li>
                 ))}
               </ul>}
           </div>
