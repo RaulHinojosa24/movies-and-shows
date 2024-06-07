@@ -1,4 +1,4 @@
-import { Outlet, ScrollRestoration, defer } from 'react-router-dom'
+import { Outlet, ScrollRestoration, defer, matchPath } from 'react-router-dom'
 import MainNavigation from './MainNavigation'
 import { getAPIConfiguration, getMovieGenres, getTvGenres } from '../utils/http'
 import GoToTopButton from '../components/PageUI/GoToTopButton'
@@ -7,7 +7,15 @@ export default function RootLayout () {
   return (
     <>
       <GoToTopButton />
-      <ScrollRestoration />
+      <ScrollRestoration
+        getKey={(location, matches) => {
+          const paths = ['/movie/:id', '/movie/:id/media', '/tv/:id', '/tv/:id/media', '/tv/:id/season/:season/media']
+
+          return paths.some((path) => matchPath(path, location.pathname))
+            ? location.pathname
+            : location.key
+        }}
+      />
       <MainNavigation />
       <Outlet />
     </>
