@@ -52,7 +52,7 @@ export default function MediaProfiles ({ images }) {
   return (
     <Section title={<>Retratos <span className='text-neutral-500 font-semibold'>{amount}</span></>}>
       <PhotoAlbum
-        photos={photos} layout='masonry'
+        photos={photos} layout='columns'
         columns={(containerWidth) => Math.ceil(containerWidth / 300)}
         onClick={({ index }) => setIndex(index)}
       />

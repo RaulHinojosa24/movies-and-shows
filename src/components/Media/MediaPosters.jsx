@@ -54,7 +54,7 @@ export default function MediaPosters ({ images }) {
             return (
               <>
                 <PhotoAlbum
-                  photos={photos} layout='masonry'
+                  photos={photos} layout='columns'
                   columns={(containerWidth) => Math.ceil(containerWidth / 300)}
                   onClick={({ index }) => setIndex(index)}
                 />
