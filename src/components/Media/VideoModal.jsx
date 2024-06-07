@@ -1,11 +1,14 @@
-import { useState } from 'react'
 import Modal from '../UI/Modal'
 import PlayButton from '../UI/PlayButton'
+import { useSearchParams } from 'react-router-dom'
 
 export default function VideoModal ({ video, className = '' }) {
-  const [isOpen, setIsOpen] = useState(false)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const isOpen = searchParams.get('play') === video.key
 
-  const toggle = () => setIsOpen(prev => !prev)
+  const toggle = () => {
+    setSearchParams(isOpen ? {} : { play: video.key })
+  }
 
   return (
     <>
