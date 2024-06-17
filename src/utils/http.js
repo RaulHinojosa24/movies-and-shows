@@ -72,14 +72,6 @@ export function createSessionID (requestToken) {
   return fetch('https://api.themoviedb.org/3/authentication/session/new', options)
 }
 
-export function getNowPlayingMovies () {
-  return sendRequest(`https://api.themoviedb.org/3/movie/now_playing?language=${language}&page=1`, GET_OPTIONS)
-}
-
-export function getTrendingAll (timeWindow = 'day', page = 1) {
-  return sendRequest(`https://api.themoviedb.org/3/trending/all/${timeWindow}?language=${language}&page=${page}`, GET_OPTIONS)
-}
-
 export function getMovieDetails (id) {
   return sendRequest(`https://api.themoviedb.org/3/movie/${id}?language=${language}&include_image_language=null&append_to_response=images,videos,keywords,lists,recommendations,reviews,watch/providers,release_dates,external_ids,credits`, GET_OPTIONS)
 }
@@ -235,4 +227,24 @@ export function discoverTvs ({
   url.searchParams.append('with_watch_providers', watchProviders || '')
 
   return sendRequest(url.href, GET_OPTIONS)
+}
+
+export function getNowPlayingMovies () {
+  return sendRequest(`https://api.themoviedb.org/3/movie/now_playing?language=${language}page=1&region=${region}`, GET_OPTIONS)
+}
+
+export function getTrendingAll (timeWindow = 'day', page = 1) {
+  return sendRequest(`https://api.themoviedb.org/3/trending/all/${timeWindow}?language=${language}&page=${page}`, GET_OPTIONS)
+}
+
+export function getPopularMovies () {
+  return sendRequest(`https://api.themoviedb.org/3/movie/popular?language=${language}page=1&region=${region}`, GET_OPTIONS)
+}
+
+export function getPopularTvs () {
+  return sendRequest(`https://api.themoviedb.org/3/tv/popular?language=${language}page=1`, GET_OPTIONS)
+}
+
+export function getPopularPersons () {
+  return sendRequest(`https://api.themoviedb.org/3/person/popular?language=${language}page=1`, GET_OPTIONS)
 }
