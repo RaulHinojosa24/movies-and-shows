@@ -27,6 +27,10 @@
     @apply border-yellow-400 opacity-25 my-8;
   }
 
+  a {
+    @apply cursor-pointer
+  }
+
   a:not(.no-underline) {
     /* @apply underline cursor-pointer underline-offset-[.25rem] w-fit; */
     @apply w-fit hover:underline underline-offset-4;
