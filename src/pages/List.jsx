@@ -3,7 +3,7 @@ import ListElement from '../components/List/ListElement'
 import ListHeader from '../components/List/ListHeader'
 import Main from '../components/PageUI/Main'
 import { getListDetails } from '../utils/http'
-import { useLoaderData, json, defer, Await } from 'react-router-dom'
+import { useLoaderData, defer, Await } from 'react-router-dom'
 import Loading from '../components/UI/Loading'
 import useIntersectionObserver from '../hooks/useIntersectionObserver'
 import ListFilters from '../components/List/ListFilters'
@@ -50,7 +50,7 @@ export default function ListPage () {
       setCurrentPage(page)
       setDocTitle(name)
     })
-  })
+  }, [loaderData])
 
   const [isLoading, setIsLoading] = useState(false)
 
@@ -88,21 +88,11 @@ export default function ListPage () {
 
   const fetchNewPage = useCallback(async (id) => {
     setIsLoading(true)
-    const response = await getListDetails(id, currentPage + 1)
+    const data = await getListDetails(id, currentPage + 1)
 
-    if (!response.ok) {
-      setIsLoading(false)
-      throw json(
-        { message: 'Could not fetch list data.' },
-        { status: 500 }
-      )
-    } else {
-      const data = await response.json()
-
-      setCurrentPage(prev => prev + 1)
-      setListElements(prev => [...prev, ...data.results])
-      setIsLoading(false)
-    }
+    setCurrentPage(prev => prev + 1)
+    setListElements(prev => [...prev, ...data.results])
+    setIsLoading(false)
   }, [currentPage])
 
   useEffect(() => {
@@ -136,7 +126,7 @@ export default function ListPage () {
             <>
               <ListHeader
                 averageRating={averageRating}
-                backdrop_path={backdropPath}
+                backdropPath={backdropPath}
                 createdBy={createdBy}
                 description={description}
                 itemCount={itemCount}
