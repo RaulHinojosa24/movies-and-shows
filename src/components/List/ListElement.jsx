@@ -2,9 +2,8 @@ import DefaultPoster from '../../assets/default-poster.png'
 import { formatLongDate, formatNumberSymbols, formatRuntime, retrieveConfig } from '../../utils/utility'
 import { Link, useRouteLoaderData } from 'react-router-dom'
 import VoteCard from '../PageUI/VoteCard'
-import TvIcon from '../../icons/TvIcon'
-import MovieIcon from '../../icons/MovieIcon'
 import { useEffect, useState } from 'react'
+import MediaType from '../PageUI/MediaType'
 
 export default function ListElement ({ id, order, title, originalTitle, posterPath, mediaType, comment = '', releaseDate, voteAverage, voteCount, revenue, runtime, posterMode, commentVisible }) {
   const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
@@ -90,32 +89,6 @@ export default function ListElement ({ id, order, title, originalTitle, posterPa
 
 function Cell ({ children, className = '' }) {
   return <div className={'md:table-cell md:border-y-1 md:border-inherit align-middle whitespace-nowrap md:py-3 md:px-2 ' + className}>{children}</div>
-}
-
-function MediaType ({ mediaType, isPoster, className = '' }) {
-  const prettyMediaType = mediaType === 'movie'
-    ? isPoster ? <MovieIcon /> : 'Película'
-    : isPoster ? <TvIcon /> : 'Serie de TV'
-
-  const title = mediaType === 'movie'
-    ? 'Película'
-    : 'Serie de TV'
-
-  const mediaStyles = {
-    tv: 'bg-gradient-to-br from-amber-600 to-rose-700',
-    movie: 'bg-gradient-to-br from-green-700 to-blue-950'
-  }
-
-  const posterStyles = {
-    true: 'w-10 p-[4%] aspect-square rounded-full text-xl flex justify-center items-center',
-    false: 'rounded-full w-fit px-4 py-1'
-  }
-
-  return (
-    <div title={title} className={`font-semibold shadow-sm shadow-black/50 text-white ${mediaStyles[mediaType]} ${posterStyles[isPoster]} ${className}`}>
-      {prettyMediaType}
-    </div>
-  )
 }
 
 function ReleaseDate ({ date, posterMode, className = '' }) {
