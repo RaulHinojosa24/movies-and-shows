@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { formatNumberSymbols, generateVoteColor, roundDecimals } from '../../utils/utility'
+import { generateVoteColor, roundDecimals } from '../../utils/utility'
 
 export default function VoteCard ({ rating, count, small, minimal, width, className, noCount, ...props }) {
   const svgRef = useRef()
@@ -9,7 +9,6 @@ export default function VoteCard ({ rating, count, small, minimal, width, classN
   }
 
   const prettyAvarage = (count || noCount) ? roundDecimals(rating * 10, 0) : 'NR'
-  const prettyCount = formatNumberSymbols(count, 1)
   const avarageColor = generateVoteColor(rating / 10)
 
   return (
