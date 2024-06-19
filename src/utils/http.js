@@ -1,24 +1,14 @@
 import { json } from 'react-router-dom'
-import { TMDB_ACCESS_TOKEN } from '../../config'
 
 const language = 'es-ES'
 const region = 'ES'
+const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
 
-const GET_OPTIONS = {
-  method: 'GET',
-  headers: {
-    accept: 'application/json',
-    Authorization: 'Bearer ' + TMDB_ACCESS_TOKEN
-  }
-}
+// const API_URL = 'http://localhost:3000'
+const API_URL = 'https://movies-and-shows-backend.vercel.app'
 
 const POST_OPTIONS = {
-  method: 'POST',
-  headers: {
-    accept: 'application/json',
-    'content-type': 'application/json',
-    Authorization: 'Bearer ' + TMDB_ACCESS_TOKEN
-  }
+  method: 'POST'
 }
 
 async function sendRequest (url, options, time = 0) {
@@ -26,10 +16,7 @@ async function sendRequest (url, options, time = 0) {
     const response = await fetch(url, options)
 
     if (!response.ok) {
-      return json(
-        { message: 'Something went wrong.' },
-        { status: response.status }
-      )
+      throw new Response(JSON.stringify({ message: 'Algo no ha salido bien.' }), { status: response.status })
     } else {
       const data = await response.json()
       return data
@@ -38,27 +25,27 @@ async function sendRequest (url, options, time = 0) {
 }
 
 export function getAPIConfiguration () {
-  return sendRequest('https://api.themoviedb.org/3/configuration?append_to_response=countries,jobs,languages', GET_OPTIONS)
+  return sendRequest(API_URL + '/3/configuration?append_to_response=countries,jobs,languages,timezones')
 }
 
 export function getMovieGenres () {
-  return sendRequest('https://api.themoviedb.org/3/genre/movie/list?language=' + language, GET_OPTIONS)
+  return sendRequest(API_URL + '/3/genre/movie/list?language=' + language)
 }
 
 export function getTvGenres () {
-  return sendRequest('https://api.themoviedb.org/3/genre/tv/list?language=' + language, GET_OPTIONS)
+  return sendRequest(API_URL + '/3/genre/tv/list?language=' + language)
 }
 
 export function getMovieProviders () {
-  return sendRequest(`https://api.themoviedb.org/3/watch/providers/movie?language=${language}&watch_region=${region}`, GET_OPTIONS)
+  return sendRequest(`${API_URL}/3/watch/providers/movie?language=${language}&watch_region=${region}`)
 }
 
 export function getTvProviders () {
-  return sendRequest(`https://api.themoviedb.org/3/watch/providers/tv?language=${language}&watch_region=${region}`, GET_OPTIONS)
+  return sendRequest(`${API_URL}/3/watch/providers/tv?language=${language}&watch_region=${region}`)
 }
 
 export function getRequestToken () {
-  return sendRequest('https://api.themoviedb.org/3/authentication/token/new', GET_OPTIONS)
+  return sendRequest(API_URL + '/3/authentication/token/new')
 }
 
 export function createSessionID (requestToken) {
@@ -69,27 +56,27 @@ export function createSessionID (requestToken) {
     })
   }
 
-  return fetch('https://api.themoviedb.org/3/authentication/session/new', options)
+  return fetch(API_URL + '/3/authentication/session/new', options)
 }
 
 export function getMovieDetails (id) {
-  return sendRequest(`https://api.themoviedb.org/3/movie/${id}?language=${language}&include_image_language=null&append_to_response=images,videos,keywords,lists,recommendations,reviews,watch/providers,release_dates,external_ids,credits`, GET_OPTIONS)
+  return sendRequest(`${API_URL}/3/movie/${id}?language=${language}&include_image_language=null&append_to_response=images,videos,keywords,lists,recommendations,reviews,watch/providers,release_dates,external_ids,credits`)
 }
 
 export function getCollectionDetails (id) {
-  return sendRequest(`https://api.themoviedb.org/3/collection/${id}?language=${language}&include_image_language=null&append_to_response=images`, GET_OPTIONS)
+  return sendRequest(`${API_URL}/3/collection/${id}?language=${language}&include_image_language=null&append_to_response=images`)
 }
 
 export function getPersonDetails (id) {
-  return sendRequest(`https://api.themoviedb.org/3/person/${id}?language=${language}&append_to_response=combined_credits,external_ids,images`, GET_OPTIONS)
+  return sendRequest(`${API_URL}/3/person/${id}?language=${language}&append_to_response=combined_credits,external_ids,images`)
 }
 
 export function getTvDetails (id) {
-  return sendRequest(`https://api.themoviedb.org/3/tv/${id}?language=${language}&append_to_response=aggregate_credits,content_ratings,external_ids,images,keywords,lists,recommendations,reviews,videos,watch/providers&include_image_language=null`, GET_OPTIONS)
+  return sendRequest(`${API_URL}/3/tv/${id}?language=${language}&append_to_response=aggregate_credits,content_ratings,external_ids,images,keywords,lists,recommendations,reviews,videos,watch/providers&include_image_language=null`)
 }
 
 export async function getListDetails (id, page = 1) {
-  const response = await fetch(`https://api.themoviedb.org/4/list/${id}?language=${language}&page=${page}`, GET_OPTIONS)
+  const response = await fetch(`${API_URL}/4/list/${id}?language=${language}&page=${page}`)
 
   if (!response.ok) {
     return json(
@@ -111,45 +98,45 @@ export async function getListDetails (id, page = 1) {
 }
 
 export function getMoviesByQuery (query, page = 1) {
-  const moviesUrl = new URL('https://api.themoviedb.org/3/search/movie')
+  const moviesUrl = new URL(API_URL + '/3/search/movie')
   moviesUrl.searchParams.append('query', query)
   moviesUrl.searchParams.append('language', language)
   moviesUrl.searchParams.append('include_adult', false)
   moviesUrl.searchParams.append('page', page)
 
-  return sendRequest(moviesUrl.href, GET_OPTIONS)
+  return sendRequest(moviesUrl.href)
 }
 
 export function getTvByQuery (query, page = 1) {
-  const seriesUrl = new URL('https://api.themoviedb.org/3/search/tv')
+  const seriesUrl = new URL(API_URL + '/3/search/tv')
   seriesUrl.searchParams.append('query', query)
   seriesUrl.searchParams.append('language', language)
   seriesUrl.searchParams.append('include_adult', false)
   seriesUrl.searchParams.append('page', page)
 
-  return sendRequest(seriesUrl.href, GET_OPTIONS)
+  return sendRequest(seriesUrl.href)
 }
 
 export function getPersonsByQuery (query, page = 1) {
-  const personUrl = new URL('https://api.themoviedb.org/3/search/person')
+  const personUrl = new URL(API_URL + '/3/search/person')
   personUrl.searchParams.append('query', query)
   personUrl.searchParams.append('language', language)
   personUrl.searchParams.append('include_adult', false)
   personUrl.searchParams.append('page', page)
 
-  return sendRequest(personUrl.href, GET_OPTIONS)
+  return sendRequest(personUrl.href)
 }
 
 export function getTvSeasonDetails (tvID, season) {
-  return sendRequest(`https://api.themoviedb.org/3/tv/${tvID}/season/${season}?language=${language}&include_image_language=en,null&include_video_language=en,null&append_to_response=account_states,aggregate_credits,images,videos`, GET_OPTIONS)
+  return sendRequest(`${API_URL}/3/tv/${tvID}/season/${season}?language=${language}&include_image_language=en,null&include_video_language=en,null&append_to_response=account_states,aggregate_credits,images,videos`)
 }
 
 export function getKeywordsByQuery (query, page = 1) {
-  const url = new URL('https://api.themoviedb.org/3/search/keyword')
+  const url = new URL(API_URL + '/3/search/keyword')
   url.searchParams.append('query', query)
   url.searchParams.append('page', page)
 
-  return fetch(url.href, GET_OPTIONS)
+  return fetch(url.href)
 }
 
 export function discoverMovies ({
@@ -169,7 +156,7 @@ export function discoverMovies ({
   keywords,
   watchProviders
 }) {
-  const url = new URL('https://api.themoviedb.org/3/discover/movie')
+  const url = new URL(API_URL + '/3/discover/movie')
   url.searchParams.append('page', page || 1)
   url.searchParams.append('include_video', true)
   url.searchParams.append('language', language)
@@ -188,7 +175,7 @@ export function discoverMovies ({
   url.searchParams.append('with_keywords', keywords ? keywords.split('|').map(kw => kw.split('%')[0]).join('|') : '')
   url.searchParams.append('with_watch_providers', watchProviders || '')
 
-  return sendRequest(url.href, GET_OPTIONS)
+  return sendRequest(url.href)
 }
 
 export function discoverTvs ({
@@ -208,7 +195,7 @@ export function discoverTvs ({
   keywords,
   watchProviders
 }) {
-  const url = new URL('https://api.themoviedb.org/3/discover/tv')
+  const url = new URL(API_URL + '/3/discover/tv')
   url.searchParams.append('page', page || 1)
   url.searchParams.append('language', language)
   url.searchParams.append('watch_region', region)
@@ -226,25 +213,25 @@ export function discoverTvs ({
   url.searchParams.append('with_keywords', keywords ? keywords.split('|').map(kw => kw.split('%')[0]).join('|') : '')
   url.searchParams.append('with_watch_providers', watchProviders || '')
 
-  return sendRequest(url.href, GET_OPTIONS)
+  return sendRequest(url.href)
 }
 
 export function getNowPlayingMovies () {
-  return sendRequest(`https://api.themoviedb.org/3/movie/now_playing?language=${language}page=1&region=${region}`, GET_OPTIONS)
+  return sendRequest(`${API_URL}/3/movie/now_playing?language=${language}page=1&region=${region}`)
 }
 
 export function getTrendingAll (timeWindow = 'day', page = 1) {
-  return sendRequest(`https://api.themoviedb.org/3/trending/all/${timeWindow}?language=${language}&page=${page}`, GET_OPTIONS)
+  return sendRequest(`${API_URL}/3/trending/all/${timeWindow}?language=${language}&page=${page}`)
 }
 
 export function getPopularMovies () {
-  return sendRequest(`https://api.themoviedb.org/3/movie/popular?language=${language}page=1&region=${region}`, GET_OPTIONS)
+  return sendRequest(`${API_URL}/3/movie/popular?language=${language}page=1&region=${region}`)
 }
 
 export function getPopularTvs () {
-  return sendRequest(`https://api.themoviedb.org/3/tv/popular?language=${language}page=1`, GET_OPTIONS)
+  return sendRequest(`${API_URL}/3/tv/popular?language=${language}page=1`)
 }
 
 export function getPopularPersons () {
-  return sendRequest(`https://api.themoviedb.org/3/person/popular?language=${language}page=1`, GET_OPTIONS)
+  return sendRequest(`${API_URL}/3/person/popular?language=${language}page=1`)
 }
