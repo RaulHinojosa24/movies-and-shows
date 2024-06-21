@@ -2,6 +2,7 @@ import { Outlet, ScrollRestoration, defer, matchPath } from 'react-router-dom'
 import MainNavigation from './MainNavigation'
 import { getAPIConfiguration, getMovieGenres, getTvGenres } from '../utils/http'
 import GoToTopButton from '../components/PageUI/GoToTopButton'
+import Footer from './Footer'
 
 export default function RootLayout () {
   return (
@@ -18,6 +19,7 @@ export default function RootLayout () {
       />
       <MainNavigation />
       <Outlet />
+      <Footer />
     </>
   )
 }
