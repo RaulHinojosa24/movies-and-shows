@@ -2,7 +2,7 @@ export default function Main ({ left, center, right }) {
   const onlyCenter = !left && center && !right
 
   return (
-    <main className={`flex flex-col md:flex-row p-app-space gap-8 mx-auto ${onlyCenter ? 'max-w-small-content' : ''}`}>
+    <main className={`flex flex-col md:flex-row p-app-space gap-8 w-full mx-auto grow ${onlyCenter ? 'max-w-small-content' : ''}`}>
       {left &&
         <div className='md:order-1 md:shrink-0 md:w-aside space-y-8'>{left}</div>}
       {center &&
