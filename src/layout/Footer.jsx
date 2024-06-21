@@ -12,23 +12,31 @@ export default function Footer () {
         </div>
         <div className='block md:contents space-y-4 md:space-y-0'>
           <FooterSection title='Enlaces principales'>
-            <Link to='/search'>Buscador</Link>
-            <Link to='/movie'>Películas</Link>
-            <Link to='/tv'>Series de TV</Link>
+            <li>
+              <Link to='/search'>Buscador</Link>
+            </li>
+            <li>
+              <Link to='/movie'>Películas</Link>
+            </li>
+            <li>
+              <Link to='/tv'>Series de TV</Link>
+            </li>
           </FooterSection>
           <FooterSection title='Sobre el proyecto'>
-            <ul className='flex gap-4'>
-              <li>
-                <a className='inline-block' href='https://github.com/RaulHinojosa24/movies-and-shows' target='_blank' rel='noopener noreferrer'>
-                  <GithubLogo className='w-8 h-8' />
-                </a>
-              </li>
-              <li>
-                <a className='inline-block' href='https://www.linkedin.com/in/raulhinojosaperez/' target='_blank' rel='noopener noreferrer'>
-                  <LinkedinLogo className='w-8 h-8' />
-                </a>
-              </li>
-            </ul>
+            <li>
+              <ul className='flex gap-4'>
+                <li>
+                  <a className='inline-block' href='https://github.com/RaulHinojosa24/movies-and-shows' target='_blank' rel='noopener noreferrer'>
+                    <GithubLogo className='w-8 h-8' />
+                  </a>
+                </li>
+                <li>
+                  <a className='inline-block' href='https://www.linkedin.com/in/raulhinojosaperez/' target='_blank' rel='noopener noreferrer'>
+                    <LinkedinLogo className='w-8 h-8' />
+                  </a>
+                </li>
+              </ul>
+            </li>
           </FooterSection>
         </div>
       </section>
@@ -42,11 +50,7 @@ const FooterSection = ({ title, children }) => {
     <div>
       <h2 className='text-xl mb-2 text-yellow-400 font-semibold'>{title}</h2>
       <ul className='space-y-1'>
-        {children.map((listElement, index) => (
-          <li key={index}>
-            {listElement}
-          </li>
-        ))}
+        {children}
       </ul>
     </div>
   )
