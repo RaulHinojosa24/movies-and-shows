@@ -20,7 +20,7 @@ export default function SearchPage () {
 
   useEffect(() => {
     if (!VALID_PATHNAMES.some(pathname => pathname === params.pathname)) {
-      navigate('/search/movie' + params.search)
+      navigate('/search/movie' + params.search, { replace: true })
     }
   }, [navigate, params.pathname, params.search])
 
