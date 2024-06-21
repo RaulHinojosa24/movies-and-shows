@@ -29,6 +29,7 @@ export default function Footer () {
                 </a>
               </li>
             </ul>
+          </FooterSection>
         </div>
       </section>
       <p className='text-center text-neutral-400'>Este sitio web utiliza TMDB y las APIs de TMDB pero no está avalado, certificado ni aprobado de ninguna manera por TMDB.</p>
