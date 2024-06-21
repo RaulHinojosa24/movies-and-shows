@@ -15,10 +15,6 @@
     --bg-color: rgb(10, 10, 10);
   }
 
-  body {
-    @apply mb-8;
-  }
-
   body, header .content {
     @apply max-w-screen-2xl mx-auto;
   }
