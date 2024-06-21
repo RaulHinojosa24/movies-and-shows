@@ -33,9 +33,9 @@ export default function Popular () {
         <>
           Lo más popular
           <div className='inline-flex text-base font-normal gap-2 mx-4'>
-            <a className={media === 'movie' ? 'underline' : ''} onClick={() => setMedia('movie')}>Películas</a>
-            <a className={media === 'tv' ? 'underline' : ''} onClick={() => setMedia('tv')}>Series de TV</a>
-            <a className={media === 'person' ? 'underline' : ''} onClick={() => setMedia('person')}>Personas</a>
+            <button className={media === 'movie' ? 'underline underline-offset-4' : ''} onClick={() => setMedia('movie')}>Películas</button>
+            <button className={media === 'tv' ? 'underline underline-offset-4' : ''} onClick={() => setMedia('tv')}>Series de TV</button>
+            <button className={media === 'person' ? 'underline underline-offset-4' : ''} onClick={() => setMedia('person')}>Personas</button>
           </div>
         </>
       } className='m-app-space' ref={sectionRef}
