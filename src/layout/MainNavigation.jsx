@@ -22,14 +22,11 @@ export default function MainNavigation () {
             <li>
               <NavLink to='/tv' className={activeClasses}>Series de TV</NavLink>
             </li>
-            <li>
-              <NavLink to='/' className={activeClasses}>Test</NavLink>
-            </li>
           </ul>
         </nav>
         {!isSearchPage &&
           <SearchBar compact />}
-        <NavLink to='/login'>Log in</NavLink>
+        {/* <NavLink to='/login'>Log in</NavLink> */}
       </div>
     </header>
   )

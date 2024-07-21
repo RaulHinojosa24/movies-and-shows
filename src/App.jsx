@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import RootLayout, { loader as rootLoader } from './layout/RootLayout'
-import LoginPage, { loader as loginLoader, action as loginAction } from './pages/Login'
+// import LoginPage, { loader as loginLoader, action as loginAction } from './pages/Login'
 import HomePage, { loader as homeLoader } from './pages/Home'
 import MovieDetailsLayout, { loader as movieDetailsLoader } from './layout/MovieDetailsLayout'
 import CollectionDetailsLayout, { loader as collectionDetailsLoader } from './layout/CollectionDetailsLayout'
@@ -51,12 +51,12 @@ export default function App () {
           element: <HomePage />,
           loader: homeLoader
         },
-        {
-          path: 'login',
-          element: <LoginPage />,
-          action: loginAction,
-          loader: loginLoader
-        },
+        // {
+        //   path: 'login',
+        //   element: <LoginPage />,
+        //   action: loginAction,
+        //   loader: loginLoader
+        // },
         {
           path: 'movie',
           element: <MovieDiscoverPage />,
