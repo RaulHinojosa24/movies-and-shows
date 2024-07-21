@@ -7,7 +7,7 @@ export default function HeaderMainCredits ({ credits }) {
   return (
     <ul className='flex justify-center md:justify-start flex-wrap gap-x-8 gap-y-2 max-w-3xl'>
       {shortCredits.map(el => (
-        <li key={el.id}>
+        <li key={el.creditId || el.id}>
           <Link to={'/person/' + el.id} className='block mx-auto'>
             <h3 className='font-semibold'>{el.name}</h3>
           </Link>

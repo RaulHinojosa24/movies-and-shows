@@ -40,7 +40,8 @@ export default function MovieHeader () {
             .sort((a, b) => a.job.localeCompare(b.job))
           const mainCredits = [...directors, ...writers]
             .map(mc => ({
-              id: mc.credit_id,
+              id: mc.id,
+              creditId: mc.credit_id,
               name: mc.name,
               role: mc.job
             }))
