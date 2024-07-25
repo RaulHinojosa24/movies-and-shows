@@ -41,8 +41,8 @@ export default function Slider ({ slides, LastSlide, SlideComponent, vertical })
       ref={sliderRef}
       init={false}
     >
-      {slides.map((slide) => (
-        <swiper-slide key={slide.id} lazy='true'>
+      {slides.map((slide, idx) => (
+        <swiper-slide key={idx + slide.id} lazy='true'>
           <SlideComponent {...slide} />
         </swiper-slide>
       )
