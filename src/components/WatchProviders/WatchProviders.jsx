@@ -33,7 +33,7 @@ export default function WatchProviders ({ className = '', watchProviders, title,
     <>
       <button className={className + ' py-1 px-5 w-full rounded-b whitespace-nowrap font-semibold bg-yellow-400 text-black'} onClick={open}>Dónde ver</button>
       {isOpen &&
-        <Modal crossInside onClose={close} className='rounded w-[calc(100%-4rem)] max-w-2xl bg-neutral-950 p-6 shadow-lg shadow-black flex flex-col overflow-hidden'>
+        <Modal crossInside onClose={close} className='rounded w-[calc(100%-4rem)] max-w-2xl dark:bg-neutral-950 bg-white p-6 shadow-lg dark:shadow-black flex flex-col overflow-hidden'>
           <h2 className='text-xl font-bold text-yellow-400'>Dónde puedo ver "{title}"?</h2>
           <p className='my-4 whitespace-pre-line'>
             Gracias a la colaboración de TMDB y JustWatch, podemos informarle de que en España, {options.length > 0 ? positiveResponse : negativeResponse}
