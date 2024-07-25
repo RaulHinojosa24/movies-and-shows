@@ -1,9 +1,10 @@
 import Modal from '../UI/Modal'
 import PlayButton from '../UI/PlayButton'
-import { useSearchParams } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 
 export default function VideoModal ({ video, className = '' }) {
   const [searchParams, setSearchParams] = useSearchParams()
+  const navigate = useNavigate()
   const isOpen = searchParams.get('play') === video.key
 
   const toggle = () => {
@@ -13,7 +14,7 @@ export default function VideoModal ({ video, className = '' }) {
   return (
     <>
       {isOpen &&
-        <Modal className='aspect-video max-h-[80vh] w-full max-w-screen-2xl' onClose={toggle}>
+        <Modal className='aspect-video max-h-[80vh] w-full max-w-screen-2xl' onClose={() => navigate(-1)}>
           <iframe
             className='h-full object-contain aspect-video mx-auto shadow-xl shadow-neutral-950 animate-fade-up'
             src={'https://www.youtube-nocookie.com/embed/' + video.key}
