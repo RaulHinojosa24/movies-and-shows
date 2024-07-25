@@ -201,6 +201,7 @@ details > summary {
   list-style: none;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 summary::-webkit-details-marker {
@@ -208,7 +209,15 @@ summary::-webkit-details-marker {
 }
 
 summary::after {
-  content: ' ⯈';
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  mask: url('/src/assets/arrow.svg') no-repeat center;
+  mask-size: contain;
+  rotate: 180deg;
+  transition: rotate 150ms linear;
 }
 
 details[open] summary:after {
