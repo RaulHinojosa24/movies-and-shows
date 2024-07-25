@@ -5,10 +5,10 @@ import LinkedinLogo from '../logos/LinkedinLogo'
 
 export default function Footer () {
   return (
-    <footer className='p-app-space bg-neutral-900 text-white z-20 shadow-sm shadow-neutral-900'>
+    <footer className='p-app-space bg-neutral-900 text-white shadow-sm shadow-neutral-900'>
       <section className='grid sm:grid-cols-2 md:grid-cols-3 grid-cols-1 gap-4 mb-4'>
         <div className='self-center'>
-          <img src={LogoBig} loading='lazy' alt='Logo con texto en amarillo "Movies & Shows"' className='w-1/2 mx-auto' />
+          <img src={LogoBig} loading='lazy' alt='Logo con texto en amarillo "Movies & Shows"' className='aspect-square max-w-1/2 w-40 mx-auto' />
         </div>
         <div className='block md:contents space-y-4 md:space-y-0'>
           <FooterSection title='Enlaces principales'>
@@ -36,6 +36,9 @@ export default function Footer () {
                   </a>
                 </li>
               </ul>
+            </li>
+            <li>
+              <Link to='/about'>¿Qué es Movies&Shows?</Link>
             </li>
           </FooterSection>
         </div>
