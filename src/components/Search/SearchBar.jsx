@@ -34,7 +34,7 @@ export default function SearchBar ({ className = '', compact }) {
   }, [searchParams])
 
   return (
-    <div className={'py-1 flex items-center justify-end transition-all ' + (compact ? 'relative ' : 'gap-2 ') + (isCompact ? '' : 'grow ') + className}>
+    <div className={'py-1 flex items-center justify-end transition-all ' + (compact ? 'relative ' : 'gap-2 ') + (!isCompact && compact ? 'grow ' : '') + className}>
       <form className={(compact ? 'absolute left-0 ' : '') + (isCompact ? 'invisible w-0' : 'w-[calc(100%-1.5rem-0.5rem)]')} onSubmit={searchHandler}>
         <input
           value={userInput}
