@@ -1,28 +1,21 @@
-import { useRouteLoaderData } from 'react-router-dom'
-import { formatNumberSymbols, formatRuntime, generateVoteColor, retrieveConfig } from '../../utils/utility'
-import { useEffect, useState } from 'react'
+import { formatNumberSymbols, formatRuntime, generateVoteColor } from '../../utils/utility'
+import { useContext } from 'react'
+import { rootContext } from '../../context/root-context'
+import DefaultUserImage from '../../assets/default-user.png'
 
 export default function ListHeader ({ averageRating, backdropPath, createdBy, description, itemCount, name, revenue, runtime }) {
-  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
-  const [prettyBackdropURL, setPrettyBackdropURL] = useState('')
-  const [prettyProfileURL, setPrettyProfileURL] = useState('')
+  const { config } = useContext(rootContext)
 
-  useEffect(() => {
-    loaderConfig.then(({
-      images: {
-        secure_base_url: baseURL,
-        backdrop_sizes: backdropSizes,
-        profile_sizes: profileSizes
-      }
-    }) => {
-      if (backdropPath) setPrettyBackdropURL(baseURL + backdropSizes[2] + backdropPath)
-      if (createdBy?.avatar_path) setPrettyProfileURL(baseURL + profileSizes[0] + createdBy.avatar_path)
-    })
-  })
+  const prettyBackdropURL = config && backdropPath
+    ? config?.images?.secure_base_url + config?.images?.backdrop_sizes[2] + backdropPath
+    : ''
+  const prettyProfileURL = config && createdBy?.avatar_path
+    ? config?.images?.secure_base_url + config?.images?.profile_sizes[0] + createdBy?.avatar_path
+    : DefaultUserImage
   const prettyRuntime = formatRuntime(runtime || 0)
   const prettyRevenue = '$' + formatNumberSymbols(revenue, 1)
-  const avgColor = generateVoteColor(averageRating)
   const prettyCreatorName = createdBy?.name ? createdBy?.name : createdBy?.username
+  const avgColor = generateVoteColor(averageRating)
 
   return (
     <>

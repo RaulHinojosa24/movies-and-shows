@@ -1,26 +1,16 @@
 import DefaultPoster from '../../assets/default-poster.png'
-import { formatLongDate, retrieveConfig } from '../../utils/utility'
-import { Link, useRouteLoaderData } from 'react-router-dom'
+import { formatLongDate } from '../../utils/utility'
+import { Link } from 'react-router-dom'
 import VoteCard from '../PageUI/VoteCard'
-import { useEffect, useState } from 'react'
+import { useContext } from 'react'
+import { rootContext } from '../../context/root-context'
 
 export default function ResultItem ({ id, originalTitle, posterPath, releaseDate, title, voteAverage, voteCount, overview }) {
-  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
-  const [prettyPosterPath, setPrettyPosterPath] = useState(DefaultPoster)
+  const { config } = useContext(rootContext)
 
-  useEffect(() => {
-    loaderConfig.then(config => {
-      const {
-        images: {
-          secure_base_url: baseURL,
-          poster_sizes: posterSizes
-        }
-      } = config
-
-      if (posterPath) setPrettyPosterPath(baseURL + posterSizes[2] + posterPath)
-    })
-  }, [loaderConfig, posterPath])
-
+  const prettyPosterPath = config && posterPath
+    ? config?.images?.secure_base_url + config?.images?.poster_sizes[2] + posterPath
+    : DefaultPoster
   const prettyTitle = title || originalTitle
   const showOriginalName = prettyTitle !== originalTitle
 
@@ -28,7 +18,7 @@ export default function ResultItem ({ id, originalTitle, posterPath, releaseDate
     <>
       <div className='md:hidden custom-shadow-small rounded w-full text-sm flex'>
         <Link to={`/movie/${id}`} className='shrink-0'>
-          <img className='w-24 object-cover aspect-[2/3]' src={prettyPosterPath} alt='' loading='lazy' />
+          <img className='w-24 object-cover aspect-[2/3]' src={prettyPosterPath} alt={`Poster de la pelicula ${prettyTitle}`} loading='lazy' />
         </Link>
         <div className='p-3 flex flex-col justify-center'>
           <Link to={`/movie/${id}`} className='font-semibold text-base'>
@@ -43,7 +33,7 @@ export default function ResultItem ({ id, originalTitle, posterPath, releaseDate
       <div className='hidden md:block custom-shadow-small rounded overflow-hidden max-w-56 w-full text-sm'>
         <Link to={`/movie/${id}`}>
           <div className='relative'>
-            <img className='w-full object-cover aspect-[2/3]' src={prettyPosterPath} alt='' loading='lazy' />
+            <img className='w-full object-cover aspect-[2/3]' src={prettyPosterPath} alt={`Poster de la pelicula ${prettyTitle}`} loading='lazy' />
             <VoteCard small rating={voteAverage} count={voteCount} className='absolute bottom-2 left-2' />
           </div>
         </Link>

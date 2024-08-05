@@ -1,10 +1,10 @@
-import { Link, useRouteLoaderData } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Section from '../UI/Section'
-import { retrieveConfig } from '../../utils/utility'
 import VoteCard from '../PageUI/VoteCard'
 import DefaultLandscapeImage from '../../assets/default-landscape.png'
 import Slider from '../PageUI/Slider'
-import { useEffect, useState } from 'react'
+import { useContext } from 'react'
+import { rootContext } from '../../context/root-context'
 
 export default function MovieRecommendations ({ id, recommendations }) {
   if (recommendations.length === 0) {
@@ -33,19 +33,11 @@ export default function MovieRecommendations ({ id, recommendations }) {
 }
 
 const Slide = ({ id, backdropPath, title, releaseYear, voteAverage, voteCount, mediaType }) => {
-  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
-  const [prettyBackdropPath, setPrettyBackdropPath] = useState(DefaultLandscapeImage)
+  const { config } = useContext(rootContext)
 
-  useEffect(() => {
-    loaderConfig.then(({
-      images: {
-        secure_base_url: baseURL,
-        backdrop_sizes: backdropSizes
-      }
-    }) => {
-      if (backdropPath) setPrettyBackdropPath(baseURL + backdropSizes[1] + backdropPath)
-    })
-  }, [backdropPath, loaderConfig])
+  const prettyBackdropPath = config && backdropPath
+    ? config?.images?.secure_base_url + config?.images?.backdrop_sizes[1] + backdropPath
+    : DefaultLandscapeImage
 
   return (
     <div className='rounded overflow-hidden w-72 md:w-80 h-full custom-shadow'>

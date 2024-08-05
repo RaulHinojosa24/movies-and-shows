@@ -1,21 +1,16 @@
-import { Link, useRouteLoaderData } from 'react-router-dom'
-import { formatLongDate, retrieveConfig } from '../../utils/utility'
+import { Link } from 'react-router-dom'
+import { formatLongDate } from '../../utils/utility'
 import DefaultPosterImage from '../../assets/default-poster.png'
 import VoteCard from '../PageUI/VoteCard'
-import { useEffect, useState } from 'react'
+import { useContext } from 'react'
+import { rootContext } from '../../context/root-context'
 
 export default function SeasonItem ({ airDate, episodeCount, tvId, name, overview, posterPath, seasonNumber, voteAverage }) {
-  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
-  const [prettyPosterPath, setPrettyPosterPath] = useState('')
+  const { config } = useContext(rootContext)
 
-  useEffect(() => {
-    loaderConfig.then(({
-      images: {
-        secure_base_url: baseURL,
-        poster_sizes: posterSizes
-      }
-    }) => setPrettyPosterPath(posterPath ? baseURL + posterSizes[2] + posterPath : DefaultPosterImage))
-  }, [loaderConfig, posterPath])
+  const prettyPosterPath = posterPath
+    ? config?.images?.secure_base_url + config?.images?.poster_sizes[2] + posterPath
+    : DefaultPosterImage
 
   const prettyAirDate = formatLongDate(airDate)
 

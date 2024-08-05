@@ -1,10 +1,11 @@
 import { Await, Link, defer, useLoaderData, useRouteLoaderData } from 'react-router-dom'
 import { getMoviesByQuery } from '../../utils/http'
-import { formatLongDate, retrieveConfig } from '../../utils/utility'
+import { formatLongDate } from '../../utils/utility'
 import Pagination from './Pagination'
 import DefaultPosterImage from '../../assets/default-poster.png'
-import { Suspense, useEffect, useState } from 'react'
+import { Suspense, useContext } from 'react'
 import SearchResultsSkeleton from '../Skeletons/SearchResultsSkeleton'
+import { rootContext } from '../../context/root-context'
 
 export default function MovieResults () {
   const { data: loaderData } = useLoaderData()
@@ -53,35 +54,26 @@ export default function MovieResults () {
 }
 
 function MovieCard ({ id, title, originalTitle, posterPath, overview, releaseDate }) {
-  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
-  const [prettyPosterPath, setPrettyPosterPath] = useState(DefaultPosterImage)
+  const { config } = useContext(rootContext)
 
-  useEffect(() => {
-    if (posterPath) {
-      loaderConfig.then(({
-        images: {
-          secure_base_url: baseURL,
-          poster_sizes: posterSizes
-        }
-      }) => {
-        setPrettyPosterPath(baseURL + posterSizes[1] + posterPath)
-      })
-    }
-  }, [loaderConfig, posterPath])
-
+  const prettyPosterPath = config && posterPath
+    ? config?.images?.secure_base_url + config?.images?.poster_sizes[1] + posterPath
+    : DefaultPosterImage
   const prettyReleaseDate = formatLongDate(releaseDate)
+  const prettyTitle = title || originalTitle
+
   const sameTitle = title === originalTitle
 
   return (
     <li className='rounded custom-shadow-small flex overflow-hidden'>
       <img
         className='aspect-[2/3] w-24 object-cover'
-        src={prettyPosterPath} alt={'Poster de la película ' + (title || originalTitle)}
+        src={prettyPosterPath} alt={'Poster de la película ' + prettyTitle}
       />
       <div className='px-4 py-2 space-y-2 flex flex-col justify-center'>
         <div>
           <Link to={`/movie/${id}`} className='w-fit inline-block'>
-            <h3 className='font-semibold text-lg'>{title || originalTitle} {!sameTitle && <span className='text-neutral-500 font-normal'>{originalTitle}</span>}</h3>
+            <h3 className='font-semibold text-lg'>{prettyTitle} {!sameTitle && <span className='text-neutral-500 font-normal'>{originalTitle}</span>}</h3>
           </Link>
           <p className='text-neutral-500'>{prettyReleaseDate}</p>
         </div>

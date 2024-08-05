@@ -1,41 +1,33 @@
-import { useRouteLoaderData } from 'react-router-dom'
-import { formatLongDate, retrieveConfig } from '../../utils/utility'
-
+import { formatLongDate } from '../../utils/utility'
 import DefaultUser from '../../assets/default-user.png'
 import ClampedText from '../UI/ClampedText'
 import VoteCard from '../PageUI/VoteCard'
-import { useEffect, useState } from 'react'
+import { useContext } from 'react'
+import { rootContext } from '../../context/root-context'
 
 export default function ReviewItem ({ author, authorDetails, content, createdAt, id, updatedAt, url }) {
-  const [userImg, setUserImg] = useState(DefaultUser)
-  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
+  const { config } = useContext(rootContext)
+
   const { name, username, avatar_path: avatarPath, rating } = authorDetails
 
-  useEffect(() => {
-    loaderConfig.then(({
-      images: {
-        secure_base_url: baseURL,
-        profile_sizes: profileSizes
-      }
-    }) => {
-      if (avatarPath) setUserImg(baseURL + profileSizes[0] + avatarPath)
-    })
-  }, [avatarPath, loaderConfig])
-
+  const prettyUserImage = config && avatarPath
+    ? config?.images?.secure_base_url + config?.images?.profile_sizes[0] + avatarPath
+    : DefaultUser
   const prettyCreationDate = formatLongDate(createdAt)
+  const prettyUsername = username || author
 
   return (
-    <div className='custom-shadow border- rounded p-6'>
+    <div className='custom-shadow rounded p-6'>
       <header className='flex items-center gap-4'>
-        <img src={userImg} alt={'Profile image of the user ' + (username || author)} className='aspect-square w-12 rounded-full' />
+        <img src={prettyUserImage} alt={'Imagen de perfil de ' + prettyUsername} className='aspect-square w-12 rounded-full' loading='lazy' />
         <div>
           <a href={url} target='_blank'>
-            <h3 className='text-lg font-semibold'>Una reseña de {name || username || author}</h3>
+            <h3 className='text-lg font-semibold'>Una reseña de {name || prettyUsername}</h3>
           </a>
           <p className='font-thin text-sm'>
             {rating &&
               <VoteCard rating={rating} minimal />}
-            Escrita por <span className='font-semibold text-ba'>{username || author}</span> el {prettyCreationDate}
+            Escrita por <span className='font-semibold text-ba'>{prettyUsername}</span> el {prettyCreationDate}
           </p>
         </div>
       </header>

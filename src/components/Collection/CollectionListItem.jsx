@@ -1,22 +1,15 @@
-import { Link, useRouteLoaderData } from 'react-router-dom'
-import { formatLongDate, retrieveConfig } from '../../utils/utility'
+import { Link } from 'react-router-dom'
+import { formatLongDate } from '../../utils/utility'
 import DefaultPosterImg from '../../assets/default-poster.png'
-import { useEffect, useState } from 'react'
+import { useContext } from 'react'
+import { rootContext } from '../../context/root-context'
 
 export default function CollectionListItem ({ id, title, posterPath, releaseDate, overview }) {
-  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
-  const [prettyPath, setPrettyPath] = useState('')
+  const { config } = useContext(rootContext)
 
-  useEffect(() => {
-    loaderConfig.then(({
-      images: {
-        secure_base_url: baseURL,
-        poster_sizes: posterSizes
-      }
-    }) => setPrettyPath(posterPath
-      ? baseURL + posterSizes[0] + posterPath
-      : DefaultPosterImg))
-  }, [loaderConfig, posterPath])
+  const prettyPath = config && posterPath
+    ? config?.images?.secure_base_url + config?.images?.poster_sizes[0] + posterPath
+    : DefaultPosterImg
 
   return (
     <li className='flex rounded overflow-hidden custom-shadow'>

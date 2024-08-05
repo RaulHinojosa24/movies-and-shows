@@ -1,10 +1,10 @@
 import { Await, Link, defer, useLoaderData, useRouteLoaderData } from 'react-router-dom'
 import { getPersonsByQuery } from '../../utils/http'
-import { retrieveConfig } from '../../utils/utility'
 import Pagination from './Pagination'
 import DefaultUserImage from '../../assets/default-user.png'
-import { Suspense, useEffect, useState } from 'react'
+import { Suspense, useContext } from 'react'
 import SearchResultsSkeleton from '../Skeletons/SearchResultsSkeleton'
+import { rootContext } from '../../context/root-context'
 
 export default function PersonResults () {
   const { data: loaderData } = useLoaderData()
@@ -52,48 +52,35 @@ export default function PersonResults () {
 }
 
 function PersonCard ({ id, name, originalName, profilePath, knownForDepartment, knownFor }) {
-  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
-  const [prettyPosterPath, setPrettyPosterPath] = useState(DefaultUserImage)
+  const { config } = useContext(rootContext)
 
-  useEffect(() => {
-    loaderConfig.then(({
-      images: {
-        secure_base_url: baseURL,
-        profile_sizes: profileSizes
-      }
-    }) => {
-      if (profilePath) setPrettyPosterPath(baseURL + profileSizes[1] + profilePath)
-    })
-  }, [loaderConfig, profilePath])
+  const prettyProfilePath = profilePath && config
+    ? config?.images?.secure_base_url + config?.images?.profile_sizes[1] + profilePath
+    : DefaultUserImage
+  const prettyKnownFor = knownFor.map(({ id, media_type: mediaType, name, original_name: originalName, title, original_title: originalTitle }) => ({
+    id,
+    title: name || originalName || title || originalTitle,
+    mediaType
+  }))
+  const prettyName = name || originalName
 
-  const sameName = name === originalName
-  const prettyKnownFor = knownFor.map(kf => {
-    const { id, media_type: mediaType, name, original_name: originalName, title, original_title: originalTitle } = kf
-
-    return {
-      id,
-      title: name || originalName || title || originalTitle,
-      mediaType
-    }
-  })
+  const sameName = prettyName === originalName
 
   return (
     <li className='rounded custom-shadow-small flex overflow-hidden'>
       <img
-        className='aspect-[5/6] w-24 object-cover'
-        src={prettyPosterPath} alt={'Poster de la serie de tv ' + (name || originalName)}
+        className='aspect-[5/6] w-24 object-cover' src={prettyProfilePath} alt={'Foto de perfil de ' + prettyName} loading='lazy'
       />
       <div className='px-4 py-2 flex flex-col justify-center'>
         <Link to={`/person/${id}`} className='w-fit inline-block'>
-          <h3 className='font-semibold text-lg'>{name || originalName} {!sameName && <span className='text-neutral-500 font-normal'>{originalName}</span>}</h3>
+          <h3 className='font-semibold text-lg'>{prettyName} {!sameName && <span className='text-neutral-500 font-normal'>{originalName}</span>}</h3>
         </Link>
         <div className='flex font-semibold [&>*+*]:before:content-["·"] [&>*+*]:before:mx-1'>
           <span>{knownForDepartment}</span>
           {knownFor.length > 0 &&
             <p className='[&>*+*]:before:content-[","] [&>*+*]:before:mr-1 font-normal'>
-              {prettyKnownFor.map(kf => {
-                return <Link key={kf.id} to={`/${kf.mediaType}/${kf.id}`}>{kf.title}</Link>
-              })}
+              {prettyKnownFor.map(({ id, mediaType, title }) =>
+                <Link key={id} to={`/${mediaType}/${id}`}>{title}</Link>)}
             </p>}
         </div>
       </div>

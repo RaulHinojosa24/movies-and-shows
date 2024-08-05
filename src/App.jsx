@@ -29,6 +29,7 @@ import TvSeasonMediaPage from './pages/TvSeasonMedia'
 import TvMediaPage from './pages/TvMedia'
 import MovieDiscoverPage, { loader as movieDiscoverLoader } from './pages/MovieDiscover'
 import TvDiscoverPage, { loader as tvDiscoverLoader } from './pages/TvDiscover'
+import RootContextProvider from './context/root-context'
 
 export default function App () {
   useEffect(() => {
@@ -196,8 +197,8 @@ export default function App () {
   ])
 
   return (
-    <>
+    <RootContextProvider>
       <RouterProvider router={router}>Movies & Shows</RouterProvider>
-    </>
+    </RootContextProvider>
   )
 }

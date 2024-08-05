@@ -1,28 +1,21 @@
-import { Await, useRouteLoaderData } from 'react-router-dom'
-import { retrieveConfig } from '../../utils/utility'
-import { Suspense } from 'react'
+import { useContext } from 'react'
+import { rootContext } from '../../context/root-context'
 
-export default function WatchProviderItem ({ provider }) {
-  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
-
-  const {
+export default function WatchProviderItem ({
+  provider: {
     logo_path: logoPath,
     provider_name: providerName
-  } = provider
+  }
+}) {
+  const { config } = useContext(rootContext)
+  const prettyPath = config?.images?.secure_base_url + config?.images?.logo_sizes[1] + logoPath
 
   return (
     <li>
-      <Suspense fallback={<p>&lt;{providerName}&gt;</p>}>
-        <Await resolve={loaderConfig}>
-          {({
-            images: {
-              secure_base_url: baseURL,
-              logo_sizes: logoSizes
-            }
-          }) => <img loading='lazy' className='w-14 rounded aspect-square' src={baseURL + logoSizes[1] + logoPath} alt={'Logo de ' + providerName} title={providerName} />}
-        </Await>
-      </Suspense>
-
+      {!config &&
+        <p>|{providerName}|</p>}
+      {config &&
+        <img loading='lazy' className='w-14 rounded aspect-square' src={prettyPath} alt={'Logo de ' + providerName} title={providerName} />}
     </li>
   )
 }

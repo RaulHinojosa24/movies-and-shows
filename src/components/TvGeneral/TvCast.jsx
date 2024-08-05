@@ -1,10 +1,9 @@
-import { Link, useRouteLoaderData } from 'react-router-dom'
-import { retrieveConfig } from '../../utils/utility'
+import { Link } from 'react-router-dom'
 import Section from '../UI/Section'
-
 import DefaultProfileImage from '../../assets/default-user.png'
 import Slider from '../PageUI/Slider'
-import { useEffect, useState } from 'react'
+import { useContext } from 'react'
+import { rootContext } from '../../context/root-context'
 
 export default function TvCast ({ id, cast }) {
   if (cast.length === 0) {
@@ -52,21 +51,11 @@ export default function TvCast ({ id, cast }) {
 }
 
 const Slide = ({ id, name, picturePath, characters, episodeCount }) => {
-  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
-  const [prettyPath, setPrettyPath] = useState('')
+  const { config } = useContext(rootContext)
 
-  useEffect(() => {
-    loaderConfig.then(({
-      images: {
-        secure_base_url: baseURL,
-        profile_sizes: profileSizes
-      }
-    }) => {
-      setPrettyPath(picturePath
-        ? baseURL + profileSizes[1] + picturePath
-        : DefaultProfileImage)
-    })
-  }, [loaderConfig, picturePath])
+  const prettyPath = picturePath
+    ? config?.images?.secure_base_url + config?.images?.profile_sizes[1] + picturePath
+    : DefaultProfileImage
 
   return (
     <div className='h-full w-36 rounded overflow-hidden custom-shadow'>

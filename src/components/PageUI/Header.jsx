@@ -1,37 +1,31 @@
 /* eslint-disable no-octal-escape */
-import { Link, useRouteLoaderData } from 'react-router-dom'
-import { formatShortDate, formatRuntime, retrieveConfig } from '../../utils/utility'
+import { Link } from 'react-router-dom'
+import { formatShortDate, formatRuntime } from '../../utils/utility'
 import VoteCard from '../PageUI/VoteCard'
 
 import DefaultPosterImage from '../../assets/default-poster.png'
 import WatchProviders from '../WatchProviders/WatchProviders'
 import HeaderMainCredits from '../PageUI/HeaderMainCredits'
 import useGenerateImageColors from '../../hooks/useGenerateImageColors'
-import { useEffect, useState } from 'react'
+import { useContext, useMemo } from 'react'
+import { rootContext } from '../../context/root-context'
 
 export default function Header ({ posterPath, backdropPath, title, releaseDate, firstAirDate, certification, runtime, genres = [], tagline, voteAverage, voteCount, mainCredits = [], watchProviders, mediaType, overview }) {
-  const [prettyBackdropURL, setPrettyBackdropURL] = useState('')
-  const [prettyPosterURL, setPrettyPosterURL] = useState('')
+  const { config } = useContext(rootContext)
   const [[r, g, b], isDark] = useGenerateImageColors(posterPath, 0.4)
-  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
 
-  useEffect(() => {
-    loaderConfig.then(({
-      images: {
-        secure_base_url: baseURL,
-        backdrop_sizes: backdropSizes,
-        poster_sizes: posterSizes
-      }
-    }) => {
-      setPrettyBackdropURL(backdropPath ? baseURL + backdropSizes[2] + backdropPath : DefaultPosterImage)
-      if (posterPath) setPrettyPosterURL(baseURL + posterSizes[3] + posterPath)
-    })
-  }, [backdropPath, loaderConfig, posterPath])
-
+  const prettyBackdropURL = config && backdropPath
+    ? config?.images?.secure_base_url + config?.images?.backdrop_sizes[2] + backdropPath
+    : DefaultPosterImage
+  const prettyPosterURL = config && posterPath
+    ? config?.images?.secure_base_url + config?.images?.poster_sizes[3] + posterPath
+    : DefaultPosterImage
   const prettyRuntime = formatRuntime(runtime || 0)
   const prettyDate = formatShortDate(releaseDate || firstAirDate)
-  const prettyGenres = [...genres]
-    .sort((a, b) => a.name.localeCompare(b.name))
+  const prettyGenres = useMemo(() =>
+    [...genres]
+      .sort((a, b) => a.name.localeCompare(b.name))
+  , [genres])
 
   return (
     <>

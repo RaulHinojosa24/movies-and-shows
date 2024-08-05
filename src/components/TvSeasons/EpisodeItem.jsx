@@ -1,32 +1,23 @@
 /* eslint-disable no-octal-escape */
-import { formatLongDate, formatRuntime, retrieveConfig } from '../../utils/utility'
+import { formatLongDate, formatRuntime } from '../../utils/utility'
 import DefaultLandscape from '../../assets/default-landscape.png'
-import { useRouteLoaderData } from 'react-router-dom'
 import VoteCard from '../PageUI/VoteCard'
-import { useEffect, useState } from 'react'
+import { useContext, useState } from 'react'
 import EpisodeCrewList from './EpisodeCrewList'
 import EpisodeGuestsList from './EpisodeGuestsList'
 import ChevronIcon from '../../icons/ChevronIcon'
+import { rootContext } from '../../context/root-context'
 
 export default function EpisodeItem ({ airDate, episodeNumber, name, overview, runtime, seasonNumber, showId, stillPath, voteAverage, voteCount, crew, guestStars, tvName, tvOriginalName }) {
-  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
-  const [prettySmallStillPath, setPrettySmallStillPath] = useState('')
-  const [prettyBigStillPath, setPrettyBigStillPath] = useState('')
-
-  useEffect(() => {
-    loaderConfig.then(({
-      images: {
-        secure_base_url: baseURL,
-        still_sizes: stillSizes
-      }
-    }) => {
-      setPrettySmallStillPath(stillPath ? baseURL + stillSizes[2] + stillPath : DefaultLandscape)
-      setPrettyBigStillPath(stillPath ? baseURL + stillSizes[3] + stillPath : DefaultLandscape)
-    })
-  })
-
+  const { config } = useContext(rootContext)
   const [isExpanded, setIsExpanded] = useState(false)
 
+  const prettySmallStillPath = stillPath
+    ? config?.images?.secure_base_url + config?.images?.still_sizes[2] + stillPath
+    : DefaultLandscape
+  const prettyBigStillPath = stillPath
+    ? config?.images?.secure_base_url + config?.images?.still_sizes[3] + stillPath
+    : DefaultLandscape
   const prettyTvName = tvName || tvOriginalName
   const prettyAirDate = formatLongDate(airDate)
   const prettyRuntime = formatRuntime(runtime)

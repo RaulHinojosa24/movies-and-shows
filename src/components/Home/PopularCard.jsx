@@ -1,9 +1,9 @@
-import { Link, useRouteLoaderData } from 'react-router-dom'
-import { retrieveConfig } from '../../utils/utility'
-import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { useContext } from 'react'
 import DefaultPosterImage from '../../assets/default-poster.png'
 import DefaultProfileImage from '../../assets/default-user.png'
 import VoteCard from '../PageUI/VoteCard'
+import { rootContext } from '../../context/root-context'
 
 export default function PopularCard ({
   id,
@@ -17,27 +17,15 @@ export default function PopularCard ({
   vote_average: voteAverage,
   vote_count: voteCount
 }) {
-  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
-  const [prettyPath, setPrettyPath] = useState('')
+  const { config } = useContext(rootContext)
 
-  useEffect(() => {
-    loaderConfig.then(({
-      images: {
-        secure_base_url: baseURL,
-        profile_sizes: profileSizes,
-        poster_sizes: posterSizes
-      }
-    }) => {
-      setPrettyPath(mediaType === 'person'
-        ? profilePath
-          ? baseURL + profileSizes[1] + profilePath
-          : DefaultProfileImage
-        : posterPath
-          ? baseURL + posterSizes[1] + posterPath
-          : DefaultPosterImage)
-    })
-  }, [loaderConfig, mediaType, posterPath, profilePath])
-
+  const prettyPath = mediaType === 'person'
+    ? config && profilePath
+      ? config?.images?.secure_base_url + config?.images?.profile_sizes[1] + profilePath
+      : DefaultProfileImage
+    : config && posterPath
+      ? config?.images?.secure_base_url + config?.images?.poster_sizes[1] + posterPath
+      : DefaultPosterImage
   const prettyName = name || originalName || title || originalTitle
 
   return (

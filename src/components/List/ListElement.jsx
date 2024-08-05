@@ -1,23 +1,17 @@
 import DefaultPoster from '../../assets/default-poster.png'
-import { formatLongDate, formatNumberSymbols, formatRuntime, retrieveConfig } from '../../utils/utility'
-import { Link, useRouteLoaderData } from 'react-router-dom'
+import { formatLongDate, formatNumberSymbols, formatRuntime } from '../../utils/utility'
+import { Link } from 'react-router-dom'
 import VoteCard from '../PageUI/VoteCard'
-import { useEffect, useState } from 'react'
+import { useContext } from 'react'
 import MediaType from '../PageUI/MediaType'
+import { rootContext } from '../../context/root-context'
 
 export default function ListElement ({ id, order, title, originalTitle, posterPath, mediaType, comment = '', releaseDate, voteAverage, voteCount, revenue, runtime, posterMode, commentVisible }) {
-  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
-  const [prettyPosterPath, setPrettyPosterPath] = useState('')
+  const { config } = useContext(rootContext)
 
-  useEffect(() => {
-    loaderConfig.then(({
-      images: {
-        secure_base_url: baseURL,
-        poster_sizes: posterSizes
-      }
-    }) => setPrettyPosterPath(posterPath ? baseURL + posterSizes[3] + posterPath : DefaultPoster))
-  })
-
+  const prettyPosterPath = config && posterPath
+    ? config?.images?.secure_base_url + config?.images?.poster_sizes[3] + posterPath
+    : DefaultPoster
   const prettyRevenue = '$' + formatNumberSymbols(revenue, 1)
   const prettyRuntime = formatRuntime(runtime)
   const prettyTitle = title || originalTitle
@@ -28,7 +22,7 @@ export default function ListElement ({ id, order, title, originalTitle, posterPa
         <div className='custom-shadow-small rounded overflow-hidden max-w-56 w-full text-sm'>
           <Link to={`/${mediaType}/${id}`}>
             <div className='relative'>
-              <img className='w-full object-cover aspect-[2/3]' src={prettyPosterPath} alt='' loading='lazy' />
+              <img className='w-full object-cover aspect-[2/3]' src={prettyPosterPath} alt={`Poster de la película ${prettyTitle}`} loading='lazy' />
               <MediaType mediaType={mediaType} isPoster={posterMode} className='absolute bottom-2 right-2' />
               <VoteCard small rating={voteAverage} count={voteCount} className='absolute bottom-2 left-2' />
             </div>

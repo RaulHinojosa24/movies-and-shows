@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { useLoaderData, useRouteLoaderData, useSearchParams } from 'react-router-dom'
+import { useContext, useEffect, useState } from 'react'
+import { useLoaderData, useSearchParams } from 'react-router-dom'
 import SortFilter from '../Discover/SortFilter'
 import AdultFilter from '../Discover/AdultFilter'
 import AvailabilityFilter from '../Discover/AvailabilityFilter'
@@ -10,8 +10,8 @@ import DurationFilter from '../Discover/DurationFilter'
 import VoteAverageFilter from '../Discover/VoteAverageFilter'
 import VoteCountFilter from '../Discover/VoteCountFilter'
 import KeywordsFilter from '../Discover/KeywordsFilter'
-import { retrieveTvGenres } from '../../utils/utility'
 import WatchProvidersFilter from '../Discover/WatchProvidersFilter'
+import { rootContext } from '../../context/root-context'
 
 const VALID_SORT_BY = [
   {
@@ -79,7 +79,7 @@ const calculateMaxRange = (minSP, maxSP, range) => {
 }
 
 export default function Filters () {
-  const loaderTvGenres = retrieveTvGenres(useRouteLoaderData('root'))
+  const { tvGenres } = useContext(rootContext)
   const { watchProviders: loaderWatchProviders } = useLoaderData()
 
   const [watchProvidersList, setWatchProvidersList] = useState([])
@@ -208,7 +208,7 @@ export default function Filters () {
           setFromDate={setFromDate} setToDate={setToDate}
         />
         <GenresFilter
-          optionsPromise={loaderTvGenres}
+          allGenres={tvGenres}
           genres={genres}
           setGenres={setGenres}
         />

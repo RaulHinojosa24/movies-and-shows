@@ -1,29 +1,19 @@
-import { Link, useRouteLoaderData } from 'react-router-dom'
-import { retrieveConfig } from '../../utils/utility'
-
+import { Link } from 'react-router-dom'
 import DefaultUserImage from '../../assets/default-user.png'
 import DefaultPosterImage from '../../assets/default-poster.png'
 import useGenerateImageColors from '../../hooks/useGenerateImageColors'
-import { useEffect, useState } from 'react'
+import { useContext } from 'react'
+import { rootContext } from '../../context/root-context'
 
 export default function HeaderCompact ({ posterPath, title, target, mediaType }) {
+  const { config } = useContext(rootContext)
   const [[r, g, b], isDark] = useGenerateImageColors(posterPath, 0.4)
-  const [prettyPosterURL, setPrettyPosterURL] = useState('')
 
-  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
-
-  useEffect(() => {
-    loaderConfig.then(({
-      images: {
-        secure_base_url: baseURL,
-        poster_sizes: posterSizes
-      }
-    }) => {
-      setPrettyPosterURL(posterPath
-        ? baseURL + posterSizes[0] + posterPath
-        : mediaType !== 'person' ? DefaultPosterImage : DefaultUserImage)
-    })
-  }, [loaderConfig, mediaType, posterPath])
+  const prettyPosterURL = config && posterPath
+    ? config?.images?.secure_base_url + (mediaType === 'person' ? config?.images?.profile_sizes[1] : config?.images?.poster_sizes[0]) + posterPath
+    : mediaType !== 'person'
+      ? DefaultPosterImage
+      : DefaultUserImage
 
   return (
     <>

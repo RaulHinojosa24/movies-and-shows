@@ -1,10 +1,10 @@
-import { Link, useRouteLoaderData } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Section from '../UI/Section'
-import { retrieveConfig } from '../../utils/utility'
 import VoteCard from '../PageUI/VoteCard'
 import DefaultLandscapeImage from '../../assets/default-landscape.png'
 import Slider from '../PageUI/Slider'
-import { useEffect, useState } from 'react'
+import { useContext } from 'react'
+import { rootContext } from '../../context/root-context'
 
 export default function TvRecommendations ({ id, recommendations }) {
   if (recommendations.length === 0) {
@@ -33,19 +33,11 @@ export default function TvRecommendations ({ id, recommendations }) {
 }
 
 const Slide = ({ id, backdropPath, name, firstAirYear, voteAverage, voteCount, mediaType }) => {
-  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
-  const [prettyBackdropPath, setPrettyBackdropPath] = useState('')
+  const { config } = useContext(rootContext)
 
-  useEffect(() => {
-    loaderConfig.then(({
-      images: {
-        secure_base_url: baseURL,
-        backdrop_sizes: backdropSizes
-      }
-    }) => {
-      setPrettyBackdropPath(backdropPath ? (baseURL + backdropSizes[1] + backdropPath) : DefaultLandscapeImage)
-    })
-  }, [backdropPath, loaderConfig])
+  const prettyBackdropPath = backdropPath
+    ? config?.images?.secure_base_url + config?.images?.backdrop_sizes[1] + backdropPath
+    : DefaultLandscapeImage
 
   return (
     <Link to={`/${mediaType}/${id}`}>

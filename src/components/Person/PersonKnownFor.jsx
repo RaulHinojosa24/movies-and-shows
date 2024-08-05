@@ -1,10 +1,9 @@
-import { Link, useRouteLoaderData } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Section from '../UI/Section'
-import { retrieveConfig } from '../../utils/utility'
-
 import DefaultProfileImage from '../../assets/default-user.png'
 import Slider from '../PageUI/Slider'
-import { useEffect, useState } from 'react'
+import { useContext } from 'react'
+import { rootContext } from '../../context/root-context'
 
 const sortingLogic = (cc) => cc.vote_count ** 2 * cc.vote_average
 
@@ -31,28 +30,21 @@ export default function PersonKnownFor ({ id, cast, crew }) {
 }
 
 const Slide = ({ id, name, title, posterPath, type }) => {
-  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
-  const [prettyPosterPath, setPrettyPosterPath] = useState('')
+  const { config } = useContext(rootContext)
 
-  useEffect(() => {
-    loaderConfig.then(({
-      images: {
-        secure_base_url: baseURL,
-        poster_sizes: posterSizes
-      }
-    }) => setPrettyPosterPath(posterPath
-      ? baseURL + posterSizes[1] + posterPath
-      : DefaultProfileImage))
-  })
+  const prettyPosterPath = posterPath && config
+    ? config?.images?.secure_base_url + config?.images?.poster_sizes[1] + posterPath
+    : DefaultProfileImage
+  const prettyTitle = title || name
 
   return (
     <div className='h-full w-32 rounded overflow-hidden custom-shadow'>
       <Link to={`/${type}/${id}`}>
-        <img loading='lazy' className='aspect-[2/3] w-full object-cover object-top' src={prettyPosterPath} alt={`Póster de ${title || name}`} />
+        <img loading='lazy' className='aspect-[2/3] w-full object-cover object-top' src={prettyPosterPath} alt={`Póster de ${prettyTitle}`} />
       </Link>
       <div className='p-2 h-full'>
         <Link to={`/${type}/${id}`} className='inline-block'>
-          <p className='no-swiping font-semibold w-fit'>{title || name}</p>
+          <p className='no-swiping font-semibold w-fit'>{prettyTitle}</p>
         </Link>
       </div>
     </div>

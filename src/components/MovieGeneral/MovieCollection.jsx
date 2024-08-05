@@ -1,25 +1,14 @@
-import { Link, useRouteLoaderData } from 'react-router-dom'
-
+import { Link } from 'react-router-dom'
 import Section from '../UI/Section'
-import { retrieveConfig } from '../../utils/utility'
-import { useEffect, useState } from 'react'
+import { useContext } from 'react'
+import { rootContext } from '../../context/root-context'
 
 export default function MovieCollection ({ collection }) {
-  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
-  const [backdropURL, setBackdropURL] = useState('')
+  const { config } = useContext(rootContext)
 
-  useEffect(() => {
-    loaderConfig.then(({
-      images: {
-        secure_base_url: baseURL,
-        backdrop_sizes: backdropSizes
-      }
-    }) => {
-      if (collection.backdrop_path) {
-        setBackdropURL(baseURL + backdropSizes[2] + collection.backdrop_path)
-      }
-    })
-  }, [collection.backdrop_path, loaderConfig])
+  const backdropURL = config && collection.backdrop_path
+    ? config?.images?.secure_base_url + config?.images?.backdrop_sizes[2] + collection.backdrop_path
+    : ''
 
   return (
     <Section title='Colección' className='text-white'>

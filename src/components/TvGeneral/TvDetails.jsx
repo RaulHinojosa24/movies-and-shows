@@ -1,8 +1,8 @@
-import { Await, Link, useRouteLoaderData } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Section from '../UI/Section'
 import SubSection from '../UI/SubSection'
-import { retrieveConfig } from '../../utils/utility'
-import { Suspense, useEffect, useState } from 'react'
+import { useContext } from 'react'
+import { rootContext } from '../../context/root-context'
 
 export default function TvDetails ({
   episodeRunTime,
@@ -14,16 +14,11 @@ export default function TvDetails ({
   status,
   type
 }) {
-  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
-  const [prettyLanguage, setPrettyLanguage] = useState('...')
+  const { config } = useContext(rootContext)
 
-  useEffect(() => {
-    loaderConfig.then(({ languages }) => {
-      const isoLanguage = languages
-        .find(l => l.iso_639_1 === originalLanguage)
-      setPrettyLanguage(isoLanguage?.name || isoLanguage?.english_name || originalLanguage)
-    })
-  }, [loaderConfig, originalLanguage])
+  const isoLanguage = config?.languages
+    .find(l => l.iso_639_1 === originalLanguage)
+  const prettyLanguage = isoLanguage?.name || isoLanguage?.english_name || originalLanguage
 
   return (
     <Section title='Detalles' className='space-y-2'>
@@ -44,31 +39,20 @@ export default function TvDetails ({
       {type &&
         <SubSection title='Tipo'>{type}</SubSection>}
       {networks.length > 0 &&
-        <SubSection title='Canal'>
+        <SubSection title='Canales'>
           <ul>
             {networks.map(net => {
+              const prettyPath = config?.images?.secure_base_url + config?.images?.logo_sizes[1] + net.logo_path
+
               return (
                 <li key={net.id} className=''>
-                  <Link to={'/network/' + net.id} className='inline-block'>
-                    <Suspense fallback={<span className='underline'>{net.name}</span>}>
-                      <Await resolve={loaderConfig}>
-                        {({
-                          images: {
-                            logo_sizes: logoSizes,
-                            secure_base_url: baseURL
-                          }
-                        }) => {
-                          return (
-                            <>{net.logo_path &&
-                              <img src={baseURL + logoSizes[1] + net.logo_path} alt='' className='bg-white p-1 h-8' />}
-                              {!net.logo_path &&
-                                <span className='underline'>{net.name}</span>}
-                            </>
-                          )
-                        }}
-                      </Await>
-                    </Suspense>
-                  </Link>
+                  {/* TODO: NETWORK LINK  to={'/network/' + net.id}  */}
+                  <span className='inline-block'>
+                    {(!config || !net.logo_path) &&
+                      <span className='underline'>{net.name}</span>}
+                    {config && net.logo_path &&
+                      <img src={prettyPath} alt={net.name + ' logo'} className='bg-white p-1 h-8' loading='lazy' />}
+                  </span>
                 </li>
               )
             }

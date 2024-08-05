@@ -1,10 +1,10 @@
-import { Link, useRouteLoaderData } from 'react-router-dom'
-import { retrieveConfig } from '../../utils/utility'
-import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { useContext } from 'react'
 import DefaultPosterImage from '../../assets/default-poster.png'
 import DefaultProfileImage from '../../assets/default-user.png'
 import MediaType from '../PageUI/MediaType'
 import VoteCard from '../PageUI/VoteCard'
+import { rootContext } from '../../context/root-context'
 
 export default function TrendingCard ({
   id,
@@ -16,54 +16,43 @@ export default function TrendingCard ({
   poster_path: posterPath,
   media_type: mediaType,
   vote_average: voteAverage,
-  vote_count: voteCount
+  vote_count: voteCount,
+  fetching
 }) {
-  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
-  const [prettyPath, setPrettyPath] = useState('')
+  const { config } = useContext(rootContext)
 
-  useEffect(() => {
-    loaderConfig.then(({
-      images: {
-        secure_base_url: baseURL,
-        profile_sizes: profileSizes,
-        poster_sizes: posterSizes
-      }
-    }) => {
-      setPrettyPath(mediaType === 'person'
-        ? profilePath
-          ? baseURL + profileSizes[1] + profilePath
-          : DefaultProfileImage
-        : posterPath
-          ? baseURL + posterSizes[1] + posterPath
-          : DefaultPosterImage)
-    })
-  }, [loaderConfig, mediaType, posterPath, profilePath])
-
+  const prettyPath = mediaType === 'person'
+    ? config && profilePath
+      ? config?.images?.secure_base_url + config?.images?.profile_sizes[1] + profilePath
+      : DefaultProfileImage
+    : config && posterPath
+      ? config?.images?.secure_base_url + config?.images?.poster_sizes[1] + posterPath
+      : DefaultPosterImage
   const prettyName = name || originalName || title || originalTitle
 
   return (
     <div className='w-36 h-full rounded overflow-hidden custom-shadow'>
-      <Link to={`/${mediaType}/${id}`}>
-        <div className='relative'>
-          <img className='w-full object-cover aspect-[2/3]' src={prettyPath} alt={`Imágen de ${prettyName}`} loading='lazy' />
-          <MediaType mediaType={mediaType} isPoster className='absolute bottom-2 right-2' />
-          {mediaType !== 'person' &&
-            <VoteCard small rating={voteAverage} count={voteCount} className='absolute bottom-2 left-2' />}
-        </div>
-      </Link>
-      <Link to={`/${mediaType}/${id}`} className='m-2 inline-block no-swiping font-semibold'>
-        {prettyName}
-      </Link>
+      {!fetching &&
+        <>
+          <Link to={`/${mediaType}/${id}`}>
+            <div className='relative'>
+              <img className='w-full object-cover aspect-[2/3]' src={prettyPath} alt={`Imágen de ${prettyName}`} loading='lazy' />
+              <MediaType mediaType={mediaType} isPoster className='absolute bottom-2 right-2' />
+              {mediaType !== 'person' &&
+                <VoteCard small rating={voteAverage} count={voteCount} className='absolute bottom-2 left-2' />}
+            </div>
+          </Link>
+          <Link to={`/${mediaType}/${id}`} className='m-2 inline-block no-swiping font-semibold'>
+            {prettyName}
+          </Link>
+        </>}
+      {fetching &&
+        <>
+          <div className='skeleton aspect-[2/3] shrink-0' />
+          <div className='m-3 mb-4'>
+            <div className='skeleton__title w-full' />
+          </div>
+        </>}
     </div>
   )
-  // return (
-  //   <div className='h-full w-44 rounded overflow-hidden custom-shadow'>
-  //     <Link to={`/${mediaType}/${id}`}>
-  //       <img loading='lazy' className='aspect-[2/3] object-cover w-full' src={prettyPath} alt={`Imágen de ${prettyName}`} />
-  //     </Link>
-  //     <Link to={`/${mediaType}/${id}`} className='m-2 inline-block no-swiping font-semibold'>
-  //       {prettyName}
-  //     </Link>
-  //   </div>
-  // )
 }

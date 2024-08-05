@@ -1,8 +1,9 @@
-import { Link, useRouteLoaderData } from 'react-router-dom'
-import { formatCurrency, retrieveConfig } from '../../utils/utility'
+import { Link } from 'react-router-dom'
+import { formatCurrency } from '../../utils/utility'
 import Section from '../UI/Section'
 import SubSection from '../UI/SubSection'
-import { useEffect, useState } from 'react'
+import { useContext } from 'react'
+import { rootContext } from '../../context/root-context'
 
 export default function MovieDetails ({
   budget,
@@ -12,18 +13,14 @@ export default function MovieDetails ({
   revenue,
   status
 }) {
-  const [prettyLanguage, setPrettyLanguage] = useState('')
-  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
+  const { config } = useContext(rootContext)
+
+  const isoLanguage = config?.languages
+    .find(l => l.iso_639_1 === originalLanguage)
+
+  const prettyLanguage = isoLanguage?.name || isoLanguage?.english_name || originalLanguage
   const prettyBudget = formatCurrency(budget)
   const prettyRevenue = formatCurrency(revenue)
-
-  useEffect(() => {
-    loaderConfig.then(({ languages }) => {
-      const isoLanguage = languages
-        .find(l => l.iso_639_1 === originalLanguage)
-      setPrettyLanguage(isoLanguage?.name || isoLanguage?.english_name || originalLanguage)
-    })
-  }, [loaderConfig, originalLanguage])
 
   return (
     <Section title='Detalles' className='space-y-3'>

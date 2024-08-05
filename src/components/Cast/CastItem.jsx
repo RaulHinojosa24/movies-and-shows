@@ -1,22 +1,14 @@
-import { Link, useRouteLoaderData } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import DefaultProfileImage from '../../assets/default-user.png'
-import { useEffect, useState } from 'react'
-import { retrieveConfig } from '../../utils/utility'
+import { useContext } from 'react'
+import { rootContext } from '../../context/root-context'
 
 export default function CastItem ({ id, image, primary, secondary }) {
-  const [profileURL, setProfileURL] = useState('')
-  const loaderConfig = retrieveConfig(useRouteLoaderData('root'))
+  const { config } = useContext(rootContext)
 
-  useEffect(() => {
-    loaderConfig.then(({
-      images: {
-        secure_base_url: baseURL,
-        profile_sizes: profileSizes
-      }
-    }) => {
-      setProfileURL(image ? baseURL + profileSizes[1] + image : DefaultProfileImage)
-    })
-  }, [image, loaderConfig])
+  const profileURL = config && image
+    ? config?.images?.secure_base_url + config?.images?.profile_sizes[1] + image
+    : DefaultProfileImage
 
   return (
     <div className='flex gap-4'>
