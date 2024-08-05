@@ -19,7 +19,7 @@ export default function EpisodeGuestsList ({ className = '', guests }) {
 function GuestItem ({ id, profilePath, name, character }) {
   const { config } = useContext(rootContext)
 
-  const prettyProfilePath = profilePath
+  const prettyProfilePath = profilePath && config
     ? config?.images?.secure_base_url + config?.images?.profile_sizes[1] + profilePath
     : DefaultProfileImage
 

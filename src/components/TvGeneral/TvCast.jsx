@@ -53,7 +53,7 @@ export default function TvCast ({ id, cast }) {
 const Slide = ({ id, name, picturePath, characters, episodeCount }) => {
   const { config } = useContext(rootContext)
 
-  const prettyPath = picturePath
+  const prettyPath = picturePath && config
     ? config?.images?.secure_base_url + config?.images?.profile_sizes[1] + picturePath
     : DefaultProfileImage
 

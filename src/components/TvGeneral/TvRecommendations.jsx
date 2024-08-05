@@ -35,7 +35,7 @@ export default function TvRecommendations ({ id, recommendations }) {
 const Slide = ({ id, backdropPath, name, firstAirYear, voteAverage, voteCount, mediaType }) => {
   const { config } = useContext(rootContext)
 
-  const prettyBackdropPath = backdropPath
+  const prettyBackdropPath = backdropPath && config
     ? config?.images?.secure_base_url + config?.images?.backdrop_sizes[1] + backdropPath
     : DefaultLandscapeImage
 

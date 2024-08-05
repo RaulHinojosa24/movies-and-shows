@@ -8,7 +8,7 @@ import { rootContext } from '../../context/root-context'
 export default function SeasonItem ({ airDate, episodeCount, tvId, name, overview, posterPath, seasonNumber, voteAverage }) {
   const { config } = useContext(rootContext)
 
-  const prettyPosterPath = posterPath
+  const prettyPosterPath = posterPath & config
     ? config?.images?.secure_base_url + config?.images?.poster_sizes[2] + posterPath
     : DefaultPosterImage
 

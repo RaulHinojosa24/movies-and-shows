@@ -12,10 +12,10 @@ export default function EpisodeItem ({ airDate, episodeNumber, name, overview, r
   const { config } = useContext(rootContext)
   const [isExpanded, setIsExpanded] = useState(false)
 
-  const prettySmallStillPath = stillPath
+  const prettySmallStillPath = stillPath && config
     ? config?.images?.secure_base_url + config?.images?.still_sizes[2] + stillPath
     : DefaultLandscape
-  const prettyBigStillPath = stillPath
+  const prettyBigStillPath = stillPath && config
     ? config?.images?.secure_base_url + config?.images?.still_sizes[3] + stillPath
     : DefaultLandscape
   const prettyTvName = tvName || tvOriginalName
