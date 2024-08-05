@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import LensIcon from '../../icons/LensIcon'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 import CrossIcon from '../../icons/CrossIcon'
 
 export default function SearchBar ({ className = '', compact }) {
@@ -10,6 +10,7 @@ export default function SearchBar ({ className = '', compact }) {
   const navigate = useNavigate()
   const [isCompact, setIsCompact] = useState(Boolean(compact))
   const inputRef = useRef()
+  const location = useLocation()
 
   const searchHandler = (event) => {
     event?.preventDefault()
@@ -19,6 +20,10 @@ export default function SearchBar ({ className = '', compact }) {
       event?.target?.querySelector('input').blur()
     }
   }
+
+  useEffect(() => {
+    if (compact) setIsCompact(true)
+  }, [compact, location])
 
   useEffect(() => {
     if (!isCompact) inputRef.current.focus()
