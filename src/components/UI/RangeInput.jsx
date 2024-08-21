@@ -8,7 +8,7 @@ export default function RangeInput ({ min, max, step, symbol = '', value, setVal
     <div>
       <div className='relative h-6'>
         <div
-          className='h-1 bg-neutral-500 absolute left-0 top-1/2 -translate-y-1/2 w-full rounded'
+          className='h-1 dark:bg-neutral-700 bg-neutral-200 absolute left-0 top-1/2 -translate-y-1/2 w-full rounded'
         />
         <div
           className='h-1 bg-yellow-400 absolute left-0 top-1/2 -translate-y-1/2 w-full rounded'

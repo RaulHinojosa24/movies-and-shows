@@ -5,7 +5,7 @@ import FilterItem from './FilterItem'
 
 export default function SortFilter ({ sortBy, setSortBy, sortDirection, setSortDirection, options }) {
   return (
-    <FilterItem title='Ordenar por' className='flex justify-between'>
+    <FilterItem title='Ordenar por' className='flex justify-between gap-2'>
       <Select
         name='sort-by'
         onChange={(e) => setSortBy(e.target.value)}
