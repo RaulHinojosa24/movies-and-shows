@@ -5,7 +5,7 @@ import AdultFilter from '../Discover/AdultFilter'
 import AvailabilityFilter from '../Discover/AvailabilityFilter'
 import DatesFilter from '../Discover/DatesFilter'
 import GenresFilter from '../Discover/GenresFilter'
-import FilterGroup from '../Discover/FilterGroup'
+import Colapsible from '../UI/Colapsible'
 import DurationFilter from '../Discover/DurationFilter'
 import VoteAverageFilter from '../Discover/VoteAverageFilter'
 import VoteCountFilter from '../Discover/VoteCountFilter'
@@ -178,7 +178,7 @@ export default function Filters () {
 
   return (
     <form action='/' onSubmit={submitFormHandler} className='space-y-4'>
-      <FilterGroup title='Ordenar'>
+      <Colapsible title='Ordenar'>
         <SortFilter
           options={VALID_SORT_BY}
           sortBy={sortBy} setSortBy={setSortBy}
@@ -188,8 +188,8 @@ export default function Filters () {
           includeAdult={includeAdult}
           setIncludeAdult={setIncludeAdult}
         />
-      </FilterGroup>
-      <FilterGroup title='Dónde ver'>
+      </Colapsible>
+      <Colapsible title='Dónde ver'>
         <WatchProvidersFilter
           watchProvidersList={watchProvidersList}
           watchProviders={watchProviders}
@@ -200,8 +200,8 @@ export default function Filters () {
           setWatchTypes={setWatchTypes}
           options={VALID_WATCH_TYPES}
         />
-      </FilterGroup>
-      <FilterGroup title='Detalles'>
+      </Colapsible>
+      <Colapsible title='Detalles'>
         <DurationFilter
           durationRange={DURATION_RANGE}
           durationMin={durationMin} durationMax={durationMax}
@@ -220,8 +220,8 @@ export default function Filters () {
           keywords={keywords}
           setKeywords={setKeywords}
         />
-      </FilterGroup>
-      <FilterGroup title='Usuarios'>
+      </Colapsible>
+      <Colapsible title='Usuarios'>
         <VoteCountFilter
           voteCountRange={VOTE_COUNT_RANGE}
           voteCount={voteCount}
@@ -232,7 +232,7 @@ export default function Filters () {
           voteMin={voteMin} voteMax={voteMax}
           setVoteMin={setVoteMin} setVoteMax={setVoteMax}
         />
-      </FilterGroup>
+      </Colapsible>
       <button className='py-1 px-5 w-full rounded whitespace-nowrap font-semibold bg-yellow-400 text-black' type='submit'>Buscar</button>
       <button className='py-1 px-5 w-full rounded whitespace-nowrap font-semibold bg-neutral-200 text-black' type='button' onClick={resetFilters}>Limpiar filtros</button>
     </form>
