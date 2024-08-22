@@ -3,6 +3,7 @@ import MainNavigation from '../layout/MainNavigation'
 import Footer from '../layout/Footer'
 import { setDocTitle } from '../utils/utility'
 import Main from '../components/PageUI/Main'
+import ProjectorImage from '../assets/projector.webp'
 
 const HTTP_ERRORS = {
   400: {
@@ -169,7 +170,6 @@ const HTTP_ERRORS = {
 
 export default function ErrorPage () {
   const error = useRouteError()
-  console.log(error)
 
   const navigate = useNavigate()
 
@@ -199,7 +199,7 @@ export default function ErrorPage () {
               <svg xmlns='http://www.w3.org/2000/svg' version='1.1' id='svg1' viewBox='-58.69 -58.88 118.09 117.62' className='w-full max-w-96 aspect-square mx-auto'>
                 <defs>
                   <pattern id='image' patternUnits='userSpaceOnUse' height='100%' width='100%' patternTransform='translate(-58.69, -58.88)'>
-                    <image x='0' y='0' height='100%' width='100%' xlinkHref='/src/assets/projector.webp' />
+                    <image x='0' y='0' height='100%' width='100%' xlinkHref={ProjectorImage} />
                   </pattern>
                 </defs>
                 <path id='path3' strokeWidth={0.025324} fill='url(#image)' d='m -43.759424,-38.872859 c 19.7014,-9.150288 23.09229,-20.882482 49.0001602,-19.204387 9.4242608,0.610425 19.9917498,-0.347635 28.7606018,-0.745976 34.71833,-1.577147 23.53412,42.163202 24.10611,52.1856906 2.80272,49.1103074 -4.34274,51.6213554 -16.87778,60.1864764 -11.02254,7.531643 -18.585562,5.873032 -50.1997353,1.261212 -19.4391487,-2.835749 -32.8808837,-5.530475 -38.4121657,-10.122505 -7.773628,-6.45361 -12.82593,-21.399911 -10.61119,-40.2911854 1.185151,-10.109096 -7.300245,-33.2677766 14.233999,-43.2693256 z' />
