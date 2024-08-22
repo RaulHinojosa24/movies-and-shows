@@ -1,6 +1,6 @@
 /* eslint-disable no-octal-escape */
 import { formatLongDate, formatRuntime } from '../../utils/utility'
-import DefaultLandscape from '../../assets/default-landscape.png'
+import DefaultLandscape from '../../assets/default-landscape.webp'
 import VoteCard from '../PageUI/VoteCard'
 import { useContext, useState } from 'react'
 import EpisodeCrewList from './EpisodeCrewList'

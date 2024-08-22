@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
-import DefaultPosterImage from '../../assets/default-poster.png'
-import DefaultProfileImage from '../../assets/default-user.png'
+import DefaultPosterImage from '../../assets/default-poster.webp'
+import DefaultProfileImage from '../../assets/default-user.webp'
 import VoteCard from '../PageUI/VoteCard'
 import { rootContext } from '../../context/root-context'
 

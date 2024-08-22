@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import DefaultProfileImage from '../../assets/default-user.png'
+import DefaultProfileImage from '../../assets/default-user.webp'
 import { useContext } from 'react'
 import { rootContext } from '../../context/root-context'
 

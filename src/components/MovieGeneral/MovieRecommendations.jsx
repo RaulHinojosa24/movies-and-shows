@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import Section from '../UI/Section'
 import VoteCard from '../PageUI/VoteCard'
-import DefaultLandscapeImage from '../../assets/default-landscape.png'
+import DefaultLandscapeImage from '../../assets/default-landscape.webp'
 import Slider from '../PageUI/Slider'
 import { useContext } from 'react'
 import { rootContext } from '../../context/root-context'

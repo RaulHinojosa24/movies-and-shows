@@ -1,6 +1,6 @@
 import { Await, Link, useRouteLoaderData } from 'react-router-dom'
 import PersonInfo from '../components/Person/PersonInfo'
-import DefaultProfile from '../assets/default-user.png'
+import DefaultProfile from '../assets/default-user.webp'
 import { setDocTitle } from '../utils/utility'
 import PersonBio from '../components/Person/PersonBio'
 import PersonCredits from '../components/Person/PersonCredits'

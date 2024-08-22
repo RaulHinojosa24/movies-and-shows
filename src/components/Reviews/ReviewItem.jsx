@@ -1,5 +1,5 @@
 import { formatLongDate } from '../../utils/utility'
-import DefaultUser from '../../assets/default-user.png'
+import DefaultUser from '../../assets/default-user.webp'
 import ClampedText from '../UI/ClampedText'
 import VoteCard from '../PageUI/VoteCard'
 import { useContext } from 'react'

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { formatLongDate } from '../../utils/utility'
-import DefaultPosterImage from '../../assets/default-poster.png'
+import DefaultPosterImage from '../../assets/default-poster.webp'
 import VoteCard from '../PageUI/VoteCard'
 import { useContext } from 'react'
 import { rootContext } from '../../context/root-context'

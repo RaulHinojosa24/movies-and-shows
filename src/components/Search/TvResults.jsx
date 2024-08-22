@@ -2,7 +2,7 @@ import { Await, Link, defer, useLoaderData, useRouteLoaderData } from 'react-rou
 import { getTvByQuery } from '../../utils/http'
 import { formatLongDate } from '../../utils/utility'
 import Pagination from './Pagination'
-import DefaultPosterImage from '../../assets/default-poster.png'
+import DefaultPosterImage from '../../assets/default-poster.webp'
 import { Suspense, useContext } from 'react'
 import SearchResultsSkeleton from '../Skeletons/SearchResultsSkeleton'
 import { rootContext } from '../../context/root-context'

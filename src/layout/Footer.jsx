@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import LogoBig from '../assets/logo_big.png'
+import LogoBig from '../assets/logo_big.webp'
 import GithubLogo from '../logos/GithubLogo'
 import LinkedinLogo from '../logos/LinkedinLogo'
 

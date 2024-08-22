@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import VoteCard from '../PageUI/VoteCard'
-import DefaultPoster from '../../assets/default-poster.png'
+import DefaultPoster from '../../assets/default-poster.webp'
 import { useContext } from 'react'
 import { rootContext } from '../../context/root-context'
 

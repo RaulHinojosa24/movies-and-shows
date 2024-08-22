@@ -1,7 +1,7 @@
 import { formatNumberSymbols, formatRuntime, generateVoteColor } from '../../utils/utility'
 import { useContext } from 'react'
 import { rootContext } from '../../context/root-context'
-import DefaultUserImage from '../../assets/default-user.png'
+import DefaultUserImage from '../../assets/default-user.webp'
 
 export default function ListHeader ({ averageRating, backdropPath, createdBy, description, itemCount, name, revenue, runtime }) {
   const { config } = useContext(rootContext)

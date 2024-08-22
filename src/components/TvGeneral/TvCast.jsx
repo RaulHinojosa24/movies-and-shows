@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import Section from '../UI/Section'
-import DefaultProfileImage from '../../assets/default-user.png'
+import DefaultProfileImage from '../../assets/default-user.webp'
 import Slider from '../PageUI/Slider'
 import { useContext } from 'react'
 import { rootContext } from '../../context/root-context'

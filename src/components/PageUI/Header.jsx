@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { formatShortDate, formatRuntime } from '../../utils/utility'
 import VoteCard from '../PageUI/VoteCard'
 
-import DefaultPosterImage from '../../assets/default-poster.png'
+import DefaultPosterImage from '../../assets/default-poster.webp'
 import WatchProviders from '../WatchProviders/WatchProviders'
 import HeaderMainCredits from '../PageUI/HeaderMainCredits'
 import useGenerateImageColors from '../../hooks/useGenerateImageColors'

@@ -1,7 +1,7 @@
 import { Await, Link, defer, useLoaderData, useRouteLoaderData } from 'react-router-dom'
 import { getPersonsByQuery } from '../../utils/http'
 import Pagination from './Pagination'
-import DefaultUserImage from '../../assets/default-user.png'
+import DefaultUserImage from '../../assets/default-user.webp'
 import { Suspense, useContext } from 'react'
 import SearchResultsSkeleton from '../Skeletons/SearchResultsSkeleton'
 import { rootContext } from '../../context/root-context'

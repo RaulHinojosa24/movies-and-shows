@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
-import DefaultUserImage from '../../assets/default-user.png'
-import DefaultPosterImage from '../../assets/default-poster.png'
+import DefaultUserImage from '../../assets/default-user.webp'
+import DefaultPosterImage from '../../assets/default-poster.webp'
 import useGenerateImageColors from '../../hooks/useGenerateImageColors'
 import { useContext } from 'react'
 import { rootContext } from '../../context/root-context'

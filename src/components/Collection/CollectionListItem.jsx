@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { formatLongDate } from '../../utils/utility'
-import DefaultPosterImg from '../../assets/default-poster.png'
+import DefaultPosterImg from '../../assets/default-poster.webp'
 import { useContext } from 'react'
 import { rootContext } from '../../context/root-context'
 

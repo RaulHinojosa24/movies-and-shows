@@ -1,4 +1,4 @@
-import DefaultPoster from '../../assets/default-poster.png'
+import DefaultPoster from '../../assets/default-poster.webp'
 import { formatLongDate, formatNumberSymbols, formatRuntime } from '../../utils/utility'
 import { Link } from 'react-router-dom'
 import VoteCard from '../PageUI/VoteCard'

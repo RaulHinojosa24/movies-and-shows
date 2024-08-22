@@ -1,5 +1,5 @@
 import { NavLink, useLocation } from 'react-router-dom'
-import logo from '../assets/logo.png'
+import logo from '../assets/logo.webp'
 import SearchBar from '../components/Search/SearchBar'
 import { useEffect, useState } from 'react'
 import NavbarIcon from '../icons/NavbarIcon'
