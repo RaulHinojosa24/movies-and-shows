@@ -29,6 +29,7 @@ import TvSeasonMediaPage from './pages/TvSeasonMedia'
 import TvMediaPage from './pages/TvMedia'
 import MovieDiscoverPage, { loader as movieDiscoverLoader } from './pages/MovieDiscover'
 import TvDiscoverPage, { loader as tvDiscoverLoader } from './pages/TvDiscover'
+import ErrorPage from './pages/ErrorPage'
 import AboutPage from './pages/About'
 import RootContextProvider from './context/root-context'
 
@@ -46,6 +47,7 @@ export default function App () {
       path: '/',
       id: 'root',
       element: <RootLayout />,
+      errorElement: <ErrorPage />,
       loader: rootLoader,
       children: [
         {
