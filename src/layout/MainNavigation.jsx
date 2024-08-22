@@ -42,34 +42,37 @@ export default function MainNavigation () {
 
   return (
     <>
-      <header className='text-white'>
+      <header className='sticky z-50 top-0 text-white'>
         <nav>
-          <div className='fixed top-0 w-full h-12 px-app-space py-2 z-50 bg-neutral-900 shadow-sm shadow-neutral-900 flex gap-4 items-center justify-between md:justify-start'>
-            <button className='h-3/4 shrink-0 md:hidden' onClick={toggleNavbarExpanded}>
+          <div className={`w-full h-12 px-app-space py-2 bg-neutral-900 shadow-sm shadow-neutral-900 flex gap-4 items-center justify-between ${isOpen ? '' : 'md:justify-start'}`}>
+            <button className={`h-3/4 shrink-0 ${isOpen ? '' : 'md:hidden'}`} onClick={toggleNavbarExpanded}>
               <NavbarIcon className='h-full' />
             </button>
             <NavLink to='/' className='h-full shrink-0'><img loading='lazy' src={logo} className='h-full rounded' alt='Movies and Shows logo. Yellow background with "M&S" written in black.' /></NavLink>
-            <ul className='hidden md:flex gap-4'>
+            <ul className={`${isOpen ? '' : 'md:flex'} hidden gap-4`}>
               {ROUTES.map(({ label, route }) =>
                 <li key={route}>
                   <NavLink to={route} className={desktopClasses}>{label}</NavLink>
                 </li>)}
             </ul>
-            <SearchBar compact className='md:ml-auto' />
-          </div>
-          <div className={'md:hidden fixed left-0 top-12 z-[45] w-full bg-neutral-800 max-h-[calc(100vh-3rem)] overflow-auto transition-all ' + (isOpen ? '' : '-translate-y-full')}>
-            <ul className='flex flex-col'>
-              {ROUTES.map(({ label, route }) =>
-                <li key={route}>
-                  <NavLink to={route} className={mobileClasses}>{label}</NavLink>
-                </li>)}
-            </ul>
+            <SearchBar compact className={isOpen ? '' : 'md:ml-auto'} />
           </div>
         </nav>
       </header>
 
       {createPortal(
-        <div className={'md:hidden block z-40 fixed left-0 top-0 right-0 bottom-0 bg-black/80 backdrop-blur-md transition-all ' + (isOpen ? 'opacity-100 visible' : 'opacity-0 invisible')} onClick={toggleNavbarExpanded} />,
+        <div className={'fixed left-0 top-12 z-[45] w-full bg-neutral-800 max-h-[calc(100vh-3rem)] overflow-auto transition-all ' + (isOpen ? '' : 'md:hidden -translate-y-full')}>
+          <ul className='flex flex-col'>
+            {ROUTES.map(({ label, route }) =>
+              <li key={route}>
+                <NavLink to={route} className={mobileClasses}>{label}</NavLink>
+              </li>)}
+          </ul>
+        </div>,
+        document.getElementById('overlay'))}
+
+      {createPortal(
+        <div className={'z-40 fixed left-0 top-0 right-0 bottom-0 bg-black/80 backdrop-blur-md transition-all ' + (isOpen ? 'opacity-100 visible' : 'md:hidden opacity-0 invisible')} onClick={toggleNavbarExpanded} />,
         document.getElementById('backdrop'))}
     </>
   )
