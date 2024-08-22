@@ -34,7 +34,7 @@ export default function Modal ({ className = '', children, onClose, crossInside,
             <button className='fixed top-[5vh] right-[5vh] h-6 aspect-square translate-x-1/2 -translate-y-1/2 z-[105]' onClick={onClose}>
               <CrossIcon />
             </button>}
-        </>, document.getElementById('modal'))}
+        </>, document.getElementById('overlay'))}
     </>
   )
 }
