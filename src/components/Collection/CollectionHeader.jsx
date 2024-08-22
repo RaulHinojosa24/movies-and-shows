@@ -31,6 +31,7 @@ export default function CollectionHeader () {
               title={name}
               genres={prettyGenres}
               overview={overview}
+              mediaType='movie'
             />
           )
         }}
