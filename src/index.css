@@ -37,13 +37,16 @@
     @apply dark:bg-neutral-700 bg-neutral-400;
   }
   .skeleton__text {
-    @apply skeleton rounded-lg h-4;
+    @apply skeleton h-4 rounded-lg;
+  }
+  .skeleton__subtitle {
+    @apply skeleton h-6 rounded-lg;
   }
   .skeleton__title {
-    @apply skeleton rounded-lg h-8;
+    @apply skeleton h-8 rounded-lg;
   }
   .skeleton__paragraph {
-    @apply skeleton rounded-lg h-12;
+    @apply skeleton h-12 rounded-lg;
   }
   .skeleton__bg {
     @apply dark:bg-neutral-900 bg-neutral-200;
@@ -112,6 +115,19 @@ swiper-slide {
     opacity: 1;
   }
 }
+
+.imageshadow {
+  -webkit-filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.5));
+   filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.5));
+}
+
+@media (prefers-color-scheme: dark) {
+  .imageshadow {
+    -webkit-filter: drop-shadow(2px 2px 0px rgba(255, 255, 255, 0.5));
+     filter: drop-shadow(2px 2px 0px rgba(255, 255, 255, 0.5));
+  }
+}
+
 
 input {
   accent-color: #facc15;
