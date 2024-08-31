@@ -1,6 +1,9 @@
 import Main from '../components/PageUI/Main'
+import { setDocTitle } from '../utils/utility'
 
 export default function AboutPage () {
+  setDocTitle('Sobre el proyecto')
+
   return (
     <Main
       center={

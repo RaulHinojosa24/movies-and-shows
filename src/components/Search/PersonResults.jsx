@@ -91,7 +91,7 @@ function PersonCard ({ id, name, originalName, profilePath, knownForDepartment, 
 function Fallback () {
   return (
     <div className='space-y-2'>
-      {Array(10).fill().map((_, i) => <SearchResultsSkeleton key={i} />)}
+      {Array(10).fill().map((_, i) => <SearchResultsSkeleton key={i} person />)}
     </div>
   )
 }

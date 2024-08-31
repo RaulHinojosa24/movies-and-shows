@@ -5,56 +5,44 @@ import Main from '../components/PageUI/Main'
 import { setDocTitle } from '../utils/utility'
 import GeneralMedia from '../components/Media/GeneralMedia'
 import { Suspense } from 'react'
+import CollectionHeader from '../components/Collection/CollectionHeader'
+import CollectionGeneralSkeleton from '../skeleton-pages/CollectionGeneralSkeleton'
 
 export default function CollectionGeneralPage () {
   const { data: loaderCollectionDetails } = useRouteLoaderData('collection-details')
+  setDocTitle('Cargando...')
 
   return (
-    <Main
-      center={
-        <Suspense fallback={<Fallback />}>
-          <Await resolve={loaderCollectionDetails}>
-            {({
-              name,
-              images: {
-                backdrops, posters
-              },
-              parts
-            }) => {
-              setDocTitle(name)
+    <Suspense fallback={<CollectionGeneralSkeleton />}>
+      <Await resolve={loaderCollectionDetails}>
+        {({
+          name,
+          images: {
+            backdrops, posters
+          },
+          parts,
+          overview,
+          poster_path: posterPath,
+          backdrop_path: backdropPath
+        }) => {
+          setDocTitle(name)
 
-              return (
-                <>
-                  <GeneralMedia backdrops={backdrops} posters={posters} title={name} pageType='colección' />
-                  <CollectionSummary parts={parts} />
-                  <CollectionList parts={parts} />
-                </>
-              )
-            }}
-          </Await>
-        </Suspense>
-
-    }
-    />
-  )
-}
-
-function Fallback () {
-  return (
-    <div className='space-y-8'>
-      <div className='skeleton rounded w-full h-40' />
-      <div className='flex justify-around items-center flex-wrap'>
-        {Array(3).fill().map((_, i) =>
-          <div key={i} className='skeleton aspect-square rounded w-28' />)}
-      </div>
-      <div className='flex rounded overflow-hidden skeleton__bg'>
-        <div className='aspect-[2/3] w-full max-w-24 skeleton' />
-        <div className='flex flex-col justify-around p-4 w-full'>
-          <div className='skeleton__title w-1/3' />
-          <div className='skeleton__text w-1/4' />
-          <div className='skeleton__paragraph w-full' />
-        </div>
-      </div>
-    </div>
+          return (
+            <>
+              <CollectionHeader parts={parts} backdropPath={backdropPath} posterPath={posterPath} name={name} overview={overview} />
+              <Main
+                center={
+                  <>
+                    <GeneralMedia backdrops={backdrops} posters={posters} title={name} pageType='colección' />
+                    <CollectionSummary parts={parts} />
+                    <CollectionList parts={parts} />
+                  </>
+                }
+              />
+            </>
+          )
+        }}
+      </Await>
+    </Suspense>
   )
 }

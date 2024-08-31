@@ -1,13 +1,15 @@
 export default function SeasonEpisodeSkeleton () {
   return (
-    <section className='flex sm:flex-row flex-col rounded overflow-hidden skeleton__bg'>
-      <div className='aspect-video object-cover sm:block hidden w-72 skeleton shrink-0' />
-      <div className='aspect-video object-cover sm:hidden block skeleton' />
-      <div className='p-4 content-center space-y-1 w-full'>
-        <div className='skeleton__title w-1/4' />
-        <div className='skeleton__text w-1/2' />
-        <div className='skeleton__paragraph w-full' />
+    <div className='skeleton__bg rounded-lg overflow-hidden'>
+      <div className='flex sm:flex-row flex-col'>
+        <div className='skeleton rounded-lg h-full aspect-video sm:max-w-72 w-full' />
+        <div className='flex flex-col justify-center gap-2 p-4 grow'>
+          <div className='skeleton__subtitle max-w-24' />
+          <div className='skeleton__text max-w-36' />
+          <div className='skeleton__paragraph w-full' />
+        </div>
       </div>
-    </section>
+      <div className='h-6 w-full' />
+    </div>
   )
 }

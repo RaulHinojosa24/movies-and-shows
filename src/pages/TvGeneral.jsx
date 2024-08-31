@@ -11,89 +11,97 @@ import TvLatestSeason from '../components/TvGeneral/TvLatestSeason'
 import { setDocTitle } from '../utils/utility'
 import GeneralMedia from '../components/Media/GeneralMedia'
 import { Suspense } from 'react'
-import GeneralAsideSkeleton from '../components/Skeletons/GeneralAsideSkeleton'
-import GeneralCenterSkeleton from '../components/Skeletons/GeneralCenterSkeleton'
-import SocialLinksSkeleton from '../components/Skeletons/SocialLinksSkeleton'
+import TvGeneralSkeleton from '../skeleton-pages/TvGeneralSkeleton'
+import TvHeader from '../components/TvGeneral/TvHeader'
 
 export default function TvGeneral () {
   const { data: loaderTvDetails } = useRouteLoaderData('tv-details')
+  setDocTitle('Cargando...')
 
   return (
-    <Suspense fallback={
-      <Main
-        left={<GeneralAsideSkeleton />}
-        center={<GeneralCenterSkeleton />}
-        right={<SocialLinksSkeleton />}
-      />
-}
-    >
+    <Suspense fallback={<TvGeneralSkeleton />}>
       <Await resolve={loaderTvDetails}>
-        {({
-          episode_run_time: episodeRunTime,
-          in_production: inProduction,
-          keywords,
-          overview,
-          networks,
-          original_language: originalLanguage,
-          original_name: originalName,
-          status,
-          type,
-          external_ids: externalIds,
-          homepage,
-          name,
-          images: {
-            backdrops, posters
-          },
-          videos: {
-            results: videos
-          },
-          id,
-          aggregate_credits: {
-            cast
-          },
-          seasons,
-          reviews: {
-            results: reviews
-          },
-          lists,
-          recommendations: {
-            results: recommendations
-          }
-        }) => {
+        {(data) => {
+          const {
+            episode_run_time: episodeRunTime,
+            in_production: inProduction,
+            keywords,
+            overview,
+            networks,
+            original_language: originalLanguage,
+            original_name: originalName,
+            status,
+            type,
+            external_ids: externalIds,
+            homepage,
+            name,
+            images: {
+              backdrops, posters
+            },
+            videos: {
+              results: videos
+            },
+            id,
+            aggregate_credits: {
+              cast
+            },
+            seasons,
+            reviews: {
+              results: reviews
+            },
+            lists,
+            recommendations: {
+              results: recommendations
+            },
+            backdrop_path: backdropPath,
+            content_ratings: contentRatings,
+            created_by: createdBy,
+            first_air_date: firstAirDate,
+            genres,
+            poster_path: posterPath,
+            tagline,
+            vote_average: voteAverage,
+            vote_count: voteCount,
+            'watch/providers': watchProviders
+          } = data
+
           const prettyName = name || originalName
           setDocTitle(prettyName)
 
           return (
-            <Main
-              left={
-                <TvDetails
-                  episodeRunTime={episodeRunTime}
-                  inProduction={inProduction}
-                  keywords={keywords}
-                  networks={networks}
-                  originalLanguage={originalLanguage}
-                  originalName={originalName}
-                  status={status}
-                  type={type}
-                />
+            <>
+              <TvHeader name={prettyName} contentRatings={contentRatings} createdBy={createdBy} genres={genres} backdropPath={backdropPath} posterPath={posterPath} firstAirDate={firstAirDate} tagline={tagline} voteAverage={voteAverage} voteCount={voteCount} watchProviders={watchProviders} />
+              <Main
+                left={
+                  <TvDetails
+                    episodeRunTime={episodeRunTime}
+                    inProduction={inProduction}
+                    keywords={keywords}
+                    networks={networks}
+                    originalLanguage={originalLanguage}
+                    originalName={originalName}
+                    status={status}
+                    type={type}
+                  />
               }
-              center={
-                <>
-                  <TvOverview overview={overview} />
-                  <GeneralMedia backdrops={backdrops} posters={posters} title={prettyName} videos={videos} pageType='serie de tv' />
-                  <TvCast id={id} cast={cast} />
-                  <TvLatestSeason tvId={id} seasons={seasons} />
-                  {reviews.length > 0 &&
-                    <TvReviews reviews={reviews} />}
-                  {lists.length > 0 &&
-                    <TvLists lists={lists} />}
-                  <TvRecommendations id={id} recommendations={recommendations} />
-                </>
+                center={
+                  <>
+                    <TvOverview overview={overview} />
+                    <GeneralMedia backdrops={backdrops} posters={posters} title={prettyName} videos={videos} pageType='serie de tv' />
+                    <TvCast id={id} cast={cast} />
+                    <TvLatestSeason tvId={id} seasons={seasons} />
+                    {reviews.length > 0 &&
+                      <TvReviews reviews={reviews} />}
+                    {lists.length > 0 &&
+                      <TvLists lists={lists} />}
+                    <TvRecommendations id={id} recommendations={recommendations} />
+                  </>
               }
-              right={
-                <SocialLinks externalIDs={externalIds} homepageLink={homepage} name={name || originalName} />
+                right={
+                  <SocialLinks externalIDs={externalIds} homepageLink={homepage} name={name || originalName} />
               }
-            />
+              />
+            </>
           )
         }}
       </Await>

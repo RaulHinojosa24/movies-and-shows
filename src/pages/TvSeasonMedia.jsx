@@ -4,10 +4,12 @@ import { setDocTitle } from '../utils/utility'
 import MediaPosters from '../components/Media/MediaPosters'
 import MediaVideos from '../components/Media/MediaVideos'
 import { Suspense, useEffect } from 'react'
+import TvSeasonMediaSkeleton from '../skeleton-pages/TvSeasonMediaSkeleton'
 
 export default function TvSeasonMediaPage () {
   const { data: loaderSeasonDetails } = useRouteLoaderData('season-details')
   const { data: loaderTvDetails } = useRouteLoaderData('tv-details')
+  setDocTitle('Cargando...')
 
   useEffect(() => {
     Promise.all([loaderTvDetails, loaderSeasonDetails]).then(data => {
@@ -20,27 +22,28 @@ export default function TvSeasonMediaPage () {
   }, [loaderSeasonDetails, loaderTvDetails])
 
   return (
-    <Main center={
-      <Suspense>
-        <Await resolve={loaderSeasonDetails}>
-          {({
-            name,
-            images: {
-              posters
-            },
-            videos: {
-              results: videos
+    <Suspense fallback={<TvSeasonMediaSkeleton />}>
+      <Await resolve={loaderSeasonDetails}>
+        {({
+          name,
+          images: {
+            posters
+          },
+          videos: {
+            results: videos
+          }
+        }) =>
+          <Main
+            center={
+              <>
+                {posters.length > 0 &&
+                  <MediaPosters images={posters} />}
+                {videos.length > 0 &&
+                  <MediaVideos videos={videos} />}
+              </>
             }
-          }) =>
-            <>
-              {posters.length > 0 &&
-                <MediaPosters images={posters} />}
-              {videos.length > 0 &&
-                <MediaVideos videos={videos} />}
-            </>}
-        </Await>
-      </Suspense>
-    }
-    />
+          />}
+      </Await>
+    </Suspense>
   )
 }

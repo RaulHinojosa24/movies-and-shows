@@ -9,7 +9,7 @@ export default function ListHeaderSkeleton () {
           <div className='skeleton__text w-full max-w-40' />
         </div>
       </div>
-      <div className='skeleton__bg md:flex md:justify-start grid grid-cols-2 px-app-space py-2 gap-x-8 gap-y-2'>
+      <div className='skeleton__bg md:flex md:justify-start grid grid-cols-2 px-app-space py-3 gap-x-8 gap-y-2'>
         <div className='skeleton__paragraph w-full max-w-40' />
         <div className='skeleton__paragraph w-full max-w-40' />
         <div className='skeleton__paragraph w-full max-w-40' />

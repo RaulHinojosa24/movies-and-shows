@@ -1,16 +1,18 @@
-import { Suspense, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Section from '../UI/Section'
-import { Await } from 'react-router-dom'
 import { getPopularMovies, getPopularPersons, getPopularTvs } from '../../utils/http'
 import Slider from '../PageUI/Slider'
 import PopularCard from './PopularCard'
 import useIntersectionObserver from '../../hooks/useIntersectionObserver'
+
+const EMPTY_RESULTS = Array(20).fill().map((_, i) => ({ id: i, fetching: true }))
 
 export default function Popular () {
   const [media, setMedia] = useState('movie')
   const [promise, setPromise] = useState(null)
   const sectionRef = useRef()
   const isVisible = useIntersectionObserver(sectionRef, '', true)
+  const [results, setResults] = useState(EMPTY_RESULTS)
 
   useEffect(() => {
     if (!isVisible) return
@@ -27,6 +29,14 @@ export default function Popular () {
     }
   }, [isVisible, media])
 
+  useEffect(() => {
+    if (!promise) return
+
+    setResults(EMPTY_RESULTS)
+    promise
+      .then(data => setResults(data.results.map(r => ({ ...r, mediaType: media }))))
+  }, [promise])
+
   return (
     <Section
       title={
@@ -40,23 +50,7 @@ export default function Popular () {
         </>
       } className='m-app-space' ref={sectionRef}
     >
-      {promise && isVisible &&
-        <Suspense fallback={<Fallback />}>
-          <Await resolve={promise}>
-            {({ results }) => {
-              const prettyResults = results.map(r => ({ ...r, media_type: media }))
-              return <Slider key={media} slides={prettyResults} SlideComponent={PopularCard} />
-            }}
-          </Await>
-        </Suspense>}
+      <Slider key={media} slides={results} SlideComponent={PopularCard} />
     </Section>
-  )
-}
-
-function Fallback () {
-  return (
-    <div className='w-full flex gap-8 mx-auto overflow-hidden justify-center'>
-      {Array(5).fill().map((_, i) => <div key={i} className='skeleton h-48 aspect-[21/9]' />)}
-    </div>
   )
 }

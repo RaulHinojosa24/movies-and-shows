@@ -1,16 +1,19 @@
-import { Await } from 'react-router-dom'
-import { Suspense, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Section from '../UI/Section'
 import Slider from '../PageUI/Slider'
 import TrendingCard from './TrendingCard'
 import useIntersectionObserver from '../../hooks/useIntersectionObserver'
 import { getTrendingAll } from '../../utils/http'
 
+const EMPTY_RESULTS = Array(20).fill().map((_, i) => ({ id: i, fetching: true }))
+
 export default function Trending () {
   const [timeWindow, setTimeWindow] = useState('day')
   const [promise, setPromise] = useState(null)
   const sectionRef = useRef()
   const isVisible = useIntersectionObserver(sectionRef, '', true)
+
+  const [results, setResults] = useState(EMPTY_RESULTS)
 
   useEffect(() => {
     if (!isVisible) return
@@ -24,6 +27,14 @@ export default function Trending () {
     }
   }, [isVisible, timeWindow])
 
+  useEffect(() => {
+    if (!promise) return
+
+    setResults(EMPTY_RESULTS)
+    promise
+      .then(data => setResults(data.results))
+  }, [promise])
+
   return (
     <Section
       title={
@@ -36,22 +47,7 @@ export default function Trending () {
         </>
     } className='m-app-space' ref={sectionRef}
     >
-      {promise && isVisible &&
-        <Suspense fallback={<Fallback />}>
-          <Await resolve={promise}>
-            {({ results }) => (
-              <Slider key={timeWindow} slides={results} SlideComponent={TrendingCard} />
-            )}
-          </Await>
-        </Suspense>}
+      <Slider key={timeWindow} slides={results} SlideComponent={TrendingCard} />
     </Section>
-  )
-}
-
-function Fallback () {
-  return (
-    <div className='w-full flex gap-8 mx-auto overflow-hidden justify-center'>
-      {Array(5).fill().map((_, i) => <div key={i} className='skeleton h-48 aspect-[21/9]' />)}
-    </div>
   )
 }

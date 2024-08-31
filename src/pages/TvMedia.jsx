@@ -5,42 +5,51 @@ import MediaBackdrops from '../components/Media/MediaBackdrops'
 import MediaPosters from '../components/Media/MediaPosters'
 import MediaVideos from '../components/Media/MediaVideos'
 import { Suspense } from 'react'
+import TvMediaSkeleton from '../skeleton-pages/TvMediaSkeleton'
+import TvHeaderCompact from '../components/TvGeneral/TvHeaderCompact'
 
 export default function TvMediaPage () {
   const { data: loaderTvDetails } = useRouteLoaderData('tv-details')
+  setDocTitle('Cargando...')
 
   return (
-    <Main
-      center={
-        <Suspense>
-          <Await resolve={loaderTvDetails}>
-            {({
-              name,
-              original_name: originalName,
-              images: {
-                backdrops,
-                posters
-              },
-              videos: {
-                results: videos
-              }
-            }) => {
-              setDocTitle(`${name || originalName} - Fotos y vídeos`)
+    <Suspense fallback={<TvMediaSkeleton />}>
+      <Await resolve={loaderTvDetails}>
+        {({
+          name,
+          original_name: originalName,
+          images: {
+            backdrops,
+            posters
+          },
+          videos: {
+            results: videos
+          },
+          id,
+          poster_path: posterPath
+        }) => {
+          const prettyName = name || originalName
+          setDocTitle(`${prettyName} - Fotos y vídeos`)
 
-              return (
-                <>
-                  {backdrops.length > 0 &&
-                    <MediaBackdrops images={backdrops} />}
-                  {posters.length > 0 &&
-                    <MediaPosters images={posters} />}
-                  {videos.length > 0 &&
-                    <MediaVideos videos={videos} />}
-                </>
-              )
-            }}
-          </Await>
-        </Suspense>
-      }
-    />
+          return (
+            <>
+              <TvHeaderCompact id={id} posterPath={posterPath} name={prettyName} />
+              <Main
+                center={
+                  <>
+                    {backdrops.length > 0 &&
+                      <MediaBackdrops images={backdrops} />}
+                    {posters.length > 0 &&
+                      <MediaPosters images={posters} />}
+                    {videos.length > 0 &&
+                      <MediaVideos videos={videos} />}
+                  </>
+                }
+              />
+            </>
+          )
+        }}
+      </Await>
+    </Suspense>
   )
 }

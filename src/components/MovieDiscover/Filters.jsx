@@ -86,7 +86,7 @@ export default function Filters () {
   const { movieGenres } = useContext(rootContext)
   const { watchProviders: loaderWatchProviders } = useLoaderData()
 
-  const [watchProvidersList, setWatchProvidersList] = useState([])
+  const [watchProvidersList, setWatchProvidersList] = useState(undefined)
   const [searchParams, setSearchParams] = useSearchParams()
   const sortBySP = searchParams.get('sort_by')
   const sortDirectionSP = searchParams.get('sort_direction')

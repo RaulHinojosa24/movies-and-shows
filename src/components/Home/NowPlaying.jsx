@@ -1,13 +1,14 @@
 import { Await, useLoaderData } from 'react-router-dom'
 import NowPlayingCard from './NowPlayingCard'
 import { Suspense } from 'react'
+import HomeNowPlayingSkeleton from '../Skeletons/HomeNowPlayingSkeleton'
 
 export default function NowPlaying () {
   const { nowPlaying } = useLoaderData()
 
   return (
     <section>
-      <Suspense fallback={<Fallback />}>
+      <Suspense fallback={<HomeNowPlayingSkeleton />}>
         <Await resolve={nowPlaying}>
           {(loadedNowPlaying) => (
             <swiper-container
@@ -33,13 +34,5 @@ export default function NowPlaying () {
         </Await>
       </Suspense>
     </section>
-  )
-}
-
-function Fallback () {
-  return (
-    <div className='w-full flex gap-8 mx-auto overflow-hidden justify-center'>
-      {Array(5).fill().map((_, i) => <div key={i} className='skeleton h-48 aspect-[21/9]' />)}
-    </div>
   )
 }

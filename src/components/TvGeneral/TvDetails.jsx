@@ -51,7 +51,7 @@ export default function TvDetails ({
                     {(!config || !net.logo_path) &&
                       <span className='underline'>{net.name}</span>}
                     {config && net.logo_path &&
-                      <img src={prettyPath} alt={net.name + ' logo'} className='bg-white p-1 h-8' loading='lazy' />}
+                      <img src={prettyPath} alt={net.name + ' logo'} className='h-8 imageshadow' loading='lazy' />}
                   </span>
                 </li>
               )

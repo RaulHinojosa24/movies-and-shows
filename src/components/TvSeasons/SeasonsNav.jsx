@@ -7,7 +7,7 @@ export default function SeasonsNav () {
   const { season: currentSeasonNumber, id: tvID } = useParams()
 
   return (
-    <Suspense>
+    <Suspense fallback={<Fallback />}>
       <Await resolve={loaderTvDetails}>
         {({ seasons }) => {
           const currentSeasonIndex = seasons.findIndex(s => String(s.season_number) === currentSeasonNumber)
@@ -32,5 +32,14 @@ export default function SeasonsNav () {
       </Await>
     </Suspense>
 
+  )
+}
+
+const Fallback = () => {
+  return (
+    <div className='flex py-2 px-4 justify-between'>
+      <div className='skeleton__subtitle w-24' />
+      <div className='skeleton__subtitle w-24' />
+    </div>
   )
 }

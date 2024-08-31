@@ -8,7 +8,7 @@ import Loading from '../components/UI/Loading'
 import useIntersectionObserver from '../hooks/useIntersectionObserver'
 import ListFilters from '../components/List/ListFilters'
 import { setDocTitle } from '../utils/utility'
-import ListHeaderSkeleton from '../components/Skeletons/ListHeaderSkeleton'
+import ListSkeleton from '../skeleton-pages/ListSkeleton'
 
 const dateSorting = (a, b) => (
   new Date(b.release_date || b.first_air_date) - (new Date(a.release_date || a.first_air_date)) ||
@@ -105,8 +105,10 @@ export default function ListPage () {
     ? 'grid grid-flow-row grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4'
     : 'md:table border-separate border-spacing-y-2 space-y-2'
 
+  setDocTitle('Cargando...')
+
   return (
-    <Suspense fallback={<Fallback />}>
+    <Suspense fallback={<ListSkeleton />}>
       <Await resolve={loaderData}>
         {({
           id,
@@ -122,6 +124,8 @@ export default function ListPage () {
           runtime
 
         }) => {
+          setDocTitle(`Lista: ${name}`)
+
           return (
             <>
               <ListHeader
@@ -188,27 +192,6 @@ export default function ListPage () {
       </Await>
     </Suspense>
 
-  )
-}
-
-function Fallback () {
-  return (
-    <>
-      <ListHeaderSkeleton />
-      <Main
-        center={
-          <>
-            <div className='skeleton__title w-full max-w-96 mx-auto' />
-            <div className='space-y-2'>
-              <div className='skeleton__paragraph rounded w-full' />
-              <div className='skeleton__paragraph rounded w-full' />
-              <div className='skeleton__paragraph rounded w-full' />
-              <div className='skeleton__paragraph rounded w-full' />
-            </div>
-          </>
-        }
-      />
-    </>
   )
 }
 

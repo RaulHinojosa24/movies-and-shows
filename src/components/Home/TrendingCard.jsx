@@ -50,7 +50,7 @@ export default function TrendingCard ({
         <>
           <div className='skeleton aspect-[2/3] shrink-0' />
           <div className='m-3 mb-4'>
-            <div className='skeleton__title w-full' />
+            <div className='skeleton__subtitle w-5/6' />
           </div>
         </>}
     </div>

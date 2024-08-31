@@ -6,6 +6,7 @@ import { setDocTitle } from '../utils/utility'
 import { Await, defer, useLoaderData } from 'react-router-dom'
 import { Suspense } from 'react'
 import Pagination from '../components/Search/Pagination'
+import DiscoverResultsSkeleton from '../skeleton-pages/DiscoverResultsSkeleton'
 
 export default function TvDiscoverPage () {
   const {
@@ -20,14 +21,19 @@ export default function TvDiscoverPage () {
         <Filters />
       }
       center={
-        <>
-          <Results />
-          <Suspense>
-            <Await resolve={loaderDiscoverTvs}>
-              {({ total_pages: totalPages }) => <Pagination totalPages={totalPages} />}
-            </Await>
-          </Suspense>
-        </>
+        <Suspense fallback={<DiscoverResultsSkeleton />}>
+          <Await resolve={loaderDiscoverTvs}>
+            {({
+              total_pages: totalPages,
+              results
+            }) => (
+              <>
+                <Results results={results} />
+                <Pagination totalPages={totalPages} />
+              </>
+            )}
+          </Await>
+        </Suspense>
       }
     />
   )

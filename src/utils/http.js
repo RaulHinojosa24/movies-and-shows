@@ -1,8 +1,6 @@
-import { json } from 'react-router-dom'
-
 const language = 'es-ES'
 const region = 'ES'
-const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
+// const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
 
 // const API_URL = 'http://localhost:3000'
 const API_URL = 'https://movies-and-shows-backend.vercel.app'
@@ -11,15 +9,26 @@ const POST_OPTIONS = {
   method: 'POST'
 }
 
-async function sendRequest (url, options, time = 0) {
-  return new Promise(resolve => setTimeout(resolve, time)).then(async () => {
-    const response = await fetch(url, options)
+async function sendRequest (url, delay) {
+  return new Promise(resolve => setTimeout(resolve, delay)).then(async () => {
+    try {
+      const response = await fetch(url)
 
-    if (!response.ok) {
-      throw new Response(JSON.stringify({ message: 'Algo no ha salido bien.' }), { status: response.status })
-    } else {
+      if (!response.ok) {
+        const error = new Error('Network response was not ok')
+        error.status = response.status
+        error.statusText = response.statusText
+        throw error
+      }
+
       const data = await response.json()
-      return data
+
+      return data !== undefined ? data : null
+    } catch (error) {
+      if (!error.status) {
+        error.status = 500 // Default to 500 if no status is provided
+      }
+      throw error
     }
   })
 }
@@ -76,25 +85,7 @@ export function getTvDetails (id) {
 }
 
 export async function getListDetails (id, page = 1) {
-  const response = await fetch(`${API_URL}/4/list/${id}?language=${language}&page=${page}`)
-
-  if (!response.ok) {
-    return json(
-      { message: 'Something went wrong.' },
-      { status: response.status }
-    )
-  } else {
-    const data = await response.json()
-
-    if (!data.public) {
-      throw json(
-        { message: 'Parece que la lista a la que intentas acceder es privada.' },
-        { status: 401 }
-      )
-    } else {
-      return data
-    }
-  }
+  return sendRequest(`${API_URL}/4/list/${id}?language=${language}&page=${page}`)
 }
 
 export function getMoviesByQuery (query, page = 1) {
@@ -225,13 +216,13 @@ export function getTrendingAll (timeWindow = 'day', page = 1) {
 }
 
 export function getPopularMovies () {
-  return sendRequest(`${API_URL}/3/movie/popular?language=${language}page=1&region=${region}`)
+  return sendRequest(`${API_URL}/3/movie/popular?language=${language}&page=1&region=${region}`)
 }
 
 export function getPopularTvs () {
-  return sendRequest(`${API_URL}/3/tv/popular?language=${language}page=1`)
+  return sendRequest(`${API_URL}/3/tv/popular?language=${language}&page=1`)
 }
 
 export function getPopularPersons () {
-  return sendRequest(`${API_URL}/3/person/popular?language=${language}page=1`)
+  return sendRequest(`${API_URL}/3/person/popular?language=${language}&page=1`)
 }

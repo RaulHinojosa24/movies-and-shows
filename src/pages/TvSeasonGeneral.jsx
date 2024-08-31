@@ -4,11 +4,12 @@ import EpisodeList from '../components/TvSeasons/EpisodeList'
 import { setDocTitle } from '../utils/utility'
 import GeneralMedia from '../components/Media/GeneralMedia'
 import { Suspense, useEffect } from 'react'
-import SeasonEpisodeSkeleton from '../components/Skeletons/SeasonEpisodeSkeleton'
+import TvSeasonGeneralSkeleton from '../skeleton-pages/TvSeasonGeneralSkeleton'
 
 export default function TvSeasonGeneralPage () {
   const { data: loaderTvDetails } = useRouteLoaderData('tv-details')
   const { data: loaderSeasonDetails } = useRouteLoaderData('season-details')
+  setDocTitle('Cargando...')
 
   useEffect(() => {
     Promise.all([loaderTvDetails, loaderSeasonDetails]).then(data => {
@@ -21,38 +22,27 @@ export default function TvSeasonGeneralPage () {
   }, [loaderSeasonDetails, loaderTvDetails])
 
   return (
-    <Main
-      center={
-        <Suspense fallback={<Fallback />}>
-          <Await resolve={loaderSeasonDetails}>
-            {({
-              images: { posters },
-              videos: { results },
-              episodes,
-              tvName,
-              orinigal_name: tvOriginalName
-            }) =>
-              <>
-                <GeneralMedia posters={posters} videos={results} pageType='temporada' title={name} />
-                <EpisodeList episodes={episodes} tvName={tvName} tvOriginalName={tvOriginalName} />
-              </>}
-          </Await>
-        </Suspense>
-      }
-    />
-  )
-}
+    <Suspense fallback={<TvSeasonGeneralSkeleton />}>
+      <Await resolve={loaderSeasonDetails}>
+        {({
+          images: { posters },
+          videos: { results },
+          episodes,
+          name,
+          orinigal_name: originalName
+        }) =>
+          <>
+            <Main
+              center={
+                <>
+                  <GeneralMedia posters={posters} videos={results} pageType='temporada' title={name || originalName} />
+                  <EpisodeList episodes={episodes} tvName={name} tvOriginalName={originalName} />
+                </>
+            }
+            />
+          </>}
+      </Await>
+    </Suspense>
 
-function Fallback () {
-  return (
-    <>
-      <div className='skeleton h-44 w-full rounded' />
-      <div>
-        <div className='skeleton__title w-1/5 mb-4' />
-        <div className='space-y-2'>
-          {Array(3).fill().map((_, i) => <SeasonEpisodeSkeleton key={i} />)}
-        </div>
-      </div>
-    </>
   )
 }

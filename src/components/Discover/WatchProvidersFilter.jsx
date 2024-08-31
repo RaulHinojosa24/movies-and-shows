@@ -17,8 +17,8 @@ export default function WatchProvidersFilter ({ watchProvidersList, watchProvide
 
   return (
     <FilterItem title='Proveedores'>
-      {!config && 'Cargando proveedores...'}
-      {config &&
+      {!watchProvidersList && 'Cargando proveedores...'}
+      {watchProvidersList && config &&
         <ol className='flex flex-wrap gap-3 justify-between'>
           {watchProvidersList.map(({
             logo_path: logoPath,
@@ -35,6 +35,23 @@ export default function WatchProvidersFilter ({ watchProvidersList, watchProvide
                   <div className='absolute grid place-content-center bg- bg-yellow-400/70 rounded top-0 left-0 bottom-0 right-0 text-4xl font-bold text-black'>
                     <CheckIcon />
                   </div>}
+              </li>
+            )
+          })}
+        </ol>}
+      {watchProvidersList && !config &&
+        <ol>
+          {watchProvidersList.map(({
+            provider_name: providerName,
+            provider_id: providerId
+          }) => {
+            const selected = watchProviders.includes(providerId)
+
+            return (
+              <li key={providerId}>
+                <label htmlFor={providerId} className={selected ? 'underline underline-offset-4' : ''}>
+                  <input type='checkbox' onChange={() => toggleWatchProvider(providerId)} name={providerId} id={providerId} checked={selected} /> {providerName}
+                </label>
               </li>
             )
           })}
