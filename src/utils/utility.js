@@ -26,15 +26,19 @@ export function calculateImageSize (sizes, width, ratio) {
 }
 
 export function formatShortDate (date) {
-  return new Date(date).toLocaleDateString('es-ES')
+  return date
+    ? new Date(date).toLocaleDateString('es-ES')
+    : ''
 }
 
 export function formatLongDate (date) {
-  return new Date(date).toLocaleDateString('es-ES', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric'
-  })
+  return date
+    ? new Date(date).toLocaleDateString('es-ES', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    })
+    : ''
 }
 
 export function formatCurrency (amount) {
