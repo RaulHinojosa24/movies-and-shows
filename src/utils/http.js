@@ -108,7 +108,7 @@ export function getTvByQuery (query, page = 1) {
   return sendRequest(seriesUrl.href)
 }
 
-export function getPersonsByQuery (query, page = 1) {
+export function getPeopleByQuery (query, page = 1) {
   const personUrl = new URL(API_URL + '/3/search/person')
   personUrl.searchParams.append('query', query)
   personUrl.searchParams.append('language', language)

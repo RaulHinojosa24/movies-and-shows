@@ -1,6 +1,6 @@
 import { Await, NavLink, Outlet, defer, useLoaderData, useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 import Main from '../components/PageUI/Main'
-import { getMoviesByQuery, getPersonsByQuery, getTvByQuery } from '../utils/http'
+import { getMoviesByQuery, getPeopleByQuery, getTvByQuery } from '../utils/http'
 import { Suspense, useEffect } from 'react'
 import SearchBar from '../components/Search/SearchBar'
 import { setDocTitle } from '../utils/utility'
@@ -99,6 +99,6 @@ export async function loader ({ request, params }) {
   return defer({
     movies: getMoviesByQuery(query),
     tvs: getTvByQuery(query),
-    persons: getPersonsByQuery(query)
+    persons: getPeopleByQuery(query)
   })
 }

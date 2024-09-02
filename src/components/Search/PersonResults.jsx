@@ -1,5 +1,5 @@
 import { Await, Link, defer, useLoaderData, useRouteLoaderData } from 'react-router-dom'
-import { getPersonsByQuery } from '../../utils/http'
+import { getPeopleByQuery } from '../../utils/http'
 import Pagination from './Pagination'
 import DefaultUserImage from '../../assets/default-user.webp'
 import { Suspense, useContext } from 'react'
@@ -102,7 +102,7 @@ export async function loader ({ request, params }) {
   const page = Number(url.searchParams.get('page') || '')
 
   if (query && Boolean(page) && page > 1) {
-    return defer({ data: getPersonsByQuery(query, page) })
+    return defer({ data: getPeopleByQuery(query, page) })
   }
 
   return { data: null }
