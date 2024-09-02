@@ -8,7 +8,7 @@ import { rootContext } from '../../context/root-context'
 export default function ResultItem ({ id, originalName, posterPath, firstAirDate, name, voteAverage, voteCount, overview }) {
   const { config } = useContext(rootContext)
 
-  const prettyPosterPath = config
+  const prettyPosterPath = config && posterPath
     ? config?.images?.secure_base_url + config?.images?.poster_sizes[2] + posterPath
     : DefaultPoster
   const prettyName = name || originalName
