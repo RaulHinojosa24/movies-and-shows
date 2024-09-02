@@ -223,6 +223,6 @@ export function getPopularTvs () {
   return sendRequest(`${API_URL}/3/tv/popular?language=${language}&page=1`)
 }
 
-export function getPopularPersons () {
+export function getPopularPeople () {
   return sendRequest(`${API_URL}/3/person/popular?language=${language}&page=1`)
 }

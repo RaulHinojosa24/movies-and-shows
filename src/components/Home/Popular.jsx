@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import Section from '../UI/Section'
-import { getPopularMovies, getPopularPersons, getPopularTvs } from '../../utils/http'
+import { getPopularMovies, getPopularPeople, getPopularTvs } from '../../utils/http'
 import Slider from '../PageUI/Slider'
 import PopularCard from './PopularCard'
 import useIntersectionObserver from '../../hooks/useIntersectionObserver'
@@ -24,7 +24,7 @@ export default function Popular () {
         setPromise(getPopularTvs())
         break
       case 'person':
-        setPromise(getPopularPersons())
+        setPromise(getPopularPeople())
         break
     }
   }, [isVisible, media])
