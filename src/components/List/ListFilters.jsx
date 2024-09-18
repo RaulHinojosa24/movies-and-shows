@@ -24,7 +24,7 @@ export default function ListFilters ({
           ? <SortAscIcon />
           : <SortDescIcon />}
       </button>
-      <Select label='Ordenar por' options={sortByProps} onChange={(event) => setSortValue(event.target.value)} />
+      <Select compact label='Ordenar por' options={sortByProps} onChange={(event) => setSortValue(event.target.value)} />
       <button
         onClick={() => setPosterMode(p => !p)}
         className='rounded custom-shadow-small flex items-center gap-2 py-1 px-3'
