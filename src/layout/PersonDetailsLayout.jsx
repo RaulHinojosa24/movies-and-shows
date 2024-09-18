@@ -7,8 +7,8 @@ export default function PersonDetailsLayout () {
   )
 }
 
-export async function loader ({ params }) {
+export async function loader ({ params, language }) {
   const { id } = params
 
-  return defer({ data: getPersonDetails(id) })
+  return defer({ data: getPersonDetails({ id, language }) })
 }

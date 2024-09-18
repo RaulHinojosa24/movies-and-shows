@@ -91,13 +91,13 @@ function Fallback () {
   )
 }
 
-export async function loader ({ request, params }) {
+export async function loader ({ request, params, language, allowAdultContent }) {
   const url = new URL(request.url)
   const query = url.searchParams.get('query') || ''
   const page = Number(url.searchParams.get('page') || '')
 
   if (query && Boolean(page) && page > 1) {
-    return defer({ data: getMoviesByQuery(query, page) })
+    return defer({ data: getMoviesByQuery({ query, page, language, allowAdultContent }) })
   }
 
   return { data: null }

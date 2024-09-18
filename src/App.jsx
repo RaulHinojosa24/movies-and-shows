@@ -10,7 +10,7 @@ import MovieDetailsPage from './pages/MovieGeneral'
 import MovieCastPage from './pages/MovieCast'
 import MovieMediaPage from './pages/MovieMedia'
 import CollectionGeneralPage from './pages/CollectionGeneral'
-import { useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import CollectionMediaPage from './pages/CollectionMedia'
 import PersonGeneralPage from './pages/PersonGeneral'
 import PersonMediaPage from './pages/PersonMedia'
@@ -32,6 +32,7 @@ import TvDiscoverPage, { loader as tvDiscoverLoader } from './pages/TvDiscover'
 import ErrorPage from './pages/ErrorPage'
 import AboutPage from './pages/About'
 import RootContextProvider from './context/root-context'
+import SettingsContextProvider, { settingsContext } from './context/settings-context'
 
 export default function App () {
   useEffect(() => {
@@ -42,18 +43,36 @@ export default function App () {
     }
   }, [])
 
+  return (
+    <RootContextProvider>
+      <SettingsContextProvider>
+        <RouterSetup />
+      </SettingsContextProvider>
+    </RootContextProvider>
+  )
+}
+
+function RouterSetup () {
+  const { language, country, allowAdultContent, isSettingsContextLoaded } = useContext(settingsContext)
+  const appLanguage = `${language.iso_639_1}-${country.iso_3166_1}`
+  const region = country.iso_3166_1
+
+  if (!isSettingsContextLoaded) {
+    return
+  }
+
   const router = createBrowserRouter([
     {
       path: '/',
       id: 'root',
       element: <RootLayout />,
       errorElement: <ErrorPage />,
-      loader: rootLoader,
+      loader: (args) => rootLoader({ ...args, language: appLanguage }),
       children: [
         {
           index: true,
           element: <HomePage />,
-          loader: homeLoader
+          loader: (args) => homeLoader({ ...args, language: appLanguage, region })
         },
         {
           path: 'about',
@@ -68,18 +87,18 @@ export default function App () {
         {
           path: 'movie',
           element: <MovieDiscoverPage />,
-          loader: movieDiscoverLoader
+          loader: (args) => movieDiscoverLoader({ ...args, language: appLanguage, region, allowAdultContent })
         },
         {
           path: 'tv',
           element: <TvDiscoverPage />,
-          loader: tvDiscoverLoader
+          loader: (args) => tvDiscoverLoader({ ...args, language: appLanguage, region, allowAdultContent })
         },
         {
           path: 'movie/:id',
           id: 'movie-details',
           element: <MovieDetailsLayout />,
-          loader: movieDetailsLoader,
+          loader: (args) => movieDetailsLoader({ ...args, language: appLanguage }),
           children: [
             {
               index: true,
@@ -99,7 +118,7 @@ export default function App () {
           path: 'collection/:id',
           id: 'collection-details',
           element: <CollectionDetailsLayout />,
-          loader: collectionDetailsLoader,
+          loader: (args) => collectionDetailsLoader({ ...args, language: appLanguage }),
           children: [
             {
               index: true,
@@ -115,7 +134,7 @@ export default function App () {
           path: 'person/:id',
           id: 'person-details',
           element: <PersonDetailsLayout />,
-          loader: personDetailsLoader,
+          loader: (args) => personDetailsLoader({ ...args, language: appLanguage }),
           children: [
             {
               index: true,
@@ -131,7 +150,7 @@ export default function App () {
           path: 'tv/:id',
           id: 'tv-details',
           element: <TvDetailsLayout />,
-          loader: tvDetailsLoader,
+          loader: (args) => tvDetailsLoader({ ...args, language: appLanguage }),
           children: [
             {
               index: true,
@@ -153,7 +172,7 @@ export default function App () {
               path: 'season/:season',
               id: 'season-details',
               element: <TvSeasonDetailsLayout />,
-              loader: tvSeasonGeneralLoader,
+              loader: (args) => tvSeasonGeneralLoader({ ...args, language: appLanguage }),
               children: [
                 {
                   index: true,
@@ -170,32 +189,28 @@ export default function App () {
         {
           path: 'list/:id',
           element: <ListPage />,
-          loader: listLoader
+          loader: (args) => listLoader({ ...args, language: appLanguage })
         },
         {
           path: 'search',
           id: 'search',
           element: <SearchLayout />,
-          loader: searchLoader,
+          loader: (args) => searchLoader({ ...args, language: appLanguage, allowAdultContent }),
           children: [
             {
               path: 'movie',
               element: <MovieResults />,
-              loader: movieResultsLoader
+              loader: (args) => movieResultsLoader({ ...args, language: appLanguage, allowAdultContent })
             },
             {
               path: 'tv',
               element: <TvResults />,
-              loader: tvResultsLoader
+              loader: (args) => tvResultsLoader({ ...args, language: appLanguage, allowAdultContent })
             },
             {
               path: 'person',
               element: <PersonResults />,
-              loader: personResultsLoader
-            },
-            {
-              path: '*',
-              element: <>Hah</>
+              loader: (args) => personResultsLoader({ ...args, language: appLanguage, allowAdultContent })
             }
           ]
         }
@@ -203,9 +218,5 @@ export default function App () {
     }
   ])
 
-  return (
-    <RootContextProvider>
-      <RouterProvider router={router}>Movies & Shows</RouterProvider>
-    </RootContextProvider>
-  )
+  return <RouterProvider router={router}>Movies & Shows</RouterProvider>
 }

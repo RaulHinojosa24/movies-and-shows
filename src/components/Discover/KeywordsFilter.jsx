@@ -18,7 +18,7 @@ export default function KeywordsFilter ({ keywords, setKeywords }) {
     const timeout = setTimeout(async () => {
       setResultIndex(0)
 
-      getKeywordsByQuery(userInput.trim())
+      getKeywordsByQuery({ query: userInput.trim() })
         .then(response => {
           if (!response.ok) {
             throw new Error('Network response was not ok')

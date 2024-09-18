@@ -90,15 +90,15 @@ function Badge ({ children }) {
   return <span className='dark:bg-neutral-700 bg-neutral-300 px-2 rounded text-sm font-normal'>{children}</span>
 }
 
-export async function loader ({ request, params }) {
+export async function loader ({ request, params, language, allowAdultContent }) {
   const url = new URL(request.url)
   const query = url.searchParams.get('query') || ''
 
   if (!query.trim()) return null
 
   return defer({
-    movies: getMoviesByQuery(query),
-    tvs: getTvByQuery(query),
-    persons: getPeopleByQuery(query)
+    movies: getMoviesByQuery({ query, language, allowAdultContent }),
+    tvs: getTvByQuery({ query, language, allowAdultContent }),
+    persons: getPeopleByQuery({ query, language, allowAdultContent })
   })
 }
