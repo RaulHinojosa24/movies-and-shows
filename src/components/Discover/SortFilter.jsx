@@ -7,6 +7,7 @@ export default function SortFilter ({ sortBy, setSortBy, sortDirection, setSortD
   return (
     <FilterItem title='Ordenar por' className='flex justify-between gap-2'>
       <Select
+        compact
         name='sort-by'
         onChange={(e) => setSortBy(e.target.value)}
         value={sortBy}
