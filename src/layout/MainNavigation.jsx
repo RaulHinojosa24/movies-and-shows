@@ -4,6 +4,7 @@ import SearchBar from '../components/Search/SearchBar'
 import { useEffect, useState } from 'react'
 import NavbarIcon from '../icons/NavbarIcon'
 import { createPortal } from 'react-dom'
+import Settings from '../components/AppSettings/Settings'
 
 const desktopClasses = ({ isActive }) => 'no-underline ' + (isActive ? 'font-bold' : '')
 const mobileClasses = ({ isActive }) => 'w-full py-2 px-4 hover:bg-neutral-700 focus:bg-neutral-700 transition-all inline-block no-underline ' + (isActive ? 'font-bold' : '')
@@ -48,7 +49,7 @@ export default function MainNavigation () {
             <button className={`h-3/4 shrink-0 ${isOpen ? '' : 'md:hidden'}`} onClick={toggleNavbarExpanded}>
               <NavbarIcon className='h-full' />
             </button>
-            <NavLink to='/' className='h-full shrink-0'><img loading='lazy' src={logo} className='h-full rounded' alt='Movies and Shows logo. Yellow background with "M&S" written in black.' /></NavLink>
+            <NavLink to='/' className='h-full shrink-0 mx-auto md:m-0'><img loading='lazy' src={logo} className='h-full rounded' alt='Movies and Shows logo. Yellow background with "M&S" written in black.' /></NavLink>
             <ul className={`${isOpen ? '' : 'md:flex'} hidden gap-4`}>
               {ROUTES.map(({ label, route }) =>
                 <li key={route}>
@@ -56,6 +57,7 @@ export default function MainNavigation () {
                 </li>)}
             </ul>
             <SearchBar compact className={isOpen ? '' : 'md:ml-auto'} />
+            <Settings />
           </div>
         </nav>
       </header>

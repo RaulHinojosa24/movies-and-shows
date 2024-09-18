@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 import { useLoaderData, useSearchParams } from 'react-router-dom'
 import SortFilter from '../Discover/SortFilter'
-import AdultFilter from '../Discover/AdultFilter'
 import AvailabilityFilter from '../Discover/AvailabilityFilter'
 import DatesFilter from '../Discover/DatesFilter'
 import GenresFilter from '../Discover/GenresFilter'
@@ -44,7 +43,6 @@ const VALID_SORT_BY = [
   }
 ]
 const VALID_SORT_DIRECTION = ['desc', 'asc']
-const VALID_INCLUDE_ADULT = [false, true]
 const VALID_WATCH_TYPES = [
   {
     label: 'Streaming',
@@ -90,7 +88,6 @@ export default function Filters () {
   const [searchParams, setSearchParams] = useSearchParams()
   const sortBySP = searchParams.get('sort_by')
   const sortDirectionSP = searchParams.get('sort_direction')
-  const includeAdultSP = searchParams.get('include_adult') === 'true'
   const watchTypesSP = searchParams.get('watch_types')
     ? searchParams.get('watch_types').split('|').filter(i => VALID_WATCH_TYPES.some(wt => wt.value === i))
     : null
@@ -107,7 +104,6 @@ export default function Filters () {
 
   const [sortBy, setSortBy] = useState(VALID_SORT_BY.some(sb => sb.value === sortBySP) ? sortBySP : VALID_SORT_BY[0].value)
   const [sortDirection, setSortDirection] = useState(VALID_SORT_DIRECTION.includes(sortDirectionSP) ? sortDirectionSP : 'desc')
-  const [includeAdult, setIncludeAdult] = useState(VALID_INCLUDE_ADULT.includes(includeAdultSP) ? includeAdultSP : false)
   const [watchTypes, setWatchTypes] = useState(watchTypesSP || VALID_WATCH_TYPES.map(wt => wt.value))
   const [voteCount, setVoteCount] = useState(voteCountSP && voteCountSP >= VOTE_COUNT_RANGE[0] && voteCountSP <= VOTE_COUNT_RANGE[1]
     ? voteCountSP
@@ -139,7 +135,6 @@ export default function Filters () {
 
     const newSearchParams = {}
 
-    if (includeAdult !== false) newSearchParams.include_adult = includeAdult
     if (sortBy !== VALID_SORT_BY[0].value) newSearchParams.sort_by = sortBy
     if (sortDirection !== 'desc') newSearchParams.sort_direction = sortDirection
     if (watchTypes.length > 0 && watchTypes.length < VALID_WATCH_TYPES.length) newSearchParams.watch_types = watchTypes.join('|')
@@ -160,7 +155,6 @@ export default function Filters () {
   const resetFilters = () => {
     setSortBy(VALID_SORT_BY[0].value)
     setSortDirection('desc')
-    setIncludeAdult(false)
     setWatchTypes(VALID_WATCH_TYPES.map(wt => wt.value))
     setVoteCount(VOTE_COUNT_RANGE[0])
     setVoteMin(VOTE_AVERAGE_RANGE[0])
@@ -183,10 +177,6 @@ export default function Filters () {
           options={VALID_SORT_BY}
           sortBy={sortBy} setSortBy={setSortBy}
           sortDirection={sortDirection} setSortDirection={setSortDirection}
-        />
-        <AdultFilter
-          includeAdult={includeAdult}
-          setIncludeAdult={setIncludeAdult}
         />
       </Colapsible>
       <Colapsible title='Dónde ver'>

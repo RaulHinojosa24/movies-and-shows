@@ -8,8 +8,8 @@ export default function CollectionDetailsLayout () {
     </section>
   )
 }
-export async function loader ({ request, params }) {
+export async function loader ({ request, params, language }) {
   const { id } = params
 
-  return defer({ data: getCollectionDetails(id) })
+  return defer({ data: getCollectionDetails({ id, language }) })
 }

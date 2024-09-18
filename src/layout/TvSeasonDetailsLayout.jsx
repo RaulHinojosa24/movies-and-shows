@@ -13,8 +13,8 @@ export default function TvSeasonDetailsLayout () {
   )
 }
 
-export async function loader ({ request, params }) {
+export async function loader ({ request, params, language }) {
   const { id, season } = params
 
-  return defer({ data: getTvSeasonDetails(id, season) })
+  return defer({ data: getTvSeasonDetails({ tv: id, season, language }) })
 }

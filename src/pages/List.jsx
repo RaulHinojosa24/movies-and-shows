@@ -1,4 +1,4 @@
-import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { Suspense, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import ListElement from '../components/List/ListElement'
 import ListHeader from '../components/List/ListHeader'
 import Main from '../components/PageUI/Main'
@@ -9,6 +9,7 @@ import useIntersectionObserver from '../hooks/useIntersectionObserver'
 import ListFilters from '../components/List/ListFilters'
 import { setDocTitle } from '../utils/utility'
 import ListSkeleton from '../skeleton-pages/ListSkeleton'
+import { settingsContext } from '../context/settings-context'
 
 const dateSorting = (a, b) => (
   new Date(b.release_date || b.first_air_date) - (new Date(a.release_date || a.first_air_date)) ||
@@ -39,6 +40,9 @@ export default function ListPage () {
   const { data: loaderData } = useLoaderData()
   const [listElements, setListElements] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
+
+  const { language, country } = useContext(settingsContext)
+  const appLanguage = `${language.iso_639_1}-${country.iso_3166_1}`
 
   useEffect(() => {
     loaderData.then(({
@@ -88,7 +92,7 @@ export default function ListPage () {
 
   const fetchNewPage = useCallback(async (id) => {
     setIsLoading(true)
-    const data = await getListDetails(id, currentPage + 1)
+    const data = await getListDetails({ id, page: currentPage + 1, language: appLanguage })
 
     setCurrentPage(prev => prev + 1)
     setListElements(prev => [...prev, ...data.results])
@@ -195,8 +199,8 @@ export default function ListPage () {
   )
 }
 
-export async function loader ({ request, params }) {
+export async function loader ({ request, params, language }) {
   const { id } = params
 
-  return defer({ data: getListDetails(id) })
+  return defer({ data: getListDetails({ id, language }) })
 }

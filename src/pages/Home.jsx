@@ -17,8 +17,8 @@ export default function HomePage () {
   )
 }
 
-export async function loader () {
+export async function loader ({ language, region }) {
   return defer({
-    nowPlaying: getNowPlayingMovies()
+    nowPlaying: getNowPlayingMovies({ language, region })
   })
 }

@@ -35,10 +35,10 @@ export default function RootLayout () {
   )
 }
 
-export async function loader () {
+export async function loader ({ language }) {
   return defer({
     config: getAPIConfiguration(),
-    movieGenres: getMovieGenres(),
-    tvGenres: getTvGenres()
+    movieGenres: getMovieGenres({ language }),
+    tvGenres: getTvGenres({ language })
   })
 }

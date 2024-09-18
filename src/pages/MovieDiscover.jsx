@@ -39,28 +39,30 @@ export default function MovieDiscoverPage () {
   )
 }
 
-export async function loader ({ request, params }) {
-  const sortBy = new URL(request.url).searchParams.get('sort_by')
-  const sortDirection = new URL(request.url).searchParams.get('sort_direction')
-  const includeAdult = new URL(request.url).searchParams.get('include_adult')
-  const watchTypes = new URL(request.url).searchParams.get('watch_types')
-  const voteCount = new URL(request.url).searchParams.get('vote_count')
-  const voteMin = new URL(request.url).searchParams.get('vote_min')
-  const voteMax = new URL(request.url).searchParams.get('vote_max')
-  const durationMin = new URL(request.url).searchParams.get('duration_min')
-  const durationMax = new URL(request.url).searchParams.get('duration_max')
-  const fromDate = new URL(request.url).searchParams.get('from_date')
-  const toDate = new URL(request.url).searchParams.get('to_date')
-  const genres = new URL(request.url).searchParams.get('genres')
-  const keywords = new URL(request.url).searchParams.get('keywords')
-  const watchProvs = new URL(request.url).searchParams.get('watch_providers')
-  const page = new URL(request.url).searchParams.get('page')
+export async function loader ({ request, params, language, region, allowAdultContent }) {
+  const url = new URL(request.url)
+  const sortBy = url.searchParams.get('sort_by')
+  const sortDirection = url.searchParams.get('sort_direction')
+  const watchTypes = url.searchParams.get('watch_types')
+  const voteCount = url.searchParams.get('vote_count')
+  const voteMin = url.searchParams.get('vote_min')
+  const voteMax = url.searchParams.get('vote_max')
+  const durationMin = url.searchParams.get('duration_min')
+  const durationMax = url.searchParams.get('duration_max')
+  const fromDate = url.searchParams.get('from_date')
+  const toDate = url.searchParams.get('to_date')
+  const genres = url.searchParams.get('genres')
+  const keywords = url.searchParams.get('keywords')
+  const watchProvs = url.searchParams.get('watch_providers')
+  const page = url.searchParams.get('page')
 
   return defer({
     data: discoverMovies({
+      language,
+      region,
+      allowAdultContent,
       sortBy,
       sortDirection,
-      includeAdult,
       watchTypes,
       voteCount,
       voteMin,
@@ -74,6 +76,6 @@ export async function loader ({ request, params }) {
       watchProviders: watchProvs,
       page
     }),
-    watchProviders: getMovieProviders()
+    watchProviders: getMovieProviders({ language, region })
   })
 }

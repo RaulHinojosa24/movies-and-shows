@@ -1,7 +1,3 @@
-const language = 'es-ES'
-const region = 'ES'
-// const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
-
 // const API_URL = 'http://localhost:3000'
 const API_URL = 'https://movies-and-shows-backend.vercel.app'
 
@@ -44,111 +40,58 @@ async function sendRequest (path, params = {}, delay = 0) {
   })
 }
 
+// GENERAL
 export function getAPIConfiguration () {
   return sendRequest('/get-api-configuration')
 }
-
-export function getMovieGenres () {
-  return sendRequest('/get-movie-genres')
+export function getMovieGenres ({ language }) {
+  return sendRequest('/get-movie-genres', {
+    language
+  })
 }
-
-export function getTvGenres () {
-  return sendRequest('/get-tv-genres')
-}
-
-export function getMovieProviders () {
-  return sendRequest('/get-movie-providers')
-}
-
-export function getTvProviders () {
-  return sendRequest('/get-tv-providers')
-}
-
-export function getRequestToken () {
-  return sendRequest(API_URL + '/3/authentication/token/new')
-}
-
-export function createSessionID (requestToken) {
-  const options = {
-    ...POST_OPTIONS,
-    body: JSON.stringify({
-      request_token: requestToken
-    })
-  }
-
-  return fetch(API_URL + '/3/authentication/session/new', options)
-}
-
-export function getMovieDetails (id) {
-  return sendRequest('/get-movie-details', {
-    id
+export function getTvGenres ({ language }) {
+  return sendRequest('/get-tv-genres', {
+    language
   })
 }
 
-export function getCollectionDetails (id) {
-  return sendRequest('/get-collection-details', {
-    id
+// HOME
+export function getNowPlayingMovies ({ language, region }) {
+  return sendRequest('/get-now-playing-movies', {
+    language,
+    region
+  })
+}
+export function getTrendingAll ({ timeWindow = 'day', page = 1, language }) {
+  return sendRequest('/get-trending-all', {
+    time_window: timeWindow,
+    page,
+    language
+  })
+}
+export function getPopularMovies ({ language, region }) {
+  return sendRequest('/get-popular-movies', {
+    language,
+    region
+  })
+}
+export function getPopularTvs ({ language }) {
+  return sendRequest('/get-popular-tvs', {
+    language
+  })
+}
+export function getPopularPeople ({ language }) {
+  return sendRequest('/get-popular-people', {
+    language
   })
 }
 
-export function getPersonDetails (id) {
-  return sendRequest('/get-person-details', {
-    id
-  })
-}
-
-export function getTvDetails (id) {
-  return sendRequest('/get-tv-details', {
-    id
-  })
-}
-
-export async function getListDetails (id, page = 1) {
-  return sendRequest('/get-list-details', {
-    id,
-    page
-  })
-}
-
-export function getMoviesByQuery (query, page = 1) {
-  return sendRequest('/search-movies', {
-    query,
-    page
-  })
-}
-
-export function getTvByQuery (query, page = 1) {
-  return sendRequest('/search-tvs', {
-    query,
-    page
-  })
-}
-
-export function getPeopleByQuery (query, page = 1) {
-  return sendRequest('/search-people', {
-    query,
-    page
-  })
-}
-
-export function getTvSeasonDetails (tv, season) {
-  return sendRequest('/get-tv-season-details', {
-    tv,
-    season
-  })
-}
-
-export function getKeywordsByQuery (query, page = 1) {
-  const url = new URL(`${API_URL}/search-keywords`)
-  url.searchParams.append('query', query)
-  url.searchParams.append('page', page)
-
-  return fetch(url.href)
-}
-
+// DISCOVER
 export function discoverMovies ({
+  language,
+  region,
+  allowAdultContent,
   page = 1,
-  includeAdult,
   sortBy,
   sortDirection,
   watchTypes,
@@ -164,8 +107,10 @@ export function discoverMovies ({
   watchProviders
 }) {
   return sendRequest('/discover-movies', {
+    language,
+    watch_region: region,
     page,
-    include_adult: includeAdult,
+    include_adult: allowAdultContent,
     sort_by: sortBy,
     sort_direction: sortDirection,
     watch_types: watchTypes,
@@ -181,10 +126,11 @@ export function discoverMovies ({
     watch_providers: watchProviders
   })
 }
-
 export function discoverTvs ({
+  language,
+  region,
+  allowAdultContent,
   page = 1,
-  includeAdult,
   sortBy,
   sortDirection,
   watchTypes,
@@ -200,8 +146,10 @@ export function discoverTvs ({
   watchProviders
 }) {
   return sendRequest('/discover-tvs', {
+    language,
+    watch_region: region,
+    include_adult: allowAdultContent,
     page,
-    include_adult: includeAdult,
     sort_by: sortBy,
     sort_direction: sortDirection,
     watch_types: watchTypes,
@@ -217,26 +165,103 @@ export function discoverTvs ({
     watch_providers: watchProviders
   })
 }
+export function getMovieProviders ({ language, region }) {
+  return sendRequest('/get-movie-providers', {
+    language,
+    watch_region: region
+  })
+}
+export function getTvProviders ({ language, region }) {
+  return sendRequest('/get-tv-providers', {
+    language,
+    watch_region: region
+  })
+}
+export function getKeywordsByQuery ({ query, page = 1 }) {
+  const url = new URL(`${API_URL}/search-keywords`)
+  url.searchParams.append('query', query)
+  url.searchParams.append('page', page)
 
-export function getNowPlayingMovies () {
-  return sendRequest('/get-now-playing-movies')
+  return fetch(url.href)
 }
 
-export function getTrendingAll (timeWindow = 'day', page = 1) {
-  return sendRequest('/get-trending-all', {
-    time_window: timeWindow,
-    page
+// DETAILS
+export function getMovieDetails ({ id, language }) {
+  return sendRequest('/get-movie-details', {
+    id,
+    language
+  })
+}
+export function getTvDetails ({ id, language }) {
+  return sendRequest('/get-tv-details', {
+    id,
+    language
+  })
+}
+export function getTvSeasonDetails ({ tv, season, language }) {
+  return sendRequest('/get-tv-season-details', {
+    tv,
+    season,
+    language
+  })
+}
+export function getPersonDetails ({ id, language }) {
+  return sendRequest('/get-person-details', {
+    id,
+    language
+  })
+}
+export function getCollectionDetails ({ id, language }) {
+  return sendRequest('/get-collection-details', {
+    id,
+    language
+  })
+}
+export function getListDetails ({ id, page = 1, language }) {
+  return sendRequest('/get-list-details', {
+    id,
+    page,
+    language
   })
 }
 
-export function getPopularMovies () {
-  return sendRequest('/get-popular-movies')
+// SEARCH
+export function getMoviesByQuery ({ query, page = 1, language, allowAdultContent }) {
+  return sendRequest('/search-movies', {
+    query,
+    page,
+    language,
+    include_adult: allowAdultContent
+  })
+}
+export function getTvByQuery ({ query, page = 1, language, allowAdultContent }) {
+  return sendRequest('/search-tvs', {
+    query,
+    page,
+    language,
+    include_adult: allowAdultContent
+  })
+}
+export function getPeopleByQuery ({ query, page = 1, language, allowAdultContent }) {
+  return sendRequest('/search-people', {
+    query,
+    page,
+    language,
+    include_adult: allowAdultContent
+  })
 }
 
-export function getPopularTvs () {
-  return sendRequest('/get-popular-tvs')
+// LOGIN *not implemented yet*
+export function getRequestToken () {
+  return sendRequest(API_URL + '/3/authentication/token/new')
 }
+export function createSessionID (requestToken) {
+  const options = {
+    ...POST_OPTIONS,
+    body: JSON.stringify({
+      request_token: requestToken
+    })
+  }
 
-export function getPopularPeople () {
-  return sendRequest('/get-popular-people')
+  return fetch(API_URL + '/3/authentication/session/new', options)
 }
