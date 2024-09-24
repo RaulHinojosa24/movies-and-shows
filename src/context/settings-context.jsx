@@ -1,14 +1,14 @@
 import { createContext, useEffect, useState } from 'react'
 
 const DEFAULT_LANGUAGE = {
-  iso_639_1: 'es',
-  english_name: 'Spanish',
-  name: 'Español'
+  iso_639_1: 'en',
+  english_name: 'English',
+  name: 'English'
 }
 const DEFAULT_COUNTRY = {
-  iso_3166_1: 'ES',
-  english_name: 'Spain',
-  native_name: 'Spain'
+  iso_3166_1: 'US',
+  english_name: 'United States of America',
+  native_name: 'United States'
 }
 const DEFAULT_ALLOW_ADULT_CONTENT = false
 
