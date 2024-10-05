@@ -1,18 +1,33 @@
 /* eslint-disable no-octal-escape */
 import { Link } from 'react-router-dom'
-import { formatShortDate, formatRuntime } from '../../utils/utility'
+import { formatShortDate, formatRuntime, getDominantColorFromImage } from '../../utils/utility'
 import VoteCard from '../PageUI/VoteCard'
 
 import DefaultPosterImage from '../../assets/default-poster.webp'
 import WatchProviders from '../WatchProviders/WatchProviders'
 import HeaderMainCredits from '../PageUI/HeaderMainCredits'
-import useGenerateImageColors from '../../hooks/useGenerateImageColors'
-import { useContext, useMemo } from 'react'
+import { useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { rootContext } from '../../context/root-context'
 
 export default function Header ({ posterPath, backdropPath, title, releaseDate, firstAirDate, certification, runtime, genres = [], tagline, voteAverage, voteCount, mainCredits = [], watchProviders, mediaType, overview }) {
   const { config } = useContext(rootContext)
-  const [[r, g, b], isDark] = useGenerateImageColors(posterPath, 0.4)
+  const imgRef = useRef(null)
+  const [[r, g, b], setDominantColor] = useState([])
+  const [isDark, setIsDark] = useState(false)
+
+  useEffect(() => {
+    const img = imgRef.current
+
+    getDominantColorFromImage(img)
+      .then(({ dominantColor, isDark }) => {
+        setDominantColor(dominantColor)
+        setIsDark(isDark)
+      })
+    return () => {
+      setDominantColor([])
+      setIsDark(false)
+    }
+  }, [posterPath])
 
   const prettyBackdropURL = config && backdropPath
     ? config?.images?.secure_base_url + config?.images?.backdrop_sizes[2] + backdropPath
@@ -47,11 +62,11 @@ export default function Header ({ posterPath, backdropPath, title, releaseDate, 
         }}
         className={`
           bg-cover bg-center bg-no-repeat flex flex-col items-center gap-8 p-8 ${isDark ? 'text-white' : 'text-black'}
-          md:flex-row md:items-end
+          md:flex-row md:items-end transition-colors
         `}
       >
         <section className='w-aside shrink-0 overflow-hidden rounded shadow-lg shadow-black/75'>
-          <img loading='lazy' src={prettyPosterURL} alt={'Poster de ' + title} className='aspect-[2/3] object-cover w-full' />
+          <img loading='lazy' ref={imgRef} src={prettyPosterURL} crossOrigin='anonymous' alt={'Poster de ' + title} className='aspect-[2/3] object-cover w-full' />
           {watchProviders &&
             <WatchProviders watchProviders={watchProviders} title={title} type={mediaType} />}
         </section>
