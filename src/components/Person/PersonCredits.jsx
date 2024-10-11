@@ -47,9 +47,9 @@ export default function PersonCredits ({ cast, crew }) {
   return (
     <Section title='Créditos' className='space-y-3'>
       <div className='grid grid-flow-col auto-cols-max gap-4'>
-        <Select compact name='person-credits-group-by' label='Agrupar por' options={groupByOptions} onChange={handleGroupByChange} />
-        <Select compact name='person-credits-sorting' label='Ordenar por' options={sortingOptions} onChange={handleSortingChange} />
-        <button className=' rounded custom-shadow-small aspect-square grid place-items-center self-stretch' onClick={toggleDirection}>
+        <Select bgClass='bg-light dark:bg-dark' compact name='person-credits-group-by' label='Agrupar por' options={groupByOptions} onChange={handleGroupByChange} />
+        <Select bgClass='bg-light dark:bg-dark' compact name='person-credits-sorting' label='Ordenar por' options={sortingOptions} onChange={handleSortingChange} />
+        <button className='rounded shadow shadow-colors aspect-square grid place-items-center self-stretch' onClick={toggleDirection}>
           {direction === 'asc'
             ? <SortAscIcon />
             : <SortDescIcon />}

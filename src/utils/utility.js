@@ -1,6 +1,3 @@
-/* eslint-disable prefer-promise-reject-errors */
-import ColorThief from 'colorthief'
-
 export function calculateImageSize (sizes, width, ratio) {
   const maxWidth = width * ratio
 
@@ -101,36 +98,4 @@ export function setDocTitle (title) {
 export function countDecimals (value) {
   if (Math.floor(value) === value) return 0
   return value.toString().split('.')[1].length || 0
-}
-
-export const getDominantColorFromImage = (imageElement) => {
-  const isDarkColor = (rgb) => {
-    const [r, g, b] = rgb
-    const luminosity = 0.299 * r + 0.587 * g + 0.114 * b
-    return luminosity < 128
-  }
-
-  return new Promise((resolve, reject) => {
-    const colorThief = new ColorThief()
-
-    if (!imageElement.complete) {
-      imageElement.addEventListener('load', () => {
-        try {
-          const dominantColor = colorThief.getColor(imageElement)
-          const isDark = isDarkColor(dominantColor)
-          resolve({ dominantColor, isDark })
-        } catch (error) {
-          reject('Error al extraer colores de la imagen')
-        }
-      })
-    } else {
-      try {
-        const dominantColor = colorThief.getColor(imageElement)
-        const isDark = isDarkColor(dominantColor)
-        resolve({ dominantColor, isDark })
-      } catch (error) {
-        reject('Error al extraer colores de la imagen')
-      }
-    }
-  })
 }

@@ -49,8 +49,8 @@ export default function CollectionList ({ parts }) {
   return (
     <section className='mt-8'>
       <div className='grid grid-flow-col auto-cols-max gap-4 my-4'>
-        <Select compact name='collection-movies-sorting' options={options} onChange={e => setSortBy(e.target.value)} label='Ordenar por' />
-        <button className='custom-shadow-small aspect-square grid place-items-center self-stretch' onClick={() => setIsAsc(p => !p)}>
+        <Select bgClass='bg-light dark:bg-dark' compact name='collection-movies-sorting' options={options} onChange={e => setSortBy(e.target.value)} label='Ordenar por' />
+        <button className='shadow shadow-colors rounded aspect-square grid place-items-center self-stretch' onClick={() => setIsAsc(p => !p)}>
           {isAsc
             ? <SortAscIcon />
             : <SortDescIcon />}

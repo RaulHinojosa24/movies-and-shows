@@ -58,9 +58,9 @@ const Slide = ({ id, name, picturePath, characters, episodeCount }) => {
     : DefaultProfileImage
 
   return (
-    <div className='h-full w-36 rounded overflow-hidden custom-shadow'>
+    <div className='h-full w-36 rounded overflow-hidden shadow shadow-colors'>
       <Link to={'/person/' + id}>
-        <img loading='lazy' className='aspect-[4/5] object-cover object-top' src={prettyPath} alt={`Foto de perfil de ${name}`} />
+        <img crossOrigin='anonymous' loading='lazy' className='aspect-[4/5] object-cover object-top' src={prettyPath} alt={`Foto de perfil de ${name}`} />
       </Link>
       <div className='p-2'>
         <Link to={'/person/' + id}>
@@ -69,7 +69,7 @@ const Slide = ({ id, name, picturePath, characters, episodeCount }) => {
         {characters &&
           <p className='no-swiping w-fit text-sm'>{characters}</p>}
         {episodeCount > 0 &&
-          <p className='text-sm text-neutral-400'>{episodeCount} episodios</p>}
+          <p className='text-sm text-medium'>{episodeCount} episodios</p>}
       </div>
     </div>
   )

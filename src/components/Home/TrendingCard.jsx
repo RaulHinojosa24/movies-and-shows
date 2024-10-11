@@ -31,12 +31,12 @@ export default function TrendingCard ({
   const prettyName = name || originalName || title || originalTitle
 
   return (
-    <div className='w-36 h-full rounded overflow-hidden custom-shadow'>
+    <div className='w-36 h-full rounded overflow-hidden shadow shadow-colors'>
       {!fetching &&
         <>
           <Link to={`/${mediaType}/${id}`}>
             <div className='relative'>
-              <img className='w-full object-cover aspect-[2/3]' src={prettyPath} alt={`Imágen de ${prettyName}`} loading='lazy' />
+              <img crossOrigin='anonymous' className='w-full object-cover aspect-[2/3]' src={prettyPath} alt={`Imágen de ${prettyName}`} loading='lazy' />
               <MediaType mediaType={mediaType} isPoster className='absolute bottom-2 right-2' />
               {mediaType !== 'person' &&
                 <VoteCard small rating={voteAverage} count={voteCount} className='absolute bottom-2 left-2' />}

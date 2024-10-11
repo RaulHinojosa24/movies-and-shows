@@ -39,8 +39,10 @@ export default function PersonResults () {
                 </ul>}
               {persons && totalResults > 0 && persons.length === 0 &&
                 <p>Parece que te has pasado de página, vuelve a la última!</p>}
-              {(!persons || totalResults === 0) &&
+              {totalResults === 0 &&
                 <p>No hemos podido encontrar ninguna persona que se adapte a tu búsqueda...</p>}
+              {!persons &&
+                <p>Adelante, haga una búsqueda!</p>}
               {persons && totalResults > 0 &&
                 <Pagination totalPages={totalPages} />}
             </>
@@ -67,13 +69,13 @@ function PersonCard ({ id, name, originalName, profilePath, knownForDepartment, 
   const sameName = prettyName === originalName
 
   return (
-    <li className='rounded custom-shadow-small flex overflow-hidden'>
+    <li className='rounded shadow shadow-colors flex overflow-hidden'>
       <img
-        className='aspect-[5/6] w-24 object-cover' src={prettyProfilePath} alt={'Foto de perfil de ' + prettyName} loading='lazy'
+        crossOrigin='anonymous' className='aspect-[5/6] w-24 object-cover' src={prettyProfilePath} alt={'Foto de perfil de ' + prettyName} loading='lazy'
       />
       <div className='px-4 py-2 flex flex-col justify-center'>
         <Link to={`/person/${id}`} className='w-fit inline-block'>
-          <h3 className='font-semibold text-lg'>{prettyName} {!sameName && <span className='text-neutral-500 font-normal'>{originalName}</span>}</h3>
+          <h3 className='font-semibold text-lg'>{prettyName} {!sameName && <span className='text-medium font-normal'>{originalName}</span>}</h3>
         </Link>
         <div className='flex font-semibold [&>*+*]:before:content-["·"] [&>*+*]:before:mx-1'>
           <span>{knownForDepartment}</span>

@@ -40,7 +40,7 @@ export default function MovieDetails ({
           <ul className='flex gap-2 flex-wrap'>
             {keywords.keywords.map(({ id, name }) => (
               <li key={id}>
-                <Link to={`/movie?keywords=${id}%25${name}`} className='inline-block dark:bg-neutral-900 px-2 py-1 rounded border-1 dark:border-neutral-800 text-sm'>{name}</Link>
+                <Link to={`/movie?keywords=${id}%25${name}`} className='inline-block dark:bg-dark-2 px-2 py-1 rounded border-1 dark:border-dark-3 text-sm'>{name}</Link>
               </li>
             ))}
           </ul>

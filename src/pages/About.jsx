@@ -7,10 +7,10 @@ export default function AboutPage () {
   return (
     <Main
       center={
-        <div className='max-w-5xl mx-auto p-6 md:px-12 dark:bg-neutral-900 bg-neutral-100 shadow-lg rounded'>
+        <div className='max-w-5xl mx-auto p-6 md:px-12 dark:bg-dark-1 bg-light-1 shadow-lg shadow-colors rounded'>
           <div>
-            <h1 className='text-4xl font-bold text-yellow-500 mb-1'>Sobre el proyecto</h1>
-            <p className='text-lg font-semibold text-neutral-200 mb-4'>Bienvenida/o a Movies & Shows!</p>
+            <h1 className='text-4xl font-bold text-accent mb-1'>Sobre el proyecto</h1>
+            <p className='text-lg font-semibold mb-4'>Bienvenida/o a Movies & Shows!</p>
             <p className='mb-4'>
               El objetivo de este proyecto es proporcionar una plataforma
               útil y competitiva donde poder buscar información sobre tus series y películas favoritas.
@@ -25,7 +25,7 @@ export default function AboutPage () {
             </p>
           </div>
           <div>
-            <h2 className='text-2xl text-yellow-500 font-bold mb-2'>Objetivos</h2>
+            <h2 className='text-2xl text-accent font-bold mb-2'>Objetivos</h2>
             <ul className='list-disc list-inside mb-4'>
               <li>Proporcionar información precisa y actualizada sobre series y películas.</li>
               <li>Ofrecer una interfaz de usuario intuitiva y fácil de usar.</li>
@@ -33,7 +33,7 @@ export default function AboutPage () {
             </ul>
           </div>
           <div>
-            <h2 className='text-2xl text-yellow-500 font-bold  mb-2'>Tecnologías utilizadas</h2>
+            <h2 className='text-2xl text-accent font-bold  mb-2'>Tecnologías utilizadas</h2>
             <ul className='list-disc list-inside mb-4'>
               <li>React</li>
               <li>React Router</li>

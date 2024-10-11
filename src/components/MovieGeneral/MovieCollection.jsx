@@ -22,7 +22,7 @@ export default function MovieCollection ({ collection }) {
       >
         <p>Ésta película pertenece a...</p>
         <h3 className='text-3xl text-center'>{collection.name}</h3>
-        <Link to={'/collection/' + collection.id} className='mt-8 bg-yellow-400 text-black font-bold py-1 px-6 rounded-full'>Ver la colección completa</Link>
+        <Link to={'/collection/' + collection.id} className='mt-8 bg-accent text-black font-bold py-1 px-6 rounded'>Ver la colección completa</Link>
       </div>
     </Section>
   )

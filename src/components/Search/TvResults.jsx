@@ -40,8 +40,10 @@ export default function TvResults () {
                 </ul>}
               {tvs && totalResults > 0 && tvs.length === 0 &&
                 <p>Parece que te has pasado de página, vuelve a la última!</p>}
-              {(!tvs || totalResults === 0) &&
+              {totalResults === 0 &&
                 <p>No hemos podido encontrar ninguna serie de tv que se adapte a tu búsqueda...</p>}
+              {!tvs &&
+                <p>Adelante, haga una búsqueda!</p>}
               {tvs && totalResults > 0 &&
                 <Pagination totalPages={totalPages} />}
             </>
@@ -64,17 +66,17 @@ function TvCard ({ id, name, originalName, posterPath, overview, firstAirDate })
   const sameName = name === originalName
 
   return (
-    <li className='rounded custom-shadow-small flex overflow-hidden'>
+    <li className='rounded shadow shadow-colors flex overflow-hidden'>
       <img
-        className='aspect-[2/3] w-24 object-cover'
+        loading='lazy' crossOrigin='anonymous' className='aspect-[2/3] w-24 object-cover'
         src={prettyPosterPath} alt={'Poster de la serie de tv ' + prettyName}
       />
       <div className='px-4 py-2 space-y-2 flex flex-col justify-center'>
         <div>
           <Link to={`/tv/${id}`} className='w-fit inline-block'>
-            <h3 className='font-semibold text-lg'>{prettyName} {!sameName && <span className='text-neutral-500 font-normal'>{originalName}</span>}</h3>
+            <h3 className='font-semibold text-lg'>{prettyName} {!sameName && <span className='text-medium font-normal'>{originalName}</span>}</h3>
           </Link>
-          <p className='text-neutral-500'>{prettyReleaseDate}</p>
+          <p className='text-medium'>{prettyReleaseDate}</p>
         </div>
         <p className='line-clamp-2'>{overview}</p>
       </div>

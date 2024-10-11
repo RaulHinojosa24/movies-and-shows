@@ -40,7 +40,7 @@ export default function MediaPosters ({ images }) {
   ), [config, images])
 
   return (
-    <Section title={<>Carteles <span className='text-neutral-500 font-semibold'>{amount}</span></>}>
+    <Section title={<>Carteles <span className='text-medium font-semibold'>{amount}</span></>}>
       {!config &&
         'Cargando carteles...'}
       {config && photos.length === 0 &&

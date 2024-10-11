@@ -39,7 +39,7 @@ export default function SortedCreditsDisplay ({ title, credits, sorting, directi
 
   return (
     <Colapsible title={title} subtitle={sortedCredits.length}>
-      <ol className='divide-y-1 dark:divide-neutral-800 divide-neutral-300'>
+      <ol className='divide-y-1 dark:divide-dark-3 divide-light-4'>
         {sortedCredits.map(cast =>
           <li key={cast.creditId}>
             <CreditItem {...cast} />

@@ -17,9 +17,9 @@ export default function ReviewItem ({ author, authorDetails, content, createdAt,
   const prettyUsername = username || author
 
   return (
-    <div className='custom-shadow rounded p-6'>
+    <div className='shadow shadow-colors rounded p-6'>
       <header className='flex items-center gap-4'>
-        <img src={prettyUserImage} alt={'Imagen de perfil de ' + prettyUsername} className='aspect-square w-12 rounded-full' loading='lazy' />
+        <img crossOrigin='anonymous' src={prettyUserImage} alt={'Imagen de perfil de ' + prettyUsername} className='aspect-square w-12 rounded-full' loading='lazy' />
         <div>
           <a href={url} target='_blank'>
             <h3 className='text-lg font-semibold'>Una reseña de {name || prettyUsername}</h3>
@@ -27,7 +27,7 @@ export default function ReviewItem ({ author, authorDetails, content, createdAt,
           <p className='font-thin text-sm'>
             {rating &&
               <VoteCard rating={rating} minimal />}
-            Escrita por <span className='font-semibold text-ba'>{prettyUsername}</span> el {prettyCreationDate}
+            Escrita por <span className='font-semibold'>{prettyUsername}</span> el {prettyCreationDate}
           </p>
         </div>
       </header>

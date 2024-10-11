@@ -34,7 +34,7 @@ export default function MediaVideos ({ videos }) {
   return (
     <Section title='Vídeos' className='space-y-4'>
       {cleanVideos.map(({ type, videos }) => (
-        <SubSection key={type} title={<>{type} <span className='text-neutral-500'>{videos.length}</span></>} className='space-y-2'>
+        <SubSection key={type} title={<>{type} <span className='text-medium'>{videos.length}</span></>} className='space-y-2'>
           <div className='flex flex-wrap gap-2'>
             {videos.map(video => {
               return (

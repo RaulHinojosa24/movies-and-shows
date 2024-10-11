@@ -41,8 +41,8 @@ const Slide = ({ id, backdropPath, name, firstAirYear, voteAverage, voteCount, m
 
   return (
     <Link to={`/${mediaType}/${id}`}>
-      <div className='rounded overflow-hidden w-80 h-full custom-shadow'>
-        <img loading='lazy' src={prettyBackdropPath} alt={`Imagen de ${name}`} className='w-full aspect-video object-cover' />
+      <div className='rounded overflow-hidden w-80 h-full shadow shadow-colors'>
+        <img crossOrigin='anonymous' loading='lazy' src={prettyBackdropPath} alt={`Imagen de ${name}`} className='w-full aspect-video object-cover' />
         <div className='p-2 flex justify-between gap-2'>
           <p className='no-swiping font-semibold'>{name} {firstAirYear && <>({firstAirYear})</>}</p>
           <VoteCard rating={voteAverage} count={voteCount} small />

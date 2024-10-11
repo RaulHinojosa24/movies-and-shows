@@ -47,7 +47,7 @@ export default function PersonGeneralPage () {
                 <>
                   <div className='w-fit mx-auto relative'>
                     <Link to='media' className='no-underline absolute top-0 left-0 w-full h-full grid text-center content-center font-semibold opacity-0 hover:opacity-100 transition-opacity bg-black/70 backdrop-blur-sm px-12 text-lg text-white rounded'>Ver todas las imágenes</Link>
-                    <img className='aspect-[2/3] object-cover w-full mx-auto max-w-aside rounded custom-shadow' src={prettyProfilePath} alt={'Foto de ' + name} />
+                    <img loading='lazy' crossOrigin='anonymous' className='aspect-[2/3] object-cover w-full mx-auto max-w-aside rounded shadow shadow-colors' src={prettyProfilePath} alt={'Foto de ' + name} />
                   </div>
                   <h1 className='text-4xl font-bold text-center md:text-left'>{name}</h1>
                   <PersonInfo alsoKnownAs={alsoKnownAs} birthday={birthday} deathday={deathday} gender={gender} knownForDepartment={knownForDepartment} placeOfBirth={placeOfBirth} />

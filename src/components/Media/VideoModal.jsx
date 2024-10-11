@@ -16,7 +16,7 @@ export default function VideoModal ({ video, className = '' }) {
       {isOpen &&
         <Modal className='aspect-video max-h-[80vh] w-full max-w-screen-2xl' onClose={() => navigate(-1)}>
           <iframe
-            className='h-full object-contain aspect-video mx-auto shadow-xl shadow-neutral-950 animate-fade-up'
+            className='h-full object-contain aspect-video mx-auto'
             src={'https://www.youtube-nocookie.com/embed/' + video.key}
             title={video.name}
             allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'

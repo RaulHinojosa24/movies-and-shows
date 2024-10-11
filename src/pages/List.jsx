@@ -181,7 +181,7 @@ export default function ListPage () {
                       disabled={isLoading}
                       ref={loadButtonRef}
                       onClick={() => fetchNewPage(id)}
-                      className='block mx-auto py-1 px-5 rounded whitespace-nowrap font-semibold bg-yellow-400 text-black relative'
+                      className='block mx-auto py-1 px-5 rounded whitespace-nowrap font-semibold bg-accent text-black relative'
                     >
                       <span className={isLoading ? 'invisible' : ''}>Cargar más elementos</span>
                       {isLoading &&

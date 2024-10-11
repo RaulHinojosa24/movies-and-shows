@@ -6,6 +6,22 @@ export default {
   ],
   theme: {
     extend: {
+      colors: {
+        accent: '#facc15',
+        light: '#fff',
+        'light-1': '#fafafa',
+        'light-2': '#f5f5f5',
+        'light-3': '#e5e5e5',
+        'light-4': '#d4d4d4',
+        'light-5': '#a3a3a3',
+        medium: '#737373',
+        'dark-5': '#525252',
+        'dark-4': '#404040',
+        'dark-3': '#262626',
+        'dark-2': '#171717',
+        'dark-1': '#0a0a0a',
+        dark: '#000'
+      },
       width: {
         app: '1536px',
         'small-content': '1280px',
@@ -53,6 +69,9 @@ export default {
       backgroundPosition: {
         'pos-0': '0% 0%',
         'pos-100': '100% 100%'
+      },
+      boxShadow: {
+        wide: '20px -15px 20px var(--tw-shadow-color), -20px -15px 20px var(--tw-shadow-color)'
       }
     }
   },

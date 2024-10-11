@@ -43,7 +43,7 @@ export default function MediaProfiles ({ images }) {
   ), [config, images])
 
   return (
-    <Section title={<>Retratos <span className='text-neutral-500 font-semibold'>{amount}</span></>}>
+    <Section title={<>Retratos <span className='text-medium font-semibold'>{amount}</span></>}>
       {!config &&
         'Cargando fotos...'}
       {config && photos.length === 0 &&

@@ -90,15 +90,16 @@ export default function KeywordsFilter ({ keywords, setKeywords }) {
           value={userInput} onChange={changeHandler} onKeyDown={keyDownHandler} onBlur={inputBlurHandler}
         />
         {resultsVisible &&
-          <div className='absolute bottom-0 left-0 right-0 max-h-80 overflow-y-auto translate-y-full bg-neutral-900 border-1 border-t-0 rounded-b'>
+          <div className='z-10 absolute bottom-0 left-0 right-0 max-h-80 overflow-y-auto translate-y-full bg-light-1 dark:bg-dark-2 border-1 shadow shadow-colors border-t-0 rounded-b'>
             {results.length > 0 &&
               <ul ref={resultsListRef}>
                 {results.map((result, index) => {
                   const isSelected = index === resultIndex
                   const alreadyInList = keywords.some(tag => tag.id === result.id)
-                  const inListClass = 'bg-yellow-500 text-black font-semibold'
-                  const selectedClass = 'bg-neutral-700'
-                  const hoverClass = 'hover:bg-neutral-700 hover:text-white'
+                  const inListClass = 'bg-accent text-black font-semibold'
+                  const removeClass = 'dark:!bg-red-600 !bg-red-500'
+                  const selectedClass = 'bg-light-3 dark:bg-dark-3'
+                  const hoverClass = alreadyInList ? 'dark:hover:!bg-red-600 hover:!bg-red-500' : 'dark:hover:bg-dark-3 hover:bg-light-3'
 
                   const clickHandler = (e) => {
                     toggleTag(result)
@@ -106,10 +107,12 @@ export default function KeywordsFilter ({ keywords, setKeywords }) {
                   }
 
                   return (
-                    <li key={result.id} className={`py-1 px-2 cursor-pointer flex justify-between ${hoverClass} ${alreadyInList && !isSelected && inListClass} ${isSelected && selectedClass}`} onMouseDown={clickHandler}>
-                      {result.name}
-                      {alreadyInList &&
-                        <span>&#10539;</span>}
+                    <li key={result.id}>
+                      <button className={`w-full py-1 px-2 cursor-pointer flex justify-between transition-all ${hoverClass} ${alreadyInList && inListClass} ${alreadyInList && isSelected && removeClass} ${isSelected && selectedClass}`} onMouseDown={clickHandler}>
+                        {result.name}
+                        {alreadyInList &&
+                          <span>&#10539;</span>}
+                      </button>
                     </li>
                   )
                 })}
@@ -118,13 +121,10 @@ export default function KeywordsFilter ({ keywords, setKeywords }) {
               <p className='py-1 text-center'>No hay resultados.</p>}
           </div>}
       </div>
-      <ul className='flex flex-wrap gap-2' onClick={focus}>
+      <ul className='flex flex-wrap gap-2'>
         {keywords.map(tag => (
-          <li
-            key={tag.id} className='cursor-pointer border-1 px-2 break-words text-pretty hyphens-auto max-w-full'
-            onClick={() => toggleTag(tag)}
-          >
-            {tag.name} <span>&#10539;</span>
+          <li key={tag.id}>
+            <button className='cursor-pointer border-1 px-2 break-words text-pretty hyphens-auto max-w-full rounded' onClick={() => toggleTag(tag)}>{tag.name} <span>&#10539;</span></button>
           </li>
         ))}
       </ul>

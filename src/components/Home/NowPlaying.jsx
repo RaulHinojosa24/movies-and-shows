@@ -2,34 +2,17 @@ import { Await, useLoaderData } from 'react-router-dom'
 import NowPlayingCard from './NowPlayingCard'
 import { Suspense } from 'react'
 import HomeNowPlayingSkeleton from '../Skeletons/HomeNowPlayingSkeleton'
+import Slider from '../PageUI/Slider'
 
 export default function NowPlaying () {
   const { nowPlaying } = useLoaderData()
 
   return (
-    <section>
+    <section className='overflow-hidden pb-8'>
       <Suspense fallback={<HomeNowPlayingSkeleton />}>
         <Await resolve={nowPlaying}>
           {(loadedNowPlaying) => (
-            <swiper-container
-              slides-per-view='auto'
-              space-between={30}
-              navigation
-              loop
-              centered-slides
-              autoplay-delay={5000}
-              autoplay-pause-on-mouse-enter
-              keyboard-enabled
-              no-swiping-class='no-swiping'
-            >
-              {loadedNowPlaying.results.map(movie => {
-                return (
-                  <swiper-slide key={movie.id}>
-                    <NowPlayingCard movie={movie} />
-                  </swiper-slide>
-                )
-              })}
-            </swiper-container>
+            <Slider isLanding slides={loadedNowPlaying.results} SlideComponent={NowPlayingCard} />
           )}
         </Await>
       </Suspense>

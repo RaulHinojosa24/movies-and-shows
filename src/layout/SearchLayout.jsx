@@ -5,7 +5,7 @@ import { Suspense, useEffect } from 'react'
 import SearchBar from '../components/Search/SearchBar'
 import { setDocTitle } from '../utils/utility'
 
-const activeClasses = ({ isActive }) => 'no-underline flex justify-between w-full px-3 py-2 dark:hover:bg-neutral-800 hover:bg-neutral-200 ' + (isActive ? 'font-bold dark:bg-neutral-800 bg-neutral-200' : '')
+const activeClasses = ({ isActive }) => `no-underline flex justify-between w-full px-3 py-2 ${isActive ? 'font-bold bg-accent text-dark' : 'dark:hover:bg-dark-3 hover:bg-light-3'}`
 
 const VALID_PATHNAMES = ['/search/movie', '/search/tv', '/search/person']
 
@@ -27,12 +27,13 @@ export default function SearchPage () {
   return (
     <>
       <SearchBar className='w-full px-app-space' />
-      <hr className='m-0' />
+      <hr />
       <Main
         left={
-          <div className='custom-shadow-small rounded sticky top-20'>
+          <div className='shadow shadow-colors rounded sticky top-20 overflow-hidden'>
             <h1 className='px-3 py-4 font-bold text-lg'>Resultados de la búsqueda</h1>
-            <ul className='py-2'>
+            <hr />
+            <ul>
               <li>
                 <NavLink to={'/search/movie' + (query ? `?query=${query}` : '')} className={activeClasses}>
                   Películas
@@ -87,7 +88,7 @@ export default function SearchPage () {
 }
 
 function Badge ({ children }) {
-  return <span className='dark:bg-neutral-700 bg-neutral-300 px-2 rounded text-sm font-normal'>{children}</span>
+  return <span className='px-2 rounded text-sm text-center shadow shadow-colors bg-light-1 dark:bg-dark-1 dark:text-light'>{children}</span>
 }
 
 export async function loader ({ request, params, language, allowAdultContent }) {

@@ -51,7 +51,7 @@ export default function TvDetails ({
                     {(!config || !net.logo_path) &&
                       <span className='underline'>{net.name}</span>}
                     {config && net.logo_path &&
-                      <img src={prettyPath} alt={net.name + ' logo'} className='h-8 imageshadow' loading='lazy' />}
+                      <img crossOrigin='anonymous' src={prettyPath} alt={net.name + ' logo'} className='h-8 imageshadow' loading='lazy' />}
                   </span>
                 </li>
               )
@@ -64,7 +64,7 @@ export default function TvDetails ({
           <ul className='flex gap-2 flex-wrap'>
             {keywords.results.map(({ id, name }) => (
               <li key={id}>
-                <Link to={`/tv?keywords=${id}%25${name}`} className='inline-block dark:bg-neutral-900 px-2 py-1 rounded border-1 dark:border-neutral-800 text-sm'>{name}</Link>
+                <Link to={`/tv?keywords=${id}%25${name}`} className='inline-block dark:bg-dark-2 px-2 py-1 rounded border-1 dark:border-dark-3 text-sm'>{name}</Link>
               </li>
             ))}
           </ul>

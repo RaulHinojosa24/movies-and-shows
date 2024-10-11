@@ -19,12 +19,13 @@ export default function ListElement ({ id, order, title, originalTitle, posterPa
   return (
     <>
       {posterMode &&
-        <div className='custom-shadow-small rounded overflow-hidden max-w-56 w-full text-sm'>
+        <div className='shadow shadow-colors rounded overflow-hidden max-w-56 w-full text-sm'>
           <Link to={`/${mediaType}/${id}`}>
             <div className='relative'>
-              <img className='w-full object-cover aspect-[2/3]' src={prettyPosterPath} alt={`Poster de la película ${prettyTitle}`} loading='lazy' />
+              <img crossOrigin='anonymous' className='w-full object-cover aspect-[2/3]' src={prettyPosterPath} alt={`Poster de la película ${prettyTitle}`} loading='lazy' />
               <MediaType mediaType={mediaType} isPoster={posterMode} className='absolute bottom-2 right-2' />
               <VoteCard small rating={voteAverage} count={voteCount} className='absolute bottom-2 left-2' />
+              <span className='absolute left-0 top-0 text-medium font-bold text-lg px-2 dark:bg-dark bg-light'>{order}</span>
             </div>
           </Link>
           <div className='p-3 flex flex-col gap-2'>
@@ -35,7 +36,7 @@ export default function ListElement ({ id, order, title, originalTitle, posterPa
             {commentVisible && comment &&
               <span>{comment}</span>}
             {mediaType === 'movie' &&
-              <div className='flex justify-between opacity-75'>
+              <div className='flex justify-between text-medium'>
                 {revenue &&
                   <span>{prettyRevenue}</span>}
                 {runtime &&
@@ -45,16 +46,16 @@ export default function ListElement ({ id, order, title, originalTitle, posterPa
         </div>}
       {!posterMode &&
         <div className='
-          custom-shadow-small rounded text-sm py-2 px-4
+          shadow shadow-colors rounded text-sm py-2 px-4
           md:table-row-group
           [&>:first-child]:pl-4 [&>:last-child]:pr-4 [&>:last-child]:rounded-r [&>:first-child]:rounded-l [&>:first-child]:border-l-1 [&>:last-child]:border-r-1
         '
         >
-          <Cell className='font-bold md:visible hidden'><span className='opacity-75'>{order}</span></Cell>
+          <Cell className='font-bold md:visible hidden'><span className='text-medium'>{order}</span></Cell>
           <Cell className='w-full flex md:flex-row flex-col'>
             <Link to={`/${mediaType}/${id}`} className='font-semibold whitespace-normal'><h3 className='text-base inline'>{prettyTitle}</h3></Link>
             {commentVisible && comment &&
-              <span className='opacity-80 whitespace-break-spaces md:before:content-["_|_"]'>{comment}</span>}
+              <span className='text-medium whitespace-break-spaces md:before:content-["_|_"]'>{comment}</span>}
           </Cell>
           <div className='md:contents md:border-inherit md:m-0 mt-3 flex flex-wrap items-center gap-y-2 gap-x-3'>
             <Cell>
@@ -69,7 +70,7 @@ export default function ListElement ({ id, order, title, originalTitle, posterPa
           </div>
           <Cell className='hidden md:visible'>
             {mediaType === 'movie' &&
-              <div className='flex gap-3 opacity-75'>
+              <div className='flex gap-3 text-medium'>
                 {revenue &&
                   <span>{prettyRevenue}</span>}
                 {runtime &&

@@ -15,7 +15,7 @@ export default function WatchProviderItem ({
       {!config &&
         <p>|{providerName}|</p>}
       {config &&
-        <img loading='lazy' className='w-14 rounded aspect-square' src={prettyPath} alt={'Logo de ' + providerName} title={providerName} />}
+        <img crossOrigin='anonymous' loading='lazy' className='w-14 rounded aspect-square' src={prettyPath} alt={'Logo de ' + providerName} title={providerName} />}
     </li>
   )
 }

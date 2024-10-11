@@ -31,10 +31,10 @@ export default function WatchProviders ({ className = '', watchProviders, title,
   const positiveResponse = TYPE_DICT[type] + ' se encuentra disponible en los siguientes formatos:'
   return (
     <>
-      <button className={className + ' py-1 px-5 w-full rounded-b whitespace-nowrap font-semibold bg-yellow-400 text-black'} onClick={open}>Dónde ver</button>
+      <button className={className + ' py-1 px-5 w-full whitespace-nowrap font-semibold bg-accent text-black'} onClick={open}>Dónde ver</button>
       {isOpen &&
-        <Modal crossInside onClose={close} className='rounded w-[calc(100%-4rem)] max-w-2xl dark:bg-neutral-950 bg-white p-6 shadow-lg dark:shadow-black flex flex-col overflow-hidden'>
-          <h2 className='text-xl font-bold text-yellow-400'>Dónde puedo ver "{title}"?</h2>
+        <Modal crossInside onClose={close} className='rounded w-[calc(100%-4rem)] max-w-2xl dark:bg-dark-1 bg-light-1 p-6 shadow-lg shadow-colors flex flex-col overflow-hidden'>
+          <h2 className='text-xl font-bold text-accent'>Dónde puedo ver "{title}"?</h2>
           <p className='my-4 whitespace-pre-line'>
             Gracias a la colaboración de TMDB y JustWatch, podemos informarle de que en España, {options.length > 0 ? positiveResponse : negativeResponse}
           </p>

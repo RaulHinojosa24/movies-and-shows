@@ -18,7 +18,7 @@ export default function CollectionSummary ({ parts }) {
 
 function SummaryItem ({ data, text, style }) {
   return (
-    <div className='flex flex-col items-center justify-center py-6 px-10 h-fit custom-shadow'>
+    <div className='flex flex-col items-center justify-center py-6 px-10 h-fit rounded shadow-md shadow-colors'>
       <span className='text-4xl font-semibold' style={style}>{data}</span>
       <p className='w-min text-center'>{text}</p>
     </div>

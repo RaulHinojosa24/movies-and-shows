@@ -45,9 +45,9 @@ const Slide = ({ id, name, picturePath, character }) => {
     : DefaultProfileImage
 
   return (
-    <div className='h-full w-32 rounded overflow-hidden custom-shadow'>
+    <div className='h-full w-32 rounded overflow-hidden shadow shadow-colors'>
       <Link to={'/person/' + id}>
-        <img loading='lazy' className='aspect-[4/5] object-cover object-top' src={prettyPath} alt={`Foto de perfil de ${name}`} />
+        <img crossOrigin='anonymous' loading='lazy' className='aspect-[4/5] object-cover object-top' src={prettyPath} alt={`Foto de perfil de ${name}`} />
       </Link>
       <div className='p-2'>
         <Link to={'/person/' + id}>

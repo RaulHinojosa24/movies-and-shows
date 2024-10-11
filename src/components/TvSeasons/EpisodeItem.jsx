@@ -25,13 +25,13 @@ export default function EpisodeItem ({ airDate, episodeNumber, name, overview, r
   const toggleIsExpanded = () => setIsExpanded(p => !p)
 
   return (
-    <li className='rounded custom-shadow-small overflow-hidden'>
+    <li className='rounded shadow shadow-colors overflow-hidden'>
       <section className='flex sm:flex-row flex-col'>
-        <img src={prettySmallStillPath} className='aspect-video object-cover sm:inline hidden max-w-72' alt={`Imagen del episodio ${episodeNumber}-${name} de la serie de tv ${prettyTvName}`} loading='lazy' />
-        <img src={prettyBigStillPath} className='aspect-video object-cover sm:hidden inline' alt={`Imagen del episodio ${episodeNumber}-${name} de la serie de tv ${prettyTvName}`} loading='lazy' />
+        <img crossOrigin='anonymous' src={prettySmallStillPath} className='aspect-video object-cover sm:inline hidden max-w-72' alt={`Imagen del episodio ${episodeNumber}-${name} de la serie de tv ${prettyTvName}`} loading='lazy' />
+        <img crossOrigin='anonymous' src={prettyBigStillPath} className='aspect-video object-cover sm:hidden inline' alt={`Imagen del episodio ${episodeNumber}-${name} de la serie de tv ${prettyTvName}`} loading='lazy' />
         <div className='p-4 content-center space-y-1'>
-          <h3 className='font-semibold text-lg'><span className='dark:text-neutral-300 text-neutral-700'>{episodeNumber}</span> {name}</h3>
-          <div className='[&>*+*]:before:content-["\2022"] [&>*+*]:before:mx-2'>
+          <h3 className='font-semibold text-lg'><span className='text-medium'>{episodeNumber}</span> {name}</h3>
+          <div className='[&>*+*]:before:content-["\2022"] [&>*+*]:before:mx-2 flex'>
             <VoteCard minimal rating={voteAverage} count={voteCount} />
             <span>{prettyAirDate}</span>
             <span>{prettyRuntime}</span>

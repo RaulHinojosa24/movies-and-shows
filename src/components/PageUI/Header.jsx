@@ -1,33 +1,18 @@
 /* eslint-disable no-octal-escape */
 import { Link } from 'react-router-dom'
-import { formatShortDate, formatRuntime, getDominantColorFromImage } from '../../utils/utility'
+import { formatShortDate, formatRuntime } from '../../utils/utility'
 import VoteCard from '../PageUI/VoteCard'
 
 import DefaultPosterImage from '../../assets/default-poster.webp'
 import WatchProviders from '../WatchProviders/WatchProviders'
 import HeaderMainCredits from '../PageUI/HeaderMainCredits'
-import { useContext, useEffect, useMemo, useRef, useState } from 'react'
+import { useContext, useMemo } from 'react'
 import { rootContext } from '../../context/root-context'
+import useImageColors from '../../hooks/useImageColors'
 
 export default function Header ({ posterPath, backdropPath, title, releaseDate, firstAirDate, certification, runtime, genres = [], tagline, voteAverage, voteCount, mainCredits = [], watchProviders, mediaType, overview }) {
   const { config } = useContext(rootContext)
-  const imgRef = useRef(null)
-  const [[r, g, b], setDominantColor] = useState([])
-  const [isDark, setIsDark] = useState(false)
-
-  useEffect(() => {
-    const img = imgRef.current
-
-    getDominantColorFromImage(img)
-      .then(({ dominantColor, isDark }) => {
-        setDominantColor(dominantColor)
-        setIsDark(isDark)
-      })
-    return () => {
-      setDominantColor([])
-      setIsDark(false)
-    }
-  }, [posterPath])
+  const { dominant: [r, g, b], isDark, ref: imgRef } = useImageColors(posterPath)
 
   const prettyBackdropURL = config && backdropPath
     ? config?.images?.secure_base_url + config?.images?.backdrop_sizes[2] + backdropPath
@@ -74,7 +59,7 @@ export default function Header ({ posterPath, backdropPath, title, releaseDate, 
           <h1 className='text-4xl font-bold text-center md:text-left'>{title}</h1>
           <div className='flex flex-wrap justify-center md:justify-start [&>*+*]:before:content-["\2022"] [&>*+*]:before:mx-2'>
             {certification &&
-              <span className={`border-1 px-1 rounded h-fit ${isDark ? 'border-white' : 'border-black'}`}>{certification}</span>}
+              <span className='border-1 px-1 rounded h-fit border-current'>{certification}</span>}
             {runtime &&
               <span className='shrink-0'>{prettyRuntime}</span>}
             {prettyDate && prettyDate !== 'Invalid Date' &&
@@ -94,9 +79,9 @@ export default function Header ({ posterPath, backdropPath, title, releaseDate, 
             </ul>}
           </div>
           {tagline &&
-            <p className={`italic ${isDark ? 'text-neutral-100' : 'text-neutral-900'} font-semibold`}>{tagline}</p>}
+            <p className='italic font-semibold'>{tagline}</p>}
           {!!voteAverage && !!voteCount &&
-            <VoteCard rating={voteAverage} count={voteCount} theme={isDark ? 'light' : 'dark'} />}
+            <VoteCard rating={voteAverage} count={voteCount} />}
           {overview &&
             <p>{overview}</p>}
           {mainCredits && mainCredits.length > 0 &&

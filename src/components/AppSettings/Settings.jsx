@@ -57,7 +57,7 @@ export default function Settings () {
                     }))
                   .sort((a, b) => a.label.localeCompare(b.label))}
               />
-              <div className={'transition-all ' + (settings.allowAdultContent ? '' : 'opacity-70 line-through decoration-1')}>
+              <div className={'transition-all ' + (settings.allowAdultContent ? '' : 'text-medium line-through decoration-1')}>
                 <input type='checkbox' name='allow' id='allow' onChange={allowChangeHandler} checked={settings.allowAdultContent} />
                 <label htmlFor='allow'> Mostrar contenido para adultos</label>
               </div>

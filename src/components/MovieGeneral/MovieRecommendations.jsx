@@ -40,9 +40,9 @@ const Slide = ({ id, backdropPath, title, releaseYear, voteAverage, voteCount, m
     : DefaultLandscapeImage
 
   return (
-    <div className='rounded overflow-hidden w-72 md:w-80 h-full custom-shadow'>
+    <div className='rounded overflow-hidden w-72 md:w-80 h-full shadow shadow-colors'>
       <Link to={`/${mediaType}/${id}`}>
-        <img loading='lazy' src={prettyBackdropPath} alt={`Imagen de ${title}`} className='w-full aspect-video object-cover' />
+        <img crossOrigin='anonymous' loading='lazy' src={prettyBackdropPath} alt={`Imagen de ${title}`} className='w-full aspect-video object-cover' />
       </Link>
       <div className='p-2 flex justify-between gap-2'>
         <Link to={`/${mediaType}/${id}`}>

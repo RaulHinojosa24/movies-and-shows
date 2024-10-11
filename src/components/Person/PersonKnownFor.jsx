@@ -38,9 +38,9 @@ const Slide = ({ id, name, title, posterPath, type }) => {
   const prettyTitle = title || name
 
   return (
-    <div className='h-full w-32 rounded overflow-hidden custom-shadow'>
+    <div className='h-full w-32 rounded overflow-hidden shadow shadow-colors'>
       <Link to={`/${type}/${id}`}>
-        <img loading='lazy' className='aspect-[2/3] w-full object-cover object-top' src={prettyPosterPath} alt={`Póster de ${prettyTitle}`} />
+        <img crossOrigin='anonymous' loading='lazy' className='aspect-[2/3] w-full object-cover object-top' src={prettyPosterPath} alt={`Póster de ${prettyTitle}`} />
       </Link>
       <div className='p-2 h-full'>
         <Link to={`/${type}/${id}`} className='inline-block'>

@@ -30,9 +30,9 @@ export default function WatchProvidersFilter ({ watchProvidersList, watchProvide
 
             return (
               <li key={providerId} onClick={() => toggleWatchProvider(providerId)} className='relative cursor-pointer' title={providerName}>
-                <img loading='lazy' className='aspect-square w-12 rounded' src={prettyURL} alt={'Logo de ' + providerName} />
+                <img crossOrigin='anonymous' loading='lazy' className='aspect-square w-12 rounded' src={prettyURL} alt={'Logo de ' + providerName} />
                 {selected &&
-                  <div className='absolute grid place-content-center bg- bg-yellow-400/70 rounded top-0 left-0 bottom-0 right-0 text-4xl font-bold text-black'>
+                  <div className='absolute grid place-content-center bg- bg-accent/70 rounded top-0 left-0 bottom-0 right-0 text-4xl font-bold text-black'>
                     <CheckIcon />
                   </div>}
               </li>

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 
-export default function Popover ({ popoverTarget, children, className = '' }) {
+export default function Popover ({ popoverTarget, children, className = '', noDelay, compact }) {
   const [showPopover, setShowPopover] = useState(false)
   const [popoverStyle, setPopoverStyle] = useState({})
   const timeoutRef = useRef(null)
@@ -46,7 +46,7 @@ export default function Popover ({ popoverTarget, children, className = '' }) {
   const handleMouseLeave = () => {
     timeoutRef.current = setTimeout(() => {
       setShowPopover(false)
-    }, 500)
+    }, noDelay ? 0 : 500)
   }
 
   const handlePopoverEnter = () => {
@@ -88,20 +88,20 @@ export default function Popover ({ popoverTarget, children, className = '' }) {
 
   return (
     <div className='flex items-center justify-center'>
-      <button
+      <span
         ref={buttonRef}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
         {popoverTarget}
-      </button>
+      </span>
 
       {showPopover && (
         <>
           {createPortal(
             <div
               ref={popoverRef}
-              className={`fixed px-4 py-2 w-fit rounded custom-shadow-small dark:bg-neutral-800 bg-neutral-100 text-black dark:text-white border-2 dark:border-neutral-700/50 z-40 ${className}`}
+              className={`fixed ${compact ? 'px-3 py-1' : 'px-4 py-2'} w-fit rounded dark:bg-dark-3 bg-light-1 z-40 shadow shadow-colors ${className}`}
               style={popoverStyle}
               onMouseEnter={handlePopoverEnter}
               onMouseLeave={handlePopoverLeave}

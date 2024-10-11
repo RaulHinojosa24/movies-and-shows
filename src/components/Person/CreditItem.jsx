@@ -30,16 +30,16 @@ export default function CreditItem ({
     <Link to={prettyUrl}>
       <div className='flex justify-between items-center py-2'>
         <div className='flex gap-2 items-center'>
-          <img className='aspect-[2/3] object-cover w-10' loading='lazy' src={prettyPosterPath} alt={`Poster de ${prettyTitle}`} />
+          <img crossOrigin='anonymous' className='aspect-[2/3] object-cover w-10' loading='lazy' src={prettyPosterPath} alt={`Poster de ${prettyTitle}`} />
           <div>
             <h3 className='font-semibold'>{prettyTitle}</h3>
-            <p className='text-sm'>
+            <div className='text-sm flex gap-2'>
               {voteCount > 0 &&
-                <VoteCard rating={voteAverage} precission={0} minimal title={`Valoración media de ${voteCount} votos`} />}
-              <span className='opacity-75'>{prettyType}</span>
-            </p>
+                <VoteCard rating={voteAverage} count={voteCount} minimal />}
+              <span className='text-medium'>{prettyType}</span>
+            </div>
             {prettyCharactersOrJobs &&
-              <p className='opacity-75 text-sm'>...como {(prettyCharactersOrJobs).join(', ')}</p>}
+              <p className='text-medium text-sm'>...como {(prettyCharactersOrJobs).join(', ')}</p>}
           </div>
         </div>
         <div className='flex flex-col items-end'>

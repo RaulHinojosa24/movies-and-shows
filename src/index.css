@@ -3,24 +3,12 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --bg-color: rgb(255, 255, 255);
-  }
-
   html {
-    @apply text-black bg-white dark:text-white dark:bg-neutral-950 /*pt-12*/;
-  }
-
-  html.dark {
-    --bg-color: rgb(10, 10, 10);
+    @apply text-black bg-light dark:text-light dark:bg-dark;
   }
 
   body, header .content {
     @apply max-w-screen-2xl mx-auto;
-  }
-
-  hr {
-    @apply border-yellow-400 opacity-25 my-8;
   }
 
   a {
@@ -34,7 +22,7 @@
 
   .skeleton {
     animation: skeleton-loading 1s linear infinite alternate;
-    @apply dark:bg-neutral-700 bg-neutral-400;
+    @apply dark:bg-dark-4 bg-light-4;
   }
   .skeleton__text {
     @apply skeleton h-4 rounded-lg;
@@ -49,22 +37,18 @@
     @apply skeleton h-12 rounded-lg;
   }
   .skeleton__bg {
-    @apply dark:bg-neutral-900 bg-neutral-200;
+    @apply dark:bg-dark-2 bg-light-2;
   }
 }
 
 @layer utilities {
-  .custom-shadow {
-    @apply dark:bg-neutral-900 shadow-md dark:shadow-neutral-800 border-1 dark:border-neutral-700/50;
-  }
-  .custom-shadow-small {
-    @apply dark:bg-neutral-900 shadow-sm dark:shadow-neutral-800 border-1 dark:border-neutral-700/50;
+  .shadow-colors {
+    @apply dark:shadow-dark-2 border-1 dark:border-dark-2;
   }
   .icon {
-    @apply w-8 hover:text-yellow-400 transition-colors;
+    @apply w-8 hover:text-accent transition-colors;
   }
   .read-shadow {
-    @apply relative after:pointer-events-none after:absolute after:bottom-0 after:left-0 after:w-full after:h-8 after:bg-gradient-to-b after:from-transparent;
     mask-image: linear-gradient(to bottom, rgba(0,0,0,1) calc(100% - 2rem), rgba(0,0,0,0));
     -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) calc(100% - 2rem), rgba(0,0,0,0));
   }
@@ -76,8 +60,37 @@ swiper-container::part(container) {
   --swiper-scrollbar-drag-bg-color: var(--swiper-theme-color);
 }
 
+swiper-container::part(button-prev), swiper-container::part(button-next) {
+  @apply transition-all hover:scale-110 active:scale-110 focus:scale-110;
+}
+
+swiper-container.isLanding::part(container) {
+  overflow: visible;
+}
+
 swiper-slide {
   @apply w-auto h-auto;
+}
+
+.isLanding .swiper-slide-active {
+  transition: all 300ms;
+  transform-origin: top;
+  transform: scale(1.1);
+  z-index: 1;
+  @apply shadow-wide shadow-black/50;
+}
+.isLanding swiper-slide:not(.swiper-slide-active) {
+  z-index: 0;
+  mask-image: linear-gradient(to left, rgb(0,0,0,1), rgb(0,0,0,0.5));
+  -webkit-mask-image: linear-gradient(to left, rgb(0,0,0,0.3), rgb(0,0,0,.8));
+}
+.isLanding .swiper-slide-next {
+  mask-image: linear-gradient(to left, rgb(0,0,0,1), rgb(0,0,0,0.5));
+  -webkit-mask-image: linear-gradient(to left, rgb(0,0,0,0.3), rgb(0,0,0,.8));
+}
+.isLanding .swiper-slide-prev {
+  mask-image: linear-gradient(to left, rgb(0,0,0,1), rgb(0,0,0,0.5));
+  -webkit-mask-image: linear-gradient(to left, rgb(0,0,0,0.3), rgb(0,0,0,.8));
 }
 
 #scroll-to-top {

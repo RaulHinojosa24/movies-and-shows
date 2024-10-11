@@ -219,8 +219,8 @@ export default function Filters () {
           setVoteMin={setVoteMin} setVoteMax={setVoteMax}
         />
       </Colapsible>
-      <button className='py-1 px-5 w-full rounded whitespace-nowrap font-semibold bg-yellow-400 text-black' type='submit'>Buscar</button>
-      <button className='py-1 px-5 w-full rounded whitespace-nowrap font-semibold bg-neutral-200 text-black' type='button' onClick={resetFilters}>Limpiar filtros</button>
+      <button className='py-1 px-5 w-full rounded whitespace-nowrap font-semibold bg-accent text-black' type='submit'>Buscar</button>
+      <button className='py-1 px-5 w-full rounded whitespace-nowrap font-semibold bg-light-3 text-black' type='button' onClick={resetFilters}>Limpiar filtros</button>
     </form>
   )
 }

@@ -26,7 +26,7 @@ function GuestItem ({ id, profilePath, name, character }) {
   return (
     <li className='flex gap-4'>
       <Link to={'/person/' + id} className='shrink-0'>
-        <img className='aspect-[5/6] w-16 object-cover object-center rounded' loading='lazy' src={prettyProfilePath} alt={'Foto de perfil de ' + name} />
+        <img crossOrigin='anonymous' className='aspect-[5/6] w-16 object-cover object-center rounded' loading='lazy' src={prettyProfilePath} alt={'Foto de perfil de ' + name} />
       </Link>
       <div className='flex flex-col justify-center'>
         <Link to={'/person/' + id} className='font-semibold'>
