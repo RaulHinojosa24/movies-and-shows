@@ -1,8 +1,8 @@
-import { Await, defer, useLoaderData } from 'react-router-dom'
+import { Await, useLoaderData } from 'react-router-dom'
 import Filters from '../components/MovieDiscover/Filters'
 import Results from '../components/MovieDiscover/Results'
 import Main from '../components/PageUI/Main'
-import { discoverMovies, getMovieProviders } from '../utils/http'
+import { discoverMovies, fetchWithDefer, getMovieProviders } from '../utils/http'
 import { setDocTitle } from '../utils/utility'
 import Pagination from '../components/Search/Pagination'
 import { Suspense } from 'react'
@@ -39,7 +39,7 @@ export default function MovieDiscoverPage () {
   )
 }
 
-export async function loader ({ request, params, language, region, allowAdultContent }) {
+export async function loader ({ request, params, language, region, includeAdult }) {
   const url = new URL(request.url)
   const sortBy = url.searchParams.get('sort_by')
   const sortDirection = url.searchParams.get('sort_direction')
@@ -56,11 +56,11 @@ export async function loader ({ request, params, language, region, allowAdultCon
   const watchProvs = url.searchParams.get('watch_providers')
   const page = url.searchParams.get('page')
 
-  return defer({
-    data: discoverMovies({
+  return fetchWithDefer({
+    data: () => discoverMovies({
       language,
       region,
-      allowAdultContent,
+      includeAdult,
       sortBy,
       sortDirection,
       watchTypes,
@@ -76,6 +76,6 @@ export async function loader ({ request, params, language, region, allowAdultCon
       watchProviders: watchProvs,
       page
     }),
-    watchProviders: getMovieProviders({ language, region })
+    watchProviders: () => getMovieProviders({ language, region })
   })
 }

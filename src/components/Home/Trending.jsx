@@ -11,7 +11,7 @@ const EMPTY_RESULTS = Array(20).fill().map((_, i) => ({ id: i, fetching: true })
 export default function Trending () {
   const [timeWindow, setTimeWindow] = useState('day')
   const [promise, setPromise] = useState(null)
-  const { language, country } = useContext(settingsContext)
+  const { language, country, includeAdult } = useContext(settingsContext)
   const appLanguage = `${language.iso_639_1}-${country.iso_3166_1}`
   const sectionRef = useRef()
   const isVisible = useIntersectionObserver(sectionRef, '', true)
@@ -24,19 +24,19 @@ export default function Trending () {
       case 'day':
         setPromise(getTrendingAll({
           timeWindow: 'day',
-          page: 1,
-          language: appLanguage
+          language: appLanguage,
+          includeAdult
         }))
         break
       case 'week':
         setPromise(getTrendingAll({
           timeWindow: 'week',
-          page: 1,
-          language: appLanguage
+          language: appLanguage,
+          includeAdult
         }))
         break
     }
-  }, [appLanguage, isVisible, timeWindow])
+  }, [includeAdult, appLanguage, isVisible, timeWindow])
 
   useEffect(() => {
     if (!promise) return

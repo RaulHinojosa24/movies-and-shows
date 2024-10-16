@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import RootLayout, { loader as rootLoader } from './layout/RootLayout'
 // import LoginPage, { loader as loginLoader, action as loginAction } from './pages/Login'
-import HomePage, { loader as homeLoader } from './pages/Home'
+import HomePage from './pages/Home'
 import MovieDetailsLayout, { loader as movieDetailsLoader } from './layout/MovieDetailsLayout'
 import CollectionDetailsLayout, { loader as collectionDetailsLoader } from './layout/CollectionDetailsLayout'
 import PersonDetailsLayout, { loader as personDetailsLoader } from './layout/PersonDetailsLayout'
@@ -53,7 +53,7 @@ export default function App () {
 }
 
 function RouterSetup () {
-  const { language, country, allowAdultContent, isSettingsContextLoaded } = useContext(settingsContext)
+  const { language, country, includeAdult, isSettingsContextLoaded } = useContext(settingsContext)
   const appLanguage = `${language.iso_639_1}-${country.iso_3166_1}`
   const region = country.iso_3166_1
 
@@ -66,13 +66,12 @@ function RouterSetup () {
       path: '/',
       id: 'root',
       element: <RootLayout />,
-      errorElement: <ErrorPage />,
+      errorElement: <ErrorPage isRoot />,
       loader: (args) => rootLoader({ ...args, language: appLanguage }),
       children: [
         {
           index: true,
-          element: <HomePage />,
-          loader: (args) => homeLoader({ ...args, language: appLanguage, region })
+          element: <HomePage />
         },
         {
           path: 'about',
@@ -87,18 +86,18 @@ function RouterSetup () {
         {
           path: 'movie',
           element: <MovieDiscoverPage />,
-          loader: (args) => movieDiscoverLoader({ ...args, language: appLanguage, region, allowAdultContent })
+          loader: (args) => movieDiscoverLoader({ ...args, language: appLanguage, region, includeAdult })
         },
         {
           path: 'tv',
           element: <TvDiscoverPage />,
-          loader: (args) => tvDiscoverLoader({ ...args, language: appLanguage, region, allowAdultContent })
+          loader: (args) => tvDiscoverLoader({ ...args, language: appLanguage, region, includeAdult })
         },
         {
           path: 'movie/:id',
           id: 'movie-details',
           element: <MovieDetailsLayout />,
-          loader: (args) => movieDetailsLoader({ ...args, language: appLanguage }),
+          loader: (args) => movieDetailsLoader({ ...args, language: appLanguage, includeAdult }),
           children: [
             {
               index: true,
@@ -118,7 +117,7 @@ function RouterSetup () {
           path: 'collection/:id',
           id: 'collection-details',
           element: <CollectionDetailsLayout />,
-          loader: (args) => collectionDetailsLoader({ ...args, language: appLanguage }),
+          loader: (args) => collectionDetailsLoader({ ...args, language: appLanguage, includeAdult }),
           children: [
             {
               index: true,
@@ -134,7 +133,7 @@ function RouterSetup () {
           path: 'person/:id',
           id: 'person-details',
           element: <PersonDetailsLayout />,
-          loader: (args) => personDetailsLoader({ ...args, language: appLanguage }),
+          loader: (args) => personDetailsLoader({ ...args, language: appLanguage, includeAdult }),
           children: [
             {
               index: true,
@@ -150,7 +149,7 @@ function RouterSetup () {
           path: 'tv/:id',
           id: 'tv-details',
           element: <TvDetailsLayout />,
-          loader: (args) => tvDetailsLoader({ ...args, language: appLanguage }),
+          loader: (args) => tvDetailsLoader({ ...args, language: appLanguage, includeAdult }),
           children: [
             {
               index: true,
@@ -189,28 +188,28 @@ function RouterSetup () {
         {
           path: 'list/:id',
           element: <ListPage />,
-          loader: (args) => listLoader({ ...args, language: appLanguage })
+          loader: (args) => listLoader({ ...args, language: appLanguage, includeAdult })
         },
         {
           path: 'search',
           id: 'search',
           element: <SearchLayout />,
-          loader: (args) => searchLoader({ ...args, language: appLanguage, allowAdultContent }),
+          loader: (args) => searchLoader({ ...args, language: appLanguage, includeAdult }),
           children: [
             {
               path: 'movie',
               element: <MovieResults />,
-              loader: (args) => movieResultsLoader({ ...args, language: appLanguage, allowAdultContent })
+              loader: (args) => movieResultsLoader({ ...args, language: appLanguage, includeAdult })
             },
             {
               path: 'tv',
               element: <TvResults />,
-              loader: (args) => tvResultsLoader({ ...args, language: appLanguage, allowAdultContent })
+              loader: (args) => tvResultsLoader({ ...args, language: appLanguage, includeAdult })
             },
             {
               path: 'person',
               element: <PersonResults />,
-              loader: (args) => personResultsLoader({ ...args, language: appLanguage, allowAdultContent })
+              loader: (args) => personResultsLoader({ ...args, language: appLanguage, includeAdult })
             }
           ]
         }

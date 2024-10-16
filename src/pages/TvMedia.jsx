@@ -7,6 +7,7 @@ import MediaVideos from '../components/Media/MediaVideos'
 import { Suspense } from 'react'
 import TvMediaSkeleton from '../skeleton-pages/TvMediaSkeleton'
 import TvHeaderCompact from '../components/TvGeneral/TvHeaderCompact'
+import ErrorPage from './ErrorPage'
 
 export default function TvMediaPage () {
   const { data: loaderTvDetails } = useRouteLoaderData('tv-details')
@@ -14,7 +15,10 @@ export default function TvMediaPage () {
 
   return (
     <Suspense fallback={<TvMediaSkeleton />}>
-      <Await resolve={loaderTvDetails}>
+      <Await
+        resolve={loaderTvDetails}
+        errorElement={<ErrorPage />}
+      >
         {({
           name,
           original_name: originalName,

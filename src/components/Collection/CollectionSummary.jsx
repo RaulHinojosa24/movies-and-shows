@@ -3,15 +3,17 @@ import { formatNumberSymbols, generateVoteColor, roundDecimals } from '../../uti
 export default function CollectionSummary ({ parts }) {
   const nMovies = parts?.length || 0
   const votedMovies = (parts || []).filter(m => m.vote_count > 0).length
-  const totalVotes = formatNumberSymbols(parts?.reduce((acc, curr) => acc + curr.vote_count, 0))
-  const voteAvg = roundDecimals(parts?.reduce((acc, curr) => acc + curr.vote_average, 0) / votedMovies, 1)
-  const color = generateVoteColor(voteAvg / 10)
+  const totalVotes = parts?.reduce((acc, curr) => acc + curr.vote_count, 0)
+  const prettyTotalVotes = formatNumberSymbols(totalVotes)
+  const voteAvg = parts?.reduce((acc, curr) => acc + curr.vote_average, 0)
+  const prettyVoteAvg = totalVotes ? roundDecimals(voteAvg / votedMovies, 1) : 0
+  const color = totalVotes ? generateVoteColor(prettyVoteAvg / 10) : ''
 
   return (
     <section className='flex justify-around items-center flex-wrap'>
       <SummaryItem data={nMovies} text='películas' />
-      <SummaryItem style={{ color }} data={voteAvg} text='puntuación media' />
-      <SummaryItem data={totalVotes} text='valoraciones' />
+      <SummaryItem style={{ color }} data={prettyVoteAvg} text='puntuación media' />
+      <SummaryItem data={prettyTotalVotes} text='valoraciones' />
     </section>
   )
 }

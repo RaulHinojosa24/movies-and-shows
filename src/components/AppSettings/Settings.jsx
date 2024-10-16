@@ -22,7 +22,7 @@ export default function Settings () {
   function allowChangeHandler (e) {
     const allow = e.target.checked
 
-    settings.setAllowAdultContent(allow)
+    settings.setIncludeAdult(allow)
   }
 
   return (
@@ -57,8 +57,8 @@ export default function Settings () {
                     }))
                   .sort((a, b) => a.label.localeCompare(b.label))}
               />
-              <div className={'transition-all ' + (settings.allowAdultContent ? '' : 'text-medium line-through decoration-1')}>
-                <input type='checkbox' name='allow' id='allow' onChange={allowChangeHandler} checked={settings.allowAdultContent} />
+              <div className={'transition-all ' + (settings.includeAdult ? '' : 'text-medium line-through decoration-1')}>
+                <input type='checkbox' name='allow' id='allow' onChange={allowChangeHandler} checked={settings.includeAdult} />
                 <label htmlFor='allow'> Mostrar contenido para adultos</label>
               </div>
             </div>}

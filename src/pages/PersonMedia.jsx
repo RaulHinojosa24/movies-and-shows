@@ -5,6 +5,7 @@ import MediaProfiles from '../components/Media/MediaProfiles'
 import { Suspense } from 'react'
 import PersonHeaderCompact from '../components/Person/PersonHeaderCompact'
 import PersonMediaSkeleton from '../skeleton-pages/PersonMediaSkeleton'
+import ErrorPage from './ErrorPage'
 
 export default function PersonMediaPage () {
   const { data: loaderPersonDetails } = useRouteLoaderData('person-details')
@@ -12,7 +13,10 @@ export default function PersonMediaPage () {
 
   return (
     <Suspense fallback={<PersonMediaSkeleton />}>
-      <Await resolve={loaderPersonDetails}>
+      <Await
+        resolve={loaderPersonDetails}
+        errorElement={<ErrorPage />}
+      >
         {({
           name,
           images: {

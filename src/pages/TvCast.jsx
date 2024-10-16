@@ -7,6 +7,7 @@ import { setDocTitle } from '../utils/utility'
 import { Suspense } from 'react'
 import TvHeaderCompact from '../components/TvGeneral/TvHeaderCompact'
 import TvCastSkeleton from '../skeleton-pages/TvCastSkeleton'
+import ErrorPage from './ErrorPage'
 
 export default function TvCastPage () {
   const { data: loaderTvDetails } = useRouteLoaderData('tv-details')
@@ -14,7 +15,10 @@ export default function TvCastPage () {
 
   return (
     <Suspense fallback={<TvCastSkeleton />}>
-      <Await resolve={loaderTvDetails}>
+      <Await
+        resolve={loaderTvDetails}
+        errorElement={<ErrorPage />}
+      >
         {({
           name,
           original_name: originalName,

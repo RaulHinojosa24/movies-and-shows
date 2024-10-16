@@ -1,4 +1,4 @@
-import { useNavigate, useRouteError } from 'react-router-dom'
+import { useAsyncError, useNavigate, useRouteError } from 'react-router-dom'
 import MainNavigation from '../layout/MainNavigation'
 import Footer from '../layout/Footer'
 import { setDocTitle } from '../utils/utility'
@@ -168,16 +168,22 @@ const HTTP_ERRORS = {
   }
 }
 
-export default function ErrorPage () {
-  const error = useRouteError()
-
+export default function ErrorPage ({ isRoot }) {
+  const routeError = useRouteError()
+  const asyncError = useAsyncError()
+  const actualError = asyncError || routeError
   const navigate = useNavigate()
 
-  setDocTitle(`Error ${error?.status || ''}`)
+  setDocTitle(`Error ${actualError?.status || ''}`)
+
+  const errorMessage = actualError?.message ||
+    HTTP_ERRORS?.[actualError?.status]?.description ||
+    'Something went wrong.'
 
   return (
     <>
-      <MainNavigation />
+      {isRoot &&
+        <MainNavigation />}
       <Main
         center={
           <section className='grid md:grid-cols-2 grid-cols-1 justify-center items-center gap-12'>
@@ -186,10 +192,10 @@ export default function ErrorPage () {
               <p className='text-lg font-semibold mt-2'>
                 Lamentamos informarle de que ha ocurrido un error inesperado.
               </p>
-              {error?.status &&
+              {actualError?.status &&
                 <div className='flex flex-col mt-4'>
-                  <p className='font-semibold'>{error.status}: {HTTP_ERRORS?.[error.status]?.title}</p>
-                  <p>{HTTP_ERRORS?.[error.status]?.description}</p>
+                  <p className='font-semibold'>{actualError.status}: {HTTP_ERRORS?.[actualError.status]?.title}</p>
+                  <p>{errorMessage}</p>
                 </div>}
               <button className='rounded py-2 px-4 mt-6 font-semibold group border-2 border-black dark:border-white' onClick={() => navigate(-1)}>
                 <span className='group-hover:scale-110 transition-all inline-block'>&larr; Volver</span>
@@ -208,7 +214,8 @@ export default function ErrorPage () {
           </section>
       }
       />
-      <Footer />
+      {isRoot &&
+        <Footer />}
     </>
   )
 }

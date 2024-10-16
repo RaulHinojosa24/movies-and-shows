@@ -1,5 +1,5 @@
-import { Outlet, defer } from 'react-router-dom'
-import { getCollectionDetails } from '../utils/http'
+import { Outlet } from 'react-router-dom'
+import { fetchWithDefer, getCollectionDetails } from '../utils/http'
 
 export default function CollectionDetailsLayout () {
   return (
@@ -8,8 +8,11 @@ export default function CollectionDetailsLayout () {
     </section>
   )
 }
-export async function loader ({ request, params, language }) {
+
+export async function loader ({ request, params, language, includeAdult }) {
   const { id } = params
 
-  return defer({ data: getCollectionDetails({ id, language }) })
+  return fetchWithDefer({
+    data: () => getCollectionDetails({ id, language, includeAdult })
+  })
 }

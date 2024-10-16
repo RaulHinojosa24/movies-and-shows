@@ -1,9 +1,9 @@
 import Filters from '../components/TvDiscover/Filters'
 import Results from '../components/TvDiscover/Results'
 import Main from '../components/PageUI/Main'
-import { discoverTvs, getTvProviders } from '../utils/http'
+import { discoverTvs, fetchWithDefer, getTvProviders } from '../utils/http'
 import { setDocTitle } from '../utils/utility'
-import { Await, defer, useLoaderData } from 'react-router-dom'
+import { Await, useLoaderData } from 'react-router-dom'
 import { Suspense } from 'react'
 import Pagination from '../components/Search/Pagination'
 import DiscoverResultsSkeleton from '../skeleton-pages/DiscoverResultsSkeleton'
@@ -39,7 +39,7 @@ export default function TvDiscoverPage () {
   )
 }
 
-export async function loader ({ request, params, language, region, allowAdultContent }) {
+export async function loader ({ request, params, language, region, includeAdult }) {
   const url = new URL(request.url)
   const sortBy = url.searchParams.get('sort_by')
   const sortDirection = url.searchParams.get('sort_direction')
@@ -56,11 +56,11 @@ export async function loader ({ request, params, language, region, allowAdultCon
   const watchProvs = url.searchParams.get('watch_providers')
   const page = url.searchParams.get('page')
 
-  return defer({
-    data: discoverTvs({
+  return fetchWithDefer({
+    data: () => discoverTvs({
       language,
       region,
-      allowAdultContent,
+      includeAdult,
       sortBy,
       sortDirection,
       watchTypes,
@@ -76,6 +76,6 @@ export async function loader ({ request, params, language, region, allowAdultCon
       watchProviders: watchProvs,
       page
     }),
-    watchProviders: getTvProviders({ language, region })
+    watchProviders: () => getTvProviders({ language, region })
   })
 }

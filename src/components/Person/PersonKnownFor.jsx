@@ -5,12 +5,37 @@ import Slider from '../PageUI/Slider'
 import { useContext } from 'react'
 import { rootContext } from '../../context/root-context'
 
-const sortingLogic = (cc) => cc.vote_count ** 2 * cc.vote_average
+const WEIGHTS = { popularity: 0.5, voteCount: 0.3, voteAverage: 0.2 }
+
+const calculateScore = (credit, maxValues) => {
+  const normalizedPopularity = credit.popularity / maxValues.popularity
+  const normalizedVoteCount = credit.vote_count / maxValues.vote_count
+  const normalizedVoteAverage = credit.vote_average / 10
+
+  const score =
+    (WEIGHTS.popularity * normalizedPopularity) +
+    (WEIGHTS.voteCount * normalizedVoteCount) +
+    (WEIGHTS.voteAverage * normalizedVoteAverage)
+
+  return score
+}
 
 export default function PersonKnownFor ({ id, cast, crew }) {
   const combinedCredits = [...cast, ...crew]
-    .filter((el, i, array) => array.findIndex(a => a.id === el.id) === i)
-    .sort((a, b) => sortingLogic(b) - sortingLogic(a))
+  const filteredCredits = combinedCredits
+    .filter(credit => credit.vote_count > 5 && credit.popularity > 1)
+  const maxValues = {
+    popularity: Math.max(...filteredCredits.map(c => c.popularity)),
+    vote_count: Math.max(...filteredCredits.map(c => c.vote_count)),
+    vote_average: 10
+  }
+
+  const scoredCredits = filteredCredits
+    .map(credit => ({
+      ...credit,
+      score: calculateScore(credit, maxValues)
+    }))
+    .sort((a, b) => b.score - a.score)
     .filter((_, i) => i < 9)
     .map(cc => ({
       id: cc.id,
@@ -23,7 +48,7 @@ export default function PersonKnownFor ({ id, cast, crew }) {
   return (
     <>
       <Section title='Conocida por'>
-        <Slider key={id} slides={combinedCredits} SlideComponent={Slide} />
+        <Slider key={id} slides={scoredCredits} SlideComponent={Slide} />
       </Section>
     </>
   )

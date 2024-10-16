@@ -7,6 +7,7 @@ import { setDocTitle } from '../utils/utility'
 import { Suspense } from 'react'
 import MovieCastSkeleton from '../skeleton-pages/MovieCastSkeleton'
 import MovieHeaderCompact from '../components/MovieGeneral/MovieHeaderCompact'
+import ErrorPage from './ErrorPage'
 
 export default function MovieCastPage () {
   const { data: loaderMovieDetails } = useRouteLoaderData('movie-details')
@@ -14,7 +15,10 @@ export default function MovieCastPage () {
 
   return (
     <Suspense fallback={<MovieCastSkeleton />}>
-      <Await resolve={loaderMovieDetails}>
+      <Await
+        resolve={loaderMovieDetails}
+        errorElement={<ErrorPage />}
+      >
         {({
           credits,
           title,

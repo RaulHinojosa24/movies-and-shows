@@ -13,6 +13,7 @@ import GeneralMedia from '../components/Media/GeneralMedia'
 import { Suspense } from 'react'
 import MovieGeneralSkeleton from '../skeleton-pages/MovieGeneralSkeleton'
 import MovieHeader from '../components/MovieGeneral/MovieHeader'
+import ErrorPage from '../pages/ErrorPage'
 
 export default function MovieGeneralPage () {
   const { data: loaderMovieDetails } = useRouteLoaderData('movie-details')
@@ -20,7 +21,10 @@ export default function MovieGeneralPage () {
 
   return (
     <Suspense fallback={<MovieGeneralSkeleton />}>
-      <Await resolve={loaderMovieDetails}>
+      <Await
+        resolve={loaderMovieDetails}
+        errorElement={<ErrorPage />}
+      >
         {(data) => {
           const {
             budget,

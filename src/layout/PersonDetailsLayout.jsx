@@ -1,5 +1,5 @@
-import { Outlet, defer } from 'react-router-dom'
-import { getPersonDetails } from '../utils/http'
+import { Outlet } from 'react-router-dom'
+import { fetchWithDefer, getPersonDetails } from '../utils/http'
 
 export default function PersonDetailsLayout () {
   return (
@@ -7,8 +7,8 @@ export default function PersonDetailsLayout () {
   )
 }
 
-export async function loader ({ params, language }) {
+export async function loader ({ params, language, includeAdult }) {
   const { id } = params
 
-  return defer({ data: getPersonDetails({ id, language }) })
+  return fetchWithDefer({ data: () => getPersonDetails({ id, language, includeAdult }) })
 }

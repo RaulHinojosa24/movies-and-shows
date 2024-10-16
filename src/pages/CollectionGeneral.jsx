@@ -7,6 +7,7 @@ import GeneralMedia from '../components/Media/GeneralMedia'
 import { Suspense } from 'react'
 import CollectionHeader from '../components/Collection/CollectionHeader'
 import CollectionGeneralSkeleton from '../skeleton-pages/CollectionGeneralSkeleton'
+import ErrorPage from './ErrorPage'
 
 export default function CollectionGeneralPage () {
   const { data: loaderCollectionDetails } = useRouteLoaderData('collection-details')
@@ -14,7 +15,10 @@ export default function CollectionGeneralPage () {
 
   return (
     <Suspense fallback={<CollectionGeneralSkeleton />}>
-      <Await resolve={loaderCollectionDetails}>
+      <Await
+        resolve={loaderCollectionDetails}
+        errorElement={<ErrorPage />}
+      >
         {({
           name,
           images: {

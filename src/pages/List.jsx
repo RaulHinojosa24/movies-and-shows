@@ -2,14 +2,15 @@ import { Suspense, useCallback, useContext, useEffect, useMemo, useRef, useState
 import ListElement from '../components/List/ListElement'
 import ListHeader from '../components/List/ListHeader'
 import Main from '../components/PageUI/Main'
-import { getListDetails } from '../utils/http'
-import { useLoaderData, defer, Await } from 'react-router-dom'
+import { fetchWithDefer, getListDetails } from '../utils/http'
+import { useLoaderData, Await } from 'react-router-dom'
 import Loading from '../components/UI/Loading'
 import useIntersectionObserver from '../hooks/useIntersectionObserver'
 import ListFilters from '../components/List/ListFilters'
 import { setDocTitle } from '../utils/utility'
 import ListSkeleton from '../skeleton-pages/ListSkeleton'
 import { settingsContext } from '../context/settings-context'
+import ErrorPage from './ErrorPage'
 
 const dateSorting = (a, b) => (
   new Date(b.release_date || b.first_air_date) - (new Date(a.release_date || a.first_air_date)) ||
@@ -97,7 +98,7 @@ export default function ListPage () {
     setCurrentPage(prev => prev + 1)
     setListElements(prev => [...prev, ...data.results])
     setIsLoading(false)
-  }, [currentPage])
+  }, [appLanguage, currentPage])
 
   useEffect(() => {
     if (isVisible) {
@@ -113,7 +114,10 @@ export default function ListPage () {
 
   return (
     <Suspense fallback={<ListSkeleton />}>
-      <Await resolve={loaderData}>
+      <Await
+        resolve={loaderData}
+        errorElement={<ErrorPage />}
+      >
         {({
           id,
           comments,
@@ -199,8 +203,8 @@ export default function ListPage () {
   )
 }
 
-export async function loader ({ request, params, language }) {
+export async function loader ({ request, params, language, includeAdult }) {
   const { id } = params
 
-  return defer({ data: getListDetails({ id, language }) })
+  return fetchWithDefer({ data: () => getListDetails({ id, language, includeAdult }) })
 }

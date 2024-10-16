@@ -6,6 +6,7 @@ import MediaPosters from '../components/Media/MediaPosters'
 import { Suspense } from 'react'
 import CollectionHeaderCompact from '../components/Collection/CollectionHeaderCompact'
 import CollectionMediaSkeleton from '../skeleton-pages/CollectionMediaSkeleton'
+import ErrorPage from './ErrorPage'
 
 export default function CollectionMediaPage () {
   const { data: loaderCollectionDetails } = useRouteLoaderData('collection-details')
@@ -13,7 +14,10 @@ export default function CollectionMediaPage () {
 
   return (
     <Suspense fallback={<CollectionMediaSkeleton />}>
-      <Await resolve={loaderCollectionDetails}>
+      <Await
+        resolve={loaderCollectionDetails}
+        errorElement={<ErrorPage />}
+      >
         {({
           name,
           images: {

@@ -5,7 +5,7 @@ import LinkedinLogo from '../logos/LinkedinLogo'
 
 export default function Footer () {
   return (
-    <footer className='p-app-space bg-light-2 dark:bg-dark-2 shadow !border-0 shadow-colors'>
+    <footer className='p-app-space bg-light-2 dark:bg-dark-2 shadow !border-0 shadow-colors mt-auto'>
       <section className='grid sm:grid-cols-2 md:grid-cols-3 grid-cols-1 gap-4'>
         <div className='self-center'>
           <img crossOrigin='anonymous' src={LogoBig} loading='lazy' alt='Logo con texto en amarillo "Movies & Shows"' className='aspect-square max-w-1/2 w-40 mx-auto' />

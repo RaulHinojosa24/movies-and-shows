@@ -13,6 +13,7 @@ import GeneralMedia from '../components/Media/GeneralMedia'
 import { Suspense } from 'react'
 import TvGeneralSkeleton from '../skeleton-pages/TvGeneralSkeleton'
 import TvHeader from '../components/TvGeneral/TvHeader'
+import ErrorPage from './ErrorPage'
 
 export default function TvGeneral () {
   const { data: loaderTvDetails } = useRouteLoaderData('tv-details')
@@ -20,7 +21,10 @@ export default function TvGeneral () {
 
   return (
     <Suspense fallback={<TvGeneralSkeleton />}>
-      <Await resolve={loaderTvDetails}>
+      <Await
+        resolve={loaderTvDetails}
+        errorElement={<ErrorPage />}
+      >
         {(data) => {
           const {
             episode_run_time: episodeRunTime,

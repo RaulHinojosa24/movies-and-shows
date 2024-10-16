@@ -6,6 +6,7 @@ import { setDocTitle } from '../utils/utility'
 import { Suspense } from 'react'
 import TvSeasonsSkeleton from '../skeleton-pages/TvSeasonsSkeleton'
 import TvHeaderCompact from '../components/TvGeneral/TvHeaderCompact'
+import ErrorPage from './ErrorPage'
 
 export default function TvSeasonsPage () {
   const { data: loaderTvDetails } = useRouteLoaderData('tv-details')
@@ -13,7 +14,10 @@ export default function TvSeasonsPage () {
 
   return (
     <Suspense fallback={<TvSeasonsSkeleton />}>
-      <Await resolve={loaderTvDetails}>
+      <Await
+        resolve={loaderTvDetails}
+        errorElement={<ErrorPage />}
+      >
         {({
           seasons,
           name,
@@ -54,6 +58,5 @@ export default function TvSeasonsPage () {
         }}
       </Await>
     </Suspense>
-
   )
 }

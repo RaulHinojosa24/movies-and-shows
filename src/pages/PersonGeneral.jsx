@@ -10,6 +10,7 @@ import Main from '../components/PageUI/Main'
 import { Suspense, useContext } from 'react'
 import { rootContext } from '../context/root-context'
 import PersonGeneralSkeleton from '../skeleton-pages/PersonGeneralSkeleton'
+import ErrorPage from './ErrorPage'
 
 export default function PersonGeneralPage () {
   const { data: loaderPersonDetails } = useRouteLoaderData('person-details')
@@ -18,7 +19,10 @@ export default function PersonGeneralPage () {
 
   return (
     <Suspense fallback={<PersonGeneralSkeleton />}>
-      <Await resolve={loaderPersonDetails}>
+      <Await
+        resolve={loaderPersonDetails}
+        errorElement={<ErrorPage />}
+      >
         {({
           external_ids: externalIDs,
           profile_path: profilePath,

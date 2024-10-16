@@ -7,6 +7,7 @@ import { Await, useRouteLoaderData } from 'react-router-dom'
 import { Suspense } from 'react'
 import MovieHeaderCompact from '../components/MovieGeneral/MovieHeaderCompact'
 import MovieMediaSkeleton from '../skeleton-pages/MovieMediaSkeleton'
+import ErrorPage from './ErrorPage'
 
 export default function MovieMediaPage () {
   const { data: loaderMovieDetails } = useRouteLoaderData('movie-details')
@@ -14,7 +15,10 @@ export default function MovieMediaPage () {
 
   return (
     <Suspense fallback={<MovieMediaSkeleton />}>
-      <Await resolve={loaderMovieDetails}>
+      <Await
+        resolve={loaderMovieDetails}
+        errorElement={<ErrorPage />}
+      >
         {({
           title,
           oringinal_title: originalTitle,

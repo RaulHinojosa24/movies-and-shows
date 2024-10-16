@@ -15,7 +15,7 @@ export default function Popular () {
   const isVisible = useIntersectionObserver(sectionRef, '', true)
   const [results, setResults] = useState(EMPTY_RESULTS)
 
-  const { language, country } = useContext(settingsContext)
+  const { language, country, includeAdult } = useContext(settingsContext)
   const appLanguage = `${language.iso_639_1}-${country.iso_3166_1}`
   const region = country.iso_3166_1
 
@@ -25,21 +25,24 @@ export default function Popular () {
       case 'movie':
         setPromise(getPopularMovies({
           language: appLanguage,
-          region
+          region,
+          includeAdult
         }))
         break
       case 'tv':
         setPromise(getPopularTvs({
-          language: appLanguage
+          language: appLanguage,
+          includeAdult
         }))
         break
       case 'person':
         setPromise(getPopularPeople({
-          language: appLanguage
+          language: appLanguage,
+          includeAdult
         }))
         break
     }
-  }, [appLanguage, isVisible, media, region])
+  }, [appLanguage, includeAdult, isVisible, media, region])
 
   useEffect(() => {
     if (!promise) return

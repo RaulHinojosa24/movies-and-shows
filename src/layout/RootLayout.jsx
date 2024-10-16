@@ -1,6 +1,6 @@
-import { Outlet, ScrollRestoration, defer, matchPath, useLoaderData } from 'react-router-dom'
+import { Outlet, ScrollRestoration, matchPath, useLoaderData } from 'react-router-dom'
 import MainNavigation from './MainNavigation'
-import { getAPIConfiguration, getMovieGenres, getTvGenres } from '../utils/http'
+import { fetchWithDefer, getAPIConfiguration, getMovieGenres, getTvGenres } from '../utils/http'
 import GoToTopButton from '../components/PageUI/GoToTopButton'
 import Footer from './Footer'
 import { useContext, useEffect } from 'react'
@@ -36,9 +36,9 @@ export default function RootLayout () {
 }
 
 export async function loader ({ language }) {
-  return defer({
-    config: getAPIConfiguration(),
-    movieGenres: getMovieGenres({ language }),
-    tvGenres: getTvGenres({ language })
+  return fetchWithDefer({
+    config: () => getAPIConfiguration(),
+    movieGenres: () => getMovieGenres({ language }),
+    tvGenres: () => getTvGenres({ language })
   })
 }

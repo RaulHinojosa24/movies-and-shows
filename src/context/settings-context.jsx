@@ -10,15 +10,15 @@ const DEFAULT_COUNTRY = {
   english_name: 'United States of America',
   native_name: 'United States'
 }
-const DEFAULT_ALLOW_ADULT_CONTENT = false
+const DEFAULT_INCLUDE_ADULT = false
 
 const INITIAL_VALUES = {
   language: DEFAULT_LANGUAGE,
   setLanguage: () => {},
   country: DEFAULT_COUNTRY,
   setCountry: () => {},
-  allowAdultContent: DEFAULT_ALLOW_ADULT_CONTENT,
-  setAllowAdultContent: () => {},
+  includeAdult: DEFAULT_INCLUDE_ADULT,
+  setIncludeAdult: () => {},
   isSettingsContextLoaded: false
 }
 
@@ -28,12 +28,12 @@ export default function SettingsContextProvider ({ children }) {
   const [isSettingsContextLoaded, setIsSettingsContextLoaded] = useState(false)
   const [language, setLanguage] = useState(DEFAULT_LANGUAGE)
   const [country, setCountry] = useState(DEFAULT_COUNTRY)
-  const [allowAdultContent, setAllowAdultContent] = useState(DEFAULT_ALLOW_ADULT_CONTENT)
+  const [includeAdult, setIncludeAdult] = useState(DEFAULT_INCLUDE_ADULT)
 
   useEffect(() => {
     const storedLanguage = localStorage.getItem('language')
     const storedCountry = localStorage.getItem('country')
-    const storedAllowAdultContentLanguage = localStorage.getItem('allow-adult-content')
+    const storedIncludeAdult = localStorage.getItem('include-adult')
 
     if (storedLanguage) {
       setLanguage(JSON.parse(storedLanguage))
@@ -41,8 +41,8 @@ export default function SettingsContextProvider ({ children }) {
     if (storedCountry) {
       setCountry(JSON.parse(storedCountry))
     }
-    if (storedAllowAdultContentLanguage) {
-      setAllowAdultContent(storedAllowAdultContentLanguage === 'true')
+    if (storedIncludeAdult) {
+      setIncludeAdult(storedIncludeAdult === 'true')
     }
 
     setIsSettingsContextLoaded(true)
@@ -56,9 +56,9 @@ export default function SettingsContextProvider ({ children }) {
     setCountry(newCountry)
     localStorage.setItem('country', JSON.stringify(newCountry))
   }
-  function changeAllowAdultContentLanguage (newAllowAdultContent) {
-    setAllowAdultContent(newAllowAdultContent)
-    localStorage.setItem('allow-adult-content', newAllowAdultContent)
+  function changeIncludeAdult (newIncludeAdult) {
+    setIncludeAdult(newIncludeAdult)
+    localStorage.setItem('include-adult', newIncludeAdult)
   }
 
   return (
@@ -67,8 +67,8 @@ export default function SettingsContextProvider ({ children }) {
       setLanguage: changeLanguage,
       country,
       setCountry: changeCountry,
-      allowAdultContent,
-      setAllowAdultContent: changeAllowAdultContentLanguage,
+      includeAdult,
+      setIncludeAdult: changeIncludeAdult,
       isSettingsContextLoaded
     }}
     >

@@ -1,5 +1,5 @@
-import { Outlet, defer } from 'react-router-dom'
-import { getMovieDetails } from '../utils/http'
+import { Outlet } from 'react-router-dom'
+import { getMovieDetails, fetchWithDefer } from '../utils/http'
 
 export default function MovieDetailsLayout () {
   return (
@@ -9,8 +9,10 @@ export default function MovieDetailsLayout () {
   )
 }
 
-export async function loader ({ request, params, language }) {
+export async function loader ({ request, params, language, includeAdult }) {
   const { id } = params
 
-  return defer({ data: getMovieDetails({ id, language }) })
+  return fetchWithDefer({
+    data: () => getMovieDetails({ id, language, includeAdult })
+  })
 }

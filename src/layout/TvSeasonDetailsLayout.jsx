@@ -1,13 +1,9 @@
-import { Outlet, defer } from 'react-router-dom'
-import { getTvSeasonDetails } from '../utils/http'
-import SeasonHeader from '../components/TvSeasons/SeasonHeader'
-import SeasonsNav from '../components/TvSeasons/SeasonsNav'
+import { Outlet } from 'react-router-dom'
+import { fetchWithDefer, getTvSeasonDetails } from '../utils/http'
 
 export default function TvSeasonDetailsLayout () {
   return (
     <section>
-      <SeasonHeader />
-      <SeasonsNav />
       <Outlet />
     </section>
   )
@@ -16,5 +12,5 @@ export default function TvSeasonDetailsLayout () {
 export async function loader ({ request, params, language }) {
   const { id, season } = params
 
-  return defer({ data: getTvSeasonDetails({ tv: id, season, language }) })
+  return fetchWithDefer({ data: () => getTvSeasonDetails({ tv: id, season, language }) })
 }

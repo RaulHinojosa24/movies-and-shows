@@ -1,5 +1,5 @@
-import { Await, Link, defer, useLoaderData, useRouteLoaderData } from 'react-router-dom'
-import { getTvByQuery } from '../../utils/http'
+import { Await, Link, useLoaderData, useRouteLoaderData } from 'react-router-dom'
+import { fetchWithDefer, getTvByQuery } from '../../utils/http'
 import { formatLongDate } from '../../utils/utility'
 import Pagination from './Pagination'
 import DefaultPosterImage from '../../assets/default-poster.webp'
@@ -92,13 +92,13 @@ function Fallback () {
   )
 }
 
-export async function loader ({ request, params, language, allowAdultContent }) {
+export async function loader ({ request, params, language, includeAdult }) {
   const url = new URL(request.url)
   const query = url.searchParams.get('query') || ''
   const page = Number(url.searchParams.get('page') || '')
 
   if (query && Boolean(page) && page > 1) {
-    return defer({ data: getTvByQuery({ query, page, language, allowAdultContent }) })
+    return fetchWithDefer({ data: () => getTvByQuery({ query, page, language, includeAdult }) })
   }
 
   return { data: null }

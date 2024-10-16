@@ -1,5 +1,5 @@
-import { Outlet, defer } from 'react-router-dom'
-import { getTvDetails } from '../utils/http'
+import { Outlet } from 'react-router-dom'
+import { fetchWithDefer, getTvDetails } from '../utils/http'
 
 export default function TvDetailsLayout () {
   return (
@@ -9,8 +9,8 @@ export default function TvDetailsLayout () {
   )
 }
 
-export async function loader ({ request, params, language }) {
+export async function loader ({ request, params, language, includeAdult }) {
   const { id } = params
 
-  return defer({ data: getTvDetails({ id, language }) })
+  return fetchWithDefer({ data: () => getTvDetails({ id, language, includeAdult }) })
 }

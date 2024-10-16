@@ -1,3 +1,5 @@
+import { defer } from 'react-router-dom'
+
 const API_URL = 'http://localhost:3000'
 // const API_URL = 'https://movies-and-shows-backend.vercel.app'
 
@@ -20,15 +22,14 @@ async function sendRequest (path, params = {}, delay = 0) {
   return new Promise(resolve => setTimeout(resolve, delay)).then(async () => {
     try {
       const response = await fetch(url.href)
+      const data = await response.json()
 
       if (!response.ok) {
-        const error = new Error('Network response was not ok')
-        error.status = response.status
-        error.statusText = response.statusText
+        const error = new Error(data?.error || 'Something went wrong.')
+        error.status = response?.status
+        error.statusText = response?.statusText
         throw error
       }
-
-      const data = await response.json()
 
       return data !== undefined ? data : null
     } catch (error) {
@@ -38,6 +39,26 @@ async function sendRequest (path, params = {}, delay = 0) {
       throw error
     }
   })
+}
+
+export function fetchWithDefer (dataFetchingFunctions) {
+  try {
+    const data = {}
+
+    Object.keys(dataFetchingFunctions).forEach(key => {
+      data[key] = dataFetchingFunctions[key]()
+    })
+
+    return defer(data)
+  } catch (error) {
+    throw new Response(
+      error.message || 'Error al cargar los datos.',
+      {
+        status: error.status || 500,
+        statusText: error.statusText || 'Internal Server Error'
+      }
+    )
+  }
 }
 
 // GENERAL
@@ -56,33 +77,41 @@ export function getTvGenres ({ language }) {
 }
 
 // HOME
-export function getNowPlayingMovies ({ language, region }) {
+export function getNowPlayingMovies ({ language, region, includeAdult }) {
   return sendRequest('/get-now-playing-movies', {
     language,
-    region
+    region,
+    includeAdult
   })
 }
-export function getTrendingAll ({ timeWindow = 'day', page = 1, language }) {
+export function getTrendingAll ({ timeWindow = 'day', page = 1, language, includeAdult }) {
   return sendRequest('/get-trending-all', {
     time_window: timeWindow,
     page,
-    language
+    language,
+    includeAdult
   })
 }
-export function getPopularMovies ({ language, region }) {
+export function getPopularMovies ({ language, region, page = 1, includeAdult }) {
   return sendRequest('/get-popular-movies', {
     language,
-    region
+    page,
+    region,
+    includeAdult
   })
 }
-export function getPopularTvs ({ language }) {
+export function getPopularTvs ({ language, page = 1, includeAdult }) {
   return sendRequest('/get-popular-tvs', {
-    language
+    language,
+    page,
+    includeAdult
   })
 }
-export function getPopularPeople ({ language }) {
+export function getPopularPeople ({ language, page = 1, includeAdult }) {
   return sendRequest('/get-popular-people', {
-    language
+    language,
+    page,
+    includeAdult
   })
 }
 
@@ -90,7 +119,7 @@ export function getPopularPeople ({ language }) {
 export function discoverMovies ({
   language,
   region,
-  allowAdultContent,
+  includeAdult,
   page = 1,
   sortBy,
   sortDirection,
@@ -108,28 +137,28 @@ export function discoverMovies ({
 }) {
   return sendRequest('/discover-movies', {
     language,
-    watch_region: region,
+    region,
     page,
-    include_adult: allowAdultContent,
-    sort_by: sortBy,
-    sort_direction: sortDirection,
-    watch_types: watchTypes,
-    vote_count: voteCount,
-    vote_min: voteMin,
-    vote_max: voteMax,
-    duration_min: durationMin,
-    duration_max: durationMax,
-    from_date: fromDate,
-    to_date: toDate,
+    includeAdult,
+    sortBy,
+    sortDirection,
+    watchTypes,
+    voteCount,
+    voteMin,
+    voteMax,
+    durationMin,
+    durationMax,
+    fromDate,
+    toDate,
     genres,
     keywords,
-    watch_providers: watchProviders
+    watchProviders
   })
 }
 export function discoverTvs ({
   language,
   region,
-  allowAdultContent,
+  includeAdult,
   page = 1,
   sortBy,
   sortDirection,
@@ -147,34 +176,34 @@ export function discoverTvs ({
 }) {
   return sendRequest('/discover-tvs', {
     language,
-    watch_region: region,
-    include_adult: allowAdultContent,
+    region,
+    includeAdult,
     page,
-    sort_by: sortBy,
-    sort_direction: sortDirection,
-    watch_types: watchTypes,
-    vote_count: voteCount,
-    vote_min: voteMin,
-    vote_max: voteMax,
-    duration_min: durationMin,
-    duration_max: durationMax,
-    from_date: fromDate,
-    to_date: toDate,
+    sortBy,
+    sortDirection,
+    watchTypes,
+    voteCount,
+    voteMin,
+    voteMax,
+    durationMin,
+    durationMax,
+    fromDate,
+    toDate,
     genres,
     keywords,
-    watch_providers: watchProviders
+    watchProviders
   })
 }
 export function getMovieProviders ({ language, region }) {
   return sendRequest('/get-movie-providers', {
     language,
-    watch_region: region
+    region
   })
 }
 export function getTvProviders ({ language, region }) {
   return sendRequest('/get-tv-providers', {
     language,
-    watch_region: region
+    region
   })
 }
 export function getKeywordsByQuery ({ query, page = 1 }) {
@@ -186,16 +215,18 @@ export function getKeywordsByQuery ({ query, page = 1 }) {
 }
 
 // DETAILS
-export function getMovieDetails ({ id, language }) {
+export function getMovieDetails ({ id, language, includeAdult }) {
   return sendRequest('/get-movie-details', {
     id,
-    language
+    language,
+    includeAdult
   })
 }
-export function getTvDetails ({ id, language }) {
+export function getTvDetails ({ id, language, includeAdult }) {
   return sendRequest('/get-tv-details', {
     id,
-    language
+    language,
+    includeAdult
   })
 }
 export function getTvSeasonDetails ({ tv, season, language }) {
@@ -205,49 +236,52 @@ export function getTvSeasonDetails ({ tv, season, language }) {
     language
   })
 }
-export function getPersonDetails ({ id, language }) {
+export function getPersonDetails ({ id, language, includeAdult }) {
   return sendRequest('/get-person-details', {
     id,
-    language
+    language,
+    includeAdult
   })
 }
-export function getCollectionDetails ({ id, language }) {
+export function getCollectionDetails ({ id, language, includeAdult }) {
   return sendRequest('/get-collection-details', {
     id,
-    language
+    language,
+    includeAdult
   })
 }
-export function getListDetails ({ id, page = 1, language }) {
+export function getListDetails ({ id, page = 1, language, includeAdult }) {
   return sendRequest('/get-list-details', {
     id,
     page,
-    language
+    language,
+    includeAdult
   })
 }
 
 // SEARCH
-export function getMoviesByQuery ({ query, page = 1, language, allowAdultContent }) {
+export function getMoviesByQuery ({ query, page = 1, language, includeAdult }) {
   return sendRequest('/search-movies', {
     query,
     page,
     language,
-    include_adult: allowAdultContent
+    includeAdult
   })
 }
-export function getTvByQuery ({ query, page = 1, language, allowAdultContent }) {
+export function getTvByQuery ({ query, page = 1, language, includeAdult }) {
   return sendRequest('/search-tvs', {
     query,
     page,
     language,
-    include_adult: allowAdultContent
+    includeAdult
   })
 }
-export function getPeopleByQuery ({ query, page = 1, language, allowAdultContent }) {
+export function getPeopleByQuery ({ query, page = 1, language, includeAdult }) {
   return sendRequest('/search-people', {
     query,
     page,
     language,
-    include_adult: allowAdultContent
+    includeAdult
   })
 }
 
