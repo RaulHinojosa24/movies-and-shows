@@ -1,7 +1,7 @@
 import { defer } from 'react-router-dom'
 
-const API_URL = 'http://localhost:3000'
-// const API_URL = 'https://movies-and-shows-backend.vercel.app'
+// const API_URL = 'http://localhost:3000'
+const API_URL = 'https://movies-and-shows-backend.vercel.app'
 
 const POST_OPTIONS = {
   method: 'POST'
