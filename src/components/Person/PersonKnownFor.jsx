@@ -23,7 +23,8 @@ const calculateScore = (credit, maxValues) => {
 export default function PersonKnownFor ({ id, cast, crew }) {
   const combinedCredits = [...cast, ...crew]
   const filteredCredits = combinedCredits
-    .filter(credit => credit.vote_count > 5 && credit.popularity > 1)
+    .reduce((acc, curr) => acc.find(el => el.id === curr.id) ? acc : [...acc, curr], [])
+    .filter(credit => credit.vote_count > 1 && credit.popularity > 1)
   const maxValues = {
     popularity: Math.max(...filteredCredits.map(c => c.popularity)),
     vote_count: Math.max(...filteredCredits.map(c => c.vote_count)),
