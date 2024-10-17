@@ -72,9 +72,11 @@ function PersonCard ({ id, name, originalName, profilePath, knownForDepartment, 
 
   return (
     <li className='rounded shadow shadow-colors flex overflow-hidden'>
-      <img
-        crossOrigin='anonymous' className='aspect-[5/6] w-24 object-cover' src={prettyProfilePath} alt={'Foto de perfil de ' + prettyName} loading='lazy'
-      />
+      <Link to={`/person/${id}`} className='aspect-[5/6] w-24 max-w-24'>
+        <img
+          crossOrigin='anonymous' className='w-full h-full object-cover' src={prettyProfilePath} alt={'Foto de perfil de ' + prettyName} loading='lazy'
+        />
+      </Link>
       <div className='px-4 py-2 flex flex-col justify-center'>
         <div>
           <h3 className='font-semibold text-lg inline-block mr-2'>

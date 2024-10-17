@@ -69,10 +69,12 @@ function TvCard ({ id, name, originalName, posterPath, overview, firstAirDate, a
 
   return (
     <li className='rounded shadow shadow-colors flex overflow-hidden'>
-      <img
-        loading='lazy' crossOrigin='anonymous' className='aspect-[2/3] w-24 object-cover'
-        src={prettyPosterPath} alt={'Poster de la serie de tv ' + prettyName}
-      />
+      <Link to={`/tv/${id}`} className='aspect-[2/3] w-24 max-w-24 shrink-0'>
+        <img
+          loading='lazy' crossOrigin='anonymous' className='object-cover w-full h-full'
+          src={prettyPosterPath} alt={'Poster de la serie de tv ' + prettyName}
+        />
+      </Link>
       <div className='px-4 py-2 space-y-2 flex flex-col justify-center'>
         <div>
           <div>
