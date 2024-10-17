@@ -2,8 +2,9 @@ import { Link } from 'react-router-dom'
 import DefaultProfileImage from '../../assets/default-user.webp'
 import { useContext } from 'react'
 import { rootContext } from '../../context/root-context'
+import AdultTag from '../PageUI/AdultTag'
 
-export default function CastItem ({ id, image, primary, secondary }) {
+export default function CastItem ({ id, image, primary, secondary, adult }) {
   const { config } = useContext(rootContext)
 
   const profileURL = config && image
@@ -16,9 +17,13 @@ export default function CastItem ({ id, image, primary, secondary }) {
         <img crossOrigin='anonymous' className='aspect-[5/6] h-20 object-cover object-top rounded' loading='lazy' src={profileURL} alt={'Foto de perfil de ' + primary} />
       </Link>
       <div className='flex flex-col justify-center'>
-        <Link to={'/person/' + id} className='font-semibold'>
-          {primary}
-        </Link>
+        <div>
+          <Link to={'/person/' + id} className='inline-block font-semibold mr-2'>
+            {primary}
+          </Link>
+          {adult &&
+            <AdultTag />}
+        </div>
         <p className='text-sm [&>*+*]:before:content-[","] [&>*+*]:before:mr-1'>{secondary.map(j => {
           const { credit_id: id, job, character, episode_count: episodes } = j
 

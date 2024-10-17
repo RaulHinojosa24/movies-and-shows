@@ -5,6 +5,7 @@ import DefaultLandscapeImage from '../../assets/default-landscape.webp'
 import Slider from '../PageUI/Slider'
 import { useContext } from 'react'
 import { rootContext } from '../../context/root-context'
+import AdultTag from '../PageUI/AdultTag'
 
 export default function MovieRecommendations ({ id, recommendations }) {
   if (recommendations.length === 0) {
@@ -22,7 +23,8 @@ export default function MovieRecommendations ({ id, recommendations }) {
     mediaType: movie.media_type,
     releaseYear: movie.release_date ? new Date(movie.release_date).getFullYear() : null,
     voteAverage: movie.vote_average,
-    voteCount: movie.vote_count
+    voteCount: movie.vote_count,
+    adult: movie.adult
   }))
 
   return (
@@ -32,7 +34,7 @@ export default function MovieRecommendations ({ id, recommendations }) {
   )
 }
 
-const Slide = ({ id, backdropPath, title, releaseYear, voteAverage, voteCount, mediaType }) => {
+const Slide = ({ id, backdropPath, title, releaseYear, voteAverage, voteCount, mediaType, adult }) => {
   const { config } = useContext(rootContext)
 
   const prettyBackdropPath = config && backdropPath
@@ -44,10 +46,14 @@ const Slide = ({ id, backdropPath, title, releaseYear, voteAverage, voteCount, m
       <Link to={`/${mediaType}/${id}`}>
         <img crossOrigin='anonymous' loading='lazy' src={prettyBackdropPath} alt={`Imagen de ${title}`} className='w-full aspect-video object-cover' />
       </Link>
-      <div className='p-2 flex justify-between gap-2'>
-        <Link to={`/${mediaType}/${id}`}>
-          <p className='no-swiping font-semibold'>{title} {releaseYear && <>({releaseYear})</>}</p>
-        </Link>
+      <div className='p-2 flex items-start justify-between gap-2'>
+        <div>
+          <Link className='no-swiping font-semibold inline-block mr-2' to={`/${mediaType}/${id}`}>
+            {title} {releaseYear && <>({releaseYear})</>}
+          </Link>
+          {adult &&
+            <AdultTag />}
+        </div>
         <VoteCard rating={voteAverage} count={voteCount} small />
       </div>
     </div>

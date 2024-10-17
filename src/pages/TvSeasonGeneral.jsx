@@ -21,6 +21,8 @@ export default function TvSeasonGeneralPage () {
         errorElement={<ErrorPage />}
       >
         {(data) => {
+          console.log(data)
+
           const [{
             name: tvName,
             original_name: tvOriginalName,

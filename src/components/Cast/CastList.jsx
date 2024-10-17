@@ -22,7 +22,7 @@ export default function CastList ({ cast, needJoin }) {
       <ul className='space-y-3'>
         {cleanCast.map(el => (
           <li key={el.id}>
-            <CastItem id={el.id} image={el.profile_path} primary={el.name} secondary={el.roles} />
+            <CastItem id={el.id} image={el.profile_path} primary={el.name} secondary={el.roles} adult={el.adult} />
           </li>
         )
         )}

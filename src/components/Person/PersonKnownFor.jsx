@@ -4,6 +4,7 @@ import DefaultProfileImage from '../../assets/default-user.webp'
 import Slider from '../PageUI/Slider'
 import { useContext } from 'react'
 import { rootContext } from '../../context/root-context'
+import AdultTag from '../PageUI/AdultTag'
 
 const WEIGHTS = { popularity: 0.5, voteCount: 0.3, voteAverage: 0.2 }
 
@@ -43,7 +44,8 @@ export default function PersonKnownFor ({ id, cast, crew }) {
       name: cc.name,
       title: cc.title,
       posterPath: cc.poster_path,
-      type: cc.media_type
+      type: cc.media_type,
+      adult: cc.adult
     }))
 
   return (
@@ -55,7 +57,7 @@ export default function PersonKnownFor ({ id, cast, crew }) {
   )
 }
 
-const Slide = ({ id, name, title, posterPath, type }) => {
+const Slide = ({ id, name, title, posterPath, type, adult }) => {
   const { config } = useContext(rootContext)
 
   const prettyPosterPath = posterPath && config
@@ -68,10 +70,12 @@ const Slide = ({ id, name, title, posterPath, type }) => {
       <Link to={`/${type}/${id}`}>
         <img crossOrigin='anonymous' loading='lazy' className='aspect-[2/3] w-full object-cover object-top' src={prettyPosterPath} alt={`Póster de ${prettyTitle}`} />
       </Link>
-      <div className='p-2 h-full'>
-        <Link to={`/${type}/${id}`} className='inline-block'>
-          <p className='no-swiping font-semibold w-fit'>{prettyTitle}</p>
+      <div className='p-2'>
+        <Link className='no-swiping font-semibold mr-2 inline-block' to={`/${type}/${id}`}>
+          {prettyTitle}
         </Link>
+        {adult &&
+          <AdultTag />}
       </div>
     </div>
   )

@@ -19,7 +19,8 @@ export default function CreditsCrew ({ groupBy, sorting, crew }) {
       name: c.name || c.original_name,
       firstAirDate: c.first_air_date,
       episodeCount: c.episode_count,
-      sortDate: new Date(c.release_date || c.first_air_date)
+      sortDate: new Date(c.release_date || c.first_air_date),
+      adult: c.adult
     }))
 
   const creditsPerDepartment = {}

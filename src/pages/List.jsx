@@ -174,10 +174,11 @@ export default function ListPage () {
                         release_date: releaseDate,
                         first_air_date: firstAirDate,
                         vote_average: voteAverage,
-                        vote_count: voteCount
+                        vote_count: voteCount,
+                        adult
                       } = result
 
-                      return <ListElement key={id} order={index + 1} comment={comments[`${mediaType}:${id}`]} id={id} mediaType={mediaType} posterPath={posterPath} releaseDate={releaseDate || firstAirDate} revenue={revenue} title={title || name} originalTitle={originalTitle || originalName} voteAverage={voteAverage} voteCount={voteCount} runtime={runtime} commentVisible={commentsVisible} posterMode={posterMode} />
+                      return <ListElement key={id} order={index + 1} comment={comments[`${mediaType}:${id}`]} id={id} mediaType={mediaType} posterPath={posterPath} releaseDate={releaseDate || firstAirDate} revenue={revenue} title={title || name} originalTitle={originalTitle || originalName} voteAverage={voteAverage} voteCount={voteCount} runtime={runtime} commentVisible={commentsVisible} posterMode={posterMode} adult={adult} />
                     })}
                   </div>
                   {currentPage < totalPages &&

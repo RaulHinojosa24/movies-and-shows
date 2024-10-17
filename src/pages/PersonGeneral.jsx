@@ -11,6 +11,7 @@ import { Suspense, useContext } from 'react'
 import { rootContext } from '../context/root-context'
 import PersonGeneralSkeleton from '../skeleton-pages/PersonGeneralSkeleton'
 import ErrorPage from './ErrorPage'
+import AdultTag from '../components/PageUI/AdultTag'
 
 export default function PersonGeneralPage () {
   const { data: loaderPersonDetails } = useRouteLoaderData('person-details')
@@ -37,7 +38,8 @@ export default function PersonGeneralPage () {
           id,
           combined_credits: {
             cast, crew
-          }
+          },
+          adult
         }) => {
           setDocTitle(name)
 
@@ -53,7 +55,11 @@ export default function PersonGeneralPage () {
                     <Link to='media' className='no-underline absolute top-0 left-0 w-full h-full grid text-center content-center font-semibold opacity-0 hover:opacity-100 transition-opacity bg-black/70 backdrop-blur-sm px-12 text-lg text-white rounded'>Ver todas las imágenes</Link>
                     <img loading='lazy' crossOrigin='anonymous' className='aspect-[2/3] object-cover w-full mx-auto max-w-aside rounded shadow shadow-colors' src={prettyProfilePath} alt={'Foto de ' + name} />
                   </div>
-                  <h1 className='text-4xl font-bold text-center md:text-left'>{name}</h1>
+                  <div className='text-center md:text-left'>
+                    <h1 className='text-4xl font-bold'>{name}</h1>
+                    {adult &&
+                      <AdultTag />}
+                  </div>
                   <PersonInfo alsoKnownAs={alsoKnownAs} birthday={birthday} deathday={deathday} gender={gender} knownForDepartment={knownForDepartment} placeOfBirth={placeOfBirth} />
                 </>
               }

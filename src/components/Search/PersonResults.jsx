@@ -5,6 +5,7 @@ import DefaultUserImage from '../../assets/default-user.webp'
 import { Suspense, useContext } from 'react'
 import SearchResultsSkeleton from '../Skeletons/SearchResultsSkeleton'
 import { rootContext } from '../../context/root-context'
+import AdultTag from '../PageUI/AdultTag'
 
 export default function PersonResults () {
   const { data: loaderData } = useLoaderData()
@@ -29,11 +30,12 @@ export default function PersonResults () {
                       name,
                       original_name: originalName,
                       profile_path: profilePath,
-                      known_for: knownFor
+                      known_for: knownFor,
+                      adult
                     } = person
 
                     return (
-                      <PersonCard key={id} id={id} name={name} originalName={originalName} profilePath={profilePath} knownForDepartment={knownForDepartment} knownFor={knownFor} />
+                      <PersonCard key={id} id={id} name={name} originalName={originalName} profilePath={profilePath} knownForDepartment={knownForDepartment} knownFor={knownFor} adult={adult} />
                     )
                   })}
                 </ul>}
@@ -53,7 +55,7 @@ export default function PersonResults () {
   )
 }
 
-function PersonCard ({ id, name, originalName, profilePath, knownForDepartment, knownFor }) {
+function PersonCard ({ id, name, originalName, profilePath, knownForDepartment, knownFor, adult }) {
   const { config } = useContext(rootContext)
 
   const prettyProfilePath = profilePath && config
@@ -74,9 +76,15 @@ function PersonCard ({ id, name, originalName, profilePath, knownForDepartment, 
         crossOrigin='anonymous' className='aspect-[5/6] w-24 object-cover' src={prettyProfilePath} alt={'Foto de perfil de ' + prettyName} loading='lazy'
       />
       <div className='px-4 py-2 flex flex-col justify-center'>
-        <Link to={`/person/${id}`} className='w-fit inline-block'>
-          <h3 className='font-semibold text-lg'>{prettyName} {!sameName && <span className='text-medium font-normal'>{originalName}</span>}</h3>
-        </Link>
+        <div>
+          <h3 className='font-semibold text-lg inline-block mr-2'>
+            <Link to={`/person/${id}`}>
+              {prettyName} {!sameName && <span className='text-medium font-normal'>{originalName}</span>}
+            </Link>
+          </h3>
+          {adult &&
+            <AdultTag />}
+        </div>
         <div className='flex font-semibold [&>*+*]:before:content-["·"] [&>*+*]:before:mx-1'>
           <span>{knownForDepartment}</span>
           {knownFor.length > 0 &&

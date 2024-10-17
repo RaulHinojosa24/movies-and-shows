@@ -4,6 +4,7 @@ import DefaultPosterImage from '../../assets/default-poster.webp'
 import DefaultProfileImage from '../../assets/default-user.webp'
 import VoteCard from '../PageUI/VoteCard'
 import { rootContext } from '../../context/root-context'
+import AdultTag from '../PageUI/AdultTag'
 
 export default function PopularCard ({
   id,
@@ -16,7 +17,8 @@ export default function PopularCard ({
   mediaType,
   vote_average: voteAverage,
   vote_count: voteCount,
-  fetching
+  fetching,
+  adult
 }) {
   const { config } = useContext(rootContext)
 
@@ -41,9 +43,13 @@ export default function PopularCard ({
                 <VoteCard small rating={voteAverage} count={voteCount} className='absolute bottom-2 left-2' />}
             </div>
           </Link>
-          <Link to={`/${mediaType}/${id}`} className='m-2 inline-block no-swiping font-semibold'>
-            {prettyName}
-          </Link>
+          <div className='p-2'>
+            <Link to={`/${mediaType}/${id}`} className='no-swiping font-semibold inline-block mr-2'>
+              {prettyName}
+            </Link>
+            {adult &&
+              <AdultTag />}
+          </div>
         </>}
       {fetching &&
         <>

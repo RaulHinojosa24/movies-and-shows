@@ -4,6 +4,7 @@ import DefaultProfileImage from '../../assets/default-user.webp'
 import Slider from '../PageUI/Slider'
 import { useContext } from 'react'
 import { rootContext } from '../../context/root-context'
+import AdultTag from '../PageUI/AdultTag'
 
 export default function MovieCast ({ id, cast }) {
   if (cast.length === 0) {
@@ -21,7 +22,8 @@ export default function MovieCast ({ id, cast }) {
       id: person.id,
       name: person.name || person.original_name,
       picturePath: person.profile_path,
-      character: person.character
+      character: person.character,
+      adult: person.adult
     }))
 
   const lastSlide = () => (
@@ -37,7 +39,7 @@ export default function MovieCast ({ id, cast }) {
   )
 }
 
-const Slide = ({ id, name, picturePath, character }) => {
+const Slide = ({ id, name, picturePath, character, adult }) => {
   const { config } = useContext(rootContext)
 
   const prettyPath = picturePath && config
@@ -50,9 +52,13 @@ const Slide = ({ id, name, picturePath, character }) => {
         <img crossOrigin='anonymous' loading='lazy' className='aspect-[4/5] object-cover object-top' src={prettyPath} alt={`Foto de perfil de ${name}`} />
       </Link>
       <div className='p-2'>
-        <Link to={'/person/' + id}>
-          <p className='no-swiping font-semibold inline'>{name}</p>
-        </Link>
+        <div>
+          <Link className='inline-block no-swiping font-semibold mr-2' to={'/person/' + id}>
+            {name}
+          </Link>
+          {adult &&
+            <AdultTag />}
+        </div>
         {character &&
           <p className='no-swiping w-fit text-sm'>{character}</p>}
       </div>

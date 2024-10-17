@@ -24,11 +24,11 @@ export default function ReviewItem ({ author, authorDetails, content, createdAt,
           <a href={url} target='_blank'>
             <h3 className='text-lg font-semibold'>Una reseña de {name || prettyUsername}</h3>
           </a>
-          <p className='font-thin text-sm'>
+          <div className='font-thin text-sm flex flex-wrap gap-x-2'>
             {rating &&
               <VoteCard rating={rating} minimal />}
             Escrita por <span className='font-semibold'>{prettyUsername}</span> el {prettyCreationDate}
-          </p>
+          </div>
         </div>
       </header>
       <main className='mt-3'>

@@ -62,8 +62,9 @@ export default function CollectionList ({ parts }) {
           title,
           overview,
           poster_path: posterPath,
-          release_date: releaseDate
-        }) => <CollectionListItem key={id} id={id} title={title} overview={overview} posterPath={posterPath} releaseDate={releaseDate} />)}
+          release_date: releaseDate,
+          adult
+        }) => <CollectionListItem key={id} id={id} title={title} overview={overview} posterPath={posterPath} releaseDate={releaseDate} adult={adult} />)}
       </ol>
     </section>
   )

@@ -11,6 +11,9 @@ export default function CollectionHeader ({ parts, backdropPath, posterPath, nam
         .sort((a, b) => a.name.localeCompare(b.name))
     : []
 
+  const hasAdultContent = parts
+    .some(p => p.adult)
+
   return (
     <Header
       backdropPath={backdropPath}
@@ -19,6 +22,7 @@ export default function CollectionHeader ({ parts, backdropPath, posterPath, nam
       genres={prettyGenres}
       overview={overview}
       mediaType='movie'
+      adult={hasAdultContent}
     />
   )
 }

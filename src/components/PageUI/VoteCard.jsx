@@ -7,9 +7,10 @@ export default function VoteCard ({ rating, count, small, minimal, width, classN
 
   if (minimal) {
     return (
-      <Popover compact noDelay popoverTarget={<span className='font-bold px-2 rounded shadow shadow-colors text-nowrap'>{roundDecimals(rating, 0)} &#9733;</span>}>{count > 0 &&
-        <>Media basada en {count} votos</>}
-      </Popover>
+      // <Popover compact noDelay popoverTarget={<span className='font-bold px-2 rounded shadow shadow-colors text-nowrap'>{roundDecimals(rating, 0)} &#9733;</span>}>{count > 0 &&
+      //   <>Media basada en {count} votos</>}
+      // </Popover>
+      <span className='font-bold px-2 rounded shadow shadow-colors text-nowrap'>{roundDecimals(rating, 0)} &#9733;</span>
     )
   }
 

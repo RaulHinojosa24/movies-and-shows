@@ -12,10 +12,11 @@ export default function Results ({ results }) {
           title,
           vote_average: voteAverage,
           vote_count: voteCount,
-          overview
+          overview,
+          adult
         } = result
 
-        return <ResultItem key={id} id={id} posterPath={posterPath} releaseDate={releaseDate} title={title} originalTitle={originalTitle} voteAverage={voteAverage} voteCount={voteCount} overview={overview} />
+        return <ResultItem key={id} id={id} posterPath={posterPath} releaseDate={releaseDate} title={title} originalTitle={originalTitle} voteAverage={voteAverage} voteCount={voteCount} overview={overview} adult={adult} />
       })}
     </div>
   )

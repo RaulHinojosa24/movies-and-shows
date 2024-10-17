@@ -3,8 +3,9 @@ import { formatLongDate } from '../../utils/utility'
 import DefaultPosterImg from '../../assets/default-poster.webp'
 import { useContext } from 'react'
 import { rootContext } from '../../context/root-context'
+import AdultTag from '../PageUI/AdultTag'
 
-export default function CollectionListItem ({ id, title, posterPath, releaseDate, overview }) {
+export default function CollectionListItem ({ id, title, posterPath, releaseDate, overview, adult }) {
   const { config } = useContext(rootContext)
 
   const prettyPath = config && posterPath
@@ -18,9 +19,15 @@ export default function CollectionListItem ({ id, title, posterPath, releaseDate
       </Link>
       <div className='flex flex-col justify-around p-4'>
         <div>
-          <Link to={'/movie/' + id} className='inline-block'>
-            <h3 className='font-semibold text-lg'>{title}</h3>
-          </Link>
+          <div>
+            <h3 className='font-semibold text-lg inline-block mr-2'>
+              <Link to={'/movie/' + id}>
+                {title}
+              </Link>
+            </h3>
+            {adult &&
+              <AdultTag />}
+          </div>
           <p className='text-medium'>{releaseDate ? formatLongDate(releaseDate) : 'Fecha desconocida'}</p>
         </div>
         {overview &&

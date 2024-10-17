@@ -3,13 +3,15 @@ import { useContext } from 'react'
 import { rootContext } from '../../context/root-context'
 import useImageColors from '../../hooks/useImageColors'
 import DefaultPoster from '../../assets/default-poster.webp'
+import AdultTag from '../PageUI/AdultTag'
 
 export default function PosterCard ({
   poster_path: posterPath,
   backdrop_path: backdropPath,
   title,
   id,
-  isActive
+  isActive,
+  adult
 }) {
   const { config } = useContext(rootContext)
   const { dominant: [r, g, b], isDark, ref: imgRef } = useImageColors(posterPath)
@@ -32,9 +34,11 @@ export default function PosterCard ({
               backgroundImage: `linear-gradient(transparent, rgb(${r},${g},${b}))`,
               backgroundPosition: '0% 0%',
               backgroundSize: '200% 200%'
-            }} className='absolute top-0 left-0 hover:cursor-pointer w-full h-full p-4 flex flex-col justify-end gap-2 hover:!bg-pos-100 transition-all duration-100 ease-in-out'
+            }} className='absolute top-0 left-0 hover:cursor-pointer w-full h-full p-4 flex justify-between items-end gap-x-2 hover:!bg-pos-100 transition-all duration-100 ease-in-out'
           >
             <h3 className={`no-swiping text-2xl font-semibold w-fit ${isDark ? 'text-white' : 'text-black'}`}>{title}</h3>
+            {adult &&
+              <AdultTag />}
           </footer>}
       </article>
     </Link>

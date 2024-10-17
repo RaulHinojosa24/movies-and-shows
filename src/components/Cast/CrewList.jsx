@@ -74,7 +74,7 @@ export default function CrewList ({ crew, needJoin }) {
                   {members
                     .map(el => (
                       <li key={el.id}>
-                        <CastItem id={el.id} image={el.profile_path} primary={el.name} secondary={el.jobs} />
+                        <CastItem id={el.id} image={el.profile_path} primary={el.name} secondary={el.jobs} adult={el.adult} />
                       </li>
                     )
                     )}

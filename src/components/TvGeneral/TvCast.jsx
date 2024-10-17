@@ -4,6 +4,7 @@ import DefaultProfileImage from '../../assets/default-user.webp'
 import Slider from '../PageUI/Slider'
 import { useContext } from 'react'
 import { rootContext } from '../../context/root-context'
+import AdultTag from '../PageUI/AdultTag'
 
 export default function TvCast ({ id, cast }) {
   if (cast.length === 0) {
@@ -33,7 +34,8 @@ export default function TvCast ({ id, cast }) {
         name: person.name || person.original_name,
         picturePath: person.profile_path,
         characters: shortCharacters,
-        episodeCount: person.total_episode_count
+        episodeCount: person.total_episode_count,
+        adult: person.adult
       }
     })
 
@@ -50,7 +52,7 @@ export default function TvCast ({ id, cast }) {
   )
 }
 
-const Slide = ({ id, name, picturePath, characters, episodeCount }) => {
+const Slide = ({ id, name, picturePath, characters, episodeCount, adult }) => {
   const { config } = useContext(rootContext)
 
   const prettyPath = picturePath && config
@@ -63,9 +65,13 @@ const Slide = ({ id, name, picturePath, characters, episodeCount }) => {
         <img crossOrigin='anonymous' loading='lazy' className='aspect-[4/5] object-cover object-top' src={prettyPath} alt={`Foto de perfil de ${name}`} />
       </Link>
       <div className='p-2'>
-        <Link to={'/person/' + id}>
-          <p className='no-swiping font-semibold inline'>{name}</p>
-        </Link>
+        <div>
+          <Link className='no-swiping font-semibold inline-block mr-2' to={'/person/' + id}>
+            {name}
+          </Link>
+          {adult &&
+            <AdultTag />}
+        </div>
         {characters &&
           <p className='no-swiping w-fit text-sm'>{characters}</p>}
         {episodeCount > 0 &&

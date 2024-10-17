@@ -6,6 +6,7 @@ import DefaultPosterImage from '../../assets/default-poster.webp'
 import { Suspense, useContext } from 'react'
 import SearchResultsSkeleton from '../Skeletons/SearchResultsSkeleton'
 import { rootContext } from '../../context/root-context'
+import AdultTag from '../PageUI/AdultTag'
 
 export default function MovieResults () {
   const { data: loaderData } = useLoaderData()
@@ -30,10 +31,11 @@ export default function MovieResults () {
                       original_title: originalTitle,
                       poster_path: posterPath,
                       overview,
-                      release_date: releaseDate
+                      release_date: releaseDate,
+                      adult
                     } = movie
                     return (
-                      <MovieCard key={id} id={id} title={title} originalTitle={originalTitle} posterPath={posterPath} overview={overview} releaseDate={releaseDate} />
+                      <MovieCard key={id} id={id} title={title} originalTitle={originalTitle} posterPath={posterPath} overview={overview} releaseDate={releaseDate} adult={adult} />
                     )
                   })}
                 </ul>}
@@ -53,7 +55,7 @@ export default function MovieResults () {
   )
 }
 
-function MovieCard ({ id, title, originalTitle, posterPath, overview, releaseDate }) {
+function MovieCard ({ id, title, originalTitle, posterPath, overview, releaseDate, adult }) {
   const { config } = useContext(rootContext)
 
   const prettyPosterPath = config && posterPath
@@ -72,9 +74,15 @@ function MovieCard ({ id, title, originalTitle, posterPath, overview, releaseDat
       />
       <div className='px-4 py-2 space-y-2 flex flex-col justify-center'>
         <div>
-          <Link to={`/movie/${id}`} className='w-fit inline-block'>
-            <h3 className='font-semibold text-lg'>{prettyTitle} {!sameTitle && <span className='text-medium font-normal'>{originalTitle}</span>}</h3>
-          </Link>
+          <div>
+            <h3 className='font-semibold text-lg inline-block mr-2'>
+              <Link to={`/movie/${id}`}>
+                {prettyTitle} {!sameTitle && <span className='text-medium font-normal'>{originalTitle}</span>}
+              </Link>
+            </h3>
+            {adult &&
+              <AdultTag />}
+          </div>
           <p className='text-medium'>{prettyReleaseDate}</p>
         </div>
         <p className='line-clamp-2'>{overview}</p>

@@ -66,7 +66,8 @@ export default function TvGeneral () {
             tagline,
             vote_average: voteAverage,
             vote_count: voteCount,
-            'watch/providers': watchProviders
+            'watch/providers': watchProviders,
+            adult
           } = data
 
           const prettyName = name || originalName
@@ -74,7 +75,7 @@ export default function TvGeneral () {
 
           return (
             <>
-              <TvHeader name={prettyName} contentRatings={contentRatings} createdBy={createdBy} genres={genres} backdropPath={backdropPath} posterPath={posterPath} firstAirDate={firstAirDate} tagline={tagline} voteAverage={voteAverage} voteCount={voteCount} watchProviders={watchProviders} />
+              <TvHeader name={prettyName} contentRatings={contentRatings} createdBy={createdBy} genres={genres} backdropPath={backdropPath} posterPath={posterPath} firstAirDate={firstAirDate} tagline={tagline} voteAverage={voteAverage} voteCount={voteCount} watchProviders={watchProviders} adult={adult} />
               <Main
                 left={
                   <TvDetails

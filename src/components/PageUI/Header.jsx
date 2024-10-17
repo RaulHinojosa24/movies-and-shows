@@ -9,8 +9,10 @@ import HeaderMainCredits from '../PageUI/HeaderMainCredits'
 import { useContext, useMemo } from 'react'
 import { rootContext } from '../../context/root-context'
 import useImageColors from '../../hooks/useImageColors'
+import AdultTag from './AdultTag'
+import BullsBetween from '../UI/BullsBetween'
 
-export default function Header ({ posterPath, backdropPath, title, releaseDate, firstAirDate, certification, runtime, genres = [], tagline, voteAverage, voteCount, mainCredits = [], watchProviders, mediaType, overview }) {
+export default function Header ({ posterPath, backdropPath, title, releaseDate, firstAirDate, certification, runtime, genres = [], tagline, voteAverage, voteCount, mainCredits = [], watchProviders, mediaType, overview, adult }) {
   const { config } = useContext(rootContext)
   const { dominant: [r, g, b], isDark, ref: imgRef } = useImageColors(posterPath)
 
@@ -57,7 +59,9 @@ export default function Header ({ posterPath, backdropPath, title, releaseDate, 
         </section>
         <section className='flex flex-col gap-2 grow md:items-start items-center'>
           <h1 className='text-4xl font-bold text-center md:text-left'>{title}</h1>
-          <div className='flex flex-wrap justify-center md:justify-start [&>*+*]:before:content-["\2022"] [&>*+*]:before:mx-2'>
+          <BullsBetween>
+            {adult &&
+              <AdultTag />}
             {certification &&
               <span className='border-1 px-1 rounded h-fit border-current'>{certification}</span>}
             {runtime &&
@@ -65,19 +69,12 @@ export default function Header ({ posterPath, backdropPath, title, releaseDate, 
             {prettyDate && prettyDate !== 'Invalid Date' &&
               <span className='shrink-0'>{prettyDate}</span>}
             {prettyGenres.length > 0 &&
-              <ul className='hidden md:flex flex-wrap shrink-0 [&>*+*]:before:content-[","] [&>*+*]:before:mr-1'>
+              <ul className='flex flex-wrap [&>*+*]:before:content-[","] [&>*+*]:before:mr-1'>
                 {prettyGenres.map(({ id, name }) => (
                   <li key={id}><Link to={`/${mediaType}?genres=${id}`}>{name}</Link></li>
                 ))}
               </ul>}
-          </div>
-          <div className='md:hidden block'>{prettyGenres.length > 0 &&
-            <ul className='flex flex-wrap shrink-0 [&>*+*]:before:content-[","] [&>*+*]:before:mr-1'>
-              {prettyGenres.map(({ id, name }) => (
-                <li key={id}><Link to={`/${mediaType}?genres=${id}`}>{name}</Link></li>
-              ))}
-            </ul>}
-          </div>
+          </BullsBetween>
           {tagline &&
             <p className='italic font-semibold'>{tagline}</p>}
           {!!voteAverage && !!voteCount &&

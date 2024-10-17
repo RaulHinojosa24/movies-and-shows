@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom'
 import VoteCard from '../PageUI/VoteCard'
 import { useContext } from 'react'
 import { rootContext } from '../../context/root-context'
+import AdultTag from '../PageUI/AdultTag'
 
-export default function ResultItem ({ id, originalName, posterPath, firstAirDate, name, voteAverage, voteCount, overview }) {
+export default function ResultItem ({ id, originalName, posterPath, firstAirDate, name, voteAverage, voteCount, overview, adult }) {
   const { config } = useContext(rootContext)
 
   const prettyPosterPath = config && posterPath
@@ -21,9 +22,15 @@ export default function ResultItem ({ id, originalName, posterPath, firstAirDate
           <img crossOrigin='anonymous' className='w-24 object-cover aspect-[2/3]' src={prettyPosterPath} alt={'Poster de la serie de tv ' + prettyName} loading='lazy' />
         </Link>
         <div className='p-3 flex flex-col justify-center'>
-          <Link to={`/tv/${id}`} className='font-semibold text-base'>
-            <h3 className='inline'>{prettyName}</h3>
-          </Link>
+          <div>
+            <h3 className='inline-block mr-2'>
+              <Link to={`/tv/${id}`} className='font-semibold text-base'>
+                {prettyName}
+              </Link>
+            </h3>
+            {adult &&
+              <AdultTag />}
+          </div>
           {showOriginalName &&
             <p className='text-medium font-semibold'>{originalName}</p>}
           <ReleaseDate date={firstAirDate} />
@@ -37,10 +44,16 @@ export default function ResultItem ({ id, originalName, posterPath, firstAirDate
             <VoteCard small rating={voteAverage} count={voteCount} className='absolute bottom-2 left-2' />
           </div>
         </Link>
-        <div className='p-3 space-y-1'>
-          <Link to={`/tv/${id}`} className='font-semibold text-base'>
-            <h3 className='inline'>{prettyName} </h3>
-          </Link>
+        <div className='p-3'>
+          <div>
+            <h3 className='inline-block mr-2'>
+              <Link to={`/tv/${id}`} className='font-semibold text-base'>
+                {prettyName}
+              </Link>
+            </h3>
+            {adult &&
+              <AdultTag />}
+          </div>
           <ReleaseDate date={firstAirDate} />
         </div>
       </div>

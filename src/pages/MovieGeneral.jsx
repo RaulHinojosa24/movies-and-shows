@@ -27,6 +27,7 @@ export default function MovieGeneralPage () {
       >
         {(data) => {
           const {
+            adult,
             budget,
             keywords,
             original_language: originalLanguage,
@@ -77,7 +78,7 @@ export default function MovieGeneralPage () {
 
           return (
             <>
-              <MovieHeader backdropPath={backdropPath} crew={crew} genres={genres} posterPath={posterPath} releaseDate={releaseDate} releaseDates={releaseDates} runtime={runtime} tagline={tagline} title={prettyTitle} voteAverage={voteAverage} voteCount={voteCount} watchProviders={watchProviders} />
+              <MovieHeader backdropPath={backdropPath} crew={crew} genres={genres} posterPath={posterPath} releaseDate={releaseDate} releaseDates={releaseDates} runtime={runtime} tagline={tagline} title={prettyTitle} voteAverage={voteAverage} voteCount={voteCount} watchProviders={watchProviders} adult={adult} />
               <Main
                 left={
                   <MovieDetails budget={budget} keywords={keywords} originalLanguage={originalLanguage} originalTitle={originalTitle} revenue={revenue} status={status} />
@@ -105,78 +106,5 @@ export default function MovieGeneralPage () {
         }}
       </Await>
     </Suspense>
-  // <Main
-  //   left={
-  //     <Suspense fallback={<GeneralAsideSkeleton />}>
-  //       <Await resolve={loaderMovieDetails}>
-  //         {({
-  //           budget,
-  //           keywords,
-  //           original_language: originalLanguage,
-  //           original_title: originalTitle,
-  //           revenue,
-  //           status
-  //         }) => <MovieDetails budget={budget} keywords={keywords} originalLanguage={originalLanguage} originalTitle={originalTitle} revenue={revenue} status={status} />}
-  //       </Await>
-  //     </Suspense>
-  //   }
-  //   center={
-  //     <Suspense fallback={<GeneralCenterSkeleton />}>
-  //       <Await resolve={loaderMovieDetails}>
-  //         {({
-  //           belongs_to_collection: collection,
-  //           credits: {
-  //             cast
-  //           },
-  //           overview,
-  //           id,
-  //           lists: {
-  //             results: lists
-  //           },
-  //           title,
-  //           original_title: originalTitle,
-  //           images: {
-  //             backdrops, posters
-  //           },
-  //           videos: {
-  //             results: videos
-  //           },
-  //           reviews: {
-  //             results: reviews
-  //           },
-  //           recommendations: {
-  //             results: recommendations
-  //           }
-  //         }) => (
-  //           <>
-  //             <MovieOverview overview={overview} />
-  //             <GeneralMedia backdrops={backdrops} posters={posters} title={title || originalTitle} videos={videos} pageType='película' />
-  //             <MovieCast id={id} cast={cast} />
-  //             {collection &&
-  //               <MovieCollection collection={collection} />}
-  //             {reviews.length > 0 &&
-  //               <MovieReviews reviews={reviews} />}
-  //             {lists.length > 0 &&
-  //               <MovieLists lists={lists} />}
-  //             <MovieRecommendations id={id} recommendations={recommendations} />
-  //           </>
-  //         )}
-  //       </Await>
-  //     </Suspense>
-
-  //   }
-  //   right={
-  //     <Suspense fallback={<SocialLinksSkeleton />}>
-  //       <Await resolve={loaderMovieDetails}>
-  //         {({
-  //           external_ids: externalIDs,
-  //           homepage: homepageLink,
-  //           title,
-  //           original_title: originalTitle
-  //         }) => <SocialLinks externalIDs={externalIDs} homepageLink={homepageLink} name={title || originalTitle} />}
-  //       </Await>
-  //     </Suspense>
-  //   }
-  // />
   )
 }

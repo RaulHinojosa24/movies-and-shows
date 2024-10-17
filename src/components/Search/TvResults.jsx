@@ -6,6 +6,7 @@ import DefaultPosterImage from '../../assets/default-poster.webp'
 import { Suspense, useContext } from 'react'
 import SearchResultsSkeleton from '../Skeletons/SearchResultsSkeleton'
 import { rootContext } from '../../context/root-context'
+import AdultTag from '../PageUI/AdultTag'
 
 export default function TvResults () {
   const { data: loaderData } = useLoaderData()
@@ -30,11 +31,12 @@ export default function TvResults () {
                       original_name: originalName,
                       poster_path: posterPath,
                       overview,
-                      first_air_date: firstAirDate
+                      first_air_date: firstAirDate,
+                      adult
                     } = tv
 
                     return (
-                      <TvCard key={id} id={id} name={name} originalName={originalName} posterPath={posterPath} overview={overview} firstAirDate={firstAirDate} />
+                      <TvCard key={id} id={id} name={name} originalName={originalName} posterPath={posterPath} overview={overview} firstAirDate={firstAirDate} adult={adult} />
                     )
                   })}
                 </ul>}
@@ -54,7 +56,7 @@ export default function TvResults () {
   )
 }
 
-function TvCard ({ id, name, originalName, posterPath, overview, firstAirDate }) {
+function TvCard ({ id, name, originalName, posterPath, overview, firstAirDate, adult }) {
   const { config } = useContext(rootContext)
 
   const prettyPosterPath = posterPath && config
@@ -73,9 +75,15 @@ function TvCard ({ id, name, originalName, posterPath, overview, firstAirDate })
       />
       <div className='px-4 py-2 space-y-2 flex flex-col justify-center'>
         <div>
-          <Link to={`/tv/${id}`} className='w-fit inline-block'>
-            <h3 className='font-semibold text-lg'>{prettyName} {!sameName && <span className='text-medium font-normal'>{originalName}</span>}</h3>
-          </Link>
+          <div>
+            <h3 className='font-semibold text-lg inline-block mr-2'>
+              <Link to={`/tv/${id}`}>
+                {prettyName} {!sameName && <span className='text-medium font-normal'>{originalName}</span>}
+              </Link>
+            </h3>
+            {adult &&
+              <AdultTag />}
+          </div>
           <p className='text-medium'>{prettyReleaseDate}</p>
         </div>
         <p className='line-clamp-2'>{overview}</p>

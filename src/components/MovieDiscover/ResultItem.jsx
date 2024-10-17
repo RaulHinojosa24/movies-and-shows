@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom'
 import VoteCard from '../PageUI/VoteCard'
 import { useContext } from 'react'
 import { rootContext } from '../../context/root-context'
+import AdultTag from '../PageUI/AdultTag'
 
-export default function ResultItem ({ id, originalTitle, posterPath, releaseDate, title, voteAverage, voteCount, overview }) {
+export default function ResultItem ({ id, originalTitle, posterPath, releaseDate, title, voteAverage, voteCount, overview, adult }) {
   const { config } = useContext(rootContext)
 
   const prettyPosterPath = config && posterPath
@@ -21,9 +22,15 @@ export default function ResultItem ({ id, originalTitle, posterPath, releaseDate
           <img crossOrigin='anonymous' className='w-24 object-cover aspect-[2/3]' src={prettyPosterPath} alt={`Poster de la pelicula ${prettyTitle}`} loading='lazy' />
         </Link>
         <div className='p-3 flex flex-col justify-center'>
-          <Link to={`/movie/${id}`} className='font-semibold text-base'>
-            <h3 className='inline'>{prettyTitle}</h3>
-          </Link>
+          <div>
+            <h3 className='inline-block mr-2'>
+              <Link to={`/movie/${id}`} className='font-semibold text-base'>
+                {prettyTitle}
+              </Link>
+            </h3>
+            {adult &&
+              <AdultTag />}
+          </div>
           {showOriginalName &&
             <p className='text-medium font-semibold'>{originalTitle}</p>}
           <ReleaseDate date={releaseDate} />
@@ -37,10 +44,16 @@ export default function ResultItem ({ id, originalTitle, posterPath, releaseDate
             <VoteCard small rating={voteAverage} count={voteCount} className='absolute bottom-2 left-2' />
           </div>
         </Link>
-        <div className='p-3 space-y-1'>
-          <Link to={`/movie/${id}`} className='font-semibold text-base'>
-            <h3 className='inline'>{prettyTitle} </h3>
-          </Link>
+        <div className='p-3 flex flex-wrap gap-y-1 gap-x-2'>
+          <div>
+            <h3 className='inline-block mr-2'>
+              <Link to={`/movie/${id}`} className='font-semibold text-base'>
+                {prettyTitle}
+              </Link>
+            </h3>
+            {adult &&
+              <AdultTag />}
+          </div>
           <ReleaseDate date={releaseDate} />
         </div>
       </div>

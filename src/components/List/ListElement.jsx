@@ -5,8 +5,9 @@ import VoteCard from '../PageUI/VoteCard'
 import { useContext } from 'react'
 import MediaType from '../PageUI/MediaType'
 import { rootContext } from '../../context/root-context'
+import AdultTag from '../PageUI/AdultTag'
 
-export default function ListElement ({ id, order, title, originalTitle, posterPath, mediaType, comment = '', releaseDate, voteAverage, voteCount, revenue, runtime, posterMode, commentVisible }) {
+export default function ListElement ({ id, order, title, originalTitle, posterPath, mediaType, comment = '', releaseDate, voteAverage, voteCount, revenue, runtime, posterMode, commentVisible, adult }) {
   const { config } = useContext(rootContext)
 
   const prettyPosterPath = config && posterPath
@@ -20,19 +21,25 @@ export default function ListElement ({ id, order, title, originalTitle, posterPa
     <>
       {posterMode &&
         <div className='shadow shadow-colors rounded overflow-hidden max-w-56 w-full text-sm'>
-          <Link to={`/${mediaType}/${id}`}>
-            <div className='relative'>
+          <div className='relative'>
+            <Link to={`/${mediaType}/${id}`}>
               <img crossOrigin='anonymous' className='w-full object-cover aspect-[2/3]' src={prettyPosterPath} alt={`Poster de la película ${prettyTitle}`} loading='lazy' />
-              <MediaType mediaType={mediaType} isPoster={posterMode} className='absolute bottom-2 right-2' />
-              <VoteCard small rating={voteAverage} count={voteCount} className='absolute bottom-2 left-2' />
-              <span className='absolute left-0 top-0 text-medium font-bold text-lg px-2 dark:bg-dark bg-light'>{order}</span>
-            </div>
-          </Link>
-          <div className='p-3 flex flex-col gap-2'>
-            <Link to={`/${mediaType}/${id}`} className='font-semibold text-base'>
-              <h3 className='inline'>{prettyTitle} </h3>
-              <ReleaseDate date={releaseDate} posterMode={posterMode} className='' />
             </Link>
+            <MediaType mediaType={mediaType} isPoster={posterMode} className='absolute bottom-2 right-2' />
+            <VoteCard small rating={voteAverage} count={voteCount} className='absolute bottom-2 left-2' />
+            <span className='absolute left-0 top-0 text-medium font-bold text-lg px-2 dark:bg-dark bg-light'>{order}</span>
+          </div>
+          <div className='p-3 flex flex-col gap-2'>
+            <div>
+              <h3 className='inline-block mr-2'>
+                <Link to={`/${mediaType}/${id}`} className='font-semibold text-base mr-2'>
+                  {prettyTitle}
+                </Link>
+                <ReleaseDate date={releaseDate} posterMode={posterMode} className='' />
+              </h3>
+              {adult &&
+                <AdultTag />}
+            </div>
             {commentVisible && comment &&
               <span>{comment}</span>}
             {mediaType === 'movie' &&
@@ -53,9 +60,17 @@ export default function ListElement ({ id, order, title, originalTitle, posterPa
         >
           <Cell className='font-bold md:visible hidden'><span className='text-medium'>{order}</span></Cell>
           <Cell className='w-full flex md:flex-row flex-col'>
-            <Link to={`/${mediaType}/${id}`} className='font-semibold whitespace-normal'><h3 className='text-base inline'>{prettyTitle}</h3></Link>
+            <div className='inline-block'>
+              <h3 className='text-base mr-2 inline-block'>
+                <Link to={`/${mediaType}/${id}`} className='font-semibold whitespace-normal'>
+                  {prettyTitle}
+                </Link>
+              </h3>
+              {adult &&
+                <AdultTag />}
+            </div>
             {commentVisible && comment &&
-              <span className='text-medium whitespace-break-spaces md:before:content-["_|_"]'>{comment}</span>}
+              <span className='ml-2 text-medium whitespace-break-spaces'>{comment}</span>}
           </Cell>
           <div className='md:contents md:border-inherit md:m-0 mt-3 flex flex-wrap items-center gap-y-2 gap-x-3'>
             <Cell>

@@ -5,6 +5,7 @@ import DefaultLandscapeImage from '../../assets/default-landscape.webp'
 import Slider from '../PageUI/Slider'
 import { useContext } from 'react'
 import { rootContext } from '../../context/root-context'
+import AdultTag from '../PageUI/AdultTag'
 
 export default function TvRecommendations ({ id, recommendations }) {
   if (recommendations.length === 0) {
@@ -22,7 +23,8 @@ export default function TvRecommendations ({ id, recommendations }) {
     mediaType: el.media_type,
     firstAirYear: el.first_air_date ? new Date(el.first_air_date).getFullYear() : null,
     voteAverage: el.vote_average,
-    voteCount: el.vote_count
+    voteCount: el.vote_count,
+    adult: el.adult
   }))
 
   return (
@@ -32,7 +34,7 @@ export default function TvRecommendations ({ id, recommendations }) {
   )
 }
 
-const Slide = ({ id, backdropPath, name, firstAirYear, voteAverage, voteCount, mediaType }) => {
+const Slide = ({ id, backdropPath, name, firstAirYear, voteAverage, voteCount, mediaType, adult }) => {
   const { config } = useContext(rootContext)
 
   const prettyBackdropPath = backdropPath && config
@@ -40,14 +42,20 @@ const Slide = ({ id, backdropPath, name, firstAirYear, voteAverage, voteCount, m
     : DefaultLandscapeImage
 
   return (
-    <Link to={`/${mediaType}/${id}`}>
-      <div className='rounded overflow-hidden w-80 h-full shadow shadow-colors'>
+    <div className='rounded overflow-hidden w-72 md:w-80 h-full shadow shadow-colors'>
+      <Link to={`/${mediaType}/${id}`}>
         <img crossOrigin='anonymous' loading='lazy' src={prettyBackdropPath} alt={`Imagen de ${name}`} className='w-full aspect-video object-cover' />
-        <div className='p-2 flex justify-between gap-2'>
-          <p className='no-swiping font-semibold'>{name} {firstAirYear && <>({firstAirYear})</>}</p>
-          <VoteCard rating={voteAverage} count={voteCount} small />
+      </Link>
+      <div className='p-2 flex items-start justify-between gap-2'>
+        <div>
+          <Link className='no-swiping font-semibold inline-block mr-2' to={`/${mediaType}/${id}`}>
+            {name} {firstAirYear && <>({firstAirYear})</>}
+          </Link>
+          {adult &&
+            <AdultTag />}
         </div>
+        <VoteCard rating={voteAverage} count={voteCount} small />
       </div>
-    </Link>
+    </div>
   )
 }
