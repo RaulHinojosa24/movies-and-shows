@@ -7,6 +7,7 @@ import EpisodeCrewList from './EpisodeCrewList'
 import EpisodeGuestsList from './EpisodeGuestsList'
 import ChevronIcon from '../../icons/ChevronIcon'
 import { rootContext } from '../../context/root-context'
+import ElementsList from '../UI/ElementsList'
 
 export default function EpisodeItem ({ airDate, episodeNumber, name, overview, runtime, seasonNumber, showId, stillPath, voteAverage, voteCount, crew, guestStars, tvName, tvOriginalName }) {
   const { config } = useContext(rootContext)
@@ -31,11 +32,11 @@ export default function EpisodeItem ({ airDate, episodeNumber, name, overview, r
         <img crossOrigin='anonymous' src={prettyBigStillPath} className='aspect-video object-cover sm:hidden inline' alt={`Imagen del episodio ${episodeNumber}-${name} de la serie de tv ${prettyTvName}`} loading='lazy' />
         <div className='p-4 content-center space-y-1'>
           <h3 className='font-semibold text-lg'><span className='text-medium'>{episodeNumber}</span> {name}</h3>
-          <div className='[&>*+*]:before:content-["\2022"] [&>*+*]:before:mx-2 flex'>
+          <ElementsList style='bull'>
             <VoteCard minimal rating={voteAverage} count={voteCount} />
             <span>{prettyAirDate}</span>
             <span>{prettyRuntime}</span>
-          </div>
+          </ElementsList>
           <p>{overview}</p>
         </div>
       </section>

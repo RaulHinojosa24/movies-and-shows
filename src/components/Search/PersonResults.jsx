@@ -6,6 +6,7 @@ import { Suspense, useContext } from 'react'
 import SearchResultsSkeleton from '../Skeletons/SearchResultsSkeleton'
 import { rootContext } from '../../context/root-context'
 import AdultTag from '../PageUI/AdultTag'
+import ElementsList from '../UI/ElementsList'
 
 export default function PersonResults () {
   const { data: loaderData } = useLoaderData()
@@ -87,14 +88,14 @@ function PersonCard ({ id, name, originalName, profilePath, knownForDepartment, 
           {adult &&
             <AdultTag />}
         </div>
-        <div className='flex font-semibold [&>*+*]:before:content-["·"] [&>*+*]:before:mx-1'>
-          <span>{knownForDepartment}</span>
+        <ElementsList style='bull'>
+          {knownForDepartment}
           {knownFor.length > 0 &&
-            <p className='[&>*+*]:before:content-[","] [&>*+*]:before:mr-1 font-normal'>
+            <ElementsList style='comma'>
               {prettyKnownFor.map(({ id, mediaType, title }) =>
                 <Link key={id} to={`/${mediaType}/${id}`}>{title}</Link>)}
-            </p>}
-        </div>
+            </ElementsList>}
+        </ElementsList>
       </div>
     </li>
   )

@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom'
 import DefaultProfileImage from '../../assets/default-user.webp'
-import { useContext } from 'react'
+import React, { useContext } from 'react'
 import { rootContext } from '../../context/root-context'
 import AdultTag from '../PageUI/AdultTag'
+import ElementsList from '../UI/ElementsList'
 
 export default function CastItem ({ id, image, primary, secondary, adult }) {
   const { config } = useContext(rootContext)
@@ -24,16 +25,16 @@ export default function CastItem ({ id, image, primary, secondary, adult }) {
           {adult &&
             <AdultTag />}
         </div>
-        <p className='text-sm [&>*+*]:before:content-[","] [&>*+*]:before:mr-1'>{secondary.map(j => {
+        <ElementsList className='text-sm' style='comma'>
+          {secondary.map(j => {
           const { credit_id: id, job, character, episode_count: episodes } = j
-
           return (
-            <span key={id}>
-              {job || character} {episodes && <>({episodes} episodios)</>}
-            </span>
+              <React.Fragment key={id}>
+                {job || character} {episodes && <span className='text-medium'>({episodes} episodios)</span>}
+              </React.Fragment>
           )
         })}
-        </p>
+        </ElementsList>
       </div>
     </div>
   )

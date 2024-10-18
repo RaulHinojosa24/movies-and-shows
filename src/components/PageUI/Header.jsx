@@ -6,11 +6,11 @@ import VoteCard from '../PageUI/VoteCard'
 import DefaultPosterImage from '../../assets/default-poster.webp'
 import WatchProviders from '../WatchProviders/WatchProviders'
 import HeaderMainCredits from '../PageUI/HeaderMainCredits'
-import { useContext, useMemo } from 'react'
+import React, { useContext, useMemo } from 'react'
 import { rootContext } from '../../context/root-context'
 import useImageColors from '../../hooks/useImageColors'
 import AdultTag from './AdultTag'
-import BullsBetween from '../UI/BullsBetween'
+import ElementsList from '../UI/ElementsList'
 
 export default function Header ({ posterPath, backdropPath, title, releaseDate, firstAirDate, certification, runtime, genres = [], tagline, voteAverage, voteCount, mainCredits = [], watchProviders, mediaType, overview, adult }) {
   const { config } = useContext(rootContext)
@@ -57,24 +57,24 @@ export default function Header ({ posterPath, backdropPath, title, releaseDate, 
           {watchProviders &&
             <WatchProviders watchProviders={watchProviders} title={title} type={mediaType} />}
         </section>
-        <section className='flex flex-col gap-2 grow md:items-start items-center'>
-          <h1 className='text-4xl font-bold text-center md:text-left'>{title}</h1>
-          <BullsBetween>
+        <section className='flex flex-col gap-2 grow md:text-start text-center md:items-start items-center'>
+          <h1 className='text-4xl font-bold'>{title}</h1>
+          <ElementsList style='bull'>
             {adult &&
               <AdultTag />}
             {certification &&
               <span className='border-1 px-1 rounded h-fit border-current'>{certification}</span>}
             {runtime &&
-              <span className='shrink-0'>{prettyRuntime}</span>}
+              <span className='shrink-0 text-nowrap'>{prettyRuntime}</span>}
             {prettyDate && prettyDate !== 'Invalid Date' &&
               <span className='shrink-0'>{prettyDate}</span>}
             {prettyGenres.length > 0 &&
-              <ul className='flex flex-wrap [&>*+*]:before:content-[","] [&>*+*]:before:mr-1'>
+              <ElementsList style='comma'>
                 {prettyGenres.map(({ id, name }) => (
-                  <li key={id}><Link to={`/${mediaType}?genres=${id}`}>{name}</Link></li>
+                  <Link key={id} to={`/${mediaType}?genres=${id}`}>{name}</Link>
                 ))}
-              </ul>}
-          </BullsBetween>
+              </ElementsList>}
+          </ElementsList>
           {tagline &&
             <p className='italic font-semibold'>{tagline}</p>}
           {!!voteAverage && !!voteCount &&

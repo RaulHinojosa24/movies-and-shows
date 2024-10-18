@@ -2,9 +2,10 @@ import { Link } from 'react-router-dom'
 import Section from '../UI/Section'
 import DefaultProfileImage from '../../assets/default-user.webp'
 import Slider from '../PageUI/Slider'
-import { useContext } from 'react'
+import React, { useContext } from 'react'
 import { rootContext } from '../../context/root-context'
 import AdultTag from '../PageUI/AdultTag'
+import ElementsList from '../UI/ElementsList'
 
 export default function TvCast ({ id, cast }) {
   if (cast.length === 0) {
@@ -22,18 +23,15 @@ export default function TvCast ({ id, cast }) {
       const shortCharactersSize = 4
       const remainingCharacters = person.roles.length - shortCharactersSize
 
-      let shortCharacters = person.roles
+      const shortCharacters = person.roles
         .filter((_, i) => i < shortCharactersSize)
-        .map(r => r.character)
-        .join(' / ')
-
-      if (remainingCharacters > 0) shortCharacters += ` y ${remainingCharacters} más...`
 
       return {
         id: person.id,
         name: person.name || person.original_name,
         picturePath: person.profile_path,
         characters: shortCharacters,
+        remainingCharacters,
         episodeCount: person.total_episode_count,
         adult: person.adult
       }
@@ -52,7 +50,7 @@ export default function TvCast ({ id, cast }) {
   )
 }
 
-const Slide = ({ id, name, picturePath, characters, episodeCount, adult }) => {
+const Slide = ({ id, name, picturePath, characters, remainingCharacters, episodeCount, adult }) => {
   const { config } = useContext(rootContext)
 
   const prettyPath = picturePath && config
@@ -72,8 +70,18 @@ const Slide = ({ id, name, picturePath, characters, episodeCount, adult }) => {
           {adult &&
             <AdultTag />}
         </div>
+        <div className='no-swiping text-sm'>
         {characters &&
-          <p className='no-swiping w-fit text-sm'>{characters}</p>}
+            <ElementsList style='comma'>
+              {characters.map(({ character, credit_id: creditId }) => (
+                <React.Fragment key={creditId}>
+                  {character}
+                </React.Fragment>
+              ))}
+            </ElementsList>}
+          {remainingCharacters > 0 &&
+            <span> y {remainingCharacters} más...</span>}
+        </div>
         {episodeCount > 0 &&
           <p className='text-sm text-medium'>{episodeCount} episodios</p>}
       </div>
