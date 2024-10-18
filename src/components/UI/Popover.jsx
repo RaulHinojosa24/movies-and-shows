@@ -87,7 +87,7 @@ export default function Popover ({ popoverTarget, children, className = '', noDe
   }, [showPopover])
 
   return (
-    <div className='flex items-center justify-center'>
+    <div className='inline-flex items-center justify-center'>
       <span
         ref={buttonRef}
         onMouseEnter={handleMouseEnter}
