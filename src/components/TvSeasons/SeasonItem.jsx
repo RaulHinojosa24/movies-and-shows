@@ -22,7 +22,7 @@ export default function SeasonItem ({ airDate, episodeCount, tvId, name, overvie
       <div className='flex flex-col p-4 gap-2'>
         <Link to={'/tv/' + tvId + '/season/' + seasonNumber}>
           <h3 className='text-2xl font-semibold'>
-            {name} &bull; <span className='text-xl text-medium'>{episodeCount} episodios</span>
+            {name} <span className='text-xl text-medium'>&bull; {episodeCount} episodios</span>
           </h3>
         </Link>
         <div className='flex items-center gap-2'>
