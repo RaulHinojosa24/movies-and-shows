@@ -28,32 +28,34 @@ export default function CreditItem ({
     : DefaultPoster
 
   return (
-    <Link to={prettyUrl}>
-      <div className='flex justify-between items-center py-2'>
-        <div className='flex gap-2 items-center'>
-          <img crossOrigin='anonymous' className='aspect-[2/3] object-cover w-10' loading='lazy' src={prettyPosterPath} alt={`Poster de ${prettyTitle}`} />
+    <div className='flex justify-between items-center py-2'>
+      <div className='flex gap-2 items-center'>
+        <Link to={prettyUrl} className='contents'>
+          <img crossOrigin='anonymous' className='aspect-[2/3] object-cover w-12' loading='lazy' src={prettyPosterPath} alt={`Poster de ${prettyTitle}`} />
+        </Link>
+        <div>
           <div>
-            <div>
-              <h3 className='font-semibold inline-block mr-2'>{prettyTitle}</h3>
-              {adult &&
-                <AdultTag />}
-            </div>
-            <div className='text-sm flex gap-2'>
-              {voteCount > 0 &&
-                <VoteCard rating={voteAverage} count={voteCount} minimal />}
-              <span className='text-medium'>{prettyType}</span>
-            </div>
-            {prettyCharactersOrJobs &&
-              <p className='text-medium text-sm'>...como {(prettyCharactersOrJobs).join(', ')}</p>}
+            <Link to={prettyUrl} className='mr-2 inline-block'>
+              <h3 className='font-semibold'>{prettyTitle}</h3>
+            </Link>
+            {adult &&
+              <AdultTag />}
           </div>
-        </div>
-        <div className='flex flex-col items-end'>
-          {!isNaN(prettyYear) &&
-            <span>{prettyYear}</span>}
-          {mediaType === 'tv' && episodeCount > 0 &&
-            <span>{episodeCount} episodios</span>}
+          <div className='text-sm flex gap-2'>
+            {voteCount > 0 &&
+              <VoteCard rating={voteAverage} count={voteCount} minimal />}
+            <span className='text-medium'>{prettyType}</span>
+          </div>
+          {prettyCharactersOrJobs &&
+            <p className='text-medium text-sm'>...como {(prettyCharactersOrJobs).join(', ')}</p>}
         </div>
       </div>
-    </Link>
+      <div className='flex flex-col items-end'>
+        {!isNaN(prettyYear) &&
+          <span>{prettyYear}</span>}
+        {mediaType === 'tv' && episodeCount > 0 &&
+          <span>{episodeCount} episodios</span>}
+      </div>
+    </div>
   )
 }
