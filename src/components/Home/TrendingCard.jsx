@@ -39,9 +39,11 @@ export default function TrendingCard ({
           <Link to={`/${mediaType}/${id}`}>
             <div className='relative'>
               <img crossOrigin='anonymous' className='w-full object-cover aspect-[2/3]' src={prettyPath} alt={`Imágen de ${prettyName}`} loading='lazy' />
-              <MediaType mediaType={mediaType} isPoster className='absolute bottom-2 right-2' />
-              {mediaType !== 'person' &&
-                <VoteCard small rating={voteAverage} count={voteCount} className='absolute bottom-2 left-2' />}
+              <div className='absolute w-full bottom-2 px-2 flex justify-between'>
+                {mediaType !== 'person' &&
+                  <VoteCard small rating={voteAverage} count={voteCount} />}
+                <MediaType mediaType={mediaType} isPoster />
+              </div>
             </div>
           </Link>
           <div className='p-2'>

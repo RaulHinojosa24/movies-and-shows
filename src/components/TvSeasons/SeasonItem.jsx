@@ -26,7 +26,7 @@ export default function SeasonItem ({ airDate, episodeCount, tvId, name, overvie
           </h3>
         </Link>
         <div className='flex items-center gap-2'>
-          <VoteCard minimal rating={voteAverage} noCount />
+          <VoteCard minimal rating={voteAverage} hidePopover />
           <span>{prettyAirDate}</span>
         </div>
         <p className='line-clamp-3'>{overview}</p>

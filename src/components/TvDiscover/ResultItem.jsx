@@ -41,7 +41,9 @@ export default function ResultItem ({ id, originalName, posterPath, firstAirDate
         <Link to={`/tv/${id}`}>
           <div className='relative'>
             <img crossOrigin='anonymous' className='w-full object-cover aspect-[2/3]' src={prettyPosterPath} alt={'Poster de la serie de tv ' + prettyName} loading='lazy' />
-            <VoteCard small rating={voteAverage} count={voteCount} className='absolute bottom-2 left-2' />
+            <div className='absolute bottom-2 left-2'>
+              <VoteCard small rating={voteAverage} count={voteCount} />
+            </div>
           </div>
         </Link>
         <div className='p-3'>

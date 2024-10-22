@@ -40,7 +40,9 @@ export default function PopularCard ({
             <div className='relative'>
               <img crossOrigin='anonymous' className='w-full object-cover aspect-[2/3]' src={prettyPath} alt={`Imágen de ${prettyName}`} loading='lazy' />
               {mediaType !== 'person' &&
-                <VoteCard small rating={voteAverage} count={voteCount} className='absolute bottom-2 left-2' />}
+                <div className='absolute bottom-2 left-2'>
+                  <VoteCard small rating={voteAverage} count={voteCount} />
+                </div>}
             </div>
           </Link>
           <div className='p-2'>

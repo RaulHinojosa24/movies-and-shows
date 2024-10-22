@@ -41,7 +41,9 @@ export default function ResultItem ({ id, originalTitle, posterPath, releaseDate
         <Link to={`/movie/${id}`}>
           <div className='relative'>
             <img crossOrigin='anonymous' className='w-full object-cover aspect-[2/3]' src={prettyPosterPath} alt={`Poster de la pelicula ${prettyTitle}`} loading='lazy' />
-            <VoteCard small rating={voteAverage} count={voteCount} className='absolute bottom-2 left-2' />
+            <div className='absolute bottom-2 left-2'>
+              <VoteCard small rating={voteAverage} count={voteCount} />
+            </div>
           </div>
         </Link>
         <div className='p-3 flex flex-wrap gap-y-1 gap-x-2'>

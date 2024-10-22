@@ -25,8 +25,10 @@ export default function ListElement ({ id, order, title, originalTitle, posterPa
             <Link to={`/${mediaType}/${id}`}>
               <img crossOrigin='anonymous' className='w-full object-cover aspect-[2/3]' src={prettyPosterPath} alt={`Poster de la película ${prettyTitle}`} loading='lazy' />
             </Link>
-            <MediaType mediaType={mediaType} isPoster={posterMode} className='absolute bottom-2 right-2' />
-            <VoteCard small rating={voteAverage} count={voteCount} className='absolute bottom-2 left-2' />
+            <div className='absolute w-full bottom-2 flex justify-between px-2'>
+              <VoteCard small rating={voteAverage} count={voteCount} />
+              <MediaType mediaType={mediaType} isPoster={posterMode} />
+            </div>
             <span className='absolute left-0 top-0 text-medium font-bold text-lg px-2 dark:bg-dark bg-light'>{order}</span>
           </div>
           <div className='p-3 flex flex-col gap-2'>

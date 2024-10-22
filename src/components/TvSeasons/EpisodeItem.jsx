@@ -33,9 +33,7 @@ export default function EpisodeItem ({ airDate, episodeNumber, name, overview, r
         <div className='p-4 content-center space-y-1'>
           <h3 className='font-semibold text-lg'><span className='text-medium'>{episodeNumber}</span> {name}</h3>
           <ElementsList style='bull'>
-            <VoteCard minimal rating={voteAverage} count={voteCount} />
-            <span>{prettyAirDate}</span>
-            <span>{prettyRuntime}</span>
+            <VoteCard small rating={voteAverage} count={voteCount} />
           </ElementsList>
           <p>{overview}</p>
         </div>

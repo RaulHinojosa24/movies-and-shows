@@ -26,7 +26,7 @@ export default function ReviewItem ({ author, authorDetails, content, createdAt,
           </a>
           <div className='font-thin text-sm flex flex-wrap gap-x-2'>
             {rating &&
-              <VoteCard rating={rating} minimal />}
+              <VoteCard rating={rating} minimal hidePopover />}
             Escrita por <span className='font-semibold'>{prettyUsername}</span> el {prettyCreationDate}
           </div>
         </div>
