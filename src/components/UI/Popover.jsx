@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 
 export default function Popover ({ popoverTarget, children, className = '', noDelay, compact }) {
@@ -87,14 +87,15 @@ export default function Popover ({ popoverTarget, children, className = '', noDe
   }, [showPopover])
 
   return (
-    <div className='inline-flex items-center justify-center'>
-      <span
+    <>
+      <div
+        className='inline-block'
         ref={buttonRef}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
         {popoverTarget}
-      </span>
+      </div>
 
       {showPopover && (
         <>
@@ -110,6 +111,6 @@ export default function Popover ({ popoverTarget, children, className = '', noDe
             </div>, document.getElementById('overlay'))}
         </>
       )}
-    </div>
+    </>
   )
 }
