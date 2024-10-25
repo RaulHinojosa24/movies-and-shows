@@ -73,7 +73,7 @@ swiper-slide {
 }
 
 .isLanding .swiper-slide-active {
-  @apply shadow-wide shadow-black/50 transition-all origin-top scale-110 z-[1];
+  @apply shadow-wide shadow-black/50 transition-all origin-top sm:scale-110 z-[1];
 }
 .isLanding swiper-slide:not(.swiper-slide-active) {
   z-index: 0;
