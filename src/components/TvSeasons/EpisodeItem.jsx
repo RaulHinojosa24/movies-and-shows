@@ -1,4 +1,3 @@
-/* eslint-disable no-octal-escape */
 import { formatLongDate, formatRuntime } from '../../utils/utility'
 import DefaultLandscape from '../../assets/default-landscape.webp'
 import VoteCard from '../PageUI/VoteCard'
@@ -13,9 +12,6 @@ export default function EpisodeItem ({ airDate, episodeNumber, name, overview, r
   const { config } = useContext(rootContext)
   const [isExpanded, setIsExpanded] = useState(false)
 
-  const prettySmallStillPath = stillPath && config
-    ? config?.images?.secure_base_url + config?.images?.still_sizes[2] + stillPath
-    : DefaultLandscape
   const prettyBigStillPath = stillPath && config
     ? config?.images?.secure_base_url + config?.images?.still_sizes[3] + stillPath
     : DefaultLandscape
@@ -28,8 +24,7 @@ export default function EpisodeItem ({ airDate, episodeNumber, name, overview, r
   return (
     <li className='rounded shadow shadow-colors overflow-hidden'>
       <section className='flex sm:flex-row flex-col'>
-        <img crossOrigin='anonymous' src={prettySmallStillPath} className='aspect-video object-cover sm:inline hidden max-w-72' alt={`Imagen del episodio ${episodeNumber}-${name} de la serie de tv ${prettyTvName}`} loading='lazy' />
-        <img crossOrigin='anonymous' src={prettyBigStillPath} className='aspect-video object-cover sm:hidden inline' alt={`Imagen del episodio ${episodeNumber}-${name} de la serie de tv ${prettyTvName}`} loading='lazy' />
+        <img crossOrigin='anonymous' src={prettyBigStillPath} className='aspect-video object-cover sm:max-w-72' alt={`Imagen del episodio ${episodeNumber}-${name} de la serie de tv ${prettyTvName}`} loading='lazy' />
         <div className='p-4 content-center space-y-1'>
           <h3 className='font-semibold text-lg'><span className='text-medium'>{episodeNumber}</span> {name}</h3>
           <ElementsList style='bull'>
