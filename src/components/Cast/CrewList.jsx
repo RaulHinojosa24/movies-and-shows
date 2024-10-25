@@ -73,9 +73,7 @@ export default function CrewList ({ crew, needJoin }) {
                 <ul className='space-y-3'>
                   {members
                     .map(el => (
-                      <li key={el.id}>
-                        <CastItem id={el.id} image={el.profile_path} primary={el.name} secondary={el.jobs} adult={el.adult} />
-                      </li>
+                      <CastItem key={el.id} id={el.id} image={el.profile_path} primary={el.name} secondary={el.jobs} adult={el.adult} />
                     )
                     )}
                 </ul>
