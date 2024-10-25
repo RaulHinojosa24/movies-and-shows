@@ -1,5 +1,6 @@
 import Main from '../components/PageUI/Main'
 import CollectionHeaderSkeleton from '../components/Skeletons/CollectionHeaderSkeleton'
+import HorizontalCardSkeleton from '../components/Skeletons/HorizontalCardSkeleton'
 
 export default function CollectionGeneralSkeleton () {
   return (
@@ -18,14 +19,7 @@ export default function CollectionGeneralSkeleton () {
                 <div className='skeleton__title w-36' />
                 <div className='skeleton__title aspect-square' />
               </div>
-              <div className='flex rounded-lg overflow-hidden skeleton__bg'>
-                <div className='aspect-[2/3] w-full max-w-24 skeleton rounded-lg' />
-                <div className='flex flex-col justify-around p-4 w-full'>
-                  <div className='skeleton__title w-1/3' />
-                  <div className='skeleton__text w-1/4' />
-                  <div className='skeleton__paragraph w-full' />
-                </div>
-              </div>
+              <HorizontalCardSkeleton />
             </div>
           </div>
         }
