@@ -60,11 +60,12 @@ export default function CollectionList ({ parts }) {
         {sortedParts.map(({
           id,
           title,
+          original_title: originalTitle,
           overview,
           poster_path: posterPath,
           release_date: releaseDate,
           adult
-        }) => <CollectionListItem key={id} id={id} title={title} overview={overview} posterPath={posterPath} releaseDate={releaseDate} adult={adult} />)}
+        }) => <CollectionListItem key={id} id={id} title={title} originalTitle={originalTitle} overview={overview} posterPath={posterPath} releaseDate={releaseDate} adult={adult} />)}
       </ol>
     </section>
   )
