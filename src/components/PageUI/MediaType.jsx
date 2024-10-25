@@ -22,7 +22,7 @@ export default function MediaType ({ mediaType, isPoster, className = '' }) {
   }
 
   const posterStyles = {
-    true: 'w-10 p-[5%] aspect-square rounded-full text-xl grid place-items-center',
+    true: 'w-10 p-[.45rem] aspect-square rounded-full text-xl grid place-items-center',
     false: 'rounded-full w-fit px-4 py-1'
   }
 

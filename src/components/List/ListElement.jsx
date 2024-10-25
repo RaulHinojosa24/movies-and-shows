@@ -107,5 +107,5 @@ function ReleaseDate ({ date, posterMode, className = '' }) {
   const shortDate = new Date(date).getFullYear()
   const longDate = formatLongDate(date)
 
-  return <span className={posterMode ? 'italic opacity-70 font-semibold' : 'rounded-full w-fit px-4 py-1 bg-indigo-900 text-white ' + className}>{posterMode ? shortDate : longDate}</span>
+  return <span className={posterMode ? 'italic text-medium font-semibold' : 'rounded-full w-fit px-4 py-1 bg-indigo-900 text-white ' + className}>{posterMode ? shortDate : longDate}</span>
 }

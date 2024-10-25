@@ -1,4 +1,3 @@
-/* eslint-disable no-octal-escape */
 import { Link } from 'react-router-dom'
 import { formatShortDate, formatRuntime } from '../../utils/utility'
 import VoteCard from '../PageUI/VoteCard'
@@ -6,7 +5,7 @@ import VoteCard from '../PageUI/VoteCard'
 import DefaultPosterImage from '../../assets/default-poster.webp'
 import WatchProviders from '../WatchProviders/WatchProviders'
 import HeaderMainCredits from '../PageUI/HeaderMainCredits'
-import React, { useContext, useMemo } from 'react'
+import { useContext, useMemo } from 'react'
 import { rootContext } from '../../context/root-context'
 import useImageColors from '../../hooks/useImageColors'
 import AdultTag from './AdultTag'
