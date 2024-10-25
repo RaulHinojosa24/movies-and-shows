@@ -1,10 +1,9 @@
-import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import DefaultPosterImage from '../../assets/default-poster.webp'
 import DefaultProfileImage from '../../assets/default-user.webp'
 import VoteCard from '../PageUI/VoteCard'
 import { rootContext } from '../../context/root-context'
-import AdultTag from '../PageUI/AdultTag'
+import VerticalCard from '../UI/Cards/VerticalCard'
 
 export default function PopularCard ({
   id,
@@ -29,37 +28,20 @@ export default function PopularCard ({
     : config && posterPath
       ? config?.images?.secure_base_url + config?.images?.poster_sizes[1] + posterPath
       : DefaultPosterImage
-
-  const prettyName = name || originalName || title || originalTitle
+  const prettyTitle = name || originalName || title || originalTitle
+  const prettyLink = `/${mediaType}/${id}`
+  const voteElement = mediaType !== 'person'
+    ? <VoteCard small rating={voteAverage} count={voteCount} />
+    : null
 
   return (
-    <div className='w-36 h-full rounded overflow-hidden shadow shadow-colors'>
-      {!fetching &&
-        <>
-          <Link to={`/${mediaType}/${id}`}>
-            <div className='relative'>
-              <img crossOrigin='anonymous' className='w-full object-cover aspect-[2/3]' src={prettyPath} alt={`Imágen de ${prettyName}`} loading='lazy' />
-              {mediaType !== 'person' &&
-                <div className='absolute bottom-2 left-2'>
-                  <VoteCard small rating={voteAverage} count={voteCount} />
-                </div>}
-            </div>
-          </Link>
-          <div className='p-2'>
-            <Link to={`/${mediaType}/${id}`} className='no-swiping font-semibold inline-block mr-2'>
-              {prettyName}
-            </Link>
-            {adult &&
-              <AdultTag />}
-          </div>
-        </>}
-      {fetching &&
-        <>
-          <div className='skeleton aspect-[2/3] shrink-0' />
-          <div className='m-3 mb-4'>
-            <div className='skeleton__subtitle w-5/6' />
-          </div>
-        </>}
-    </div>
+    <VerticalCard
+      fetching={fetching}
+      imageUrl={prettyPath}
+      isAdult={adult}
+      link={prettyLink}
+      title={prettyTitle}
+      bottomLeft={voteElement}
+    />
   )
 }

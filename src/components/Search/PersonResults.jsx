@@ -5,10 +5,11 @@ import DefaultUserImage from '../../assets/default-user.webp'
 import { Suspense, useContext } from 'react'
 import SearchResultsSkeleton from '../Skeletons/SearchResultsSkeleton'
 import { rootContext } from '../../context/root-context'
-import AdultTag from '../PageUI/AdultTag'
 import ElementsList from '../UI/ElementsList'
+import ResponsiveCard from '../UI/Cards/ResponsiveCard'
 
 export default function PersonResults () {
+  const { config } = useContext(rootContext)
   const { data: loaderData } = useLoaderData()
   const baseLoaderData = useRouteLoaderData('search')
 
@@ -23,7 +24,7 @@ export default function PersonResults () {
           return (
             <>
               {persons && persons.length > 0 &&
-                <ul className='space-y-2'>
+                <ul className='grid grid-flow-row grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 md:gap-8'>
                   {persons.map(person => {
                     const {
                       id,
@@ -34,9 +35,30 @@ export default function PersonResults () {
                       known_for: knownFor,
                       adult
                     } = person
+                    const prettyPosterPath = config && profilePath
+                      ? config?.images?.secure_base_url + config?.images?.profile_sizes[2] + profilePath
+                      : DefaultUserImage
+                    const prettyName = name || originalName
+                    const prettyOriginalName = name !== originalName && originalName
+                    const prettyLink = `/person/${id}`
 
                     return (
-                      <PersonCard key={id} id={id} name={name} originalName={originalName} profilePath={profilePath} knownForDepartment={knownForDepartment} knownFor={knownFor} adult={adult} />
+                      <ResponsiveCard
+                        key={id} link={prettyLink} title={prettyName} originalTitle={prettyOriginalName} imageUrl={prettyPosterPath} isAdult={adult}
+                        secondary={
+                          <ElementsList style='bull'>
+                            {knownForDepartment}
+                            {knownFor.length > 0 &&
+                              <ElementsList style='comma'>
+                                {knownFor.map(({ id, media_type: mediaType, name, original_name: originalName, title, original_title: originalTitle }) => {
+                                  const prettyTitle = name || originalName || title || originalTitle
+                                  return <Link key={id} to={`/${mediaType}/${id}`}>{prettyTitle}</Link>
+                                }
+                                )}
+                              </ElementsList>}
+                          </ElementsList>
+                        }
+                      />
                     )
                   })}
                 </ul>}
@@ -53,51 +75,6 @@ export default function PersonResults () {
         }}
       </Await>
     </Suspense>
-  )
-}
-
-function PersonCard ({ id, name, originalName, profilePath, knownForDepartment, knownFor, adult }) {
-  const { config } = useContext(rootContext)
-
-  const prettyProfilePath = profilePath && config
-    ? config?.images?.secure_base_url + config?.images?.profile_sizes[1] + profilePath
-    : DefaultUserImage
-  const prettyKnownFor = knownFor.map(({ id, media_type: mediaType, name, original_name: originalName, title, original_title: originalTitle }) => ({
-    id,
-    title: name || originalName || title || originalTitle,
-    mediaType
-  }))
-  const prettyName = name || originalName
-
-  const sameName = prettyName === originalName
-
-  return (
-    <li className='rounded shadow shadow-colors flex overflow-hidden'>
-      <Link to={`/person/${id}`} className='aspect-[5/6] w-24 max-w-24'>
-        <img
-          crossOrigin='anonymous' className='w-full h-full object-cover' src={prettyProfilePath} alt={'Foto de perfil de ' + prettyName} loading='lazy'
-        />
-      </Link>
-      <div className='px-4 py-2 flex flex-col justify-center'>
-        <div>
-          <h3 className='font-semibold text-lg inline-block mr-2'>
-            <Link to={`/person/${id}`}>
-              {prettyName} {!sameName && <span className='text-medium font-normal'>{originalName}</span>}
-            </Link>
-          </h3>
-          {adult &&
-            <AdultTag />}
-        </div>
-        <ElementsList style='bull'>
-          {knownForDepartment}
-          {knownFor.length > 0 &&
-            <ElementsList style='comma'>
-              {prettyKnownFor.map(({ id, mediaType, title }) =>
-                <Link key={id} to={`/${mediaType}/${id}`}>{title}</Link>)}
-            </ElementsList>}
-        </ElementsList>
-      </div>
-    </li>
   )
 }
 

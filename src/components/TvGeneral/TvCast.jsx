@@ -4,8 +4,8 @@ import DefaultProfileImage from '../../assets/default-user.webp'
 import Slider from '../PageUI/Slider'
 import React, { useContext } from 'react'
 import { rootContext } from '../../context/root-context'
-import AdultTag from '../PageUI/AdultTag'
 import ElementsList from '../UI/ElementsList'
+import VerticalCard from '../UI/Cards/VerticalCard'
 
 export default function TvCast ({ id, cast }) {
   if (cast.length === 0) {
@@ -56,35 +56,30 @@ const Slide = ({ id, name, picturePath, characters, remainingCharacters, episode
   const prettyPath = picturePath && config
     ? config?.images?.secure_base_url + config?.images?.profile_sizes[1] + picturePath
     : DefaultProfileImage
+  const prettyLink = '/person/' + id
+  const secondary = characters &&
+    <>
+      <ElementsList style='comma'>
+        {characters.map(({ character, credit_id: creditId }) => (
+          <React.Fragment key={creditId}>
+            {character}
+          </React.Fragment>
+        ))}
+      </ElementsList>
+      {remainingCharacters > 0 &&
+        <span> y {remainingCharacters} más...</span>}
+    </>
+  const tertiary = episodeCount > 0 &&
+    `${episodeCount} episodios`
 
   return (
-    <div className='h-full w-36 rounded overflow-hidden shadow shadow-colors'>
-      <Link to={'/person/' + id}>
-        <img crossOrigin='anonymous' loading='lazy' className='aspect-[4/5] object-cover object-top' src={prettyPath} alt={`Foto de perfil de ${name}`} />
-      </Link>
-      <div className='p-2'>
-        <div>
-          <Link className='no-swiping font-semibold inline-block mr-2' to={'/person/' + id}>
-            {name}
-          </Link>
-          {adult &&
-            <AdultTag />}
-        </div>
-        <div className='no-swiping text-sm'>
-        {characters &&
-            <ElementsList style='comma'>
-              {characters.map(({ character, credit_id: creditId }) => (
-                <React.Fragment key={creditId}>
-                  {character}
-                </React.Fragment>
-              ))}
-            </ElementsList>}
-          {remainingCharacters > 0 &&
-            <span> y {remainingCharacters} más...</span>}
-        </div>
-        {episodeCount > 0 &&
-          <p className='text-sm text-medium'>{episodeCount} episodios</p>}
-      </div>
-    </div>
+    <VerticalCard
+      imageUrl={prettyPath}
+      isAdult={adult}
+      link={prettyLink}
+      secondary={secondary}
+      tertiary={tertiary}
+      title={name}
+    />
   )
 }

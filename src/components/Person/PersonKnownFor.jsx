@@ -1,10 +1,9 @@
-import { Link } from 'react-router-dom'
 import Section from '../UI/Section'
 import DefaultProfileImage from '../../assets/default-user.webp'
 import Slider from '../PageUI/Slider'
 import { useContext } from 'react'
 import { rootContext } from '../../context/root-context'
-import AdultTag from '../PageUI/AdultTag'
+import VerticalCard from '../UI/Cards/VerticalCard'
 
 const WEIGHTS = { popularity: 0.5, voteCount: 0.3, voteAverage: 0.2 }
 
@@ -64,19 +63,14 @@ const Slide = ({ id, name, title, posterPath, type, adult }) => {
     ? config?.images?.secure_base_url + config?.images?.poster_sizes[1] + posterPath
     : DefaultProfileImage
   const prettyTitle = title || name
+  const prettyLink = `/${type}/${id}`
 
   return (
-    <div className='h-full w-32 rounded overflow-hidden shadow shadow-colors'>
-      <Link to={`/${type}/${id}`}>
-        <img crossOrigin='anonymous' loading='lazy' className='aspect-[2/3] w-full object-cover object-top' src={prettyPosterPath} alt={`Póster de ${prettyTitle}`} />
-      </Link>
-      <div className='p-2'>
-        <Link className='no-swiping font-semibold mr-2 inline-block' to={`/${type}/${id}`}>
-          {prettyTitle}
-        </Link>
-        {adult &&
-          <AdultTag />}
-      </div>
-    </div>
+    <VerticalCard
+      imageUrl={prettyPosterPath}
+      isAdult={adult}
+      link={prettyLink}
+      title={prettyTitle}
+    />
   )
 }

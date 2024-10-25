@@ -1,4 +1,4 @@
-import { Await, Link, useLoaderData, useRouteLoaderData } from 'react-router-dom'
+import { Await, useLoaderData, useRouteLoaderData } from 'react-router-dom'
 import { fetchWithDefer, getMoviesByQuery } from '../../utils/http'
 import { formatLongDate } from '../../utils/utility'
 import Pagination from './Pagination'
@@ -6,9 +6,11 @@ import DefaultPosterImage from '../../assets/default-poster.webp'
 import { Suspense, useContext } from 'react'
 import SearchResultsSkeleton from '../Skeletons/SearchResultsSkeleton'
 import { rootContext } from '../../context/root-context'
-import AdultTag from '../PageUI/AdultTag'
+import ResponsiveCard from '../UI/Cards/ResponsiveCard'
+import VoteCard from '../PageUI/VoteCard'
 
 export default function MovieResults () {
+  const { config } = useContext(rootContext)
   const { data: loaderData } = useLoaderData()
   const baseLoaderData = useRouteLoaderData('search')
 
@@ -23,7 +25,7 @@ export default function MovieResults () {
           return (
             <>
               {movies && movies.length > 0 &&
-                <ul className='space-y-2'>
+                <ul className='grid grid-flow-row grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-8'>
                   {movies.map(movie => {
                     const {
                       id,
@@ -32,11 +34,20 @@ export default function MovieResults () {
                       poster_path: posterPath,
                       overview,
                       release_date: releaseDate,
+                      vote_average: voteAverage,
+                      vote_count: voteCount,
                       adult
                     } = movie
-                    return (
-                      <MovieCard key={id} id={id} title={title} originalTitle={originalTitle} posterPath={posterPath} overview={overview} releaseDate={releaseDate} adult={adult} />
-                    )
+                    const prettyPosterPath = config && posterPath
+                      ? config?.images?.secure_base_url + config?.images?.poster_sizes[2] + posterPath
+                      : DefaultPosterImage
+                    const prettyTitle = title || originalTitle
+                    const prettyOriginalTitle = title !== originalTitle && originalTitle
+                    const prettyDate = formatLongDate(releaseDate)
+                    const prettyLink = `/movie/${id}`
+                    const voteCard = <VoteCard small rating={voteAverage} count={voteCount} />
+
+                    return <ResponsiveCard key={id} imageUrl={prettyPosterPath} title={prettyTitle} originalTitle={prettyOriginalTitle} bottomLeft={voteCard} overview={overview} isAdult={adult} tertiary={prettyDate} link={prettyLink} />
                   })}
                 </ul>}
               {movies && totalResults > 0 && movies.length === 0 &&
@@ -52,44 +63,6 @@ export default function MovieResults () {
         }}
       </Await>
     </Suspense>
-  )
-}
-
-function MovieCard ({ id, title, originalTitle, posterPath, overview, releaseDate, adult }) {
-  const { config } = useContext(rootContext)
-
-  const prettyPosterPath = config && posterPath
-    ? config?.images?.secure_base_url + config?.images?.poster_sizes[1] + posterPath
-    : DefaultPosterImage
-  const prettyReleaseDate = formatLongDate(releaseDate)
-  const prettyTitle = title || originalTitle
-
-  const sameTitle = title === originalTitle
-
-  return (
-    <li className='rounded shadow shadow-colors flex overflow-hidden'>
-      <Link to={`/movie/${id}`} className='aspect-[2/3] w-24 max-w-24 shrink-0'>
-        <img
-          loading='lazy' crossOrigin='anonymous' className='object-cover w-full h-full'
-          src={prettyPosterPath} alt={'Poster de la película ' + prettyTitle}
-        />
-      </Link>
-      <div className='px-4 py-2 space-y-2 flex flex-col justify-center'>
-        <div>
-          <div>
-            <h3 className='font-semibold text-lg inline-block mr-2'>
-              <Link to={`/movie/${id}`}>
-                {prettyTitle} {!sameTitle && <span className='text-medium font-normal'>{originalTitle}</span>}
-              </Link>
-            </h3>
-            {adult &&
-              <AdultTag />}
-          </div>
-          <p className='text-medium'>{prettyReleaseDate}</p>
-        </div>
-        <p className='line-clamp-2'>{overview}</p>
-      </div>
-    </li>
   )
 }
 
