@@ -13,7 +13,7 @@ export default function ResponsiveCard ({ imageUrl, title, originalTitle, tertia
             {bottomLeft}
           </div>}
       </div>
-      <div className='py-2 px-3 space-y-1'>
+      <div className='py-2 px-3 gap-1 flex flex-col justify-center'>
         <div>
           <h3 className='inline-block mr-2 font-semibold'>
             <Link to={link}>

@@ -6,7 +6,7 @@ import { discoverMovies, fetchWithDefer, getMovieProviders } from '../utils/http
 import { setDocTitle } from '../utils/utility'
 import Pagination from '../components/Search/Pagination'
 import { Suspense } from 'react'
-import DiscoverResultsSkeleton from '../skeleton-pages/DiscoverResultsSkeleton'
+import DiscoverSearchResultsSkeleton from '../skeleton-pages/DiscoverSearchResultsSkeleton'
 
 export default function MovieDiscoverPage () {
   const {
@@ -21,7 +21,7 @@ export default function MovieDiscoverPage () {
         <Filters />
       }
       center={
-        <Suspense fallback={<DiscoverResultsSkeleton />}>
+        <Suspense fallback={<DiscoverSearchResultsSkeleton />}>
           <Await resolve={loaderDiscoverMovies}>
             {({
               total_pages: totalPages,

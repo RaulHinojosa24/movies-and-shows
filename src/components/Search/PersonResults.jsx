@@ -3,10 +3,10 @@ import { fetchWithDefer, getPeopleByQuery } from '../../utils/http'
 import Pagination from './Pagination'
 import DefaultUserImage from '../../assets/default-user.webp'
 import { Suspense, useContext } from 'react'
-import SearchResultsSkeleton from '../Skeletons/SearchResultsSkeleton'
 import { rootContext } from '../../context/root-context'
 import ElementsList from '../UI/ElementsList'
 import ResponsiveCard from '../UI/Cards/ResponsiveCard'
+import DiscoverSearchResultsSkeleton from '../../skeleton-pages/DiscoverSearchResultsSkeleton'
 
 export default function PersonResults () {
   const { config } = useContext(rootContext)
@@ -14,7 +14,7 @@ export default function PersonResults () {
   const baseLoaderData = useRouteLoaderData('search')
 
   return (
-    <Suspense fallback={<Fallback />}>
+    <Suspense fallback={<DiscoverSearchResultsSkeleton />}>
       <Await resolve={loaderData || baseLoaderData?.persons}>
         {loadedData => {
           const persons = loadedData?.results
@@ -75,14 +75,6 @@ export default function PersonResults () {
         }}
       </Await>
     </Suspense>
-  )
-}
-
-function Fallback () {
-  return (
-    <div className='space-y-2'>
-      {Array(10).fill().map((_, i) => <SearchResultsSkeleton key={i} person />)}
-    </div>
   )
 }
 

@@ -4,10 +4,10 @@ import { formatLongDate } from '../../utils/utility'
 import Pagination from './Pagination'
 import DefaultPosterImage from '../../assets/default-poster.webp'
 import { Suspense, useContext } from 'react'
-import SearchResultsSkeleton from '../Skeletons/SearchResultsSkeleton'
 import { rootContext } from '../../context/root-context'
 import ResponsiveCard from '../UI/Cards/ResponsiveCard'
 import VoteCard from '../PageUI/VoteCard'
+import DiscoverSearchResultsSkeleton from '../../skeleton-pages/DiscoverSearchResultsSkeleton'
 
 export default function TvResults () {
   const { config } = useContext(rootContext)
@@ -15,7 +15,7 @@ export default function TvResults () {
   const baseLoaderData = useRouteLoaderData('search')
 
   return (
-    <Suspense fallback={<Fallback />}>
+    <Suspense fallback={<DiscoverSearchResultsSkeleton />}>
       <Await resolve={loaderData || baseLoaderData?.tvs}>
         {loadedData => {
           const tvs = loadedData?.results
@@ -64,14 +64,6 @@ export default function TvResults () {
         }}
       </Await>
     </Suspense>
-  )
-}
-
-function Fallback () {
-  return (
-    <div className='space-y-2'>
-      {Array(10).fill().map((_, i) => <SearchResultsSkeleton key={i} />)}
-    </div>
   )
 }
 
