@@ -11,7 +11,7 @@ export default function ElementsList ({ children, style, className = '' }) {
   return (
     <ul className={`w-full inline ${className}`}>
       {childrenArray.map((child, index) => (
-        <li key={child.key} className='inline'>
+        <li key={child.key || index} className='inline'>
           {index !== 0 &&
             <span>{separation}</span>}
           {child}
