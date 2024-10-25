@@ -17,7 +17,7 @@ export default function PersonGeneralSkeleton () {
       center={
         <>
           <GeneralOverviewSkeleton person />
-          <GeneralCastSkeleton person />
+          <GeneralCastSkeleton />
           <PersonCreditsSkeleton />
         </>
       }
