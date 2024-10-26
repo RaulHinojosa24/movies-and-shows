@@ -81,6 +81,7 @@ export function getReleaseType (type) {
 }
 
 export function calculateAge (birthday, deathday) {
+  if (!birthday && !deathday) return null
   const today = deathday ? new Date(deathday) : new Date()
   const birthDate = new Date(birthday)
   let age = today.getFullYear() - birthDate.getFullYear()
