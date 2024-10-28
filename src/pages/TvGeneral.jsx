@@ -92,7 +92,7 @@ export default function TvGeneral () {
                 center={
                   <>
                     <TvOverview overview={overview} />
-                    <GeneralMedia backdrops={backdrops} posters={posters} title={prettyName} videos={videos} pageType='serie de tv' />
+                    <GeneralMedia backdrops={backdrops} posters={posters} title={prettyName} pageType='serie de tv' />
                     <TvCast id={id} cast={cast} />
                     <TvLatestSeason tvId={id} seasons={seasons} />
                     {reviews.length > 0 &&

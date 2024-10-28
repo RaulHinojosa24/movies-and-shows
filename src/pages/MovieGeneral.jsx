@@ -86,7 +86,7 @@ export default function MovieGeneralPage () {
                 center={
                   <>
                     <MovieOverview overview={overview} />
-                    <GeneralMedia backdrops={backdrops} posters={posters} title={prettyTitle} videos={videos} pageType='película' />
+                    <GeneralMedia backdrops={backdrops} posters={posters} title={prettyTitle} pageType='película' />
                     <MovieCast id={id} cast={cast} />
                     {collection &&
                       <MovieCollection collection={collection} />}
