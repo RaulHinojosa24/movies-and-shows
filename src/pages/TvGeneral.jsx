@@ -75,7 +75,7 @@ export default function TvGeneral () {
 
           return (
             <>
-              <TvHeader name={prettyName} contentRatings={contentRatings} createdBy={createdBy} genres={genres} backdropPath={backdropPath} posterPath={posterPath} firstAirDate={firstAirDate} tagline={tagline} voteAverage={voteAverage} voteCount={voteCount} watchProviders={watchProviders} adult={adult} />
+              <TvHeader name={prettyName} contentRatings={contentRatings} createdBy={createdBy} genres={genres} backdropPath={backdropPath} posterPath={posterPath} firstAirDate={firstAirDate} tagline={tagline} voteAverage={voteAverage} voteCount={voteCount} watchProviders={watchProviders} adult={adult} videos={videos} />
               <Main
                 left={
                   <TvDetails

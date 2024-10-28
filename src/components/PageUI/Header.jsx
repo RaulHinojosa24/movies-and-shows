@@ -5,13 +5,14 @@ import VoteCard from '../PageUI/VoteCard'
 import DefaultPosterImage from '../../assets/default-poster.webp'
 import WatchProviders from '../WatchProviders/WatchProviders'
 import HeaderMainCredits from '../PageUI/HeaderMainCredits'
-import { useContext, useMemo } from 'react'
+import { useContext } from 'react'
 import { rootContext } from '../../context/root-context'
 import useImageColors from '../../hooks/useImageColors'
 import AdultTag from './AdultTag'
 import ElementsList from '../UI/ElementsList'
+import VideoModal from '../Media/VideoModal'
 
-export default function Header ({ posterPath, backdropPath, title, releaseDate, firstAirDate, certification, runtime, genres = [], tagline, voteAverage, voteCount, mainCredits = [], watchProviders, mediaType, overview, adult }) {
+export default function Header ({ posterPath, backdropPath, title, releaseDate, firstAirDate, certification, runtime, genres = [], tagline, voteAverage, voteCount, mainCredits = [], watchProviders, mediaType, overview, adult, trailer }) {
   const { config } = useContext(rootContext)
   const { dominant: [r, g, b], isDark, ref: imgRef } = useImageColors(posterPath)
 
@@ -23,10 +24,8 @@ export default function Header ({ posterPath, backdropPath, title, releaseDate, 
     : DefaultPosterImage
   const prettyRuntime = formatRuntime(runtime || 0)
   const prettyDate = formatShortDate(releaseDate || firstAirDate)
-  const prettyGenres = useMemo(() =>
-    [...genres]
-      .sort((a, b) => a.name.localeCompare(b.name))
-  , [genres])
+  const prettyGenres = [...genres]
+    .sort((a, b) => a.name.localeCompare(b.name))
 
   return (
     <>
@@ -63,7 +62,7 @@ export default function Header ({ posterPath, backdropPath, title, releaseDate, 
               <AdultTag />}
             {certification &&
               <span className='border-1 px-1 rounded h-fit border-current'>{certification}</span>}
-            {runtime &&
+            {runtime > 0 &&
               <span className='shrink-0 text-nowrap'>{prettyRuntime}</span>}
             {prettyDate && prettyDate !== 'Invalid Date' &&
               <span className='shrink-0'>{prettyDate}</span>}
@@ -76,8 +75,12 @@ export default function Header ({ posterPath, backdropPath, title, releaseDate, 
           </ElementsList>
           {tagline &&
             <p className='italic font-semibold'>{tagline}</p>}
-          {!!voteAverage && !!voteCount &&
-            <VoteCard rating={voteAverage} count={voteCount} />}
+          <div className='flex flex-wrap gap-x-4 gap-y-2 justify-center items-center'>
+            {!isNaN(voteAverage) && !isNaN(voteCount) &&
+              <VoteCard rating={voteAverage} count={voteCount} />}
+            {trailer &&
+              <VideoModal video={trailer} noImage buttonText='Ver trailer' />}
+          </div>
           {overview &&
             <p>{overview}</p>}
           {mainCredits && mainCredits.length > 0 &&

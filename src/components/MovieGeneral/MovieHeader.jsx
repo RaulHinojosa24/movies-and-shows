@@ -1,6 +1,6 @@
 import Header from '../PageUI/Header'
 
-export default function MovieHeader ({ backdropPath, crew, genres, posterPath, releaseDate, releaseDates, runtime, tagline, title, voteAverage, voteCount, watchProviders, adult }) {
+export default function MovieHeader ({ backdropPath, crew, genres, posterPath, releaseDate, releaseDates, runtime, tagline, title, voteAverage, voteCount, watchProviders, adult, videos }) {
   const countryReleaseDates = releaseDates.results.find(el => el.iso_3166_1 === 'ES')?.release_dates || []
   const theatricalRelease = countryReleaseDates.find(el => [2, 3].includes(el.type))
   const { certification, release_date: officialReleaseDate } = countryReleaseDates.length
@@ -14,6 +14,7 @@ export default function MovieHeader ({ backdropPath, crew, genres, posterPath, r
     .filter(c => c.department === 'Writing')
     .sort((a, b) => a.job.localeCompare(b.job))
   const mainCredits = [...directors, ...writers]
+  const trailer = videos.find(v => v.type === 'Trailer')
 
   return (
     <Header
@@ -31,6 +32,7 @@ export default function MovieHeader ({ backdropPath, crew, genres, posterPath, r
       genres={genres}
       mainCredits={mainCredits}
       adult={adult}
+      trailer={trailer}
     />
   )
 }

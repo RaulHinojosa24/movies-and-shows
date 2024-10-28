@@ -1,8 +1,9 @@
+import MovieIcon from '../../icons/MovieIcon'
 import Modal from '../UI/Modal'
 import PlayButton from '../UI/PlayButton'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 
-export default function VideoModal ({ video, className = '' }) {
+export default function VideoModal ({ video, className = '', noImage, buttonText }) {
   const [searchParams, setSearchParams] = useSearchParams()
   const navigate = useNavigate()
   const isOpen = searchParams.get('play') === video.key
@@ -23,15 +24,23 @@ export default function VideoModal ({ video, className = '' }) {
             allowFullScreen
           />
         </Modal>}
-      <div
-        style={{
-          backgroundImage: `url(https://i3.ytimg.com/vi/${video.key}/hqdefault.jpg)`
-        }}
-        className={'aspect-video bg-cover bg-center bg-no-repeat grid place-content-center cursor-pointer ' + className}
-        onClick={toggle}
-      >
-        <PlayButton />
-      </div>
+      {!noImage &&
+        <button
+          style={{
+            backgroundImage: `url(https://i3.ytimg.com/vi/${video.key}/hqdefault.jpg)`
+          }}
+          className={'aspect-video bg-cover bg-center bg-no-repeat grid place-content-center cursor-pointer ' + className}
+          onClick={toggle}
+        >
+          <PlayButton />
+        </button>}
+      {noImage &&
+        <button
+          className='flex gap-3 items-center whitespace-nowrap font-semibold text-xl rounded bg-dark py-2 px-4 hover:text-accent active:text-accent focus:text-accent transition-colors text-white '
+          onClick={toggle}
+        >
+          <MovieIcon /> {buttonText}
+        </button>}
     </>
   )
 }

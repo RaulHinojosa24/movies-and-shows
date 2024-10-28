@@ -1,6 +1,6 @@
 import Header from '../PageUI/Header'
 
-export default function TvHeader ({ name, contentRatings, createdBy, genres, backdropPath, posterPath, firstAirDate, tagline, voteAverage, voteCount, watchProviders, adult }) {
+export default function TvHeader ({ name, contentRatings, createdBy, genres, backdropPath, posterPath, firstAirDate, tagline, voteAverage, voteCount, watchProviders, adult, videos }) {
   const certification = contentRatings.results
     .find(el => el.iso_3166_1 === 'ES')
     ?.rating
@@ -12,6 +12,7 @@ export default function TvHeader ({ name, contentRatings, createdBy, genres, bac
     }))
   const prettyGenres = [...genres]
     .sort((a, b) => a.name.localeCompare(b.name))
+  const trailer = videos.find(v => v.type === 'Trailer')
 
   return (
     <Header
@@ -28,6 +29,7 @@ export default function TvHeader ({ name, contentRatings, createdBy, genres, bac
       genres={prettyGenres}
       mainCredits={mainCredits}
       adult={adult}
+      trailer={trailer}
     />
   )
 }

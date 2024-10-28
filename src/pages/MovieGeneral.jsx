@@ -78,7 +78,7 @@ export default function MovieGeneralPage () {
 
           return (
             <>
-              <MovieHeader backdropPath={backdropPath} crew={crew} genres={genres} posterPath={posterPath} releaseDate={releaseDate} releaseDates={releaseDates} runtime={runtime} tagline={tagline} title={prettyTitle} voteAverage={voteAverage} voteCount={voteCount} watchProviders={watchProviders} adult={adult} />
+              <MovieHeader backdropPath={backdropPath} crew={crew} genres={genres} posterPath={posterPath} releaseDate={releaseDate} releaseDates={releaseDates} runtime={runtime} tagline={tagline} title={prettyTitle} voteAverage={voteAverage} voteCount={voteCount} watchProviders={watchProviders} adult={adult} videos={videos} />
               <Main
                 left={
                   <MovieDetails budget={budget} keywords={keywords} originalLanguage={originalLanguage} originalTitle={originalTitle} revenue={revenue} status={status} />
