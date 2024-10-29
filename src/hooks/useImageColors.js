@@ -1,6 +1,4 @@
-/* eslint-disable prefer-promise-reject-errors */
-import ColorThief from 'colorthief'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const isDarkColor = (rgb) => {
   const [r, g, b] = rgb
@@ -8,50 +6,85 @@ const isDarkColor = (rgb) => {
   return luminosity < 128
 }
 
-export default function useImageColors (changing) {
-  const imgRef = useRef(null)
-  const [dominantColor, setDominantColor] = useState([])
+const getPixelStep = (width, height) => {
+  const pixelCount = width * height
+
+  if (pixelCount <= 10000) return 4
+  if (pixelCount <= 640000) return 8
+  if (pixelCount <= 2000000) return 16
+  return 32
+}
+
+const getDominantColor = (imageElement) => {
+  const canvas = document.createElement('canvas')
+  const context = canvas.getContext('2d')
+
+  canvas.width = imageElement.width
+  canvas.height = imageElement.height
+
+  context.drawImage(imageElement, 0, 0, canvas.width, canvas.height)
+
+  const imageData = context.getImageData(0, 0, canvas.width, canvas.height).data
+  const step = getPixelStep(canvas.width, canvas.height)
+
+  let r = 0; let g = 0; let b = 0; let count = 0
+
+  const grayThreshold = 20 // Decrease to avoid grey
+  const saturationThreshold = 50 // Increase to avoid low saturation
+
+  for (let i = 0; i < imageData.length; i += step) {
+    const red = imageData[i]
+    const green = imageData[i + 1]
+    const blue = imageData[i + 2]
+
+    const max = Math.max(red, green, blue)
+    const min = Math.min(red, green, blue)
+    const saturation = max - min
+
+    if (
+      saturation > saturationThreshold &&
+      Math.abs(red - green) > grayThreshold &&
+      Math.abs(red - blue) > grayThreshold &&
+      Math.abs(green - blue) > grayThreshold
+    ) {
+      r += red
+      g += green
+      b += blue
+      count++
+    }
+  }
+
+  if (count === 0) return [0, 0, 0]
+
+  r = Math.floor(r / count)
+  g = Math.floor(g / count)
+  b = Math.floor(b / count)
+
+  return [r, g, b]
+}
+
+export default function useImageColors (imgRef) {
+  const [dominantColor, setDominantColor] = useState([0, 0, 0])
   const [isDark, setIsDark] = useState(false)
 
   useEffect(() => {
-    const img = imgRef.current
+    const imgElement = imgRef?.current
+    if (imgElement?.complete) {
+      const newDominantColor = getDominantColor(imgElement)
 
-    new Promise((resolve, reject) => {
-      const colorThief = new ColorThief()
+      setDominantColor(newDominantColor)
+      setIsDark(isDarkColor(newDominantColor))
+    } else {
+      imgElement.addEventListener('load', () => {
+        const newDominantColor = getDominantColor(imgElement)
 
-      if (!img.complete) {
-        img.addEventListener('load', () => {
-          try {
-            const dominantColor = colorThief.getColor(img)
-            const isDark = isDarkColor(dominantColor)
-            resolve({ dominantColor, isDark })
-          } catch (error) {
-            reject('Error al extraer colores de la imagen')
-          }
-        })
-      } else {
-        try {
-          const dominantColor = colorThief.getColor(img)
-          const isDark = isDarkColor(dominantColor)
-          resolve({ dominantColor, isDark })
-        } catch (error) {
-          reject('Error al extraer colores de la imagen')
-        }
-      }
-    })
-      .then(({ dominantColor, isDark }) => {
-        setDominantColor(dominantColor)
-        setIsDark(isDark)
+        setDominantColor(newDominantColor)
+        setIsDark(isDarkColor(newDominantColor))
       })
-
-    return () => {
-      setDominantColor([])
-      setIsDark(false)
     }
-  }, [changing])
+  }, [imgRef])
 
   return {
-    ref: imgRef,
     dominant: dominantColor,
     isDark
   }

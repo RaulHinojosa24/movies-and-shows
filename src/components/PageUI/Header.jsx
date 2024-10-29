@@ -5,7 +5,7 @@ import VoteCard from '../PageUI/VoteCard'
 import DefaultPosterImage from '../../assets/default-poster.webp'
 import WatchProviders from '../WatchProviders/WatchProviders'
 import HeaderMainCredits from '../PageUI/HeaderMainCredits'
-import { useContext } from 'react'
+import { useContext, useRef } from 'react'
 import { rootContext } from '../../context/root-context'
 import useImageColors from '../../hooks/useImageColors'
 import AdultTag from './AdultTag'
@@ -13,8 +13,9 @@ import ElementsList from '../UI/ElementsList'
 import VideoModal from '../Media/VideoModal'
 
 export default function Header ({ posterPath, backdropPath, title, releaseDate, firstAirDate, certification, runtime, genres = [], tagline, voteAverage, voteCount, mainCredits = [], watchProviders, mediaType, overview, adult, trailer }) {
+  const imgRef = useRef()
   const { config } = useContext(rootContext)
-  const { dominant: [r, g, b], isDark, ref: imgRef } = useImageColors(posterPath)
+  const { dominant: [r, g, b], isDark } = useImageColors(imgRef)
 
   const prettyBackdropURL = config && backdropPath
     ? config?.images?.secure_base_url + config?.images?.backdrop_sizes[2] + backdropPath

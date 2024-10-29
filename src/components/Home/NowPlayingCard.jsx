@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { useContext } from 'react'
+import { useContext, useRef } from 'react'
 import { rootContext } from '../../context/root-context'
 import useImageColors from '../../hooks/useImageColors'
 import DefaultPoster from '../../assets/default-poster.webp'
@@ -13,8 +13,9 @@ export default function PosterCard ({
   isActive,
   adult
 }) {
+  const imgRef = useRef(null)
   const { config } = useContext(rootContext)
-  const { dominant: [r, g, b], isDark, ref: imgRef } = useImageColors(posterPath)
+  const { dominant: [r, g, b], isDark } = useImageColors(imgRef)
 
   const picturePath = config && backdropPath
     ? config?.images?.secure_base_url + config?.images?.backdrop_sizes[1] + backdropPath

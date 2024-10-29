@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom'
 import DefaultUserImage from '../../assets/default-user.webp'
 import DefaultPosterImage from '../../assets/default-poster.webp'
-import { useContext } from 'react'
+import { useContext, useRef } from 'react'
 import { rootContext } from '../../context/root-context'
 import useImageColors from '../../hooks/useImageColors'
 
 export default function HeaderCompact ({ posterPath, title, target, mediaType }) {
+  const imgRef = useRef()
   const { config } = useContext(rootContext)
-  const { dominant: [r, g, b], isDark, ref: imgRef } = useImageColors(posterPath)
+  const { dominant: [r, g, b], isDark } = useImageColors(imgRef)
 
   const prettyPosterURL = config && posterPath
     ? config?.images?.secure_base_url + (mediaType === 'person' ? config?.images?.profile_sizes[1] : config?.images?.poster_sizes[0]) + posterPath
