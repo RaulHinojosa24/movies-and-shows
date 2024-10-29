@@ -20,7 +20,7 @@ export default function NowPlaying () {
       <Suspense fallback={<HomeNowPlayingSkeleton />}>
         <Await resolve={promise} errorElement={<HomeNowPlayingSkeleton />}>
           {(loadedNowPlaying) => (
-            <Slider isLanding slides={loadedNowPlaying.results} SlideComponent={NowPlayingCard} />
+            <Slider type='landing' slides={loadedNowPlaying.results} SlideComponent={NowPlayingCard} />
           )}
         </Await>
       </Suspense>

@@ -55,9 +55,14 @@
 }
 
 swiper-container::part(container) {
+  padding: 3px 4px 15px 4px;
+  margin: -3px -4px -5px -4px;
   --swiper-theme-color: rgb(250, 204, 21);
   --swiper-scrollbar-bg-color: rgba(250, 204, 21, 0.2);
   --swiper-scrollbar-drag-bg-color: var(--swiper-theme-color);
+  --swiper-pagination-bullet-inactive-color: var(--swiper-theme-color);
+  --swiper-scrollbar-bottom: 0px;
+  --swiper-pagination-bottom: 0px;
 }
 
 swiper-container::part(button-prev), swiper-container::part(button-next) {
