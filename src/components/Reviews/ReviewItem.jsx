@@ -5,7 +5,7 @@ import VoteCard from '../PageUI/VoteCard'
 import { useContext } from 'react'
 import { rootContext } from '../../context/root-context'
 
-export default function ReviewItem ({ author, authorDetails, content, createdAt, id, updatedAt, url }) {
+export default function ReviewItem ({ author, author_details: authorDetails = {}, content, created_at: createdAt, id, updated_at: updatedAt, url }) {
   const { config } = useContext(rootContext)
 
   const { name, username, avatar_path: avatarPath, rating } = authorDetails
@@ -19,11 +19,9 @@ export default function ReviewItem ({ author, authorDetails, content, createdAt,
   return (
     <div className='shadow shadow-colors rounded p-6'>
       <header className='flex items-center gap-4'>
-        <img crossOrigin='anonymous' src={prettyUserImage} alt={'Imagen de perfil de ' + prettyUsername} className='aspect-square w-12 rounded-full' loading='lazy' />
+        <img crossOrigin='anonymous' src={prettyUserImage} alt={'Imagen de perfil de ' + prettyUsername} className='aspect-square w-12 rounded-full object-cover object-top' loading='lazy' />
         <div>
-          <a href={url} target='_blank'>
-            <h3 className='text-lg font-semibold'>Una reseña de {name || prettyUsername}</h3>
-          </a>
+          <h3 className='text-lg font-semibold'>Una reseña de {name || prettyUsername}</h3>
           <div className='font-thin text-sm flex flex-wrap gap-x-2'>
             {rating &&
               <VoteCard rating={rating} minimal hidePopover />}
