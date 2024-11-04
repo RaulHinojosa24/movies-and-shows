@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useCallback, useContext, useEffect, useState } from 'react'
 import Section from '../UI/Section'
 import { getPopularMovies, getPopularPeople, getPopularTvs } from '../../utils/http'
 import Slider from '../PageUI/Slider'
@@ -11,16 +11,13 @@ const EMPTY_RESULTS = Array(20).fill().map((_, i) => ({ id: i, fetching: true })
 export default function Popular () {
   const [media, setMedia] = useState('movie')
   const [promise, setPromise] = useState(null)
-  const sectionRef = useRef()
-  const isVisible = useIntersectionObserver(sectionRef, '', true)
   const [results, setResults] = useState(EMPTY_RESULTS)
 
   const { language, country, includeAdult } = useContext(settingsContext)
   const appLanguage = `${language.iso_639_1}-${country.iso_3166_1}`
   const region = country.iso_3166_1
 
-  useEffect(() => {
-    if (!isVisible) return
+  const updatePromise = useCallback(() => {
     switch (media) {
       case 'movie':
         setPromise(getPopularMovies({
@@ -42,7 +39,9 @@ export default function Popular () {
         }))
         break
     }
-  }, [appLanguage, includeAdult, isVisible, media, region])
+  }, [appLanguage, includeAdult, media, region])
+
+  const { ref: sectionRef } = useIntersectionObserver({ persistence: true, callback: updatePromise })
 
   useEffect(() => {
     if (!promise) return

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useCallback, useContext, useEffect, useState } from 'react'
 import Section from '../UI/Section'
 import Slider from '../PageUI/Slider'
 import TrendingCard from './TrendingCard'
@@ -13,13 +13,8 @@ export default function Trending () {
   const [promise, setPromise] = useState(null)
   const { language, country, includeAdult } = useContext(settingsContext)
   const appLanguage = `${language.iso_639_1}-${country.iso_3166_1}`
-  const sectionRef = useRef()
-  const isVisible = useIntersectionObserver(sectionRef, '', true)
 
-  const [results, setResults] = useState(EMPTY_RESULTS)
-
-  useEffect(() => {
-    if (!isVisible) return
+  const updatePromise = useCallback(() => {
     switch (timeWindow) {
       case 'day':
         setPromise(getTrendingAll({
@@ -36,7 +31,11 @@ export default function Trending () {
         }))
         break
     }
-  }, [includeAdult, appLanguage, isVisible, timeWindow])
+  }, [appLanguage, includeAdult, timeWindow])
+
+  const { ref: sectionRef } = useIntersectionObserver({ persistence: true, callback: updatePromise })
+
+  const [results, setResults] = useState(EMPTY_RESULTS)
 
   useEffect(() => {
     if (!promise) return

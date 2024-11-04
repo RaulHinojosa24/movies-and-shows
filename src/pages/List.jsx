@@ -1,9 +1,9 @@
-import { Suspense, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
+import { Suspense, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import ListElement from '../components/List/ListElement'
 import ListHeader from '../components/List/ListHeader'
 import Main from '../components/PageUI/Main'
 import { fetchWithDefer, getListDetails } from '../utils/http'
-import { useLoaderData, Await } from 'react-router-dom'
+import { useLoaderData, Await, useParams } from 'react-router-dom'
 import Loading from '../components/UI/Loading'
 import useIntersectionObserver from '../hooks/useIntersectionObserver'
 import ListFilters from '../components/List/ListFilters'
@@ -41,24 +41,19 @@ export default function ListPage () {
   const { data: loaderData } = useLoaderData()
   const [listElements, setListElements] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
-
-  const { language, country } = useContext(settingsContext)
+  const { id: listId } = useParams()
+  const { language, country, includeAdult } = useContext(settingsContext)
   const appLanguage = `${language.iso_639_1}-${country.iso_3166_1}`
 
   useEffect(() => {
-    loaderData.then(({
-      results,
-      page,
-      name
-    }) => {
+    loaderData.then(({ results, page, name }) => {
       setListElements(results)
       setCurrentPage(page)
-      setDocTitle(name)
+      setDocTitle(`Lista: ${name}`)
     })
   }, [loaderData])
 
   const [isLoading, setIsLoading] = useState(false)
-
   const [posterMode, setPosterMode] = useState(false)
   const [commentsVisible, setCommentsVisible] = useState(false)
   const [sortValue, setSortValue] = useState('default')
@@ -82,8 +77,17 @@ export default function ListPage () {
     }
   ]
 
-  const loadButtonRef = useRef()
-  const isVisible = useIntersectionObserver(loadButtonRef, '0px')
+  const fetchNewPage = useCallback(async () => {
+    if (isLoading) return
+    setIsLoading(true)
+    const data = await getListDetails({ id: listId, page: currentPage + 1, language: appLanguage, includeAdult })
+
+    setCurrentPage(prev => prev + 1)
+    setListElements(prev => [...prev, ...data.results])
+    setIsLoading(false)
+  }, [appLanguage, currentPage, includeAdult, isLoading, listId])
+
+  const { ref: loadButtonRef } = useIntersectionObserver({ callback: fetchNewPage })
 
   const sortedList = useMemo(() => {
     const sorted = [...listElements].sort(SORTING[sortValue])
@@ -91,26 +95,11 @@ export default function ListPage () {
     return sorted
   }, [sortValue, listElements, sortDirection])
 
-  const fetchNewPage = useCallback(async (id) => {
-    setIsLoading(true)
-    const data = await getListDetails({ id, page: currentPage + 1, language: appLanguage })
-
-    setCurrentPage(prev => prev + 1)
-    setListElements(prev => [...prev, ...data.results])
-    setIsLoading(false)
-  }, [appLanguage, currentPage])
-
-  useEffect(() => {
-    if (isVisible) {
-      fetchNewPage()
-    }
-  }, [fetchNewPage, isVisible])
-
   const listClasses = posterMode
     ? 'grid grid-flow-row grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4'
     : 'md:table border-separate border-spacing-y-2 space-y-2'
 
-  setDocTitle('Cargando...')
+  useEffect(() => setDocTitle('Cargando...'), [])
 
   return (
     <Suspense fallback={<ListSkeleton />}>
@@ -119,7 +108,6 @@ export default function ListPage () {
         errorElement={<ErrorPage />}
       >
         {({
-          id,
           comments,
           total_pages: totalPages,
           name,
@@ -130,10 +118,7 @@ export default function ListPage () {
           item_count: itemCount,
           revenue,
           runtime
-
         }) => {
-          setDocTitle(`Lista: ${name}`)
-
           return (
             <>
               <ListHeader
@@ -181,11 +166,11 @@ export default function ListPage () {
                       return <ListElement key={id} order={index + 1} comment={comments[`${mediaType}:${id}`]} id={id} mediaType={mediaType} posterPath={posterPath} releaseDate={releaseDate || firstAirDate} revenue={revenue} title={title || name} originalTitle={originalTitle || originalName} voteAverage={voteAverage} voteCount={voteCount} runtime={runtime} commentVisible={commentsVisible} posterMode={posterMode} adult={adult} />
                     })}
                   </div>
-                  {currentPage < totalPages &&
+                  {totalPages > 0 && currentPage < totalPages &&
                     <button
                       disabled={isLoading}
                       ref={loadButtonRef}
-                      onClick={() => fetchNewPage(id)}
+                      onClick={() => fetchNewPage()}
                       className='block mx-auto py-1 px-5 rounded whitespace-nowrap font-semibold bg-accent text-black relative'
                     >
                       <span className={isLoading ? 'invisible' : ''}>Cargar más elementos</span>
