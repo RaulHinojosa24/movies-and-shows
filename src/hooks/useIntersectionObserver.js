@@ -1,23 +1,41 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
-export default function useIntersectionObserver (element, rootMargin, persistence) {
+export default function useIntersectionObserver ({ callback = () => {}, persistence = false, rootMargin = '0px' }) {
+  const [element, setElement] = useState(null)
+
+  const ref = useCallback((node) => {
+    setElement(node || null)
+  }, [])
+
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    const current = element?.current
+    if (!element) return
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting)
-        if (entry.isIntersecting && persistence) {
-          observer.unobserve(current)
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          callback()
+
+          if (persistence) {
+            observer.unobserve(element)
+          }
+        } else {
+          setIsVisible(false)
         }
       },
       { rootMargin }
     )
-    current && observer?.observe(current)
 
-    return () => current && observer.unobserve(current)
-  }, [element, isVisible, persistence, rootMargin])
+    observer.observe(element)
 
-  return isVisible
+    return () => {
+      if (element) {
+        observer.unobserve(element)
+      }
+    }
+  }, [callback, element, persistence, rootMargin])
+
+  return { ref, isVisible }
 }
