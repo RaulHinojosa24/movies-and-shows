@@ -1,5 +1,6 @@
+import { formatNumber } from '../../utils/utility'
 import Section from '../UI/Section'
-import CastItem from './CastItem'
+import RenderList from './RenderList'
 
 export default function CastList ({ cast, needJoin }) {
   let cleanCast = []
@@ -17,14 +18,11 @@ export default function CastList ({ cast, needJoin }) {
     cleanCast = cast
   }
 
+  const castLength = formatNumber(cleanCast.length)
+
   return (
-    <Section title='Reparto'>
-      <ul className='space-y-3'>
-        {cleanCast.map(el => (
-          <CastItem key={el.id} id={el.id} image={el.profile_path} primary={el.name} secondary={el.roles} adult={el.adult} />
-        )
-        )}
-      </ul>
+    <Section title='Reparto' subtitle={castLength}>
+      <RenderList list={cleanCast} />
     </Section>
   )
 }

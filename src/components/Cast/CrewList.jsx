@@ -1,6 +1,6 @@
+import { formatNumber } from '../../utils/utility'
 import Section from '../UI/Section'
-import CastItem from './CastItem'
-import SubSection from '../UI/SubSection'
+import RenderList from './RenderList'
 
 export default function CrewList ({ crew, needJoin }) {
   const depsWithMembers = []
@@ -56,28 +56,18 @@ export default function CrewList ({ crew, needJoin }) {
             ...member,
             jobs: member.jobs.sort((a, b) => a.job.localeCompare(b.job))
           }))
-          .sort((a, b) => (
-            a.jobs[0].job.localeCompare(b.jobs[0].job) ||
-            a.name.localeCompare(b.name)
-          ))
       }
     })
 
+  const crewLength = formatNumber(depsWithMembers.reduce((acc, curr) => acc + curr?.members?.length, 0))
+
   return (
-    <Section title='Equipo'>
+    <Section title='Equipo' subtitle={crewLength}>
       <ol className='space-y-4'>
         {prettyCrew.map(({ department, members }) => {
           return (
             <li key={department}>
-              <SubSection title={department} className='space-y-2'>
-                <ul className='space-y-3'>
-                  {members
-                    .map(el => (
-                      <CastItem key={el.id} id={el.id} image={el.profile_path} primary={el.name} secondary={el.jobs} adult={el.adult} />
-                    )
-                    )}
-                </ul>
-              </SubSection>
+              <RenderList list={members} title={department} />
             </li>
           )
         })}
