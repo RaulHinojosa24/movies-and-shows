@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { formatLongDate } from '../../utils/utility'
+import { formatLongDate, formatNumber } from '../../utils/utility'
 import DefaultPosterImage from '../../assets/default-poster.webp'
 import VoteCard from '../PageUI/VoteCard'
 import { useContext } from 'react'
@@ -13,6 +13,7 @@ export default function SeasonItem ({ airDate, episodeCount, tvId, name, overvie
     : DefaultPosterImage
 
   const prettyAirDate = formatLongDate(airDate)
+  const prettyCount = formatNumber(episodeCount)
 
   return (
     <div className='rounded overflow-hidden shadow shadow-colors flex'>
@@ -22,7 +23,7 @@ export default function SeasonItem ({ airDate, episodeCount, tvId, name, overvie
       <div className='flex flex-col p-4 gap-2'>
         <Link to={'/tv/' + tvId + '/season/' + seasonNumber}>
           <h3 className='text-2xl font-semibold'>
-            {name} <span className='text-xl text-medium'>&bull; {episodeCount} episodios</span>
+            {name} <span className='text-xl text-medium'>&bull; {prettyCount} episodios</span>
           </h3>
         </Link>
         <div className='flex items-center gap-2'>

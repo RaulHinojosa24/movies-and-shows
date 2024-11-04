@@ -8,6 +8,7 @@ import Section from '../UI/Section'
 import Slideshow from 'yet-another-react-lightbox/plugins/slideshow'
 import Thumbnails from 'yet-another-react-lightbox/plugins/thumbnails'
 import Zoom from 'yet-another-react-lightbox/plugins/zoom'
+import { formatNumber } from '../../utils/utility'
 
 export default function MediaBackdrops ({ images }) {
   const { config } = useContext(rootContext)
@@ -39,8 +40,10 @@ export default function MediaBackdrops ({ images }) {
       })
   ), [config, images])
 
+  const prettyAmount = formatNumber(amount)
+
   return (
-    <Section title={<>Imágenes de fondo <span className='text-medium font-semibold'>{amount}</span></>}>
+    <Section title='Imágenes de fondo' subtitle={prettyAmount}>
       {!config &&
         'Cargando imágenes de fondo...'}
       {config && photos.length === 0 &&

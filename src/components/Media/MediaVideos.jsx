@@ -1,3 +1,4 @@
+import { formatNumber } from '../../utils/utility'
 import Section from '../UI/Section'
 import SubSection from '../UI/SubSection'
 import VideoModal from './VideoModal'
@@ -33,17 +34,21 @@ export default function MediaVideos ({ videos }) {
 
   return (
     <Section title='Vídeos' className='space-y-4'>
-      {cleanVideos.map(({ type, videos }) => (
-        <SubSection key={type} title={<>{type} <span className='text-medium'>{videos.length}</span></>} className='space-y-2'>
-          <div className='flex flex-wrap gap-2'>
-            {videos.map(video => {
-              return (
-                <VideoModal key={video.id} video={video} className='w-full max-w-96' />
-              )
-            })}
-          </div>
-        </SubSection>
-      ))}
+      {cleanVideos.map(({ type, videos }) => {
+        const prettyAmount = formatNumber(videos.length)
+
+        return (
+          <SubSection key={type} title={type} subtitle={prettyAmount} className='space-y-2'>
+            <div className='flex flex-wrap gap-2'>
+              {videos.map(video => {
+                return (
+                  <VideoModal key={video.id} video={video} className='w-full max-w-96' />
+                )
+              })}
+            </div>
+          </SubSection>
+        )
+      })}
     </Section>
   )
 }

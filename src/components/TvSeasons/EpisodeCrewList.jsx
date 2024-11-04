@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom'
 import SubSection from '../UI/SubSection'
+import { formatNumber } from '../../utils/utility'
 
 export default function EpisodeCrewList ({ className = '', crew }) {
+  const prettyAmount = formatNumber(crew.length)
+
   return (
-    <SubSection title={<>Equipo <span className='text-medium font-normal'>{crew.length}</span></>} className='space-y-2'>
+    <SubSection title='Equipo' subtitle={prettyAmount} className='space-y-2'>
       <ul className={'space-y-1 ' + className}>
         {crew.map(cr => <CrewItem key={cr.credit_id} id={cr.id} name={cr.name} role={cr.job} />)}
       </ul>

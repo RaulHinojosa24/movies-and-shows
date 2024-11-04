@@ -4,6 +4,7 @@ import React, { useContext } from 'react'
 import { rootContext } from '../../context/root-context'
 import AdultTag from '../PageUI/AdultTag'
 import ElementsList from '../UI/ElementsList'
+import { formatNumber } from '../../utils/utility'
 
 export default function CastItem ({ id, image, primary, secondary, adult }) {
   const { config } = useContext(rootContext)
@@ -28,9 +29,11 @@ export default function CastItem ({ id, image, primary, secondary, adult }) {
         <ElementsList className='text-sm' style='comma'>
           {secondary.map(j => {
             const { credit_id: id, job, character, episode_count: episodes } = j
+            const prettyCount = formatNumber(episodes || 0)
+
             return (
               <React.Fragment key={id}>
-                {job || character} {episodes && <span className='text-medium'>({episodes} episodios)</span>}
+                {job || character} {episodes && <span className='text-medium'>({prettyCount} episodios)</span>}
               </React.Fragment>
             )
           })}

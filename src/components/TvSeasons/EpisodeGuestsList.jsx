@@ -3,10 +3,13 @@ import SubSection from '../UI/SubSection'
 import DefaultProfileImage from '../../assets/default-user.webp'
 import { useContext } from 'react'
 import { rootContext } from '../../context/root-context'
+import { formatNumber } from '../../utils/utility'
 
 export default function EpisodeGuestsList ({ className = '', guests }) {
+  const prettyAmount = formatNumber(guests.length)
+
   return (
-    <SubSection title={<>Invitadas estrella <span className='text-medium font-normal'>{guests.length}</span></>} className='space-y-2 w-full'>
+    <SubSection title='Invitadas estrella' subtitle={prettyAmount} className='space-y-2 w-full'>
       <ul className={'grid md:grid-cols-2 lg:grid-cols-3 gap-2 ' + className}>
         {guests.map(({ id, credit_id: crId, name, character, original_name: ogName, profile_path: profilePath }) => {
           return <GuestItem key={crId} id={id} name={name || ogName} character={character} profilePath={profilePath} />

@@ -10,6 +10,7 @@ import Thumbnails from 'yet-another-react-lightbox/plugins/thumbnails'
 import Zoom from 'yet-another-react-lightbox/plugins/zoom'
 import 'yet-another-react-lightbox/plugins/thumbnails.css'
 import { rootContext } from '../../context/root-context'
+import { formatNumber } from '../../utils/utility'
 
 export default function MediaProfiles ({ images }) {
   const { config } = useContext(rootContext)
@@ -42,8 +43,10 @@ export default function MediaProfiles ({ images }) {
       })
   ), [config, images])
 
+  const prettyAmount = formatNumber(amount)
+
   return (
-    <Section title={<>Retratos <span className='text-medium font-semibold'>{amount}</span></>}>
+    <Section title='Retratos' subtitle={prettyAmount}>
       {!config &&
         'Cargando fotos...'}
       {config && photos.length === 0 &&

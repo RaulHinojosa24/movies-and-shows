@@ -6,6 +6,7 @@ import React, { useContext } from 'react'
 import { rootContext } from '../../context/root-context'
 import ElementsList from '../UI/ElementsList'
 import VerticalCard from '../UI/Cards/VerticalCard'
+import { formatNumber } from '../../utils/utility'
 
 export default function TvCast ({ id, cast }) {
   if (cast.length === 0) {
@@ -57,6 +58,7 @@ const Slide = ({ id, name, picturePath, characters, remainingCharacters, episode
     ? config?.images?.secure_base_url + config?.images?.profile_sizes[1] + picturePath
     : DefaultProfileImage
   const prettyLink = '/person/' + id
+  const prettyCount = formatNumber(episodeCount)
   const secondary = characters &&
     <>
       <ElementsList style='comma'>
@@ -70,7 +72,7 @@ const Slide = ({ id, name, picturePath, characters, remainingCharacters, episode
         <span> y {remainingCharacters} más...</span>}
     </>
   const tertiary = episodeCount > 0 &&
-    `${episodeCount} episodios`
+    `${prettyCount} episodios`
 
   return (
     <VerticalCard
