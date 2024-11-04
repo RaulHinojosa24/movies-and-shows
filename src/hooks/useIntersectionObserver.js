@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 
-export default function useIntersectionObserver ({ callback = () => {}, persistence = false, rootMargin = '0px' }) {
+export default function useIntersectionObserver ({ callback = () => {}, persistence = false, rootMargin = '0px' } = {}) {
   const [element, setElement] = useState(null)
 
   const ref = useCallback((node) => {
