@@ -9,10 +9,14 @@ const isDarkColor = (rgb) => {
 const getPixelStep = (width, height) => {
   const pixelCount = width * height
 
-  if (pixelCount <= 10000) return 4
-  if (pixelCount <= 640000) return 8
-  if (pixelCount <= 2000000) return 16
-  return 32
+  let quality
+
+  if (pixelCount <= 10000) quality = 1
+  else if (pixelCount <= 640000) quality = 4
+  else if (pixelCount <= 2000000) quality = 10
+  else quality = 20
+
+  return quality * 4
 }
 
 const getDominantColor = (imageElement) => {
@@ -29,8 +33,8 @@ const getDominantColor = (imageElement) => {
 
   let r = 0; let g = 0; let b = 0; let count = 0
 
-  const grayThreshold = 20 // Decrease to avoid grey
-  const saturationThreshold = 50 // Increase to avoid low saturation
+  const grayThreshold = 5 // Decrease to avoid grey
+  const saturationThreshold = 60 // Increase to avoid low saturation
 
   for (let i = 0; i < imageData.length; i += step) {
     const red = imageData[i]
