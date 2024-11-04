@@ -1,6 +1,8 @@
 import { formatNumber } from '../../utils/utility'
+import InfiniteScroll from '../UI/InfiniteScroll'
 import Section from '../UI/Section'
-import RenderList from './RenderList'
+import SubSection from '../UI/SubSection'
+import CastItem from './CastItem'
 
 export default function CrewList ({ crew, needJoin }) {
   const depsWithMembers = []
@@ -67,7 +69,13 @@ export default function CrewList ({ crew, needJoin }) {
         {prettyCrew.map(({ department, members }) => {
           return (
             <li key={department}>
-              <RenderList list={members} title={department} />
+              <SubSection title={department}>
+                <InfiniteScroll
+                  list={members}
+                  Element={({ id, profile_path: profilePath, name, adult, jobs }) =>
+                    <CastItem key={id} id={id} image={profilePath} primary={name} secondary={jobs} adult={adult} />}
+                />
+              </SubSection>
             </li>
           )
         })}

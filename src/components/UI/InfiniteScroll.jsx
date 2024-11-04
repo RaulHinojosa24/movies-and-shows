@@ -1,11 +1,7 @@
-import SubSection from '../UI/SubSection'
-import CastItem from './CastItem'
 import useIntersectionObserver from '../../hooks/useIntersectionObserver'
 import { useState } from 'react'
 
-const loadStep = 10
-
-export default function RenderList ({ list, title }) {
+export default function InfiniteScroll ({ list, loadStep = 10, Element }) {
   const { ref } = useIntersectionObserver({ callback: loadMoreItems })
   const [amountRendered, setAmountRendered] = useState(loadStep)
   const listLength = list.length
@@ -16,15 +12,13 @@ export default function RenderList ({ list, title }) {
   }
 
   return (
-    <SubSection title={title} subtitle={listLength}>
+    <>
       <ul className='space-y-3'>
-        {list.slice(0, amountRendered).map(el => (
-          <CastItem key={el.id} id={el.id} image={el.profile_path} primary={el.name} secondary={el.roles || el.jobs} adult={el.adult} />
-        )
-        )}
+        {list.slice(0, amountRendered)
+          .map(el => <Element key={el.id} {...el} />)}
       </ul>
       {amountRendered < listLength &&
         <span ref={ref} aria-hidden />}
-    </SubSection>
+    </>
   )
 }

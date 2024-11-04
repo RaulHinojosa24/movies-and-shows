@@ -1,6 +1,7 @@
 import { formatNumber } from '../../utils/utility'
+import InfiniteScroll from '../UI/InfiniteScroll'
 import Section from '../UI/Section'
-import RenderList from './RenderList'
+import CastItem from './CastItem'
 
 export default function CastList ({ cast, needJoin }) {
   let cleanCast = []
@@ -22,7 +23,11 @@ export default function CastList ({ cast, needJoin }) {
 
   return (
     <Section title='Reparto' subtitle={castLength}>
-      <RenderList list={cleanCast} />
+      <InfiniteScroll
+        list={cleanCast}
+        Element={({ id, profile_path: profilePath, name, adult, roles }) =>
+          <CastItem key={id} id={id} image={profilePath} primary={name} secondary={roles} adult={adult} />}
+      />
     </Section>
   )
 }
