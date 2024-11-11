@@ -4,6 +4,7 @@ import Section from '../UI/Section'
 import SubSection from '../UI/SubSection'
 import { useContext } from 'react'
 import { rootContext } from '../../context/root-context'
+import { settingsContext } from '../../context/settings-context'
 
 export default function MovieDetails ({
   budget,
@@ -14,13 +15,15 @@ export default function MovieDetails ({
   status
 }) {
   const { config } = useContext(rootContext)
+  const { country, language } = useContext(settingsContext)
 
   const isoLanguage = config?.languages
     .find(l => l.iso_639_1 === originalLanguage)
 
+  const appLanguage = `${language.iso_639_1}-${country.iso_3166_1}`
   const prettyLanguage = isoLanguage?.name || isoLanguage?.english_name || originalLanguage
-  const prettyBudget = formatCurrency(budget)
-  const prettyRevenue = formatCurrency(revenue)
+  const prettyBudget = formatCurrency(budget, appLanguage)
+  const prettyRevenue = formatCurrency(revenue, appLanguage)
 
   return (
     <Section title='Detalles' className='space-y-3'>

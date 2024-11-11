@@ -11,15 +11,15 @@ export function calculateImageSize (sizes, width, ratio) {
   return 'original'
 }
 
-export function formatShortDate (date) {
+export function formatShortDate (date, locale) {
   return date
-    ? new Date(date).toLocaleDateString('es-ES')
+    ? new Date(date).toLocaleDateString(locale)
     : ''
 }
 
-export function formatLongDate (date) {
+export function formatLongDate (date, locale) {
   return date
-    ? new Date(date).toLocaleDateString('es-ES', {
+    ? new Date(date).toLocaleDateString(locale, {
       day: 'numeric',
       month: 'long',
       year: 'numeric'
@@ -27,8 +27,8 @@ export function formatLongDate (date) {
     : ''
 }
 
-export function formatCurrency (amount) {
-  const USDollar = new Intl.NumberFormat('es-ES', {
+export function formatCurrency (amount, locale) {
+  const USDollar = new Intl.NumberFormat(locale, {
     style: 'currency',
     currency: 'USD'
   })

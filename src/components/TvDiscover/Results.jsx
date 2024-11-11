@@ -4,9 +4,13 @@ import { rootContext } from '../../context/root-context'
 import DefaultPoster from '../../assets/default-poster.webp'
 import { formatLongDate } from '../../utils/utility'
 import VoteCard from '../PageUI/VoteCard'
+import { settingsContext } from '../../context/settings-context'
 
 export default function Results ({ results }) {
   const { config } = useContext(rootContext)
+  const { country, language } = useContext(settingsContext)
+
+  const appLanguage = `${language.iso_639_1}-${country.iso_3166_1}`
 
   return (
     <div className='grid grid-flow-row grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-8'>
@@ -28,7 +32,7 @@ export default function Results ({ results }) {
           : DefaultPoster
         const prettyName = name || originalName
         const prettyOriginalName = name !== originalName && originalName
-        const prettyDate = formatLongDate(firstAirDate)
+        const prettyDate = formatLongDate(firstAirDate, appLanguage)
         const prettyLink = `/tv/${id}`
         const voteCard = <VoteCard small rating={voteAverage} count={voteCount} />
 

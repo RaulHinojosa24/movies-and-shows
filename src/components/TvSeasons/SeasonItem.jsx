@@ -4,15 +4,18 @@ import DefaultPosterImage from '../../assets/default-poster.webp'
 import VoteCard from '../PageUI/VoteCard'
 import { useContext } from 'react'
 import { rootContext } from '../../context/root-context'
+import { settingsContext } from '../../context/settings-context'
 
 export default function SeasonItem ({ airDate, episodeCount, tvId, name, overview, posterPath, seasonNumber, voteAverage }) {
   const { config } = useContext(rootContext)
+  const { country, language } = useContext(settingsContext)
 
+  const appLanguage = `${language.iso_639_1}-${country.iso_3166_1}`
   const prettyPosterPath = posterPath && config
     ? config?.images?.secure_base_url + config?.images?.poster_sizes[2] + posterPath
     : DefaultPosterImage
 
-  const prettyAirDate = formatLongDate(airDate)
+  const prettyAirDate = formatLongDate(airDate, appLanguage)
   const prettyCount = formatNumber(episodeCount)
 
   return (

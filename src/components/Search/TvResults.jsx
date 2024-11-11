@@ -8,11 +8,15 @@ import { rootContext } from '../../context/root-context'
 import ResponsiveCard from '../UI/Cards/ResponsiveCard'
 import VoteCard from '../PageUI/VoteCard'
 import DiscoverSearchResultsSkeleton from '../../skeleton-pages/DiscoverSearchResultsSkeleton'
+import { settingsContext } from '../../context/settings-context'
 
 export default function TvResults () {
   const { config } = useContext(rootContext)
+  const { country, language } = useContext(settingsContext)
   const { data: loaderData } = useLoaderData()
   const baseLoaderData = useRouteLoaderData('search')
+
+  const appLanguage = `${language.iso_639_1}-${country.iso_3166_1}`
 
   return (
     <Suspense fallback={<DiscoverSearchResultsSkeleton />}>
@@ -44,7 +48,7 @@ export default function TvResults () {
                       : DefaultPosterImage
                     const prettyName = name || originalName
                     const prettyOriginalName = name !== originalName && originalName
-                    const prettyDate = formatLongDate(firstAirDate)
+                    const prettyDate = formatLongDate(firstAirDate, appLanguage)
                     const prettyLink = `/tv/${id}`
                     const voteCard = <VoteCard small rating={voteAverage} count={voteCount} />
 

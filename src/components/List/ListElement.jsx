@@ -6,6 +6,7 @@ import { useContext } from 'react'
 import MediaType from '../PageUI/MediaType'
 import { rootContext } from '../../context/root-context'
 import AdultTag from '../PageUI/AdultTag'
+import { settingsContext } from '../../context/settings-context'
 
 export default function ListElement ({ id, order, title, originalTitle, posterPath, mediaType, comment = '', releaseDate, voteAverage, voteCount, revenue, runtime, posterMode, commentVisible, adult }) {
   const { config } = useContext(rootContext)
@@ -104,8 +105,11 @@ function Cell ({ children, className = '' }) {
 }
 
 function ReleaseDate ({ date, posterMode, className = '' }) {
-  const shortDate = new Date(date).getFullYear()
-  const longDate = formatLongDate(date)
+  const { country, language } = useContext(settingsContext)
 
-  return <span className={posterMode ? 'italic text-medium font-semibold' : 'rounded-full w-fit px-4 py-1 bg-indigo-900 text-white ' + className}>{posterMode ? shortDate : longDate}</span>
+  const appLanguage = `${language.iso_639_1}-${country.iso_3166_1}`
+  const shortDate = new Date(date).getFullYear()
+  const longDate = formatLongDate(date, appLanguage)
+
+  return <span className={posterMode ? 'italic text-medium font-semibold' : 'rounded-full w-fit px-4 py-1 bg-indigo-900 text-white ' + className}>{(posterMode ? shortDate : longDate) || 'Unknown'}</span>
 }

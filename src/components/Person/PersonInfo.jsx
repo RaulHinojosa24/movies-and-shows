@@ -1,12 +1,17 @@
 import SubSection from '../UI/SubSection'
 import { calculateAge, formatLongDate, getPersonGender } from '../../utils/utility'
 import Section from '../UI/Section'
+import { useContext } from 'react'
+import { settingsContext } from '../../context/settings-context'
 
 export default function PersonInfo ({ alsoKnownAs, birthday, deathday, gender, knownForDepartment, placeOfBirth }) {
+  const { country, language } = useContext(settingsContext)
+
+  const appLanguage = `${language.iso_639_1}-${country.iso_3166_1}`
   const prettyAge = calculateAge(birthday, deathday)
   const prettyGender = getPersonGender(gender)
-  const prettyBirthday = formatLongDate(birthday)
-  const prettyDeathday = formatLongDate(deathday)
+  const prettyBirthday = formatLongDate(birthday, appLanguage)
+  const prettyDeathday = formatLongDate(deathday, appLanguage)
 
   return (
     <Section>

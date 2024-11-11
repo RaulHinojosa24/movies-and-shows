@@ -11,12 +11,15 @@ import useImageColors from '../../hooks/useImageColors'
 import AdultTag from './AdultTag'
 import ElementsList from '../UI/ElementsList'
 import VideoModal from '../Media/VideoModal'
+import { settingsContext } from '../../context/settings-context'
 
 export default function Header ({ posterPath, backdropPath, title, releaseDate, firstAirDate, certification, runtime, genres = [], tagline, voteAverage, voteCount, mainCredits = [], watchProviders, mediaType, overview, adult, trailer }) {
   const imgRef = useRef()
   const { config } = useContext(rootContext)
+  const { country, language } = useContext(settingsContext)
   const { dominant: [r, g, b], isDark } = useImageColors(imgRef)
 
+  const appLanguage = `${language.iso_639_1}-${country.iso_3166_1}`
   const prettyBackdropURL = config && backdropPath
     ? config?.images?.secure_base_url + config?.images?.backdrop_sizes[2] + backdropPath
     : DefaultPosterImage
@@ -24,7 +27,7 @@ export default function Header ({ posterPath, backdropPath, title, releaseDate, 
     ? config?.images?.secure_base_url + config?.images?.poster_sizes[3] + posterPath
     : DefaultPosterImage
   const prettyRuntime = formatRuntime(runtime || 0)
-  const prettyDate = formatShortDate(releaseDate || firstAirDate)
+  const prettyDate = formatShortDate(releaseDate || firstAirDate, appLanguage)
   const prettyGenres = [...genres]
     .sort((a, b) => a.name.localeCompare(b.name))
 

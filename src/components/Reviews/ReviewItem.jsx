@@ -4,16 +4,19 @@ import ClampedText from '../UI/ClampedText'
 import VoteCard from '../PageUI/VoteCard'
 import { useContext } from 'react'
 import { rootContext } from '../../context/root-context'
+import { settingsContext } from '../../context/settings-context'
 
 export default function ReviewItem ({ author, author_details: authorDetails = {}, content, created_at: createdAt, id, updated_at: updatedAt, url }) {
   const { config } = useContext(rootContext)
+  const { country, language } = useContext(settingsContext)
 
   const { name, username, avatar_path: avatarPath, rating } = authorDetails
 
+  const appLanguage = `${language.iso_639_1}-${country.iso_3166_1}`
   const prettyUserImage = config && avatarPath
     ? config?.images?.secure_base_url + config?.images?.profile_sizes[0] + avatarPath
     : DefaultUser
-  const prettyCreationDate = formatLongDate(createdAt)
+  const prettyCreationDate = formatLongDate(createdAt, appLanguage)
   const prettyUsername = username || author
 
   return (

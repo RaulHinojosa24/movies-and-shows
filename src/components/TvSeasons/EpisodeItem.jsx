@@ -7,16 +7,19 @@ import EpisodeGuestsList from './EpisodeGuestsList'
 import ChevronIcon from '../../icons/ChevronIcon'
 import { rootContext } from '../../context/root-context'
 import ElementsList from '../UI/ElementsList'
+import { settingsContext } from '../../context/settings-context'
 
 export default function EpisodeItem ({ airDate, episodeNumber, name, overview, runtime, seasonNumber, showId, stillPath, voteAverage, voteCount, crew, guestStars, tvName, tvOriginalName }) {
   const { config } = useContext(rootContext)
+  const { country, language } = useContext(settingsContext)
   const [isExpanded, setIsExpanded] = useState(false)
 
+  const appLanguage = `${language.iso_639_1}-${country.iso_3166_1}`
   const prettyBigStillPath = stillPath && config
     ? config?.images?.secure_base_url + config?.images?.still_sizes[3] + stillPath
     : DefaultLandscape
   const prettyTvName = tvName || tvOriginalName
-  const prettyAirDate = formatLongDate(airDate)
+  const prettyAirDate = formatLongDate(airDate, appLanguage)
   const prettyRuntime = formatRuntime(runtime)
 
   const toggleIsExpanded = () => setIsExpanded(p => !p)
