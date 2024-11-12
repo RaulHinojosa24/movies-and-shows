@@ -24,7 +24,7 @@ export default function ListElement ({ id, order, title, originalTitle, posterPa
         <div className='shadow shadow-colors rounded overflow-hidden max-w-56 w-full text-sm'>
           <div className='relative'>
             <Link to={`/${mediaType}/${id}`}>
-              <img crossOrigin='anonymous' className='w-full object-cover aspect-[2/3]' src={prettyPosterPath} alt={`Poster de la película ${prettyTitle}`} loading='lazy' />
+              <img crossOrigin='anonymous' className='w-full object-cover aspect-[2/3]' src={prettyPosterPath} alt={`${prettyTitle}'s poster`} loading='lazy' />
             </Link>
             <div className='absolute w-full bottom-2 flex justify-between px-2'>
               <VoteCard small rating={voteAverage} count={voteCount} />
@@ -38,7 +38,7 @@ export default function ListElement ({ id, order, title, originalTitle, posterPa
                 <Link to={`/${mediaType}/${id}`} className='font-semibold text-base mr-2'>
                   {prettyTitle}
                 </Link>
-                <ReleaseDate date={releaseDate} posterMode={posterMode} className='' />
+                <ReleaseDate date={releaseDate} posterMode={posterMode} />
               </h3>
               {adult &&
                 <AdultTag />}

@@ -3,11 +3,11 @@ import ClampedText from '../UI/ClampedText'
 
 export default function TvOverview ({ overview }) {
   return (
-    <Section title='Sinopsis'>
+    <Section title='Overview'>
       {overview &&
         <ClampedText text={overview} />}
       {!overview &&
-        <p className='italic'>No tenemos una sinopsis en tu idioma.</p>}
+        <p className='italic'>We currently have no overview available</p>}
     </Section>
   )
 }

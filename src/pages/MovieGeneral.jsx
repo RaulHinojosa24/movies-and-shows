@@ -17,7 +17,7 @@ import ErrorPage from '../pages/ErrorPage'
 
 export default function MovieGeneralPage () {
   const { data: loaderMovieDetails } = useRouteLoaderData('movie-details')
-  setDocTitle('Cargando...')
+  setDocTitle('Loading...')
 
   return (
     <Suspense fallback={<MovieGeneralSkeleton />}>
@@ -86,7 +86,7 @@ export default function MovieGeneralPage () {
                 center={
                   <>
                     <MovieOverview overview={overview} />
-                    <GeneralMedia backdrops={backdrops} posters={posters} title={prettyTitle} pageType='película' />
+                    <GeneralMedia backdrops={backdrops} posters={posters} title={prettyTitle} />
                     <MovieCast id={id} cast={cast} />
                     {collection &&
                       <MovieCollection collection={collection} />}

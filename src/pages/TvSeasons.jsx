@@ -10,7 +10,7 @@ import ErrorPage from './ErrorPage'
 
 export default function TvSeasonsPage () {
   const { data: loaderTvDetails } = useRouteLoaderData('tv-details')
-  setDocTitle('Cargando...')
+  setDocTitle('Loading...')
 
   return (
     <Suspense fallback={<TvSeasonsSkeleton />}>
@@ -26,14 +26,14 @@ export default function TvSeasonsPage () {
           poster_path: posterPath
         }) => {
           const prettyName = name || originalName
-          setDocTitle(`${prettyName} - Todas las temporadas`)
+          setDocTitle(`${prettyName} - Seasons`)
 
           return (
             <>
               <TvHeaderCompact id={tvId} posterPath={posterPath} name={prettyName} />
               <Main
                 center={
-                  <Section title={'Todas las temporadas de ' + (prettyName)}>
+                  <Section title={`${prettyName} Seasons`}>
                     <ol className='flex flex-col gap-2'>
                       {seasons.map(season => {
                         const {

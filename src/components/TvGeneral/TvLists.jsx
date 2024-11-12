@@ -8,7 +8,7 @@ export default function TvLists ({ lists }) {
   const shortLists = lists.results.filter((_, i) => i < shorListsLength)
 
   return (
-    <Section title='Listas de usuarios'>
+    <Section title='User Lists'>
       <ul className='flex flex-col gap-2'>
         {shortLists.map(list => (
           <li key={list.id}>
@@ -17,7 +17,7 @@ export default function TvLists ({ lists }) {
         ))}
       </ul>
       {lists.results.length > shorListsLength &&
-        <Link to='' className='inline-block mt-4'>Ver todas las listas</Link>}
+        <Link to='' className='inline-block mt-4'>Visist all lists</Link>}
     </Section>
   )
 }

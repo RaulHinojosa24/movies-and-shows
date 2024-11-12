@@ -6,7 +6,7 @@ export default function ResponsiveCard ({ imageUrl, title, originalTitle, tertia
     <li className='shadow shadow-colors rounded overflow-hidden flex md:flex-col'>
       <div className='relative shrink-0'>
         <Link to={link} className='contents'>
-          <img crossOrigin='anonymous' className='w-24 md:w-full h-full object-cover aspect-[2/3]' src={imageUrl} alt={`Imágen de ${title}`} loading='lazy' />
+          <img crossOrigin='anonymous' className='w-24 md:w-full h-full object-cover aspect-[2/3]' src={imageUrl} alt={`Picture of ${title}`} loading='lazy' />
         </Link>
         {bottomLeft &&
           <div className='hidden md:block absolute bottom-2 left-2'>

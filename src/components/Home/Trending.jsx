@@ -49,10 +49,10 @@ export default function Trending () {
     <Section
       title={
         <>
-          Tendencia
+          Trending
           <div className='inline-flex text-base font-normal gap-2 mx-4'>
-            <button className={timeWindow === 'day' ? 'underline underline-offset-4' : ''} onClick={() => setTimeWindow('day')}>Dia</button>
-            <button className={timeWindow === 'week' ? 'underline underline-offset-4' : ''} onClick={() => setTimeWindow('week')}>Semana</button>
+            <button className={timeWindow === 'day' ? 'underline underline-offset-4' : ''} onClick={() => setTimeWindow('day')}>Day</button>
+            <button className={timeWindow === 'week' ? 'underline underline-offset-4' : ''} onClick={() => setTimeWindow('week')}>Week</button>
           </div>
         </>
     } className='m-app-space' ref={sectionRef}

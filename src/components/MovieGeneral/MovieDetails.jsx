@@ -26,28 +26,30 @@ export default function MovieDetails ({
   const prettyRevenue = formatCurrency(revenue, appLanguage)
 
   return (
-    <Section title='Detalles' className='space-y-3'>
-      {originalTitle &&
-        <SubSection title='Título original'>
-          {originalTitle}
-          {prettyLanguage && <> ({prettyLanguage})</>}
-        </SubSection>}
-      {status &&
-        <SubSection title='Estado'>{status}</SubSection>}
-      {budget > 0 &&
-        <SubSection title='Presupuesto'>{prettyBudget}</SubSection>}
-      {revenue > 0 &&
-        <SubSection title='Ingresos'>{prettyRevenue}</SubSection>}
-      {keywords.keywords.length > 0 &&
-        <SubSection title='Palabras clave'>
-          <ul className='flex gap-2 flex-wrap'>
-            {keywords.keywords.map(({ id, name }) => (
-              <li key={id}>
-                <Link to={`/movie?keywords=${id}%25${name}`} className='inline-block dark:bg-dark-2 px-2 py-1 rounded border-1 dark:border-dark-3 text-sm'>{name}</Link>
-              </li>
-            ))}
-          </ul>
-        </SubSection>}
+    <Section title='Details' className='space-y-3'>
+      <div className='grid grid-cols-2 md:grid-cols-1 gap-3'>
+        {originalTitle &&
+          <SubSection title='Original title'>
+            {originalTitle}
+            {prettyLanguage && <> ({prettyLanguage})</>}
+          </SubSection>}
+        {status &&
+          <SubSection title='Status'>{status}</SubSection>}
+        {budget > 0 &&
+          <SubSection title='Budget'>{prettyBudget}</SubSection>}
+        {revenue > 0 &&
+          <SubSection title='Revenue'>{prettyRevenue}</SubSection>}
+        {keywords.keywords.length > 0 &&
+          <SubSection title='Keywords' className='col-span-2 md:col-span-1'>
+            <ul className='flex gap-2 flex-wrap'>
+              {keywords.keywords.map(({ id, name }) => (
+                <li key={id}>
+                  <Link to={`/movie?keywords=${id}%25${name}`} className='inline-block dark:bg-dark-2 px-2 py-1 rounded border-1 dark:border-dark-3 text-sm'>{name}</Link>
+                </li>
+              ))}
+            </ul>
+          </SubSection>}
+      </div>
     </Section>
   )
 }

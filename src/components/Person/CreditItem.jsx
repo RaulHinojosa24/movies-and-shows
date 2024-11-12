@@ -17,8 +17,8 @@ export default function CreditItem ({
       ? jobs
       : null
   const prettyType = mediaType === 'movie'
-    ? video ? 'Corto' : 'Película'
-    : 'Serie'
+    ? video ? 'Special' : 'Movie'
+    : 'TV Show'
   const prettyUrl = mediaType === 'movie'
     ? '/movie/' + id
     : '/tv/' + id
@@ -31,7 +31,7 @@ export default function CreditItem ({
     <div className='flex justify-between items-center py-2'>
       <div className='flex gap-2 items-center'>
         <Link to={prettyUrl} className='contents'>
-          <img crossOrigin='anonymous' className='aspect-[2/3] object-cover w-12' loading='lazy' src={prettyPosterPath} alt={`Poster de ${prettyTitle}`} />
+          <img crossOrigin='anonymous' className='aspect-[2/3] object-cover w-12' loading='lazy' src={prettyPosterPath} alt={`${prettyTitle}'s poster`} />
         </Link>
         <div>
           <div>
@@ -47,14 +47,14 @@ export default function CreditItem ({
             <span className='text-medium'>{prettyType}</span>
           </div>
           {prettyCharactersOrJobs &&
-            <p className='text-medium text-sm'>...como {(prettyCharactersOrJobs).join(', ')}</p>}
+            <p className='text-medium text-sm'>...as {(prettyCharactersOrJobs).join(', ')}</p>}
         </div>
       </div>
       <div className='flex flex-col items-end'>
         {!isNaN(prettyYear) &&
           <span>{prettyYear}</span>}
         {mediaType === 'tv' && episodeCount > 0 &&
-          <span>{episodeCount} episodios</span>}
+          <span>{episodeCount} episode{episodeCount > 1 ? 's' : ''}</span>}
       </div>
     </div>
   )

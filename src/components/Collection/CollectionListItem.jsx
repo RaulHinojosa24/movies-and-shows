@@ -17,7 +17,7 @@ export default function CollectionListItem ({ id, title, originalTitle, posterPa
     ? config?.images?.secure_base_url + config?.images?.poster_sizes[1] + posterPath
     : DefaultPosterImg
   const secondary = <p className='line-clamp-2'>{overview}</p>
-  const tertiary = releaseDate ? formatLongDate(releaseDate, appLanguage) : 'Fecha desconocida'
+  const tertiary = releaseDate ? formatLongDate(releaseDate, appLanguage) : 'Unknown date'
 
   return (
     <HorizontalCard imageUrl={prettyPath} isAdult={adult} link={prettyLink} originalTitle={prettyOriginalTitle} secondary={secondary} tertiary={tertiary} title={prettyTitle} />

@@ -8,7 +8,7 @@ export default function TvHeader ({ name, contentRatings, createdBy, genres, bac
     .map(el => ({
       id: el.id,
       name: el.name,
-      job: 'Creador'
+      job: 'Creator'
     }))
   const prettyGenres = [...genres]
     .sort((a, b) => a.name.localeCompare(b.name))

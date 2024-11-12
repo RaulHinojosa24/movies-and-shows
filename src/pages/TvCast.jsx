@@ -11,7 +11,7 @@ import ErrorPage from './ErrorPage'
 
 export default function TvCastPage () {
   const { data: loaderTvDetails } = useRouteLoaderData('tv-details')
-  setDocTitle('Cargando...')
+  setDocTitle('Loading...')
 
   return (
     <Suspense fallback={<TvCastSkeleton />}>
@@ -27,7 +27,7 @@ export default function TvCastPage () {
           poster_path: posterPath
         }) => {
           const prettyName = name || originalName
-          setDocTitle(`${name || originalName} - Reparto y equipo`)
+          setDocTitle(`${name || originalName} - Cast & Crew`)
 
           return (
             <>

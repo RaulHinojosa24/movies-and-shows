@@ -13,24 +13,30 @@ export default function PersonInfo ({ alsoKnownAs, birthday, deathday, gender, k
   const prettyBirthday = formatLongDate(birthday, appLanguage)
   const prettyDeathday = formatLongDate(deathday, appLanguage)
 
+  const years = `(${prettyAge} year${prettyAge > 1 ? 's' : ''})`
+
   return (
     <Section>
-      <div className='flex md:flex-col flex-row flex-wrap gap-4 [&>*]:grow'>
+      <div className='grid grid-cols-2 md:grid-cols-1 gap-3'>
         {knownForDepartment &&
-          <SubSection title='Conocida por'>{knownForDepartment}</SubSection>}
-        <SubSection title='Género'>{prettyGender}</SubSection>
+          <SubSection title='Known for'>{knownForDepartment}</SubSection>}
+        <SubSection title='Genre'>{prettyGender}</SubSection>
         {birthday &&
-          <SubSection title='Fecha de nacimiento'>
-            {prettyBirthday} {!deathday && <>({prettyAge} años)</>}
+          <SubSection title='Birthday'>
+            {prettyBirthday} {!deathday && years}
           </SubSection>}
         {deathday &&
-          <SubSection title='Fecha de defunción'>{prettyDeathday} ({prettyAge} años)</SubSection>}
+          <SubSection title='Deathday'>{prettyDeathday} {years}</SubSection>}
         {placeOfBirth &&
-          <SubSection title='Lugar de nacimiento'>{placeOfBirth}</SubSection>}
+          <SubSection title='Place of birth'>{placeOfBirth}</SubSection>}
         {alsoKnownAs.length > 0 &&
-          <SubSection title='También conocida como' className='hidden md:visible'>
-            <ul>
-              {alsoKnownAs.map(n => <li key={n}>{n}</li>)}
+          <SubSection title='Also known as' className='col-span-2 md:col-span-1'>
+            <ul className='flex flex-row md:flex-col gap-x-2 flex-wrap'>
+              {alsoKnownAs.map((name, idx) =>
+                <li key={`${name}${idx}`}>
+                  {name}
+                  <span>{idx === alsoKnownAs.length - 1 ? '' : ','}</span>
+                </li>)}
             </ul>
           </SubSection>}
       </div>

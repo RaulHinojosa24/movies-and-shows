@@ -83,10 +83,10 @@ export default function KeywordsFilter ({ keywords, setKeywords }) {
   const inputBlurHandler = () => setResultsVisible(false)
 
   return (
-    <FilterItem title='Palabras clave'>
+    <FilterItem title='Keywords'>
       <div className='w-full max-w-full relative'>
         <input
-          className='bg-transparent border-none outline-none w-full py-1' placeholder='Añadir palabra clave'
+          className='bg-transparent border-none outline-none w-full py-1' placeholder='Add keyword'
           value={userInput} onChange={changeHandler} onKeyDown={keyDownHandler} onBlur={inputBlurHandler}
         />
         {resultsVisible &&
@@ -118,7 +118,7 @@ export default function KeywordsFilter ({ keywords, setKeywords }) {
                 })}
               </ul>}
             {results.length === 0 &&
-              <p className='py-1 text-center'>No hay resultados.</p>}
+              <p className='py-1 text-center'>No keywords found</p>}
           </div>}
       </div>
       <ul className='flex flex-wrap gap-2'>

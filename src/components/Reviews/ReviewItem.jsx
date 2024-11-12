@@ -22,13 +22,13 @@ export default function ReviewItem ({ author, author_details: authorDetails = {}
   return (
     <div className='shadow shadow-colors rounded p-6'>
       <header className='flex items-center gap-4'>
-        <img crossOrigin='anonymous' src={prettyUserImage} alt={'Imagen de perfil de ' + prettyUsername} className='aspect-square w-12 rounded-full object-cover object-top' loading='lazy' />
+        <img crossOrigin='anonymous' src={prettyUserImage} alt={`${prettyUsername}'s profile picture`} className='aspect-square w-12 rounded-full object-cover object-top' loading='lazy' />
         <div>
-          <h3 className='text-lg font-semibold'>Una reseña de {name || prettyUsername}</h3>
+          <h3 className='text-lg font-semibold'>A review by {name || prettyUsername}</h3>
           <div className='font-thin text-sm flex flex-wrap gap-x-2'>
             {rating &&
               <VoteCard rating={rating} minimal hidePopover />}
-            Escrita por <span className='font-semibold'>{prettyUsername}</span> el {prettyCreationDate}
+            Written by <span className='font-semibold'>{prettyUsername}</span> on {prettyCreationDate}
           </div>
         </div>
       </header>

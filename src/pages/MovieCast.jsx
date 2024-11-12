@@ -11,7 +11,7 @@ import ErrorPage from './ErrorPage'
 
 export default function MovieCastPage () {
   const { data: loaderMovieDetails } = useRouteLoaderData('movie-details')
-  setDocTitle('Cargando...')
+  setDocTitle('Loading...')
 
   return (
     <Suspense fallback={<MovieCastSkeleton />}>
@@ -28,7 +28,7 @@ export default function MovieCastPage () {
         }) => {
           const prettyTitle = title || originalTitle
 
-          setDocTitle(`${prettyTitle} - Reparto y equipo`)
+          setDocTitle(`${prettyTitle} - Cast & Crew`)
           const { cast, crew } = credits
 
           return (

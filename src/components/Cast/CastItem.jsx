@@ -16,7 +16,7 @@ export default function CastItem ({ id, image, primary, secondary, adult }) {
   return (
     <li className='flex gap-4'>
       <Link to={'/person/' + id} className='shrink-0'>
-        <img crossOrigin='anonymous' className='aspect-[5/6] h-20 object-cover object-top rounded' loading='lazy' src={profileURL} alt={'Foto de perfil de ' + primary} />
+        <img crossOrigin='anonymous' className='aspect-[5/6] h-20 object-cover object-top rounded' loading='lazy' src={profileURL} alt={`${primary}'s picture`} />
       </Link>
       <div className='flex flex-col justify-center'>
         <div>
@@ -33,7 +33,7 @@ export default function CastItem ({ id, image, primary, secondary, adult }) {
 
             return (
               <React.Fragment key={id}>
-                {job || character} {episodes && <span className='text-medium'>({prettyCount} episodios)</span>}
+                {job || character} {episodes && <span className='text-medium'>({prettyCount} episode{prettyCount > 1 ? 's' : ''})</span>}
               </React.Fragment>
             )
           })}

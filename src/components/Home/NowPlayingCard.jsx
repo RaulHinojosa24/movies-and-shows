@@ -27,7 +27,7 @@ export default function PosterCard ({
     <Link to={'/movie/' + id}>
       <article className='aspect-[21/9] overflow-hidden grid place-content-center h-52 max-w-[100vw] relative'>
         <main className='w-full'>
-          <img loading='lazy' crossOrigin='anonymous' className='w-full object-cover' src={config && picturePath ? picturePath : DefaultPoster} alt={posterPath ? `Portada de la película ${title}` : `No hemos podido cargar una portada para la película ${title}`} ref={imgRef} />
+          <img loading='lazy' crossOrigin='anonymous' className='w-full object-cover' src={config && picturePath ? picturePath : DefaultPoster} alt={`${title}'s poster`} ref={imgRef} />
         </main>
         {isActive &&
           <footer

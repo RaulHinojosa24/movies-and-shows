@@ -49,7 +49,7 @@ export default function ListPage () {
     loaderData.then(({ results, page, name }) => {
       setListElements(results)
       setCurrentPage(page)
-      setDocTitle(`Lista: ${name}`)
+      setDocTitle(`${name} - List`)
     })
   }, [loaderData])
 
@@ -61,19 +61,19 @@ export default function ListPage () {
   const sortByProps = [
     {
       value: 'default',
-      label: 'Por defecto'
+      label: 'Default'
     },
     {
       value: 'date',
-      label: 'Fecha de estreno'
+      label: 'Release date'
     },
     {
       value: 'title',
-      label: 'Título'
+      label: 'Title'
     },
     {
       value: 'vote',
-      label: 'Valoración'
+      label: 'Rating'
     }
   ]
 
@@ -99,7 +99,7 @@ export default function ListPage () {
     ? 'grid grid-flow-row grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4'
     : 'md:table border-separate border-spacing-y-2 space-y-2'
 
-  useEffect(() => setDocTitle('Cargando...'), [])
+  useEffect(() => setDocTitle('Loading...'), [])
 
   return (
     <Suspense fallback={<ListSkeleton />}>
@@ -173,7 +173,7 @@ export default function ListPage () {
                       onClick={() => fetchNewPage()}
                       className='block mx-auto py-1 px-5 rounded whitespace-nowrap font-semibold bg-accent text-black relative'
                     >
-                      <span className={isLoading ? 'invisible' : ''}>Cargar más elementos</span>
+                      <span className={isLoading ? 'invisible' : ''}>Load more</span>
                       {isLoading &&
                         <Loading dark className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2' />}
                     </button>}

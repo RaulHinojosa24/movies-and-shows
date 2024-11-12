@@ -16,7 +16,7 @@ import AdultTag from '../components/PageUI/AdultTag'
 export default function PersonGeneralPage () {
   const { data: loaderPersonDetails } = useRouteLoaderData('person-details')
   const { config } = useContext(rootContext)
-  setDocTitle('Cargando...')
+  setDocTitle('Loading...')
 
   return (
     <Suspense fallback={<PersonGeneralSkeleton />}>
@@ -52,8 +52,8 @@ export default function PersonGeneralPage () {
               left={
                 <>
                   <div className='w-fit mx-auto relative'>
-                    <Link to='media' className='no-underline absolute top-0 left-0 w-full h-full grid text-center content-center font-semibold opacity-0 hover:opacity-100 transition-opacity bg-black/70 backdrop-blur-sm px-12 text-lg text-white rounded'>Ver todas las imágenes</Link>
-                    <img loading='lazy' crossOrigin='anonymous' className='aspect-[2/3] object-cover w-full mx-auto max-w-aside rounded shadow shadow-colors' src={prettyProfilePath} alt={'Foto de ' + name} />
+                    <Link to='media' className='no-underline absolute top-0 left-0 w-full h-full grid text-center content-center font-semibold opacity-0 hover:opacity-100 transition-opacity bg-black/70 backdrop-blur-sm px-12 text-lg text-white rounded'>View all portraits</Link>
+                    <img loading='lazy' crossOrigin='anonymous' className='aspect-[2/3] object-cover w-full mx-auto max-w-aside rounded shadow shadow-colors' src={prettyProfilePath} alt={`${name}'s picture`} />
                   </div>
                   <div className='text-center md:text-left'>
                     <h1 className='text-4xl font-bold'>{name}</h1>

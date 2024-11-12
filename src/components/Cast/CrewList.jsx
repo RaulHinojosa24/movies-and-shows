@@ -64,7 +64,7 @@ export default function CrewList ({ crew, needJoin }) {
   const crewLength = formatNumber(depsWithMembers.reduce((acc, curr) => acc + curr?.members?.length, 0))
 
   return (
-    <Section title='Equipo' subtitle={crewLength}>
+    <Section title='Crew' subtitle={crewLength}>
       <ol className='space-y-4'>
         {prettyCrew.map(({ department, members }) => {
           return (

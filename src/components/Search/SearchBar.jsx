@@ -42,7 +42,7 @@ export default function SearchBar ({ className = '', compact }) {
           type='text'
           name='query'
           className='w-full py-2 px-2 border-none bg-transparent'
-          placeholder={compact ? 'Búsqueda...' : 'Busca películas, series o gente...'}
+          placeholder={compact ? 'Search...' : 'Find movies, tv shows or people...'}
           autoFocus={isCompact || !userInput}
           ref={inputRef}
         />

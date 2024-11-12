@@ -11,7 +11,7 @@ export default function MovieCollection ({ collection }) {
     : ''
 
   return (
-    <Section title='Colección' className='text-white'>
+    <Section title='Collection' className='text-white'>
       <div
         style={{
           backgroundImage: `
@@ -20,9 +20,9 @@ export default function MovieCollection ({ collection }) {
           `
         }} className='flex flex-col items-center bg-cover bg-center bg-no-repeat rounded py-12 p-8'
       >
-        <p>Ésta película pertenece a...</p>
+        <p>This movie is part of...</p>
         <h3 className='text-3xl text-center'>{collection.name}</h3>
-        <Link to={'/collection/' + collection.id} className='mt-8 bg-accent text-black font-bold py-1 px-6 rounded'>Ver la colección completa</Link>
+        <Link to={'/collection/' + collection.id} className='mt-8 bg-accent text-black font-bold py-1 px-6 rounded'>Visit collection</Link>
       </div>
     </Section>
   )

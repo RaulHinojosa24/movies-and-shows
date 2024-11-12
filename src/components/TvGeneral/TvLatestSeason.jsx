@@ -19,9 +19,9 @@ export default function TvLatestSeason ({ tvId, seasons }) {
   } = (lastSeason || nextSeason)
 
   return (
-    <Section title={!lastSeason ? 'Siguiente temporada' : 'Última temporada'}>
+    <Section title={!lastSeason ? 'Next Season' : 'Last Season'}>
       <SeasonItem airDate={airDate} episodeCount={episodeCount} tvId={tvId} name={name} overview={overview} posterPath={posterPath} seasonNumber={seasonNumber} voteAverage={voteAverage} />
-      <Link to='season' className='inline-block mt-2'>Ver todas las temporadas</Link>
+      <Link to='season' className='inline-block mt-2'>Visit all seasons</Link>
     </Section>
   )
 }

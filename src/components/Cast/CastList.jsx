@@ -22,7 +22,7 @@ export default function CastList ({ cast, needJoin }) {
   const castLength = formatNumber(cleanCast.length)
 
   return (
-    <Section title='Reparto' subtitle={castLength}>
+    <Section title='Cast' subtitle={castLength}>
       <InfiniteScroll
         list={cleanCast}
         Element={({ id, profile_path: profilePath, name, adult, roles }) =>

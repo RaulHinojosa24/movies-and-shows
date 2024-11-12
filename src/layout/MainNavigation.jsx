@@ -11,15 +11,15 @@ const mobileClasses = ({ isActive }) => 'w-full py-2 px-4 dark:hover:bg-dark-4 d
 
 const ROUTES = [
   {
-    label: 'Buscador',
+    label: 'Search',
     route: '/search'
   },
   {
-    label: 'Películas',
+    label: 'Movies',
     route: '/movie'
   },
   {
-    label: 'Series de TV',
+    label: 'TV Shows',
     route: '/tv'
   }
 ]
@@ -50,7 +50,7 @@ export default function MainNavigation () {
               <NavbarIcon className='h-full' />
             </button>
             <NavLink to='/' className='h-full shrink-0 mx-auto md:m-0'>
-              <img crossOrigin='anonymous' loading='lazy' src={logo} className='h-full rounded' alt='Movies and Shows logo. Yellow background with "M&S" written in black.' />
+              <img crossOrigin='anonymous' loading='lazy' src={logo} className='h-full rounded' alt='Movies & Shows logo. Yellow background with "M&S" written in black.' />
             </NavLink>
             <ul className={`${isOpen ? '' : 'md:flex'} hidden gap-4`}>
               {ROUTES.map(({ label, route }) =>

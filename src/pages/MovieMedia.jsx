@@ -11,7 +11,7 @@ import ErrorPage from './ErrorPage'
 
 export default function MovieMediaPage () {
   const { data: loaderMovieDetails } = useRouteLoaderData('movie-details')
-  setDocTitle('Cargando...')
+  setDocTitle('Loading...')
 
   return (
     <Suspense fallback={<MovieMediaSkeleton />}>
@@ -32,7 +32,7 @@ export default function MovieMediaPage () {
           poster_path: posterPath
         }) => {
           const prettyTitle = title || originalTitle
-          setDocTitle(`${prettyTitle} - Fotos y vídeos`)
+          setDocTitle(`${prettyTitle} - Media`)
 
           return (
             <>

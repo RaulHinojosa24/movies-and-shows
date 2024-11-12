@@ -33,7 +33,7 @@ export default function Settings () {
             <div className='space-y-2'>
               <Select
                 name='language'
-                label='Idioma'
+                label='Language'
                 defaultValue={settings.language.iso_639_1}
                 onChange={languageChangeHandler}
                 options={config.languages
@@ -46,7 +46,7 @@ export default function Settings () {
               />
               <Select
                 name='country'
-                label='País'
+                label='Country'
                 defaultValue={settings.country.iso_3166_1}
                 onChange={countryChangeHandler}
                 options={config.countries
@@ -59,7 +59,7 @@ export default function Settings () {
               />
               <div className={'transition-all ' + (settings.includeAdult ? '' : 'text-medium line-through decoration-1')}>
                 <input type='checkbox' name='allow' id='allow' onChange={allowChangeHandler} checked={settings.includeAdult} />
-                <label htmlFor='allow'> Mostrar contenido para adultos</label>
+                <label htmlFor='allow'> Show adult content</label>
               </div>
             </div>}
         </Popover>}

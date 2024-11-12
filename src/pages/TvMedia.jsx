@@ -11,7 +11,7 @@ import ErrorPage from './ErrorPage'
 
 export default function TvMediaPage () {
   const { data: loaderTvDetails } = useRouteLoaderData('tv-details')
-  setDocTitle('Cargando...')
+  setDocTitle('Loading...')
 
   return (
     <Suspense fallback={<TvMediaSkeleton />}>
@@ -33,7 +33,7 @@ export default function TvMediaPage () {
           poster_path: posterPath
         }) => {
           const prettyName = name || originalName
-          setDocTitle(`${prettyName} - Fotos y vídeos`)
+          setDocTitle(`${prettyName} - Media`)
 
           return (
             <>

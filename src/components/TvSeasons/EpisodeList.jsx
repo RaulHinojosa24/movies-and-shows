@@ -8,7 +8,7 @@ export default function EpisodeList ({ episodes, tvName, tvOriginalName }) {
   const prettyCount = formatNumber(seasonLength)
 
   return (
-    <Section title='Episodios' subtitle={prettyCount}>
+    <Section title='Episodes' subtitle={prettyCount}>
       <InfiniteScroll
         list={episodes}
         Element={

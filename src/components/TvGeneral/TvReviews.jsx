@@ -4,7 +4,7 @@ import Slider from '../PageUI/Slider'
 
 export default function TvReviews ({ reviews }) {
   return (
-    <Section title='Reseñas'>
+    <Section title='Reviews'>
       <Slider type='bullets' slides={reviews} SlideComponent={ReviewItem} />
     </Section>
   )

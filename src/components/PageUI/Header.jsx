@@ -55,7 +55,7 @@ export default function Header ({ posterPath, backdropPath, title, releaseDate, 
         `}
       >
         <section className='w-aside shrink-0 overflow-hidden rounded shadow-lg shadow-black/75'>
-          <img loading='lazy' ref={imgRef} src={prettyPosterURL} crossOrigin='anonymous' alt={'Poster de ' + title} className='aspect-[2/3] object-cover w-full' />
+          <img loading='lazy' ref={imgRef} src={prettyPosterURL} crossOrigin='anonymous' alt={`${title}'s poster`} className='aspect-[2/3] object-cover w-full' />
           {watchProviders &&
             <WatchProviders watchProviders={watchProviders} title={title} type={mediaType} />}
         </section>
@@ -83,7 +83,7 @@ export default function Header ({ posterPath, backdropPath, title, releaseDate, 
             {!isNaN(voteAverage) && !isNaN(voteCount) &&
               <VoteCard rating={voteAverage} count={voteCount} />}
             {trailer &&
-              <VideoModal video={trailer} noImage buttonText='Ver trailer' />}
+              <VideoModal video={trailer} noImage buttonText='Watch trailer' />}
           </div>
           {overview &&
             <p>{overview}</p>}

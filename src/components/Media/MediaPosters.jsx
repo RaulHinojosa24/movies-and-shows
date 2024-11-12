@@ -43,11 +43,11 @@ export default function MediaPosters ({ images }) {
   const prettyAmount = formatNumber(amount)
 
   return (
-    <Section title='Carteles' subtitle={prettyAmount}>
+    <Section title='Posters' subtitle={prettyAmount}>
       {!config &&
-        'Cargando carteles...'}
+        'Loading posters...'}
       {config && photos.length === 0 &&
-        'No tenemos ningun cartel disponible.'}
+        'We have no posters available'}
       {config && photos.length > 0 &&
         <>
           <PhotoAlbum

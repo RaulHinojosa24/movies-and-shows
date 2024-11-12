@@ -7,164 +7,164 @@ import ProjectorImage from '../assets/projector.webp'
 
 const HTTP_ERRORS = {
   400: {
-    title: 'Solicitud incorrecta',
-    description: 'La solicitud no se pudo entender o tiene una sintaxis incorrecta.'
+    title: 'Bad Request',
+    description: 'The request could not be understood or has incorrect syntax.'
   },
   401: {
-    title: 'No autorizado',
-    description: 'Se requiere autenticación válida para acceder a este recurso.'
+    title: 'Unauthorized',
+    description: 'Valid authentication is required to access this resource.'
   },
   402: {
-    title: 'Pago requerido',
-    description: 'Es necesario realizar un pago para proceder con la solicitud.'
+    title: 'Payment Required',
+    description: 'Payment is required to proceed with the request.'
   },
   403: {
-    title: 'Prohibido',
-    description: 'No tienes permiso para acceder a este recurso.'
+    title: 'Forbidden',
+    description: 'You do not have permission to access this resource.'
   },
   404: {
-    title: 'No encontrado',
-    description: 'El recurso solicitado no pudo ser localizado en el servidor.'
+    title: 'Not Found',
+    description: 'The requested resource could not be found on the server.'
   },
   405: {
-    title: 'Método no permitido',
-    description: 'El método HTTP utilizado no está permitido para este recurso.'
+    title: 'Method Not Allowed',
+    description: 'The HTTP method used is not allowed for this resource.'
   },
   406: {
-    title: 'No aceptable',
-    description: 'El servidor no puede generar una respuesta aceptable según las preferencias enviadas en la solicitud.'
+    title: 'Not Acceptable',
+    description: 'The server cannot generate a response that meets the request’s preferences.'
   },
   407: {
-    title: 'Autenticación de proxy requerida',
-    description: 'Es necesario autenticarse en el proxy antes de acceder al recurso.'
+    title: 'Proxy Authentication Required',
+    description: 'Authentication with the proxy is required before accessing the resource.'
   },
   408: {
-    title: 'Tiempo de espera agotado',
-    description: 'El servidor tardó demasiado en recibir la solicitud.'
+    title: 'Request Timeout',
+    description: 'The server took too long to receive the request.'
   },
   409: {
-    title: 'Conflicto',
-    description: 'La solicitud no pudo ser completada debido a un conflicto en el estado del recurso.'
+    title: 'Conflict',
+    description: 'The request could not be completed due to a conflict in the resource’s state.'
   },
   410: {
-    title: 'El recurso ya no está disponible',
-    description: 'Este recurso ha sido eliminado permanentemente y no se espera que esté disponible nuevamente.'
+    title: 'Gone',
+    description: 'This resource has been permanently removed and is no longer available.'
   },
   411: {
-    title: 'Longitud requerida',
-    description: 'Es necesario especificar la longitud del contenido de la solicitud.'
+    title: 'Length Required',
+    description: 'The content length of the request must be specified.'
   },
   412: {
-    title: 'Error de precondición',
-    description: 'La precondición en la solicitud no se cumplió.'
+    title: 'Precondition Failed',
+    description: 'The precondition in the request was not met.'
   },
   413: {
-    title: 'Carga demasiado grande',
-    description: 'El servidor no puede procesar la solicitud porque el cuerpo es demasiado grande.'
+    title: 'Payload Too Large',
+    description: 'The server cannot process the request because the payload is too large.'
   },
   414: {
-    title: 'URI demasiado larga',
-    description: 'La URI solicitada es demasiado larga para ser procesada por el servidor.'
+    title: 'URI Too Long',
+    description: 'The requested URI is too long for the server to process.'
   },
   415: {
-    title: 'Tipo de medio no soportado',
-    description: 'El tipo de medio de los datos enviados no es soportado por el servidor.'
+    title: 'Unsupported Media Type',
+    description: 'The media type of the provided data is not supported by the server.'
   },
   416: {
-    title: 'Rango no satisfactorio',
-    description: 'El servidor no puede proporcionar el rango solicitado del recurso.'
+    title: 'Range Not Satisfiable',
+    description: 'The server cannot provide the requested range of the resource.'
   },
   417: {
-    title: 'Falló la expectativa',
-    description: 'El servidor no pudo cumplir con el requisito de la cabecera Expect de la solicitud.'
+    title: 'Expectation Failed',
+    description: 'The server could not fulfill the requirement of the Expect header in the request.'
   },
   418: {
-    title: 'Soy una tetera',
-    description: 'El servidor se rehúsa a preparar café porque es una tetera.'
+    title: 'I\'m a teapot',
+    description: 'The server refuses to brew coffee because it is a teapot.'
   },
   421: {
-    title: 'Solicitud dirigida a un servidor inapropiado',
-    description: 'El servidor al que se dirigió la solicitud no puede responder.'
+    title: 'Misdirected Request',
+    description: 'The server to which the request was directed cannot respond.'
   },
   422: {
-    title: 'Entidad no procesable',
-    description: 'El servidor entiende la solicitud pero no puede procesarla debido a errores semánticos.'
+    title: 'Unprocessable Entity',
+    description: 'The server understands the request but cannot process it due to semantic errors.'
   },
   423: {
-    title: 'Bloqueado',
-    description: 'El recurso solicitado está bloqueado y no puede ser accedido.'
+    title: 'Locked',
+    description: 'The requested resource is locked and cannot be accessed.'
   },
   424: {
-    title: 'Fallo de dependencia',
-    description: 'La solicitud falló debido a una falla en una solicitud previa.'
+    title: 'Failed Dependency',
+    description: 'The request failed due to a failure in a previous request.'
   },
   425: {
-    title: 'Demasiado temprano para procesar',
-    description: 'El servidor se niega a procesar la solicitud porque puede ser repetida.'
+    title: 'Too Early',
+    description: 'The server refuses to process the request because it may be repeated.'
   },
   426: {
-    title: 'Actualización requerida',
-    description: 'El servidor requiere una actualización a un protocolo superior para procesar la solicitud.'
+    title: 'Upgrade Required',
+    description: 'The server requires an upgrade to a higher protocol to process the request.'
   },
   428: {
-    title: 'Precondición requerida',
-    description: 'El servidor requiere que la solicitud cumpla con ciertas condiciones antes de ser procesada.'
+    title: 'Precondition Required',
+    description: 'The server requires the request to meet certain conditions before processing it.'
   },
   429: {
-    title: 'Demasiadas solicitudes',
-    description: 'El cliente ha enviado demasiadas solicitudes en un tiempo corto.'
+    title: 'Too Many Requests',
+    description: 'The client has sent too many requests in a short period.'
   },
   431: {
-    title: 'Campos de cabecera de solicitud demasiado grandes',
-    description: 'Las cabeceras de la solicitud son demasiado grandes para ser procesadas.'
+    title: 'Request Header Fields Too Large',
+    description: 'The request headers are too large for the server to process.'
   },
   451: {
-    title: 'No disponible por razones legales',
-    description: 'El contenido ha sido bloqueado por motivos legales y no está disponible.'
+    title: 'Unavailable For Legal Reasons',
+    description: 'The content has been blocked for legal reasons and is not available.'
   },
   500: {
-    title: 'Error interno del servidor',
-    description: 'El servidor encontró un error inesperado que le impide completar la solicitud.'
+    title: 'Internal Server Error',
+    description: 'The server encountered an unexpected error that prevents it from completing the request.'
   },
   501: {
-    title: 'No implementado',
-    description: 'El servidor no soporta la funcionalidad requerida para completar la solicitud.'
+    title: 'Not Implemented',
+    description: 'The server does not support the functionality required to fulfill the request.'
   },
   502: {
     title: 'Bad Gateway',
-    description: 'El servidor, actuando como una puerta de enlace o proxy, recibió una respuesta inválida desde el servidor ascendente.'
+    description: 'The server, acting as a gateway or proxy, received an invalid response from the upstream server.'
   },
   503: {
-    title: 'Servicio no disponible',
-    description: 'El servidor no está disponible temporalmente, generalmente debido a mantenimiento o sobrecarga.'
+    title: 'Service Unavailable',
+    description: 'The server is temporarily unavailable, usually due to maintenance or overload.'
   },
   504: {
-    title: 'Tiempo de espera de la puerta de enlace',
-    description: 'El servidor, actuando como una puerta de enlace o proxy, no recibió una respuesta a tiempo del servidor ascendente.'
+    title: 'Gateway Timeout',
+    description: 'The server, acting as a gateway or proxy, did not receive a timely response from the upstream server.'
   },
   505: {
-    title: 'Versión HTTP no soportada',
-    description: 'El servidor no soporta la versión del protocolo HTTP usada en la solicitud.'
+    title: 'HTTP Version Not Supported',
+    description: 'The server does not support the HTTP protocol version used in the request.'
   },
   506: {
-    title: 'La variante también negocia',
-    description: 'El servidor ha encontrado una configuración circular de negociación de contenido.'
+    title: 'Variant Also Negotiates',
+    description: 'The server has encountered a circular content negotiation configuration.'
   },
   507: {
-    title: 'Insuficiente almacenamiento',
-    description: 'El servidor no puede guardar la representación necesaria para completar la solicitud.'
+    title: 'Insufficient Storage',
+    description: 'The server cannot store the representation needed to complete the request.'
   },
   508: {
-    title: 'Bucle detectado',
-    description: 'El servidor detectó un bucle infinito al procesar la solicitud.'
+    title: 'Loop Detected',
+    description: 'The server detected an infinite loop while processing the request.'
   },
   510: {
-    title: 'No extendido',
-    description: 'Se requiere más extensiones para que el servidor pueda cumplir con la solicitud.'
+    title: 'Not Extended',
+    description: 'Further extensions are required for the server to fulfill the request.'
   },
   511: {
-    title: 'Autenticación de red requerida',
-    description: 'Se necesita autenticación adicional para acceder a la red y completar la solicitud.'
+    title: 'Network Authentication Required',
+    description: 'Additional authentication is needed to access the network and complete the request.'
   }
 }
 
@@ -188,9 +188,9 @@ export default function ErrorPage ({ isRoot }) {
         center={
           <section className='grid md:grid-cols-2 grid-cols-1 justify-center items-center gap-12'>
             <div className='md:ml-auto m-0'>
-              <h1 className='text-5xl font-bold'>Vaya! :(</h1>
+              <h1 className='text-5xl font-bold'>Oops! :(</h1>
               <p className='text-lg font-semibold mt-2'>
-                Lamentamos informarle de que ha ocurrido un error inesperado.
+                Something went wrong.
               </p>
               {actualError?.status &&
                 <div className='flex flex-col mt-4'>
@@ -198,7 +198,7 @@ export default function ErrorPage ({ isRoot }) {
                   <p>{errorMessage}</p>
                 </div>}
               <button className='rounded py-2 px-4 mt-6 font-semibold group border-2 border-black dark:border-white' onClick={() => navigate(-1)}>
-                <span className='group-hover:scale-110 transition-all inline-block'>&larr; Volver</span>
+                <span className='group-hover:scale-110 transition-all inline-block'>&larr; Back</span>
               </button>
             </div>
             <div className='flex flex-col justify-center items-center gap-2'>

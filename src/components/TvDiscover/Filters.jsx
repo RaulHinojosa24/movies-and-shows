@@ -15,49 +15,49 @@ import { rootContext } from '../../context/root-context'
 const VALID_SORT_BY = [
   {
     value: 'popularity',
-    label: 'Popularidad'
+    label: 'Popularity'
   },
   {
     value: 'vote_average',
-    label: 'Valoración media'
+    label: 'Average rating'
   },
   {
     value: 'first_air_date',
-    label: 'Fecha de estreno'
+    label: 'Air date'
   },
   {
     value: 'name',
-    label: 'Nombre'
+    label: 'Name'
   },
   {
     value: 'original_name',
-    label: 'Nombre original'
+    label: 'Original name'
   },
   {
     value: 'vote_count',
-    label: 'Número de votos'
+    label: 'Number of ratings'
   }
 ]
 const VALID_SORT_DIRECTION = ['desc', 'asc']
 const VALID_WATCH_TYPES = [
   {
-    label: 'Streaming',
+    label: 'Stream',
     value: 'flatrate'
   },
   {
-    label: 'Gratis',
+    label: 'Free',
     value: 'free'
   },
   {
-    label: 'Anuncios',
+    label: 'Ads',
     value: 'ads'
   },
   {
-    label: 'Alquiler',
+    label: 'Rent',
     value: 'rent'
   },
   {
-    label: 'Compra',
+    label: 'Buy',
     value: 'buy'
   }
 ]
@@ -168,14 +168,14 @@ export default function Filters () {
 
   return (
     <form action='/' onSubmit={submitFormHandler} className='space-y-4'>
-      <Colapsible title='Ordenar'>
+      <Colapsible title='Sort By'>
         <SortFilter
           options={VALID_SORT_BY}
           sortBy={sortBy} setSortBy={setSortBy}
           sortDirection={sortDirection} setSortDirection={setSortDirection}
         />
       </Colapsible>
-      <Colapsible title='Dónde ver'>
+      <Colapsible title='Where To Watch'>
         <WatchProvidersFilter
           watchProvidersList={watchProvidersList}
           watchProviders={watchProviders}
@@ -187,7 +187,7 @@ export default function Filters () {
           options={VALID_WATCH_TYPES}
         />
       </Colapsible>
-      <Colapsible title='Detalles'>
+      <Colapsible title='Details'>
         <DurationFilter
           durationRange={DURATION_RANGE}
           durationMin={durationMin} durationMax={durationMax}
@@ -207,7 +207,7 @@ export default function Filters () {
           setKeywords={setKeywords}
         />
       </Colapsible>
-      <Colapsible title='Usuarios'>
+      <Colapsible title='Users'>
         <VoteCountFilter
           voteCountRange={VOTE_COUNT_RANGE}
           voteCount={voteCount}
@@ -219,8 +219,8 @@ export default function Filters () {
           setVoteMin={setVoteMin} setVoteMax={setVoteMax}
         />
       </Colapsible>
-      <button className='py-1 px-5 w-full rounded whitespace-nowrap font-semibold bg-accent text-black' type='submit'>Buscar</button>
-      <button className='py-1 px-5 w-full rounded whitespace-nowrap font-semibold bg-light-3 text-black' type='button' onClick={resetFilters}>Limpiar filtros</button>
+      <button className='py-1 px-5 w-full rounded whitespace-nowrap font-semibold bg-accent text-black' type='submit'>Search</button>
+      <button className='py-1 px-5 w-full rounded whitespace-nowrap font-semibold bg-light-3 text-black' type='button' onClick={resetFilters}>Reset filters</button>
     </form>
   )
 }

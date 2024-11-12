@@ -55,11 +55,11 @@ export default function Popular () {
     <Section
       title={
         <>
-          Lo más popular
+          Popular Content!
           <div className='inline-flex text-base font-normal gap-2 mx-4'>
-            <button className={media === 'movie' ? 'underline underline-offset-4' : ''} onClick={() => setMedia('movie')}>Películas</button>
-            <button className={media === 'tv' ? 'underline underline-offset-4' : ''} onClick={() => setMedia('tv')}>Series de TV</button>
-            <button className={media === 'person' ? 'underline underline-offset-4' : ''} onClick={() => setMedia('person')}>Personas</button>
+            <button className={media === 'movie' ? 'underline underline-offset-4' : ''} onClick={() => setMedia('movie')}>Movies</button>
+            <button className={media === 'tv' ? 'underline underline-offset-4' : ''} onClick={() => setMedia('tv')}>TV Shows</button>
+            <button className={media === 'person' ? 'underline underline-offset-4' : ''} onClick={() => setMedia('person')}>People</button>
           </div>
         </>
       } className='m-app-space' ref={sectionRef}

@@ -16,7 +16,7 @@ export default function SearchPage () {
   const query = searchParams.get('query')
   const navigate = useNavigate()
 
-  setDocTitle(`${query ? `"${query}" - ` : ''}Búsqueda`)
+  setDocTitle(`${query ? `"${query}" - ` : ''}Search`)
 
   useEffect(() => {
     if (!VALID_PATHNAMES.some(pathname => pathname === params.pathname)) {
@@ -31,12 +31,12 @@ export default function SearchPage () {
       <Main
         left={
           <div className='shadow shadow-colors rounded sticky top-20 overflow-hidden'>
-            <h1 className='px-3 py-4 font-bold text-lg'>Resultados de la búsqueda</h1>
+            <h1 className='px-3 py-4 font-bold text-lg'>Search results</h1>
             <hr />
             <ul>
               <li>
                 <NavLink to={'/search/movie' + (query ? `?query=${query}` : '')} className={activeClasses}>
-                  Películas
+                  Movies
                   <Badge>
                     <Suspense fallback='...'>
                       <Await resolve={loaderData?.movies}>
@@ -50,7 +50,7 @@ export default function SearchPage () {
               </li>
               <li>
                 <NavLink to={'/search/tv' + (query ? `?query=${query}` : '')} className={activeClasses}>
-                  Series de TV
+                  TV Shows
                   <Badge>
                     <Suspense fallback='...'>
                       <Await resolve={loaderData?.tvs}>
@@ -64,7 +64,7 @@ export default function SearchPage () {
               </li>
               <li>
                 <NavLink to={'/search/person' + (query ? `?query=${query}` : '')} className={activeClasses}>
-                  Gente
+                  People
                   <Badge>
                     <Suspense fallback='...'>
                       <Await resolve={loaderData?.persons}>

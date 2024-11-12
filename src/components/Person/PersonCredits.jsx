@@ -9,29 +9,29 @@ import CreditsCrew from './CreditsCrew'
 const groupByOptions = [
   {
     value: 'date',
-    label: 'Fecha'
+    label: 'Date'
   },
   {
     value: 'type',
-    label: 'Tipo'
+    label: 'Type'
   }
 ]
 const sortingOptions = [
   {
     value: 'year',
-    label: 'Año'
+    label: 'Year'
   },
   {
     value: 'name',
-    label: 'Título'
+    label: 'Title'
   },
   {
     value: 'popularity',
-    label: 'Popularidad'
+    label: 'Popularity'
   },
   {
     value: 'rating',
-    label: 'Puntuación'
+    label: 'Rating'
   }
 ]
 
@@ -45,10 +45,10 @@ export default function PersonCredits ({ cast, crew }) {
   const toggleDirection = () => setDirection(prev => prev === 'asc' ? 'desc' : 'asc')
 
   return (
-    <Section title='Créditos' className='space-y-3'>
+    <Section title='Credits' className='space-y-3'>
       <div className='grid grid-flow-col auto-cols-max gap-4'>
-        <Select bgClass='bg-light dark:bg-dark' compact name='person-credits-group-by' label='Agrupar por' options={groupByOptions} onChange={handleGroupByChange} />
-        <Select bgClass='bg-light dark:bg-dark' compact name='person-credits-sorting' label='Ordenar por' options={sortingOptions} onChange={handleSortingChange} />
+        <Select bgClass='bg-light dark:bg-dark' compact name='person-credits-group-by' label='Group by' options={groupByOptions} onChange={handleGroupByChange} />
+        <Select bgClass='bg-light dark:bg-dark' compact name='person-credits-sorting' label='Sort by' options={sortingOptions} onChange={handleSortingChange} />
         <button className='rounded shadow shadow-colors aspect-square grid place-items-center self-stretch' onClick={toggleDirection}>
           {direction === 'asc'
             ? <SortAscIcon />

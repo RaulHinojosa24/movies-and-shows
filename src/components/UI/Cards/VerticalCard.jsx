@@ -9,7 +9,7 @@ export default function VerticalCard ({ fetching, link, imageUrl, title, seconda
         <article className='w-32 md:w-36 h-full rounded overflow-hidden shadow shadow-colors'>
           <div className='relative'>
             <Link to={link}>
-              <img crossOrigin='anonymous' className='w-full object-cover aspect-[2/3]' src={imageUrl} alt={`Imágen de ${title}`} loading='lazy' />
+              <img crossOrigin='anonymous' className='w-full object-cover aspect-[2/3]' src={imageUrl} alt={`Picture of ${title}`} loading='lazy' />
             </Link>
             {bottomLeft &&
               <div className='absolute bottom-2 left-2'>

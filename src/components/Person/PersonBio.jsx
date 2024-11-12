@@ -3,11 +3,11 @@ import ClampedText from '../UI/ClampedText'
 
 export default function PersonBio ({ biography }) {
   return (
-    <Section title='Biografía'>
+    <Section title='Biography'>
       {biography &&
         <ClampedText text={biography} />}
       {!biography &&
-        <p className='italic'>No tenemos una biografía en tu idioma.</p>}
+        <p className='italic'>We currently have no biography available</p>}
     </Section>
   )
 }

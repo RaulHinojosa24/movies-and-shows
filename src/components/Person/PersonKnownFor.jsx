@@ -49,7 +49,7 @@ export default function PersonKnownFor ({ id, cast, crew }) {
 
   return (
     <>
-      <Section title='Conocida por'>
+      <Section title='Known For'>
         <Slider key={id} slides={scoredCredits} SlideComponent={Slide} />
       </Section>
     </>

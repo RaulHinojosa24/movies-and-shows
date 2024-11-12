@@ -21,12 +21,12 @@ export default function SeasonItem ({ airDate, episodeCount, tvId, name, overvie
   return (
     <div className='rounded overflow-hidden shadow shadow-colors flex'>
       <Link to={'/tv/' + tvId + '/season/' + seasonNumber} className='contents'>
-        <img crossOrigin='anonymous' src={prettyPosterPath} className='aspect-[2/3] object-cover w-32' alt={'Poster de la serie de tv ' + name} loading='lazy' />
+        <img crossOrigin='anonymous' src={prettyPosterPath} className='aspect-[2/3] object-cover w-32' alt={`${name}'s poster`} loading='lazy' />
       </Link>
       <div className='flex flex-col p-4 gap-2'>
         <Link to={'/tv/' + tvId + '/season/' + seasonNumber}>
           <h3 className='text-2xl font-semibold'>
-            {name} <span className='text-xl text-medium'>&bull; {prettyCount} episodios</span>
+            {name} <span className='text-xl text-medium'>&bull; {prettyCount} episode{prettyCount > 1 ? 's' : ''}</span>
           </h3>
         </Link>
         <div className='flex items-center gap-2'>

@@ -9,7 +9,7 @@ import ErrorPage from './ErrorPage'
 
 export default function PersonMediaPage () {
   const { data: loaderPersonDetails } = useRouteLoaderData('person-details')
-  setDocTitle('Cargando...')
+  setDocTitle('Loading...')
 
   return (
     <Suspense fallback={<PersonMediaSkeleton />}>
@@ -25,7 +25,7 @@ export default function PersonMediaPage () {
           id,
           profile_path: profilePath
         }) => {
-          setDocTitle(`${name} - Retratos`)
+          setDocTitle(`${name} - Portraits`)
 
           return (
             <>

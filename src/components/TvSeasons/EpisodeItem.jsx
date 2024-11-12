@@ -27,7 +27,11 @@ export default function EpisodeItem ({ airDate, episodeNumber, name, overview, r
   return (
     <li className='rounded shadow shadow-colors overflow-hidden'>
       <section className='flex sm:flex-row flex-col'>
-        <img crossOrigin='anonymous' src={prettyBigStillPath} className='aspect-video object-cover sm:max-w-72' alt={`Imagen del episodio ${episodeNumber}-${name} de la serie de tv ${prettyTvName}`} loading='lazy' />
+        <img
+          crossOrigin='anonymous' src={prettyBigStillPath} className='aspect-video object-cover sm:max-w-72'
+          alt={`Picture of ${episodeNumber}-${name} episode of the tv show ${prettyTvName}`}
+          loading='lazy'
+        />
         <div className='p-4 content-center space-y-1'>
           <h3 className='font-semibold text-lg'><span className='text-medium'>{episodeNumber}</span> {name}</h3>
           <ElementsList style='bull'>
@@ -42,7 +46,7 @@ export default function EpisodeItem ({ airDate, episodeNumber, name, overview, r
       </section>
       <button className='w-full flex justify-center items-center gap-1' onClick={toggleIsExpanded}>
         <ChevronIcon className={isExpanded ? 'rotate-90' : '-rotate-90'} />
-        {isExpanded ? 'Mostrar menos' : 'Mostrar más'}
+        {isExpanded ? 'Show less' : 'Show more'}
         <ChevronIcon className={isExpanded ? 'rotate-90' : '-rotate-90'} />
       </button>
       {isExpanded &&

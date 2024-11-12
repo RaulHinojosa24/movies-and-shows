@@ -73,7 +73,8 @@ export function generateVoteColor (value) {
 }
 
 export function getPersonGender (type) {
-  return ['Desconocido / Indefinido', 'Femenino', 'Masculino', 'No binario'][type]
+  // return ['Desconocido / Indefinido', 'Femenino', 'Masculino', 'No binario'][type]
+  return ['Unknown / Undefined', 'Female', 'Male', 'Non binary'][type]
 }
 
 export function getReleaseType (type) {

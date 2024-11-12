@@ -38,15 +38,15 @@ export default function ListHeader ({ averageRating, backdropPath, createdBy, de
           <p>{description}</p>
           <div className='flex items-center gap-2 text-base'>
             {prettyProfileURL &&
-              <img loading='lazy' crossOrigin='anonymous' src={prettyProfileURL} alt={'Imagen de perfil del usuario ' + prettyCreatorName} width={45} className='aspect-square rounded-full object-cover' />}
-            <p>Una lista de <span className='font-semibold'>{prettyCreatorName}</span></p>
+              <img loading='lazy' crossOrigin='anonymous' src={prettyProfileURL} alt={`${prettyCreatorName}'s profile picture`} width={45} className='aspect-square rounded-full object-cover' />}
+            <p>List by <span className='font-semibold'>{prettyCreatorName}</span></p>
           </div>
         </section>
         <section className='md:flex md:justify-start grid grid-cols-2 px-app-space py-2 gap-x-8 gap-y-2 bg-black/80 text-white'>
-          <HeaderBigElements title='Elementos' value={itemCount} />
-          <HeaderBigElements title='Valoración media' value={averageRating * 10 + '%'} className={`text-[${avgColor}]`} />
-          <HeaderBigElements title='Duración total' value={prettyRuntime} />
-          <HeaderBigElements title='Ingresos totales' value={prettyRevenue} />
+          <HeaderBigElements title='Elements' value={itemCount} />
+          <HeaderBigElements title='Average rating' value={averageRating * 10 + '%'} className={`text-[${avgColor}]`} />
+          <HeaderBigElements title='Total duration' value={prettyRuntime} />
+          <HeaderBigElements title='Total revenue' value={prettyRevenue} />
         </section>
       </header>
     </>

@@ -11,7 +11,7 @@ export default function AvailabilityFilter ({ watchTypes, setWatchTypes, options
   }
 
   return (
-    <FilterItem title='Disponibilidad'>
+    <FilterItem title='Availabilities'>
       {options.map(option => (
         <div key={option.value}>
           <input

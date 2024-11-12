@@ -6,7 +6,7 @@ export default function HorizontalCard ({ link, imageUrl, title, originalTitle, 
     <li className='shadow shadow-colors rounded overflow-hidden flex w-full'>
       <div className='relative shrink-0'>
         <Link to={link} className='contents'>
-          <img crossOrigin='anonymous' className='w-24 h-full object-cover aspect-[2/3]' src={imageUrl} alt={`Imágen de ${title}`} loading='lazy' />
+          <img crossOrigin='anonymous' className='w-24 h-full object-cover aspect-[2/3]' src={imageUrl} alt={`Picture of ${title}`} loading='lazy' />
         </Link>
       </div>
       <div className='py-3 px-4 flex gap-2'>

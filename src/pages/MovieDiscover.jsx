@@ -13,7 +13,7 @@ export default function MovieDiscoverPage () {
     data: loaderDiscoverMovies
   } = useLoaderData()
 
-  setDocTitle('Descubrir películas')
+  setDocTitle('Discover Movies')
 
   return (
     <Main

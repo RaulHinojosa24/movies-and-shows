@@ -16,8 +16,8 @@ export default function WatchProvidersFilter ({ watchProvidersList, watchProvide
   }
 
   return (
-    <FilterItem title='Proveedores'>
-      {!watchProvidersList && 'Cargando proveedores...'}
+    <FilterItem title='Providers'>
+      {!watchProvidersList && 'Loading providers...'}
       {watchProvidersList && config &&
         <ol className='flex flex-wrap gap-3 justify-between'>
           {watchProvidersList.map(({
@@ -30,7 +30,7 @@ export default function WatchProvidersFilter ({ watchProvidersList, watchProvide
 
             return (
               <li key={providerId} onClick={() => toggleWatchProvider(providerId)} className='relative cursor-pointer' title={providerName}>
-                <img crossOrigin='anonymous' loading='lazy' className='aspect-square w-12 rounded' src={prettyURL} alt={'Logo de ' + providerName} />
+                <img crossOrigin='anonymous' loading='lazy' className='aspect-square w-12 rounded' src={prettyURL} alt={`${providerName}'s logo`} />
                 {selected &&
                   <div className='absolute grid place-content-center bg- bg-accent/70 rounded top-0 left-0 bottom-0 right-0 text-4xl font-bold text-black'>
                     <CheckIcon />

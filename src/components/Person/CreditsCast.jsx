@@ -23,7 +23,7 @@ export default function CreditsCast ({ groupBy, sorting, direction, cast }) {
     }))
 
   return (
-    <SubSection title='Reparto' className='space-y-2'>
+    <SubSection title='Cast' className='space-y-2'>
       <GroupedCreditsDisplay credits={cleanCastCredits} groupBy={groupBy} sorting={sorting} direction={direction} />
     </SubSection>
   )

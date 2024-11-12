@@ -17,7 +17,7 @@ import ErrorPage from './ErrorPage'
 
 export default function TvGeneral () {
   const { data: loaderTvDetails } = useRouteLoaderData('tv-details')
-  setDocTitle('Cargando...')
+  setDocTitle('Loading...')
 
   return (
     <Suspense fallback={<TvGeneralSkeleton />}>
@@ -92,7 +92,7 @@ export default function TvGeneral () {
                 center={
                   <>
                     <TvOverview overview={overview} />
-                    <GeneralMedia backdrops={backdrops} posters={posters} title={prettyName} pageType='serie de tv' />
+                    <GeneralMedia backdrops={backdrops} posters={posters} title={prettyName} />
                     <TvCast id={id} cast={cast} />
                     <TvLatestSeason tvId={id} seasons={seasons} />
                     {reviews.length > 0 &&

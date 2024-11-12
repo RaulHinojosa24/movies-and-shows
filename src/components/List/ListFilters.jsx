@@ -24,16 +24,16 @@ export default function ListFilters ({
           ? <SortAscIcon />
           : <SortDescIcon />}
       </button>
-      <Select compact bgClass='bg-light dark:bg-dark' label='Ordenar por' options={sortByProps} onChange={(event) => setSortValue(event.target.value)} />
+      <Select compact bgClass='bg-light dark:bg-dark' label='Sort by' options={sortByProps} onChange={(event) => setSortValue(event.target.value)} />
       <button
         onClick={() => setPosterMode(p => !p)}
         className='rounded shadow shadow-colors flex items-center gap-2 py-1 px-3'
-      >{posterMode ? <>Ver en lista <ListIcon /></> : <>Ver en cuadrícula <GridIcon /></>}
+      >{posterMode ? <>List view <ListIcon /></> : <>Grid view <GridIcon /></>}
       </button>
       <button
         onClick={() => setCommentsVisible(p => !p)}
         className='rounded shadow shadow-colors flex items-center gap-2 py-1 px-3'
-      >{commentsVisible ? <>Ocultar comentarios <HiddenIcon /></> : <>Mostrar comentarios <VisibleIcon /></>}
+      >{commentsVisible ? <>Hide comments <HiddenIcon /></> : <>Show comments <VisibleIcon /></>}
       </button>
     </div>
   )

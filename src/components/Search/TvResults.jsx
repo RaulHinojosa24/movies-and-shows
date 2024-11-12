@@ -1,4 +1,4 @@
-import { Await, useLoaderData, useRouteLoaderData } from 'react-router-dom'
+import { Await, useLoaderData, useRouteLoaderData, useSearchParams } from 'react-router-dom'
 import { fetchWithDefer, getTvByQuery } from '../../utils/http'
 import { formatLongDate } from '../../utils/utility'
 import Pagination from './Pagination'
@@ -15,6 +15,8 @@ export default function TvResults () {
   const { country, language } = useContext(settingsContext)
   const { data: loaderData } = useLoaderData()
   const baseLoaderData = useRouteLoaderData('search')
+  const [searchParams] = useSearchParams()
+  const query = searchParams.get('query')
 
   const appLanguage = `${language.iso_639_1}-${country.iso_3166_1}`
 
@@ -56,11 +58,11 @@ export default function TvResults () {
                   })}
                 </ul>}
               {tvs && totalResults > 0 && tvs.length === 0 &&
-                <p>Parece que te has pasado de página, vuelve a la última!</p>}
+                <p>Seems like you are far far away from your place, go back some pages!</p>}
               {totalResults === 0 &&
-                <p>No hemos podido encontrar ninguna serie de tv que se adapte a tu búsqueda...</p>}
+                <p>We couldn't find no tv shows{query ? ` with "${query}"` : ''}.</p>}
               {!tvs &&
-                <p>Adelante, haga una búsqueda!</p>}
+                <p>Come on, do a search!</p>}
               {tvs && totalResults > 0 &&
                 <Pagination totalPages={totalPages} />}
             </>

@@ -79,7 +79,7 @@ export default function SocialLinks ({ externalIDs, homepageLink, name, isPerson
           <ul className='flex flex-row w-3/5 md:w-full md:flex-col gap-6 justify-center mx-auto items-center flex-wrap'>
             {socials.map(social => (Boolean(social.id) &&
               <li key={social.name}>
-                <a href={isPerson ? (social.personLink || social.link) : social.link} target='_blank' title={'Visita la página oficial de ' + social.name + ' de ' + name}>
+                <a href={isPerson ? (social.personLink || social.link) : social.link} target='_blank' title={`Visit ${name}'s official ${social.name} page`}>
                   <social.icon className='icon' />
                 </a>
               </li>

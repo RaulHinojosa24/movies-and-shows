@@ -10,7 +10,7 @@ import ErrorPage from './ErrorPage'
 
 export default function CollectionMediaPage () {
   const { data: loaderCollectionDetails } = useRouteLoaderData('collection-details')
-  setDocTitle('Cargando...')
+  setDocTitle('Loading...')
 
   return (
     <Suspense fallback={<CollectionMediaSkeleton />}>
@@ -26,7 +26,7 @@ export default function CollectionMediaPage () {
           id,
           poster_path: posterPath
         }) => {
-          setDocTitle(`${name} - Fotos`)
+          setDocTitle(`${name} - Media`)
 
           return (
             <>

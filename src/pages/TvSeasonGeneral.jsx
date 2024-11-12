@@ -12,7 +12,7 @@ import ErrorPage from './ErrorPage'
 export default function TvSeasonGeneralPage () {
   const { data: loaderTvDetails } = useRouteLoaderData('tv-details')
   const { data: loaderSeasonDetails } = useRouteLoaderData('season-details')
-  setDocTitle('Cargando...')
+  setDocTitle('Loading...')
 
   return (
     <Suspense fallback={<TvSeasonGeneralSkeleton />}>
@@ -46,7 +46,7 @@ export default function TvSeasonGeneralPage () {
               <Main
                 center={
                   <>
-                    <GeneralMedia posters={posters} videos={results} pageType='temporada' title={sName || originalName} />
+                    <GeneralMedia posters={posters} videos={results} title={sName || originalName} />
                     <EpisodeList episodes={episodes} tvName={sName} tvOriginalName={originalName} />
                   </>
             }

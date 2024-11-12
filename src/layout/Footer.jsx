@@ -8,21 +8,21 @@ export default function Footer () {
     <footer className='p-app-space bg-light-2 dark:bg-dark-2 shadow !border-0 shadow-colors mt-auto'>
       <section className='grid sm:grid-cols-2 md:grid-cols-3 grid-cols-1 gap-4'>
         <div className='self-center'>
-          <img crossOrigin='anonymous' src={LogoBig} loading='lazy' alt='Logo con texto en amarillo "Movies & Shows"' className='aspect-square max-w-1/2 w-40 mx-auto' />
+          <img crossOrigin='anonymous' src={LogoBig} loading='lazy' alt='"Movies & Shows" logo with yellow text' className='aspect-square max-w-1/2 w-40 mx-auto' />
         </div>
         <div className='block md:contents space-y-4 md:space-y-0'>
-          <FooterSection title='Enlaces principales'>
+          <FooterSection title='Get Around'>
             <li>
-              <Link to='/search'>Buscador</Link>
+              <Link to='/search'>Search</Link>
             </li>
             <li>
-              <Link to='/movie'>Películas</Link>
+              <Link to='/movie'>Movies</Link>
             </li>
             <li>
-              <Link to='/tv'>Series de TV</Link>
+              <Link to='/tv'>TV Shows</Link>
             </li>
           </FooterSection>
-          <FooterSection title='Sobre el proyecto'>
+          <FooterSection title='Learn more'>
             <li>
               <ul className='flex gap-4'>
                 <li>
@@ -38,7 +38,7 @@ export default function Footer () {
               </ul>
             </li>
             <li>
-              <Link to='/about'>¿Qué es Movies&Shows?</Link>
+              <Link to='/about'>About Movies & Shows</Link>
             </li>
           </FooterSection>
         </div>

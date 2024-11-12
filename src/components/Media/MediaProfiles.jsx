@@ -46,11 +46,11 @@ export default function MediaProfiles ({ images }) {
   const prettyAmount = formatNumber(amount)
 
   return (
-    <Section title='Retratos' subtitle={prettyAmount}>
+    <Section title='Portraits' subtitle={prettyAmount}>
       {!config &&
-        'Cargando fotos...'}
+        'Loading portraits...'}
       {config && photos.length === 0 &&
-        'No tenemos ninguna imagen disponible.'}
+        'We have no portraits available'}
       {config && photos.length > 0 &&
         <>
           <PhotoAlbum

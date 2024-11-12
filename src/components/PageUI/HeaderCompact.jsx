@@ -22,13 +22,13 @@ export default function HeaderCompact ({ posterPath, title, target, mediaType })
         style={{ backgroundColor: `rgb(${r},${g},${b})` }}
         className={`flex p-app-space py-4 gap-4 ${isDark ? 'text-white' : 'text-black'}`}
       >
-        <img loading='lazy' ref={imgRef} crossOrigin='anonymous' src={prettyPosterURL} alt={'Poster de ' + title} className='aspect-[2/3] object-cover w-16 shrink-0 rounded shadow-md shadow-black/75' />
+        <img loading='lazy' ref={imgRef} crossOrigin='anonymous' src={prettyPosterURL} alt={`${title}'s ${mediaType === 'person' ? 'picture' : 'poster'}`} className='aspect-[2/3] object-cover w-16 shrink-0 rounded shadow-md shadow-black/75' />
         <div className='flex flex-col justify-center'>
           <Link to={target}>
             <h1 className='font-bold text-2xl'>{title}</h1>
           </Link>
           <Link to={target}>
-            <p>⬅ Volver a la página principal</p>
+            <p>⬅ Back to main</p>
           </Link>
         </div>
       </header>

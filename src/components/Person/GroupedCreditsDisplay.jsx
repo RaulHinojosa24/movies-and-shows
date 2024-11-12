@@ -2,15 +2,15 @@ import SortedCreditsDisplay from './SortedCreditsDisplay'
 
 const groupByDate = (credits) => {
   return {
-    Próximamente: credits.filter(c => (!c.releaseDate && !c.firstAirDate) || c.sortDate - new Date() > 0),
-    Anterior: credits.filter(c => (c.releaseDate || c.firstAirDate) && c.sortDate - new Date() < 0)
+    Upcoming: credits.filter(c => (!c.releaseDate && !c.firstAirDate) || c.sortDate - new Date() > 0),
+    Released: credits.filter(c => (c.releaseDate || c.firstAirDate) && c.sortDate - new Date() < 0)
   }
 }
 const groupByType = (credits) => {
   return {
-    Película: credits.filter(c => c.mediaType === 'movie' && !c.video),
-    Serie: credits.filter(c => c.mediaType === 'tv'),
-    Corto: credits.filter(c => c.mediaType === 'movie' && c.video)
+    Movies: credits.filter(c => c.mediaType === 'movie' && !c.video),
+    'TV Shows': credits.filter(c => c.mediaType === 'tv'),
+    Specials: credits.filter(c => c.mediaType === 'movie' && c.video)
   }
 }
 
@@ -21,7 +21,7 @@ const GROUP_BY_DICT = {
 }
 
 export default function GroupedCreditsDisplay ({ credits, groupBy, sorting, direction }) {
-  const groupedCredits = (GROUP_BY_DICT[groupBy] || GROUP_BY_DICT.default)(credits)
+  const groupedCredits = GROUP_BY_DICT[groupBy || 'default'](credits)
 
   return (
     <>

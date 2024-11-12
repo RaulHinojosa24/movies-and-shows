@@ -9,9 +9,9 @@ import VerticalCard from '../UI/Cards/VerticalCard'
 export default function MovieCast ({ id, cast }) {
   if (cast.length === 0) {
     return (
-      <Section title='Reparto principal'>
-        <p className='italic'>No disponemos de una lista del reparto principal actualmente.</p>
-        <Link to='cast' className='mt-2 inline-block'>Ver reparto y equipo completo</Link>
+      <Section title='Top Billed Cast'>
+        <p className='italic'>We currently have no top billed cast available</p>
+        <Link to='cast' className='mt-2 inline-block'>Visit full cast and crew</Link>
       </Section>
     )
   }
@@ -28,13 +28,13 @@ export default function MovieCast ({ id, cast }) {
 
   const lastSlide = () => (
     <div className='w-36 h-full grid place-items-center'>
-      <Link to='cast'>Ver más ➡</Link>
+      <Link to='cast'>See more &rarr;</Link>
     </div>
   )
   return (
-    <Section title='Reparto principal'>
+    <Section title='Top Billed Cast'>
       <Slider key={id} slides={cleanCast} SlideComponent={Slide} LastSlide={lastSlide} />
-      <Link to='cast' className='mt-2 inline-block'>Ver reparto y equipo completo</Link>
+      <Link to='cast' className='mt-2 inline-block'>Visit full cast and crew</Link>
     </Section>
   )
 }

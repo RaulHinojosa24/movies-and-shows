@@ -6,7 +6,7 @@ export default function RecommendationCard ({ aside, imageUrl, isAdult, link, pr
     <article className='w-72 md:w-80 h-full rounded overflow-hidden shadow shadow-colors'>
       <div className='relative'>
         <Link to={link}>
-          <img crossOrigin='anonymous' className='w-full object-cover aspect-video' src={imageUrl} alt={`Imágen de ${title}`} loading='lazy' />
+          <img crossOrigin='anonymous' className='w-full object-cover aspect-video' src={imageUrl} alt={`Picture of ${title}`} loading='lazy' />
         </Link>
       </div>
       <div className='py-2 px-3 flex justify-between gap-2'>

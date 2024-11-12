@@ -4,7 +4,7 @@ import Trending from '../components/Home/Trending'
 import Popular from '../components/Home/Popular'
 
 export default function HomePage () {
-  setDocTitle('Inicio')
+  setDocTitle('Home')
 
   return (
     <>

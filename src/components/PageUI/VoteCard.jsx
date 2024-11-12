@@ -12,7 +12,7 @@ export default function VoteCard ({ rating, count, small, minimal, className, hi
       <>
         {displayPopover &&
           <Popover compact noDelay popoverTarget={minimalVoteElement}>
-            Media basada en {count} votos
+            Rating based on {count} votes
           </Popover>}
         {!displayPopover &&
           minimalVoteElement}
@@ -54,7 +54,7 @@ export default function VoteCard ({ rating, count, small, minimal, className, hi
     <>
       {displayPopover &&
         <Popover noDelay compact={small} popoverTarget={voteElement}>
-          Media basada en {count} votos
+          Rating based on {count} votes
         </Popover>}
       {!displayPopover &&
         voteElement}

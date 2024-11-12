@@ -10,7 +10,7 @@ export default function ListItem ({ id, name, description, count, favCount }) {
         <Link to={'/list/' + id}>
           <h3 className='font-semibold text-lg'>{name}</h3>
         </Link>
-        <span className='text-medium italic'>({prettyCount} elementos)</span>
+        <span className='text-medium italic'>({prettyCount} element{prettyCount > 1 ? 's' : ''})</span>
         {/* <span className='text-medium italic'>({favCount} favoritos)</span> */}
       </div>
       {description !== '' &&

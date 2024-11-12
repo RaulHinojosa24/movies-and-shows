@@ -4,6 +4,8 @@ import SubSection from '../UI/SubSection'
 import VideoModal from './VideoModal'
 
 export default function MediaVideos ({ videos }) {
+  const prettyAmount = formatNumber(videos.length)
+
   const groupedVideos = {}
   const cleanVideos = []
 
@@ -33,8 +35,10 @@ export default function MediaVideos ({ videos }) {
     .sort((a, b) => a.type.localeCompare(b.type))
 
   return (
-    <Section title='Vídeos' className='space-y-4'>
-      {cleanVideos.map(({ type, videos }) => {
+    <Section title='Videos' className='space-y-4' subtitle={prettyAmount}>
+      {videos.length === 0 &&
+        'We have no videos available'}
+      {videos.length > 0 && cleanVideos.map(({ type, videos }) => {
         const prettyAmount = formatNumber(videos.length)
 
         return (

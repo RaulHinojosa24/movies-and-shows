@@ -28,7 +28,7 @@ export default function ClampedText ({ text, clampClass = 'line-clamp-[10]', url
       >{text}
       </p>
       {isClamped &&
-        <button className='mt-4 hover:underline' onClick={toggleClamp}>Leer {isExpanded ? 'menos' : 'más'}</button>}
+        <button className='mt-4 hover:underline' onClick={toggleClamp}>Read {isExpanded ? 'less' : 'more'}</button>}
     </>
   )
 }

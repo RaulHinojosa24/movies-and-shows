@@ -12,7 +12,7 @@ import ErrorPage from './ErrorPage'
 export default function TvSeasonMediaPage () {
   const { data: loaderSeasonDetails } = useRouteLoaderData('season-details')
   const { data: loaderTvDetails } = useRouteLoaderData('tv-details')
-  setDocTitle('Cargando...')
+  setDocTitle('Loading...')
 
   return (
     <Suspense fallback={<TvSeasonMediaSkeleton />}>
@@ -34,7 +34,7 @@ export default function TvSeasonMediaPage () {
             season_number: seasonNumber
           }] = data
           const prettyTvName = tvName || tvOriginalName
-          setDocTitle(`${prettyTvName} - ${sName} - Fotos y vídeos`)
+          setDocTitle(`${prettyTvName} - ${sName} - Media`)
 
           return (
             <>

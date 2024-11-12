@@ -2,9 +2,9 @@ import FilterItem from './FilterItem'
 
 export default function GenresFilter ({ allGenres, genres, setGenres }) {
   return (
-    <FilterItem title='Géneros'>
+    <FilterItem title='Genres'>
       <div>
-        {!allGenres && 'Cargando géneros...'}
+        {!allGenres && 'Loading genres...'}
         {allGenres &&
           <ul className='flex flex-wrap gap-2 text-sm'>
             {allGenres.genres

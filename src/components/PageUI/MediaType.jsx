@@ -4,16 +4,16 @@ import TvIcon from '../../icons/TvIcon'
 
 export default function MediaType ({ mediaType, isPoster, className = '' }) {
   const prettyMediaType = mediaType === 'movie'
-    ? isPoster ? <MovieIcon /> : 'Película'
+    ? isPoster ? <MovieIcon /> : 'Movie'
     : mediaType === 'tv'
-      ? isPoster ? <TvIcon /> : 'Serie de TV'
-      : isPoster ? <PersonIcon /> : 'Persona'
+      ? isPoster ? <TvIcon /> : 'TV Show'
+      : isPoster ? <PersonIcon /> : 'Person'
 
   const title = mediaType === 'movie'
-    ? 'Película'
+    ? 'Movie'
     : mediaType === 'tv'
-      ? 'Serie de TV'
-      : 'Persona'
+      ? 'TV Show'
+      : 'Person'
 
   const mediaStyles = {
     tv: 'bg-gradient-to-br from-amber-500 to-rose-600',

@@ -9,8 +9,8 @@ import RecommendationCard from '../UI/Cards/RecommendationCard'
 export default function MovieRecommendations ({ id, recommendations }) {
   if (recommendations.length === 0) {
     return (
-      <Section title='Recomendaciones'>
-        <p className='italic'>Actualmente no podemos ofrecerte ninguna recomendación.</p>
+      <Section title='Recommendationos'>
+        <p className='italic'>We currently have no recommendations available</p>
       </Section>
     )
   }
@@ -27,7 +27,7 @@ export default function MovieRecommendations ({ id, recommendations }) {
   }))
 
   return (
-    <Section title='Recomendaciones'>
+    <Section title='Recommendationos'>
       <Slider key={id} slides={cleanRecommendations} SlideComponent={Slide} />
     </Section>
   )

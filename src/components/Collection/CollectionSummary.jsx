@@ -11,9 +11,9 @@ export default function CollectionSummary ({ parts }) {
 
   return (
     <section className='flex justify-around items-center flex-wrap'>
-      <SummaryItem data={nMovies} text='películas' />
-      <SummaryItem style={{ color }} data={prettyVoteAvg} text='puntuación media' />
-      <SummaryItem data={prettyTotalVotes} text='valoraciones' />
+      <SummaryItem data={nMovies} text='movies' />
+      <SummaryItem style={{ color }} data={prettyVoteAvg} text='average score' />
+      <SummaryItem data={prettyTotalVotes} text='ratings' />
     </section>
   )
 }

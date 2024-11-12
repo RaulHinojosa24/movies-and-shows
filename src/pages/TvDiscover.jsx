@@ -13,7 +13,7 @@ export default function TvDiscoverPage () {
     data: loaderDiscoverTvs
   } = useLoaderData()
 
-  setDocTitle('Descubrir series de tv')
+  setDocTitle('Discover TV Shows')
 
   return (
     <Main

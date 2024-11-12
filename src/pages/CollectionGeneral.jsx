@@ -11,7 +11,7 @@ import ErrorPage from './ErrorPage'
 
 export default function CollectionGeneralPage () {
   const { data: loaderCollectionDetails } = useRouteLoaderData('collection-details')
-  setDocTitle('Cargando...')
+  setDocTitle('Loading...')
 
   return (
     <Suspense fallback={<CollectionGeneralSkeleton />}>
@@ -37,7 +37,7 @@ export default function CollectionGeneralPage () {
               <Main
                 center={
                   <>
-                    <GeneralMedia backdrops={backdrops} posters={posters} title={name} pageType='colección' />
+                    <GeneralMedia backdrops={backdrops} posters={posters} title={name} />
                     <CollectionSummary parts={parts} />
                     <CollectionList parts={parts} />
                   </>

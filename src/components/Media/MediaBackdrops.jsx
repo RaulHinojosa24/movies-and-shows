@@ -43,11 +43,11 @@ export default function MediaBackdrops ({ images }) {
   const prettyAmount = formatNumber(amount)
 
   return (
-    <Section title='Imágenes de fondo' subtitle={prettyAmount}>
+    <Section title='Backdrops' subtitle={prettyAmount}>
       {!config &&
-        'Cargando imágenes de fondo...'}
+        'Loading backdrops...'}
       {config && photos.length === 0 &&
-        'No tenemos ninguna imagen de fondo disponible.'}
+        'We have no backdrops available'}
       {config && photos.length > 0 &&
         <>
           <PhotoAlbum

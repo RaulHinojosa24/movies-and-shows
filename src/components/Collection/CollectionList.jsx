@@ -8,15 +8,15 @@ export default function CollectionList ({ parts }) {
   const options = [
     {
       value: 'release-date',
-      label: 'Fecha de estreno'
+      label: 'Release date'
     },
     {
       value: 'popularity',
-      label: 'Popularidad'
+      label: 'Popularity'
     },
     {
       value: 'rating',
-      label: 'Valoración'
+      label: 'Rating'
     }
   ]
 
@@ -42,14 +42,14 @@ export default function CollectionList ({ parts }) {
 
   if (parts.length === 0) {
     return (
-      <p>Ésta colección no contiene ninguna película.</p>
+      <p>This collection does not contain any movies</p>
     )
   }
 
   return (
     <section className='mt-8'>
       <div className='grid grid-flow-col auto-cols-max gap-4 my-4'>
-        <Select bgClass='bg-light dark:bg-dark' compact name='collection-movies-sorting' options={options} onChange={e => setSortBy(e.target.value)} label='Ordenar por' />
+        <Select bgClass='bg-light dark:bg-dark' compact name='collection-movies-sorting' options={options} onChange={e => setSortBy(e.target.value)} label='Sort by' />
         <button className='shadow shadow-colors rounded aspect-square grid place-items-center self-stretch' onClick={() => setIsAsc(p => !p)}>
           {isAsc
             ? <SortAscIcon />

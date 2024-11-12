@@ -1,4 +1,4 @@
-import { Await, Link, useLoaderData, useRouteLoaderData } from 'react-router-dom'
+import { Await, Link, useLoaderData, useRouteLoaderData, useSearchParams } from 'react-router-dom'
 import { fetchWithDefer, getPeopleByQuery } from '../../utils/http'
 import Pagination from './Pagination'
 import DefaultUserImage from '../../assets/default-user.webp'
@@ -12,6 +12,8 @@ export default function PersonResults () {
   const { config } = useContext(rootContext)
   const { data: loaderData } = useLoaderData()
   const baseLoaderData = useRouteLoaderData('search')
+  const [searchParams] = useSearchParams()
+  const query = searchParams.get('query')
 
   return (
     <Suspense fallback={<DiscoverSearchResultsSkeleton />}>
@@ -63,11 +65,11 @@ export default function PersonResults () {
                   })}
                 </ul>}
               {persons && totalResults > 0 && persons.length === 0 &&
-                <p>Parece que te has pasado de página, vuelve a la última!</p>}
+                <p>Seems like you are far far away from your place, go back some pages!</p>}
               {totalResults === 0 &&
-                <p>No hemos podido encontrar ninguna persona que se adapte a tu búsqueda...</p>}
+                <p>We couldn't find no people{query ? ` with "${query}"` : ''}.</p>}
               {!persons &&
-                <p>Adelante, haga una búsqueda!</p>}
+                <p>Come on, do a search!</p>}
               {persons && totalResults > 0 &&
                 <Pagination totalPages={totalPages} />}
             </>
