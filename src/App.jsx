@@ -33,6 +33,7 @@ import ErrorPage from './pages/ErrorPage'
 import AboutPage from './pages/About'
 import RootContextProvider from './context/root-context'
 import SettingsContextProvider, { settingsContext } from './context/settings-context'
+import { Analytics } from '@vercel/analytics/react'
 
 export default function App () {
   useEffect(() => {
@@ -47,6 +48,7 @@ export default function App () {
     <RootContextProvider>
       <SettingsContextProvider>
         <RouterSetup />
+        <Analytics />
       </SettingsContextProvider>
     </RootContextProvider>
   )
