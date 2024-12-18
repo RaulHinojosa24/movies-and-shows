@@ -9,7 +9,7 @@ export default function Pagination ({ totalPages }) {
   const currentPage = Math.min(Math.max(Number(searchParams.get('page')) || 0, 1), totalPages)
   const pages = [currentPage]
   const isFirstPage = currentPage === 1
-  const isLastPage = currentPage === totalPages
+  const isLastPage = currentPage === totalPages || currentPage === 500
 
   for (let i = 0; i < Math.floor(PAGES_AMOUNT / 2); i++) {
     const first = pages[0]
@@ -24,7 +24,7 @@ export default function Pagination ({ totalPages }) {
   for (let i = 0; i < remaining; i++) {
     const last = pages[pages.length - 1]
 
-    if (last >= totalPages) break
+    if (last >= totalPages || last >= 500) break
 
     pages.push(last + 1)
   }
